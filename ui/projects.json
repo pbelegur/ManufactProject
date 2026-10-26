@@ -1,0 +1,26 @@
+{
+  "stateless": {
+    "category": "developer",
+    "source": {"kind": "template", "path": "servers/stateless"},
+    "safe_test": {"tool": "echo", "arguments": {"message": "Manufact MCP check"}},
+    "title": "Stateless MCP",
+    "path": "servers/stateless",
+    "configs": {"always-on": "mcp.json", "knative": "mcp.knative.local.json"}
+  },
+  "stateful": {
+    "category": "developer",
+    "source": {"kind": "template", "path": "servers/stateful"},
+    "safe_test": {"tool": "get_counter", "arguments": {"name": "ui_persist_a59837a6a3"}},
+    "title": "Redis-backed MCP",
+    "path": "servers/stateful",
+    "configs": {"always-on": "mcp.json", "knative": "mcp.knative.local.json"}
+  },
+  "contract-probe": {
+    "category": "probe",
+    "source": {"kind": "fixture", "path": "tests/fixtures/compatible_project"},
+    "safe_test": {"tool": "multiply", "arguments": {"value": 6, "factor": 7}},
+    "title": "Compatible custom project",
+    "path": "tests/fixtures/compatible_project",
+    "configs": {"always-on": "mcp.json", "knative": "mcp.knative.local.json"}
+  }
+}

@@ -1,0 +1,3 @@
+# Infrastructure helpers: Floci SDK and pinned Knative manifest parsing.
+boto3==1.43.118
+PyYAML==6.0.3

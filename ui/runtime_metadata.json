@@ -1,0 +1,4 @@
+{
+  "mcp-auto/phase3-final-probe": {"category": "probe", "project_id": "contract-probe", "source": {"kind": "fixture", "path": "tests/fixtures/compatible_project"}},
+  "mcp-auto/phase3-verified-probe": {"category": "probe", "project_id": "contract-probe", "source": {"kind": "fixture", "path": "tests/fixtures/compatible_project"}}
+}

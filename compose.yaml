@@ -1,0 +1,27 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: ["redis_data:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+  stateless:
+    build: ./servers/stateless
+    ports: ["8001:8000"]
+    restart: unless-stopped
+    stop_grace_period: 30s
+  stateful:
+    build: ./servers/stateful
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    ports: ["8002:8000"]
+    restart: unless-stopped
+    stop_grace_period: 30s
+    depends_on:
+      redis:
+        condition: service_healthy
+volumes:
+  redis_data:

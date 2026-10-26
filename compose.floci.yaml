@@ -1,0 +1,23 @@
+# Optional AWS emulator; mounting the Docker socket grants powerful host access.
+# Use for trusted local development only.
+services:
+  floci:
+    image: floci/floci:2.3.0
+    ports: ["4566:4566"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - floci_data:/app/data
+    environment:
+      FLOCI_SERVICES_EKS_MOCK: "false"
+      FLOCI_SERVICES_ECS_MOCK: "false"
+      FLOCI_STORAGE_MODE: hybrid
+      FLOCI_SERVICES_DOCKER_NETWORK: mcp-platform-floci
+      # Docker Desktop DNS does not reliably resolve wildcard *.localhost.
+      FLOCI_SERVICES_ECR_URI_STYLE: path
+      FLOCI_SERVICES_EKS_DEFAULT_STORAGE_CLASS: "true"
+    networks: [floci]
+networks:
+  floci:
+    name: mcp-platform-floci
+volumes:
+  floci_data:

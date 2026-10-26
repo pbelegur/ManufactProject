@@ -1,0 +1,17 @@
+{
+  "name": "contract-probe",
+  "env": {"PROBE_LABEL": "configured-by-project"},
+  "resources": {
+    "requests": {"cpu": "50m", "memory": "96Mi"},
+    "limits": {"cpu": "300m", "memory": "256Mi"}
+  },
+  "autoscaling": {
+    "enabled": true,
+    "minReplicas": 0,
+    "activationReplicas": 2,
+    "maxReplicas": 10,
+    "targetConcurrency": 2,
+    "windowSeconds": 20,
+    "routeDomain": "mcp.test"
+  }
+}

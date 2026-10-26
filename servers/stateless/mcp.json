@@ -1,0 +1,6 @@
+{
+  "name": "stateless-demo",
+  "mode": "stateless",
+  "port": 8000,
+  "replicas": 2
+}

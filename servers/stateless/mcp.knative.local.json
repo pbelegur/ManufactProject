@@ -1,0 +1,23 @@
+{
+  "name": "stateless-demo",
+  "mode": "stateless",
+  "resources": {
+    "requests": {
+      "cpu": "50m",
+      "memory": "96Mi"
+    },
+    "limits": {
+      "cpu": "500m",
+      "memory": "256Mi"
+    }
+  },
+  "autoscaling": {
+    "enabled": true,
+    "minReplicas": 0,
+    "activationReplicas": 2,
+    "maxReplicas": 4,
+    "targetConcurrency": 2,
+    "windowSeconds": 20,
+    "routeDomain": "mcp.test"
+  }
+}

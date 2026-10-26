@@ -1,0 +1,6 @@
+# Isolated local UI environment; does not change MCP server dependencies.
+fastapi==0.162.0
+starlette==1.10.0
+uvicorn==0.54.0
+Jinja2==3.1.6
+python-multipart==0.0.32

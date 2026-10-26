@@ -1,0 +1,7 @@
+{
+  "name": "stateful-demo",
+  "mode": "stateful",
+  "port": 8000,
+  "replicas": 2,
+  "state_backend": "redis"
+}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}New deployment · MCP platform{% endblock %}
+{% block content %}
+<a class="back" href="/">← Deployments</a><p class="eyebrow">DEPLOY</p><h1>Deploy an MCP project</h1><p>Choose an allowlisted project and an existing configuration. A background job runs the shared deployment pipeline.</p>
+<div class="columns"><section class="card"><form action="/deploy" method="post" id="deploy-form">
+<input type="hidden" name="csrf" value="{{ csrf }}">
+<label for="project_id">MCP project</label><select id="project_id" name="project_id">{% for project in projects %}<option value="{{ project.id }}">{{ project.title }} · {{ project.path }}</option>{% endfor %}</select>
+<label for="backend">Deployment mode</label><select id="backend" name="backend"><option value="always-on">Always-on · two replicas</option><option value="knative">Knative · scale to zero</option></select>
+<p class="help">Always-on uses mcp-demo. Knative uses mcp-auto and the existing local autoscaling profile. Redis stays outside MCP pods.</p>
+<label for="source">Image source</label><select id="source" name="source"><option value="reuse">Reuse an existing published image</option><option value="build">Build Dockerfile and publish to Floci ECR</option></select>
+<label for="version">Release version</label><input id="version" name="version" value="ui-v1" pattern="[A-Za-z0-9_][A-Za-z0-9_.\-]{0,62}" maxlength="63" required>
+<p class="help">Used for builds and Knative revisions. Reusing an always-on image keeps that image's version; redeployment may be idempotent.</p>
+<details><summary>Advanced options</summary><label for="image">Published image override (reuse only)</label><input id="image" name="image" placeholder="Leave blank to discover a deployed image" maxlength="400"><p class="help">Only this project's configured Floci ECR repository is allowed. Knative reuse requires a published sha256 digest; builds resolve it through the CLI.</p><label for="timeout_seconds">Rollout wait (seconds)</label><input type="number" id="timeout_seconds" name="timeout_seconds" value="180" min="30" max="300"></details>
+<button type="submit">Deploy</button><p class="help">Jobs run one at a time. Submission opens a live job page immediately; success is reported only after deployctl exits successfully.</p>
+</form></section>
+<aside class="card"><h2>Project configuration</h2><p class="muted" id="config-path"></p><pre id="config-preview"></pre><p class="help">Read from the project's existing file. Environment values are not shown.</p></aside></div>
+{% endblock %}
+{% block scripts %}<script>
+const projects = {{ projects|tojson }};
+const selected = new URLSearchParams(location.search).get('project');
+if (projects.some(p=>p.id===selected)) {document.getElementById('project_id').value=selected;document.getElementById('source').value='build';}
+function preview() {
+  const project = projects.find(p => p.id === document.getElementById('project_id').value);
+  if (!project) return;
+  const backend=document.getElementById('backend');
+  Array.from(backend.options).forEach(option=>option.disabled=!project.profiles[option.value]);
+  if (!project.profiles[backend.value]) backend.value=Object.keys(project.profiles)[0];
+  const config = project.profiles[document.getElementById('backend').value];
+  document.getElementById('config-path').textContent = project.path + '/' + config.filename;
+  document.getElementById('config-preview').textContent = JSON.stringify(config, null, 2);
+}
+document.getElementById('project_id').addEventListener('change', () => {preview();const p=projects.find(p=>p.id===document.getElementById('project_id').value);document.getElementById('version').value=p.default_version;});
+document.getElementById('backend').addEventListener('change', preview);
+preview();
+const initialProject=projects.find(p=>p.id===document.getElementById('project_id').value);if(initialProject)document.getElementById('version').value=initialProject.default_version;
+</script>{% endblock %}
