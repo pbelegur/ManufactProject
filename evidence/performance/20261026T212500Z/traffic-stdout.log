@@ -1,0 +1,2 @@
+TRAFFIC_READY
+[{"route": "knative-stateless", "attempts": 127, "successes": 127, "failures": 0, "n": 127, "p50_ms": 72.93404599477071, "p95_ms": 480.24738700769376, "p99_ms": 729.115146008553, "max_ms": 751.7532060010126}, {"route": "knative-stateful", "attempts": 125, "successes": 125, "failures": 0, "n": 125, "p50_ms": 96.95756399014499, "p95_ms": 695.6347269879188, "p99_ms": 985.7171149924397, "max_ms": 1063.8285960012581}]

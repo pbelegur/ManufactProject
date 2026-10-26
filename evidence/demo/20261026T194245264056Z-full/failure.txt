@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 244, in run
+    return {"runtime_preserved": True, "always_on_replicas": {name: 2 for name in NAMES}}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 84, in step
+    entry.update(result="PASS", detail=detail)
+             ^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 185, in rolling_update
+    aws_access_key_id="test", aws_secret_access_key="test",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 149, in deploy
+    self.command(command)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 76, in command
+    return stdout
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 21, in require
+    raise RuntimeError(message)
+RuntimeError: Command failed (1); see C:\Users\Devi\Downloads\mcp-deployment-platform-starter\evidence\demo\20261026T194245264056Z-full\command-06.log

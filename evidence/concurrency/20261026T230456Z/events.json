@@ -1,0 +1,3816 @@
+﻿{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:05:03.539878Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "concurrency-client-9c0e26d748",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54248",
+                "uid": "bfc07067-b773-4581-833a-2a3e97625357"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/concurrency-client-9c0e26d748 to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:05:03Z",
+                "name": "concurrency-client-9c0e26d748.18e236d820eb016b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54250",
+                "uid": "bf9c8043-f842-4f34-b9b2-6e0e0bb67114"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:05:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{client}",
+                "kind": "Pod",
+                "name": "concurrency-client-9c0e26d748",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54249",
+                "uid": "bfc07067-b773-4581-833a-2a3e97625357"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:05:06Z",
+            "message": "Container image \"localhost:4566/000000000000/us-east-1/stateful-demo:ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:05:06Z",
+                "name": "concurrency-client-9c0e26d748.18e236d8c6098c9b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54252",
+                "uid": "3e548542-4935-4c33-a3af-fd651ba4ab20"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:05:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{client}",
+                "kind": "Pod",
+                "name": "concurrency-client-9c0e26d748",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54249",
+                "uid": "bfc07067-b773-4581-833a-2a3e97625357"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:05:06Z",
+            "message": "Created container: client",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:05:06Z",
+                "name": "concurrency-client-9c0e26d748.18e236d8cca7568e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54253",
+                "uid": "a67a7309-0a8d-495c-8fdc-ba3e65371d67"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:05:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{client}",
+                "kind": "Pod",
+                "name": "concurrency-client-9c0e26d748",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54249",
+                "uid": "bfc07067-b773-4581-833a-2a3e97625357"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:05:06Z",
+            "message": "Started container client",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:05:06Z",
+                "name": "concurrency-client-9c0e26d748.18e236d8e1f2a9b5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54257",
+                "uid": "851fc6df-4de0-4f8a-a79a-644e43f89582"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:12:44Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{client}",
+                "kind": "Pod",
+                "name": "concurrency-client-9c0e26d748",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54249",
+                "uid": "bfc07067-b773-4581-833a-2a3e97625357"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:12:44Z",
+            "message": "Stopping container client",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:12:44Z",
+                "name": "concurrency-client-9c0e26d748.18e237437969376b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55736",
+                "uid": "e0062b8f-0f67-4e28-bbde-2afb66c770d5"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:07:26.340292Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54595",
+                "uid": "df6242be-8d29-4fe6-9ae8-a717799cd839"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/manufact-text-tools-6cfb5d97cc-8475m to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:26Z",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m.18e236f9607afccb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54604",
+                "uid": "3a051c40-57d7-477d-b422-c15130bffc59"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:30Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54601",
+                "uid": "df6242be-8d29-4fe6-9ae8-a717799cd839"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:30Z",
+            "message": "Container image \"localhost:4566/000000000000/us-east-1/manufact-text-tools:parallel-230547-2-426e573727c92420737d6ff04b535aa562d76ccfc603f450af7e54bdddb779a1\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:30Z",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m.18e236fa55e3993d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54617",
+                "uid": "922fc8f5-b495-41c1-952e-1c4f23021bc7"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:30Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54601",
+                "uid": "df6242be-8d29-4fe6-9ae8-a717799cd839"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:30Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:30Z",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m.18e236fa60efd5af",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54619",
+                "uid": "2a9d5a08-5197-4aeb-bc6f-4b2265d2f3ee"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:31Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54601",
+                "uid": "df6242be-8d29-4fe6-9ae8-a717799cd839"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:31Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:31Z",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m.18e236fa801284fd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54625",
+                "uid": "529f446e-1e4b-4c13-a947-a4d01ba5ce4c"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 7,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:32Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54601",
+                "uid": "df6242be-8d29-4fe6-9ae8-a717799cd839"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:44Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.3:8000/health\": dial tcp 10.42.0.3:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:32Z",
+                "name": "manufact-text-tools-6cfb5d97cc-8475m.18e236faccdf6ed7",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54665",
+                "uid": "4c618322-1d7a-4527-a62c-15311e70f743"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:06:21.190543Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54408",
+                "uid": "dcfbd1c4-5c84-46ba-bfcd-027990f1b95c"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/manufact-text-tools-6cfb5d97cc-99nhg to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:21Z",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg.18e236ea354110be",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54412",
+                "uid": "a8f57b89-9579-4f21-b414-109ffa3be7a6"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:24Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54409",
+                "uid": "dcfbd1c4-5c84-46ba-bfcd-027990f1b95c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:06:24Z",
+            "message": "Pulling image \"localhost:4566/000000000000/us-east-1/manufact-text-tools:parallel-230547-2-426e573727c92420737d6ff04b535aa562d76ccfc603f450af7e54bdddb779a1\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:24Z",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg.18e236eade7f0a01",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54422",
+                "uid": "29d0bad3-f598-4c95-934a-29323cbf1055"
+            },
+            "reason": "Pulling",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:24Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54409",
+                "uid": "dcfbd1c4-5c84-46ba-bfcd-027990f1b95c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:06:24Z",
+            "message": "Successfully pulled image \"localhost:4566/000000000000/us-east-1/manufact-text-tools:parallel-230547-2-426e573727c92420737d6ff04b535aa562d76ccfc603f450af7e54bdddb779a1\" in 835ms (836ms including waiting). Image size: 56735957 bytes.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:24Z",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg.18e236eb1063b816",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54426",
+                "uid": "15b78df9-1e0d-41e8-8924-0f789c7f5b0d"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:24Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54409",
+                "uid": "dcfbd1c4-5c84-46ba-bfcd-027990f1b95c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:06:24Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:24Z",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg.18e236eb16ce904e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54427",
+                "uid": "de16bf6e-d9f1-4240-9869-ae3169ca6a4f"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:25Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54409",
+                "uid": "dcfbd1c4-5c84-46ba-bfcd-027990f1b95c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:06:25Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:25Z",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg.18e236eb32f15023",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54428",
+                "uid": "60c90141-466c-4eba-afd1-1e2b9b34820b"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 25,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:27Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54409",
+                "uid": "dcfbd1c4-5c84-46ba-bfcd-027990f1b95c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:15Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.2:8000/health\": dial tcp 10.42.0.2:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:27Z",
+                "name": "manufact-text-tools-6cfb5d97cc-99nhg.18e236ebafcfe46a",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54557",
+                "uid": "8aff1b1f-a049-4610-b073-166564843eb0"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:21Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "manufact-text-tools-6cfb5d97cc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54404",
+                "uid": "7cba228f-5361-4e38-97b6-8b9519aef63c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:06:21Z",
+            "message": "Created pod: manufact-text-tools-6cfb5d97cc-99nhg",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:21Z",
+                "name": "manufact-text-tools-6cfb5d97cc.18e236ea3047f53f",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54410",
+                "uid": "9dc1c2b4-96d1-43a8-9a0f-41786bea9d65"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:26Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "manufact-text-tools-6cfb5d97cc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54588",
+                "uid": "7cba228f-5361-4e38-97b6-8b9519aef63c"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:26Z",
+            "message": "Created pod: manufact-text-tools-6cfb5d97cc-8475m",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:26Z",
+                "name": "manufact-text-tools-6cfb5d97cc.18e236f95ba86bf8",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54600",
+                "uid": "22ccb1d9-05b7-4c6d-ae12-ddfd4f44dc0e"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:05Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-7b9fc478b9-dgzpb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "47666",
+                "uid": "74ec1263-cedc-4a3f-9498-ada31a7131fb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:05Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.253:8000/health\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:05Z",
+                "name": "manufact-text-tools-7b9fc478b9-dgzpb.18e236f4868af273",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54530",
+                "uid": "935b5d4f-42eb-4c61-b160-3d7e905acfd8"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:26Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-7b9fc478b9-dgzpb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "47666",
+                "uid": "74ec1263-cedc-4a3f-9498-ada31a7131fb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:26Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:26Z",
+                "name": "manufact-text-tools-7b9fc478b9-dgzpb.18e236f9549c4128",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54591",
+                "uid": "fae480f1-f428-4f67-924e-aba2c490b81d"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:28Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-7b9fc478b9-dgzpb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "47666",
+                "uid": "74ec1263-cedc-4a3f-9498-ada31a7131fb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:34Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.253:8000/health\": dial tcp 10.42.0.253:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:28Z",
+                "name": "manufact-text-tools-7b9fc478b9-dgzpb.18e236f9c6811b57",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54634",
+                "uid": "17242e86-cf35-4f1c-9000-cb8d0dfdc43e"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:49Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-7b9fc478b9-kzjlg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "47664",
+                "uid": "c1a1ebd9-df06-4bdc-980f-859873b0713d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:49Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:49Z",
+                "name": "manufact-text-tools-7b9fc478b9-kzjlg.18e236fed040f146",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54694",
+                "uid": "02f8c8ae-b8ae-4884-ab6a-009f4abf8386"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:52Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "manufact-text-tools-7b9fc478b9-kzjlg",
+                "namespace": "mcp-demo",
+                "resourceVersion": "47664",
+                "uid": "c1a1ebd9-df06-4bdc-980f-859873b0713d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:58Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.252:8000/health\": dial tcp 10.42.0.252:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:52Z",
+                "name": "manufact-text-tools-7b9fc478b9-kzjlg.18e236ff5acace59",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54719",
+                "uid": "7b5bc77d-e05d-4cff-8375-3d299f00df0d"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:26Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "manufact-text-tools-7b9fc478b9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54581",
+                "uid": "ca0d0488-0c5f-476c-bd80-d01d0bb2920e"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:26Z",
+            "message": "Deleted pod: manufact-text-tools-7b9fc478b9-dgzpb",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:26Z",
+                "name": "manufact-text-tools-7b9fc478b9.18e236f953b2971a",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54587",
+                "uid": "d7a79578-6013-40d2-a398-35217e5e9f93"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:49Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "manufact-text-tools-7b9fc478b9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54681",
+                "uid": "ca0d0488-0c5f-476c-bd80-d01d0bb2920e"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:49Z",
+            "message": "Deleted pod: manufact-text-tools-7b9fc478b9-kzjlg",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:49Z",
+                "name": "manufact-text-tools-7b9fc478b9.18e236fec7fda606",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54685",
+                "uid": "a63fa5bd-5eb9-464d-8902-3f8e916c4da7"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:06:20Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "manufact-text-tools",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54399",
+                "uid": "efb9d404-fec7-4f15-9ca8-67d6d9587d3a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:06:20Z",
+            "message": "Scaled up replica set manufact-text-tools-6cfb5d97cc from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:06:20Z",
+                "name": "manufact-text-tools.18e236ea231d9315",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54405",
+                "uid": "9245ccf3-a3af-4ec2-a553-36afad1ae6bd"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:26Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "manufact-text-tools",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54576",
+                "uid": "efb9d404-fec7-4f15-9ca8-67d6d9587d3a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:26Z",
+            "message": "Scaled down replica set manufact-text-tools-7b9fc478b9 from 2 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:26Z",
+                "name": "manufact-text-tools.18e236f94f1a6abd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54582",
+                "uid": "a438be15-29e6-45c0-8b3e-9c5383814a16"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:26Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "manufact-text-tools",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54583",
+                "uid": "efb9d404-fec7-4f15-9ca8-67d6d9587d3a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:26Z",
+            "message": "Scaled up replica set manufact-text-tools-6cfb5d97cc from 1 to 2",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:26Z",
+                "name": "manufact-text-tools.18e236f95583c5e9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54594",
+                "uid": "7306f061-6b05-4508-928a-98c9e0d19af7"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:07:49Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "manufact-text-tools",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54675",
+                "uid": "efb9d404-fec7-4f15-9ca8-67d6d9587d3a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:07:49Z",
+            "message": "Scaled down replica set manufact-text-tools-7b9fc478b9 from 1 to 0",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:07:49Z",
+                "name": "manufact-text-tools.18e236feb9252a85",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54683",
+                "uid": "61961e8f-9a43-4f79-ae6f-974fe96df446"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:08:48.913416Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54842",
+                "uid": "be1c00a8-e8cc-4a2b-8b71-f1d23fe274f4"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateful-demo-5bb5cf7c48-8rxcf to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:48Z",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf.18e2370c9a393eca",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54849",
+                "uid": "218bf27a-0c33-43c2-829d-edf0a2378b01"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:49Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54845",
+                "uid": "be1c00a8-e8cc-4a2b-8b71-f1d23fe274f4"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:49Z",
+            "message": "Pulling image \"localhost:4566/000000000000/us-east-1/stateful-demo:parallel-230547-1-7beff66ff5a72529b9dc0f1aaf655bd662ee230657175ea7349a0e9721e51cd6\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:49Z",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf.18e2370cd60dd90e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54853",
+                "uid": "8146548b-7212-4d3b-9fe5-502b50179069"
+            },
+            "reason": "Pulling",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:54Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54845",
+                "uid": "be1c00a8-e8cc-4a2b-8b71-f1d23fe274f4"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:54Z",
+            "message": "Successfully pulled image \"localhost:4566/000000000000/us-east-1/stateful-demo:parallel-230547-1-7beff66ff5a72529b9dc0f1aaf655bd662ee230657175ea7349a0e9721e51cd6\" in 4.273s (4.273s including waiting). Image size: 57549628 bytes.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:54Z",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf.18e2370dd4c78521",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54871",
+                "uid": "cfe8ae25-059a-4366-8a00-9af8ad9f9f63"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:54Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54845",
+                "uid": "be1c00a8-e8cc-4a2b-8b71-f1d23fe274f4"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:54Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:54Z",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf.18e2370dd96095a6",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54872",
+                "uid": "bab8a877-483f-48ee-8ec7-04eb6a395ee9"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:54Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54845",
+                "uid": "be1c00a8-e8cc-4a2b-8b71-f1d23fe274f4"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:54Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:54Z",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf.18e2370dea110145",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54873",
+                "uid": "f6246c14-8cf8-4f1c-860d-3282e8c01efd"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 6,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:56Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54845",
+                "uid": "be1c00a8-e8cc-4a2b-8b71-f1d23fe274f4"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:06Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.9:8000/health\": dial tcp 10.42.0.9:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:56Z",
+                "name": "stateful-demo-5bb5cf7c48-8rxcf.18e2370e7ad89c90",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54916",
+                "uid": "6f2ee5a3-eff3-4f05-a907-688e85a92816"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:09:11.313254Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-vqphx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54976",
+                "uid": "6431c7a9-dc81-4d14-babb-da9b7fe16cde"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateful-demo-5bb5cf7c48-vqphx to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateful-demo-5bb5cf7c48-vqphx.18e23711d15b51f9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54984",
+                "uid": "7db317eb-94c3-4ace-bf80-e8178ba48d69"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:13Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-vqphx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54981",
+                "uid": "6431c7a9-dc81-4d14-babb-da9b7fe16cde"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:13Z",
+            "message": "Container image \"localhost:4566/000000000000/us-east-1/stateful-demo:parallel-230547-1-7beff66ff5a72529b9dc0f1aaf655bd662ee230657175ea7349a0e9721e51cd6\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:13Z",
+                "name": "stateful-demo-5bb5cf7c48-vqphx.18e237123cb641a4",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54997",
+                "uid": "1ada67ca-c8bd-4dcf-9d6b-e794a861508c"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:13Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-vqphx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54981",
+                "uid": "6431c7a9-dc81-4d14-babb-da9b7fe16cde"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:13Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:13Z",
+                "name": "stateful-demo-5bb5cf7c48-vqphx.18e23712455309a5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55000",
+                "uid": "2b8d8919-2edb-4b8f-be62-b1f0630b4b8c"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:13Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-vqphx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54981",
+                "uid": "6431c7a9-dc81-4d14-babb-da9b7fe16cde"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:13Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:13Z",
+                "name": "stateful-demo-5bb5cf7c48-vqphx.18e237125aeeba8f",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55006",
+                "uid": "bf73ee1a-a467-4af2-8b49-3cdbc5408e8a"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 8,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:15Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-5bb5cf7c48-vqphx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54981",
+                "uid": "6431c7a9-dc81-4d14-babb-da9b7fe16cde"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:29Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.11:8000/health\": dial tcp 10.42.0.11:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:15Z",
+                "name": "stateful-demo-5bb5cf7c48-vqphx.18e23712c414bb08",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55070",
+                "uid": "3cf82325-77fe-4c55-b966-0441ca45dd8c"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:48Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateful-demo-5bb5cf7c48",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54840",
+                "uid": "efa9a19c-40e1-417b-8795-a4575fdd46ff"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:48Z",
+            "message": "Created pod: stateful-demo-5bb5cf7c48-8rxcf",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:48Z",
+                "name": "stateful-demo-5bb5cf7c48.18e2370c9686dfde",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54846",
+                "uid": "784a9fdb-883a-4251-a43f-91da49b6bcc0"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:11Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateful-demo-5bb5cf7c48",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54970",
+                "uid": "efa9a19c-40e1-417b-8795-a4575fdd46ff"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:11Z",
+            "message": "Created pod: stateful-demo-5bb5cf7c48-vqphx",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateful-demo-5bb5cf7c48.18e23711cd34d8e2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54980",
+                "uid": "04412787-2c62-40c3-b93e-fc1bc56ea809"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:11Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-947d69fdc-lpd6b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37968",
+                "uid": "8638c46a-838a-44ed-adce-91b642dbb7ea"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:11Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateful-demo-947d69fdc-lpd6b.18e23711c4159ae9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54975",
+                "uid": "99ec1a1e-7b4d-443b-9384-dc7fdde5703b"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:13Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-947d69fdc-lpd6b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37968",
+                "uid": "8638c46a-838a-44ed-adce-91b642dbb7ea"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:16Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.227:8000/health\": dial tcp 10.42.0.227:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:13Z",
+                "name": "stateful-demo-947d69fdc-lpd6b.18e237124a645341",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55020",
+                "uid": "205c91cc-30d9-4446-be44-6b825845b54e"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:34Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-947d69fdc-m9hpx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37886",
+                "uid": "db0f8ced-381c-42eb-823f-3c82db982a20"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:34Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:34Z",
+                "name": "stateful-demo-947d69fdc-m9hpx.18e2371720101614",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55117",
+                "uid": "08bd117e-d006-4c7f-b04d-7f4b6b855d72"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:35Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateful-demo-947d69fdc-m9hpx",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37886",
+                "uid": "db0f8ced-381c-42eb-823f-3c82db982a20"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:41Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.226:8000/health\": dial tcp 10.42.0.226:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:35Z",
+                "name": "stateful-demo-947d69fdc-m9hpx.18e237177d3d7fab",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55142",
+                "uid": "4f5c1fc2-5668-4270-a5e2-0350c9c0dcf4"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:11Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateful-demo-947d69fdc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54965",
+                "uid": "8671266a-e1cd-41e6-9ec4-26819c6302db"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:11Z",
+            "message": "Deleted pod: stateful-demo-947d69fdc-lpd6b",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateful-demo-947d69fdc.18e23711c36930a8",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54969",
+                "uid": "1f2c9271-9600-47ac-b689-223b114baea4"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:34Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateful-demo-947d69fdc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55108",
+                "uid": "8671266a-e1cd-41e6-9ec4-26819c6302db"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:34Z",
+            "message": "Deleted pod: stateful-demo-947d69fdc-m9hpx",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:34Z",
+                "name": "stateful-demo-947d69fdc.18e237171e9405b3",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55112",
+                "uid": "31b26c30-902d-426d-aebd-c4fb81681273"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:48Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateful-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54839",
+                "uid": "b812a882-39be-42d7-a29e-09c1ef246afb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:48Z",
+            "message": "Scaled up replica set stateful-demo-5bb5cf7c48 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:48Z",
+                "name": "stateful-demo.18e2370c90ea1425",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54841",
+                "uid": "8a899865-8bf4-4a70-8871-7356671d1ada"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:11Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateful-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54932",
+                "uid": "b812a882-39be-42d7-a29e-09c1ef246afb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:11Z",
+            "message": "Scaled down replica set stateful-demo-947d69fdc from 2 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateful-demo.18e23711c16f4781",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54966",
+                "uid": "433853d2-3889-4af1-9688-c6db6ae0f060"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:11Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateful-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54932",
+                "uid": "b812a882-39be-42d7-a29e-09c1ef246afb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:11Z",
+            "message": "Scaled up replica set stateful-demo-5bb5cf7c48 from 1 to 2",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateful-demo.18e23711c5bfc480",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54977",
+                "uid": "d30a88f3-43a6-4bbb-a49a-68d6c0ceea77"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:34Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateful-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55098",
+                "uid": "b812a882-39be-42d7-a29e-09c1ef246afb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:34Z",
+            "message": "Scaled down replica set stateful-demo-947d69fdc from 1 to 0",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:34Z",
+                "name": "stateful-demo.18e237171c45cc32",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55109",
+                "uid": "c4112095-e9a3-46f4-bebf-e1e722d4bf5c"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:11:10.338149Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-pnflt",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55475",
+                "uid": "28bc7381-855c-4bfa-b684-4741a691f30a"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateless-demo-54fb66795d-pnflt to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:10Z",
+                "name": "stateless-demo-54fb66795d-pnflt.18e2372d87cbc983",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55483",
+                "uid": "8a12ee29-ccfb-4c75-815e-d2aa133b6d7b"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:11Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-pnflt",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55481",
+                "uid": "28bc7381-855c-4bfa-b684-4741a691f30a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:11Z",
+            "message": "Container image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:11Z",
+                "name": "stateless-demo-54fb66795d-pnflt.18e2372ddda9e34d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55489",
+                "uid": "7f4c22ac-15f9-4eea-b64a-573cf1c98352"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:11Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-pnflt",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55481",
+                "uid": "28bc7381-855c-4bfa-b684-4741a691f30a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:11Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:11Z",
+                "name": "stateless-demo-54fb66795d-pnflt.18e2372de435d449",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55490",
+                "uid": "63b8442f-8d77-430e-b5a1-4b613b301725"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:12Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-pnflt",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55481",
+                "uid": "28bc7381-855c-4bfa-b684-4741a691f30a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:12Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:12Z",
+                "name": "stateless-demo-54fb66795d-pnflt.18e2372e00b24520",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55494",
+                "uid": "ac3b19ed-c42d-4ae3-9c90-e7fca865e965"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 9,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:14Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-pnflt",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55481",
+                "uid": "28bc7381-855c-4bfa-b684-4741a691f30a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:30Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.17:8000/health\": dial tcp 10.42.0.17:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:14Z",
+                "name": "stateless-demo-54fb66795d-pnflt.18e2372e78a2ec04",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55549",
+                "uid": "d87e2374-b865-449f-af6f-58bce6f32ca4"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:10:47.818302Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-qnr9z",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55389",
+                "uid": "cea7512b-d7d9-482e-8cd5-5429cdadf812"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateless-demo-54fb66795d-qnr9z to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:47Z",
+                "name": "stateless-demo-54fb66795d-qnr9z.18e2372849817346",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55396",
+                "uid": "39000764-326e-4ef8-a82e-9471bd1cca39"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:48Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-qnr9z",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55392",
+                "uid": "cea7512b-d7d9-482e-8cd5-5429cdadf812"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:48Z",
+            "message": "Pulling image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:48Z",
+                "name": "stateless-demo-54fb66795d-qnr9z.18e23728887fc5f0",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55402",
+                "uid": "f0645362-49db-4353-982f-6a3016e427f6"
+            },
+            "reason": "Pulling",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:49Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-qnr9z",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55392",
+                "uid": "cea7512b-d7d9-482e-8cd5-5429cdadf812"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:49Z",
+            "message": "Successfully pulled image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264\" in 261ms (261ms including waiting). Image size: 56735993 bytes.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:49Z",
+                "name": "stateless-demo-54fb66795d-qnr9z.18e237289814e89a",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55403",
+                "uid": "31f78c64-fef2-4811-9089-66bc90fed52a"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:49Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-qnr9z",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55392",
+                "uid": "cea7512b-d7d9-482e-8cd5-5429cdadf812"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:49Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:49Z",
+                "name": "stateless-demo-54fb66795d-qnr9z.18e237289e6e7bfa",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55404",
+                "uid": "fd40f21a-0a02-47ce-bd5d-ab7ac8832fc8"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:49Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-qnr9z",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55392",
+                "uid": "cea7512b-d7d9-482e-8cd5-5429cdadf812"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:49Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:49Z",
+                "name": "stateless-demo-54fb66795d-qnr9z.18e23728b3ad60dd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55405",
+                "uid": "d4fee9f5-5758-40cc-aa51-1eb68cf81b64"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 8,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:51Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-54fb66795d-qnr9z",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55392",
+                "uid": "cea7512b-d7d9-482e-8cd5-5429cdadf812"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:05Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.16:8000/health\": dial tcp 10.42.0.16:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:51Z",
+                "name": "stateless-demo-54fb66795d-qnr9z.18e237293d40c0dd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55449",
+                "uid": "891167b0-32d5-4301-beeb-b1db14fa68bc"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:47Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-54fb66795d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55385",
+                "uid": "0693a74c-d263-42d0-9bf5-db3f97515bce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:47Z",
+            "message": "Created pod: stateless-demo-54fb66795d-qnr9z",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:47Z",
+                "name": "stateless-demo-54fb66795d.18e237283f66a9d5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55391",
+                "uid": "60aa9919-cd96-437a-8e43-676ebd6c7cc8"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:10Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-54fb66795d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55470",
+                "uid": "0693a74c-d263-42d0-9bf5-db3f97515bce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:10Z",
+            "message": "Created pod: stateless-demo-54fb66795d-pnflt",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:10Z",
+                "name": "stateless-demo-54fb66795d.18e2372d7e58d8c3",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55477",
+                "uid": "07a30256-f5cf-4c28-935f-c722fb159ecd"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:30Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-75f974cf9b-4jqv9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37710",
+                "uid": "eeba60de-86da-48ee-ac1c-e56a964cfccb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:30Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:30Z",
+                "name": "stateless-demo-75f974cf9b-4jqv9.18e237163392dd86",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55083",
+                "uid": "4de14543-9e5a-4a90-8942-6b059366ef9e"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:32Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-75f974cf9b-4jqv9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37710",
+                "uid": "eeba60de-86da-48ee-ac1c-e56a964cfccb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:38Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.225:8000/health\": dial tcp 10.42.0.225:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:32Z",
+                "name": "stateless-demo-75f974cf9b-4jqv9.18e23716c2a82110",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55132",
+                "uid": "6a6c4b12-2d51-4ac6-a45c-ffc4184ee936"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-75f974cf9b-622cc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37625",
+                "uid": "d0ca8af0-f431-4752-8df6-c477f9a0b731"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo-75f974cf9b-622cc.18e237114c05b2f2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54937",
+                "uid": "2dc9a85f-c899-4813-bc06-ba79895162c7"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-75f974cf9b-622cc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "37625",
+                "uid": "d0ca8af0-f431-4752-8df6-c477f9a0b731"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:13Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.224:8000/health\": dial tcp 10.42.0.224:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:10Z",
+                "name": "stateless-demo-75f974cf9b-622cc.18e237119b29781a",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55004",
+                "uid": "20883aab-16c1-47f9-a898-f0eda8d24e6f"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-75f974cf9b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54924",
+                "uid": "acaca0d5-215d-40c1-b8e6-5e7e6c91f9e1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Deleted pod: stateless-demo-75f974cf9b-622cc",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo-75f974cf9b.18e237114c55ad1b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54936",
+                "uid": "5d9bd03a-92c7-4462-b9fd-05f5c8601cc4"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:30Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-75f974cf9b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55074",
+                "uid": "acaca0d5-215d-40c1-b8e6-5e7e6c91f9e1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:30Z",
+            "message": "Deleted pod: stateless-demo-75f974cf9b-4jqv9",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:30Z",
+                "name": "stateless-demo-75f974cf9b.18e237162f006286",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55079",
+                "uid": "e5b946cc-ed20-4ab8-beb7-6edf6fe35423"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:09:09.225477Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54941",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateless-demo-85c795ffd-72vg5 to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e2371154eb0d83",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54947",
+                "uid": "26f40b34-aebc-44c4-8b91-7038613836eb"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54943",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Container image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e237117b7985c0",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54953",
+                "uid": "2fc1ee19-6d5b-4e22-b69b-e8571e98d6ba"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54943",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e237117f3b8f2d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54954",
+                "uid": "6b63e2fc-26d9-4fdc-b219-cd87b8951f26"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54943",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:10Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:10Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e23711883d8773",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54955",
+                "uid": "3b13e06c-47ea-4278-9762-353cca0e8bb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 8,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:11Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54943",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:25Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.10:8000/health\": dial tcp 10.42.0.10:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:11Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e23711cf94c352",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55053",
+                "uid": "69de3973-734d-4f9b-ba3f-a73e0b260d42"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54943",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e2371e906cae65",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55242",
+                "uid": "869bcb22-038f-49da-b136-35fdbaf20592"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-72vg5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54943",
+                "uid": "32c8fcf0-2d94-4d62-b02c-2efd4968a6a1"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.10:8000/health\": dial tcp 10.42.0.10:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo-85c795ffd-72vg5.18e2371e9d5cbcd6",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55259",
+                "uid": "7d62d169-362c-49f9-a1a4-7e39635ed5a5"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:08:46.566837Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54824",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateless-demo-85c795ffd-xkgwd to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:46Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e2370c0e5aeb1b",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54831",
+                "uid": "ecb3b2f5-2aed-426f-afc3-30539ea2c3ca"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:47Z",
+            "message": "Pulling image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:47Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e2370c467fd0f8",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54837",
+                "uid": "e9202531-4b33-4202-90e4-d80efa57f0ec"
+            },
+            "reason": "Pulling",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:52Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:52Z",
+            "message": "Successfully pulled image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541\" in 5.17s (5.17s including waiting). Image size: 56735995 bytes.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:52Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e2370d7ab24881",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54863",
+                "uid": "43a2e199-cf66-4dbc-81fb-4fcd094c3d89"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:52Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:52Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:52Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e2370d7f29e08f",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54864",
+                "uid": "e904a3e3-f2e7-4c5b-9c7b-7e1a1eaf096b"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:52Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:52Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:52Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e2370d8cce79bb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54865",
+                "uid": "a6cfa5cf-a40f-41e8-8b82-1edeeb6f3246"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 6,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:54Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:04Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.7:8000/health\": dial tcp 10.42.0.7:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:54Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e2370dee7ccdbb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54905",
+                "uid": "dd8c345c-df75-4b30-b90e-0b4d6afa174d"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:21Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:21Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:21Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e237220ef9aa88",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55318",
+                "uid": "1730ec7d-0b1f-47ce-8f8f-187cc835580e"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:21Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-85c795ffd-xkgwd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54829",
+                "uid": "52c44388-941f-47df-9f07-624830a1dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:21Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.7:8000/health\": dial tcp 10.42.0.7:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:21Z",
+                "name": "stateless-demo-85c795ffd-xkgwd.18e237222fb29e6a",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55326",
+                "uid": "b0d99107-e22f-4f14-afcf-fe0b296f64bd"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:46Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-85c795ffd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54821",
+                "uid": "9bce0a2b-a077-435a-b6f8-2ecfa3fb78ce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:46Z",
+            "message": "Created pod: stateless-demo-85c795ffd-xkgwd",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:46Z",
+                "name": "stateless-demo-85c795ffd.18e2370c0a7baa39",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54826",
+                "uid": "b671633f-b0e1-4a32-af12-cc6da4adc194"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-85c795ffd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54935",
+                "uid": "9bce0a2b-a077-435a-b6f8-2ecfa3fb78ce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Created pod: stateless-demo-85c795ffd-72vg5",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo-85c795ffd.18e2371152f7fa3c",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54945",
+                "uid": "53493bd9-2d96-46ee-a97f-a6bed060d8ac"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-85c795ffd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55235",
+                "uid": "9bce0a2b-a077-435a-b6f8-2ecfa3fb78ce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Deleted pod: stateless-demo-85c795ffd-72vg5",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo-85c795ffd.18e2371e902d683e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55240",
+                "uid": "85cc1e6d-0f1a-4a7e-92c8-df4ecb9ad47d"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:21Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-85c795ffd",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55309",
+                "uid": "9bce0a2b-a077-435a-b6f8-2ecfa3fb78ce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:21Z",
+            "message": "Deleted pod: stateless-demo-85c795ffd-xkgwd",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:21Z",
+                "name": "stateless-demo-85c795ffd.18e237220eb1007e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55314",
+                "uid": "f764050d-0c2c-41b3-b52d-b76887951583"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:09:51.736250Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55176",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateless-demo-bdb8449bb-266dz to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:51Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2371b3ac15c70",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55183",
+                "uid": "754cbefb-0b60-4e03-ab3e-8729441726d4"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:52Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:52Z",
+            "message": "Pulling image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:52Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2371b7a557f25",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55193",
+                "uid": "9a60fd1e-92c3-40a5-b029-0afe21717887"
+            },
+            "reason": "Pulling",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:53Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:53Z",
+            "message": "Successfully pulled image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6\" in 400ms (400ms including waiting). Image size: 56735995 bytes.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:53Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2371b923ba1c5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55194",
+                "uid": "2fec29fa-1531-42ee-9b63-242b14ab40cf"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:53Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:53Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:53Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2371b9838f1f3",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55195",
+                "uid": "242171c5-31f9-4665-a960-76130395d72a"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:53Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:53Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:53Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2371ba3363585",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55196",
+                "uid": "d55c44e6-bd38-4cab-9adc-b5c917b60910"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 5,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:53Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:01Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.14:8000/health\": dial tcp 10.42.0.14:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:53Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2371bb7040a88",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55217",
+                "uid": "c9273cb4-acc1-4ff8-acf0-2ade8f6a3c3c"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:10Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:10Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2372d776c1e24",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55476",
+                "uid": "7aaa0f58-b858-48d0-ac09-e8e63415701a"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:12Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-266dz",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55180",
+                "uid": "10d51140-66de-4659-956a-a0df5b53df7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:12Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.14:8000/health\": dial tcp 10.42.0.14:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:12Z",
+                "name": "stateless-demo-bdb8449bb-266dz.18e2372e1db6c70f",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55496",
+                "uid": "2f44af61-2784-412f-8de1-70d680c16443"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T23:10:06.193355Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55248",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned mcp-demo/stateless-demo-bdb8449bb-9rmm2 to i-f8241bc031e1365ba.ec2.internal",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e2371e9877278d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55254",
+                "uid": "d4baa1d4-20cc-4eec-b1db-5e83e7955ff0"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55251",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Container image \"localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e2371ec7544554",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55262",
+                "uid": "ec9a095f-519d-402c-905d-5fe58e515386"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:07Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55251",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:07Z",
+            "message": "Created container: mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:07Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e2371ecdea0b91",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55263",
+                "uid": "5eeb8cc9-ebdb-4a2e-ae39-a7658dac5c5a"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:07Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55251",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:07Z",
+            "message": "Started container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:07Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e2371ed8ca80a9",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55264",
+                "uid": "ad8760c0-7cbb-4e2a-b377-c5c075b18e82"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 5,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:08Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55251",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:16Z",
+            "message": "Startup probe failed: Get \"http://10.42.0.15:8000/health\": dial tcp 10.42.0.15:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:08Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e2371f10dc7b51",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55294",
+                "uid": "3d91fc66-3a92-4242-8693-bababe938ec0"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:35Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55251",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:35Z",
+            "message": "Stopping container mcp",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:35Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e2373355488a6e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55579",
+                "uid": "85d76fc0-a4bd-4479-b3f8-280d147fda17"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:36Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{mcp}",
+                "kind": "Pod",
+                "name": "stateless-demo-bdb8449bb-9rmm2",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55251",
+                "uid": "6ceb55e9-f6d8-4a7a-8085-e56df9c90d24"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:42Z",
+            "message": "Readiness probe failed: Get \"http://10.42.0.15:8000/health\": dial tcp 10.42.0.15:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:36Z",
+                "name": "stateless-demo-bdb8449bb-9rmm2.18e237338e7c3ade",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55595",
+                "uid": "ae68fc95-60ad-4fa8-b3db-314d8588c2d2"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "i-f8241bc031e1365ba.ec2.internal",
+            "source": {
+                "component": "kubelet",
+                "host": "i-f8241bc031e1365ba.ec2.internal"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:51Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-bdb8449bb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55173",
+                "uid": "4f18f49b-f119-4d51-9536-107ee1e5b511"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:51Z",
+            "message": "Created pod: stateless-demo-bdb8449bb-266dz",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:51Z",
+                "name": "stateless-demo-bdb8449bb.18e2371b3680a13e",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55178",
+                "uid": "8a2e86d3-d32d-4e6c-8c1e-f8fcc577d64e"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-bdb8449bb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55241",
+                "uid": "4f18f49b-f119-4d51-9536-107ee1e5b511"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Created pod: stateless-demo-bdb8449bb-9rmm2",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo-bdb8449bb.18e2371e95e474e0",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55249",
+                "uid": "f5697a4a-dafe-42c0-9373-72d2e2264ae5"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:10Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-bdb8449bb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55465",
+                "uid": "4f18f49b-f119-4d51-9536-107ee1e5b511"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:10Z",
+            "message": "Deleted pod: stateless-demo-bdb8449bb-266dz",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:10Z",
+                "name": "stateless-demo-bdb8449bb.18e2372d76c458f5",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55469",
+                "uid": "ad5a80c4-b3f3-4b08-96c9-d38e03150434"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:11:35Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "stateless-demo-bdb8449bb",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55569",
+                "uid": "4f18f49b-f119-4d51-9536-107ee1e5b511"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:35Z",
+            "message": "Deleted pod: stateless-demo-bdb8449bb-9rmm2",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:35Z",
+                "name": "stateless-demo-bdb8449bb.18e237334ed35887",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55574",
+                "uid": "d4dde4c4-c5ba-48aa-995e-a960d485e5f3"
+            },
+            "reason": "SuccessfulDelete",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 6,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T19:52:02Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55461",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:11:35Z",
+            "message": "(combined from similar events): Scaled down replica set stateless-demo-bdb8449bb from 1 to 0",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:11:10Z",
+                "name": "stateless-demo.18e22c4f9d6bc815",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55570",
+                "uid": "ee9db052-0250-4a94-abee-09771c4eb9bc"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:08:46Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54820",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:08:46Z",
+            "message": "Scaled up replica set stateless-demo-85c795ffd from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:08:46Z",
+                "name": "stateless-demo.18e2370c06d1df53",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54822",
+                "uid": "433b178c-d0d2-4242-9d55-743daf51f886"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54915",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Scaled down replica set stateless-demo-75f974cf9b from 2 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo.18e237114940cfb7",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54927",
+                "uid": "4624a146-5377-4222-936c-1eb2d201747a"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:09Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54915",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:09Z",
+            "message": "Scaled up replica set stateless-demo-85c795ffd from 1 to 2",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:09Z",
+                "name": "stateless-demo.18e237114fda9fdc",
+                "namespace": "mcp-demo",
+                "resourceVersion": "54938",
+                "uid": "2211038a-892d-44ba-8e1e-798add6c7203"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:30Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55072",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:30Z",
+            "message": "Scaled down replica set stateless-demo-75f974cf9b from 1 to 0",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:30Z",
+                "name": "stateless-demo.18e237162dfb01aa",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55076",
+                "uid": "a3fee465-85d1-4912-b3f7-9efec895dfce"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:09:51Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55171",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:09:51Z",
+            "message": "Scaled up replica set stateless-demo-bdb8449bb from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:09:51Z",
+                "name": "stateless-demo.18e2371b32b30983",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55174",
+                "uid": "592be362-d0eb-4954-bc7c-c066274ad591"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55232",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Scaled down replica set stateless-demo-85c795ffd from 2 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo.18e2371e8ee2fb47",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55236",
+                "uid": "bf4d437d-3325-4665-8012-52e3544c5e68"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:06Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55232",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:06Z",
+            "message": "Scaled up replica set stateless-demo-bdb8449bb from 1 to 2",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:06Z",
+                "name": "stateless-demo.18e2371e92a8491f",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55246",
+                "uid": "5488a276-35a3-4b45-b4c0-e81e21e21c0e"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:21Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55307",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:21Z",
+            "message": "Scaled down replica set stateless-demo-85c795ffd from 1 to 0",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:21Z",
+                "name": "stateless-demo.18e237220ce6fb2f",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55310",
+                "uid": "42937094-37d8-4718-ad09-e239b02794f9"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-26T23:10:47Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "stateless-demo",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55384",
+                "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-26T23:10:47Z",
+            "message": "Scaled up replica set stateless-demo-54fb66795d from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T23:10:47Z",
+                "name": "stateless-demo.18e237282e71657d",
+                "namespace": "mcp-demo",
+                "resourceVersion": "55387",
+                "uid": "305d6e03-4d90-4842-9759-11525ca9b56f"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

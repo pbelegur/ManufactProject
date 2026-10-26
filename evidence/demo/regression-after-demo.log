@@ -1,0 +1,8 @@
+........ERROR: rollout failed; collecting diagnostics and restoring previous application resources
+ROLLBACK OK: previous healthy deployment restored
+............{"status": "healthy", "backend": "knative", "name": "arbitrary-service", "namespace": "test", "image": "image:v2", "revision": "new", "mcp_url": "http://sample/mcp"}
+........ Container mcp-deployment-platform-starter-stateful-1 Restarting 
+ Container mcp-deployment-platform-starter-stateful-1 Started 
+Redis counter restart_0811e64944f946dcaf84dc941358f1e8: 7 before restart, 7 after restart
+.
+29 passed in 17.41s

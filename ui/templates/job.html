@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
 {% block title %}Deployment job · MCP platform{% endblock %}
 {% block content %}
-<a class="back" href="/">← Deployments</a><div class="heading"><div><p class="eyebrow">DEPLOYMENT JOB</p><h1>{{ job.name }}</h1><p>{{ job.namespace }} · {{ job.backend }} · {{ job.source }}</p></div><span class="pill" id="job-status">{{ job.status }}</span></div>
-<section class="card"><dl><dt>Job ID</dt><dd><code id="job-id">{{ job.id }}</code></dd><dt>Submitted</dt><dd>{{ job.created_at }}</dd><dt>Started</dt><dd id="started-at">{{ job.started_at or 'Waiting' }}</dd><dt>Finished</dt><dd id="finished-at">{{ job.finished_at or 'Not finished' }}</dd><dt>CLI exit code</dt><dd id="exit-code">{{ job.exit_code if job.exit_code is not none else 'Pending' }}</dd><dt>Requested release</dt><dd>{{ job.version }}</dd></dl>
-<p class="notice error" id="job-error" {% if not job.error %}hidden{% endif %}>{{ job.error or '' }}</p><p><a class="button secondary" href="/deployments/{{ job.namespace }}/{{ job.name }}">Inspect Kubernetes deployment</a></p><p class="help">Job status is the CLI result. Kubernetes status is read separately; a failed job can leave a healthy previous deployment after rollback.</p>
-</section><section class="card"><h2>Executed command</h2><pre>{{ job.command|tojson(indent=2) }}</pre></section>
-<section class="card"><div class="section-heading"><h2>Live deployment log</h2><span class="muted" id="poll-status">Updates every two seconds</span></div><p id="job-phase">{{ job.status }}</p><pre class="terminal" id="job-log">{{ log }}</pre></section>
+<a class="back" href="/">← My MCP servers</a><div class="heading"><div><p class="eyebrow">DEPLOYMENT JOB</p><h1>{{ job.name }}</h1><p>{{ job.namespace }} · {{ job.backend }} · {{ job.source }}</p></div><span class="pill" id="job-status">{{ job.stage or job.status|upper }}</span></div>
+<section class="card"><p id="job-phase">{{ job.stage_message or job.status }}</p><progress id="job-progress" aria-label="Deployment job activity"></progress><ol class="stage-track" id="stage-track">{% for stage in ['QUEUED','BUILDING','PUSHING','DEPLOYING','VERIFYING','SUCCEEDED','FAILED'] %}<li data-stage="{{ stage }}">{{ stage }}</li>{% endfor %}</ol>
+<dl><dt>Job ID</dt><dd><code id="job-id">{{ job.id }}</code></dd><dt>Submitted</dt><dd>{{ job.created_at }}</dd><dt>Started</dt><dd id="started-at">{{ job.started_at or 'Waiting' }}</dd><dt>Stage observed</dt><dd id="stage-at">{{ job.stage_at or job.created_at }}</dd><dt>Queue</dt><dd id="queue-state">Loading worker status…</dd><dt>Finished</dt><dd id="finished-at">{{ job.finished_at or 'Not finished' }}</dd><dt>CLI exit code</dt><dd id="exit-code">{{ job.exit_code if job.exit_code is not none else 'Pending' }}</dd><dt>Requested release</dt><dd>{{ job.version }}</dd></dl>
+<p class="notice error" id="job-error" {% if not job.error %}hidden{% endif %}>{{ job.error or '' }}</p><p><a class="button secondary" href="/deployments/{{ job.namespace }}/{{ job.name }}">Inspect Kubernetes deployment</a></p><p class="help">Job result and runtime health are separate. A failed job may restore a healthy previous deployment. Reuse jobs skip build/push stages.</p></section>
+<section class="card"><div class="section-heading"><h2>Live job output</h2><span class="muted" id="poll-status">Updates every second</span></div><pre class="terminal" id="job-log">{{ log }}</pre><p class="help">Timestamped stdout/stderr is isolated by job ID and redacted before storage. Logs retain a bounded tail across three files; the browser shows up to 256 KB. No automatic deployment retries.</p></section>
+<section class="card"><h2>Recorded stage transitions</h2><div id="stage-history"></div></section>
+<section class="card"><h2>Executed command</h2><pre id="executed-command">{{ job.command|tojson(indent=2) }}</pre></section>
 {% endblock %}
 {% block scripts %}<script>
-async function poll() {
-  try {
-    const response = await fetch('/api/jobs/{{ job.id }}'); if (!response.ok) throw new Error('HTTP ' + response.status);
-    const job = await response.json(); document.body.dataset.jobStatus = job.status;
-    document.getElementById('job-phase').textContent = job.phase;
-    const status = document.getElementById('job-status'); status.textContent = job.status;
-    status.className = 'pill ' + (job.status === 'succeeded' ? 'good' : ['failed','interrupted'].includes(job.status) ? 'bad' : 'pending');
-    document.getElementById('started-at').textContent = job.started_at || 'Waiting';
-    document.getElementById('finished-at').textContent = job.finished_at || 'Not finished';
-    document.getElementById('exit-code').textContent = job.exit_code === null ? 'Pending' : job.exit_code;
-    document.getElementById('job-log').textContent = job.log;
-    const error = document.getElementById('job-error'); error.textContent = job.error || ''; error.hidden = !job.error;
-    if (['queued','running'].includes(job.status)) setTimeout(poll, 2000);
-    else document.getElementById('poll-status').textContent = 'Finished · complete log retained locally';
-  } catch (error) { document.getElementById('poll-status').textContent = 'Live update failed: ' + error.message + '. Retrying…'; setTimeout(poll, 4000); }
+async function poll(){
+  try{
+    const response=await fetch('/api/jobs/{{ job.id }}');if(!response.ok)throw new Error('HTTP '+response.status);
+    const job=await response.json();document.body.dataset.jobStatus=job.status;document.body.dataset.jobStage=job.stage;
+    const badge=document.getElementById('job-status');badge.textContent=job.stage;badge.className='pill '+(job.stage==='SUCCEEDED'?'good':job.stage==='FAILED'?'bad':'pending');
+    document.getElementById('job-phase').textContent=job.stage_message||job.phase;
+    document.getElementById('started-at').textContent=job.started_at||'Waiting';document.getElementById('finished-at').textContent=job.finished_at||'Not finished';
+    document.getElementById('stage-at').textContent=job.stage_at||job.created_at;
+    document.getElementById('queue-state').textContent=job.waiting_reason?(job.queue_position?'Position '+job.queue_position+' · ':'')+job.waiting_reason:'Worker limit '+job.max_concurrent_jobs+' · '+(job.status==='running'?'Executing independently':'Not waiting');
+    document.getElementById('exit-code').textContent=job.exit_code===null?'Pending':job.exit_code;
+    document.getElementById('executed-command').textContent=JSON.stringify(job.command,null,2);
+    const log=document.getElementById('job-log');const follow=log.scrollTop+log.clientHeight>=log.scrollHeight-40;log.textContent=job.log;if(follow)log.scrollTop=log.scrollHeight;
+    const error=document.getElementById('job-error');error.textContent=job.error||'';error.hidden=!job.error;
+    const history=document.getElementById('stage-history');history.replaceChildren();for(const event of job.stage_history||[]){const row=document.createElement('p');row.textContent=event.at+' · '+event.stage+' · '+event.message;history.appendChild(row);}
+    const visited=new Set((job.stage_history||[]).map(event=>event.stage));document.querySelectorAll('[data-stage]').forEach(element=>{element.classList.toggle('visited',visited.has(element.dataset.stage));element.classList.toggle('active',element.dataset.stage===job.stage);});
+    const pending=['queued','running'].includes(job.status)||!job.finished_at;const progress=document.getElementById('job-progress');if(pending)progress.removeAttribute('value');else{progress.max=1;progress.value=1;}
+    if(pending)setTimeout(poll,1000);else document.getElementById('poll-status').textContent='Finished · bounded logs retained on disk';
+  }catch(error){document.getElementById('poll-status').textContent='Log/status update failed: '+error.message+'. Retrying the read only…';setTimeout(poll,3000);}
 }
 poll();
 </script>{% endblock %}

@@ -173,13 +173,23 @@ Traversal, absolute/drive paths, case collisions, symlinks/special files,
 encrypted ZIPs and obvious credential directories/files are rejected. Staging is
 limited to 20 source imports; an operator must archive old local staging if full.
 
-Imported builds opt into the existing Docker engine's legacy build path to
+All UI builds use the existing Docker engine's legacy build path to
 enforce **one CPU and 1 GiB memory/swap** on build containers, with a **300-second
 build-command timeout**. This does not create another builder or change the
-default BuildKit pipeline for existing examples. Legacy building is deprecated;
+default terminal CLI BuildKit pipeline. Legacy building is deprecated;
 if a future engine removes it, imports fail rather than silently build without
 these limits. Full UI jobs are limited to 20 minutes. These are local resource
 bounds, **not a malicious-code sandbox or a host-wide storage quota**.
+
+The UI has a local worker pool (`MCP_UI_MAX_JOBS=1..3`, default 2), eight waiting
+jobs and per-resource submission ordering. Each build copies the registered
+source to its own bounded directory; runtime configuration stays outside that
+Docker context. Each UI build has a job-UUID image label and unique versioned
+reference. The job page polls real stages and timestamped logs every second.
+Logs are redacted before writing and rotated through three bounded segments;
+older output can be lost, while retained files remain after a failed job or UI
+restart. The in-memory queue and locks do not survive process restarts or span
+multiple API instances. Keep one UI process and avoid competing CLI updates.
 
 The executable UI binds only to `127.0.0.1`, rejects non-loopback clients,
 untrusted Host/cross-origin requests and missing CSRF tokens. Commands use argv

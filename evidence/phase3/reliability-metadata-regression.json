@@ -1,0 +1,2514 @@
+{
+  "result": "FAIL",
+  "error": "RuntimeError: $ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get deployment/stateless-demo --ignore-not-found -o json\n$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateless-demo --ignore-not-found -o json\n$ docker build --provenance=false --iidfile C:\\Users\\Devi\\AppData\\Local\\Temp\\mcp-build-oab7nr0p\\image-id C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\n#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 575B 0.0s done\n#1 DONE 0.1s\n\n#2 [internal] load metadata for docker.io/library/python:3.12-slim\n#2 DONE 0.6s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 2B 0.0s done\n#3 DONE 0.0s\n\n#4 [internal] load build context\n#4 DONE 0.0s\n\n#5 [1/6] FROM docker.io/library/python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704\n#5 resolve docker.io/library/python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704 0.1s done\n#5 DONE 0.1s\n\n#4 [internal] load build context\n#4 transferring context: 66B 0.0s done\n#4 DONE 0.0s\n\n#6 [2/6] WORKDIR /app\n#6 CACHED\n\n#7 [3/6] COPY requirements.txt ./\n#7 CACHED\n\n#8 [4/6] RUN pip install --no-cache-dir -r requirements.txt\n#8 CACHED\n\n#9 [5/6] COPY server.py ./\n#9 CACHED\n\n#10 [6/6] RUN useradd --uid 10001 --create-home mcpuser\n#10 CACHED\n\n#11 exporting to image\n#11 exporting layers 0.0s done\n#11 exporting manifest sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e 0.0s done\n#11 exporting config sha256:1e56869e232d71b484c8049e6e73ded41b3862066a27067f95afad430170120e\n#11 exporting config sha256:1e56869e232d71b484c8049e6e73ded41b3862066a27067f95afad430170120e 0.0s done\n#11 naming to moby-dangling@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e 0.0s done\n#11 unpacking to moby-dangling@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e 0.0s done\n#11 DONE 0.2s\n$ docker tag sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e localhost:4566/000000000000/us-east-1/stateless-demo:phase3-v2-final-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e\n$ docker push localhost:4566/000000000000/us-east-1/stateless-demo:phase3-v2-final-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e\nThe push refers to repository [localhost:4566/000000000000/us-east-1/stateless-demo]\n5c397e4307db: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\nbe6443c06d3c: Waiting\n5c397e4307db: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\n5c397e4307db: Waiting\nf2be67225471: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\n5c397e4307db: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\n5c397e4307db: Waiting\nf2be67225471: Waiting\n5c397e4307db: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\n5c397e4307db: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\n5c397e4307db: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Waiting\nbe6443c06d3c: Waiting\nf2be67225471: Waiting\nb524bb3aba73: Layer already exists\nbe6443c06d3c: Waiting\n7622bf56f756: Waiting\n5c397e4307db: Waiting\n5c397e4307db: Waiting\nf2be67225471: Layer already exists\n21781deee7ec: Waiting\nbe6443c06d3c: Waiting\n7622bf56f756: Waiting\n5c397e4307db: Waiting\na4eccdb2becc: Waiting\n21781deee7ec: Waiting\nbe6443c06d3c: Waiting\n7622bf56f756: Waiting\n5c397e4307db: Layer already exists\na4eccdb2becc: Waiting\n21781deee7ec: Waiting\nbe6443c06d3c: Layer already exists\n7622bf56f756: Layer already exists\nf16f5852e967: Waiting\n2f2f1c46f008: Waiting\nf16f5852e967: Layer already exists\n2f2f1c46f008: Waiting\na4eccdb2becc: Layer already exists\n21781deee7ec: Layer already exists\n2f2f1c46f008: Layer already exists\nphase3-v2-final-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e: digest: sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e size: 2000\n$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -\nnamespace/mcp-auto unchanged\n$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto apply --dry-run=server -f -\nWarning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile\nError from server (BadRequest): error when applying patch:\n{\"metadata\":{\"annotations\":{\"kubectl.kubernetes.io/last-applied-configuration\":\"{\\\"apiVersion\\\":\\\"serving.knative.dev/v1\\\",\\\"kind\\\":\\\"Service\\\",\\\"metadata\\\":{\\\"annotations\\\":{},\\\"labels\\\":{\\\"app\\\":\\\"stateless-demo\\\"},\\\"name\\\":\\\"stateless-demo\\\",\\\"namespace\\\":\\\"mcp-auto\\\"},\\\"spec\\\":{\\\"template\\\":{\\\"metadata\\\":{\\\"annotations\\\":{\\\"autoscaling.knative.dev/activation-scale\\\":\\\"2\\\",\\\"autoscaling.knative.dev/class\\\":\\\"kpa.autoscaling.knative.dev\\\",\\\"autoscaling.knative.dev/initial-scale\\\":\\\"2\\\",\\\"autoscaling.knative.dev/max-scale\\\":\\\"4\\\",\\\"autoscaling.knative.dev/metric\\\":\\\"concurrency\\\",\\\"autoscaling.knative.dev/min-scale\\\":\\\"0\\\",\\\"autoscaling.knative.dev/target\\\":\\\"2\\\",\\\"autoscaling.knative.dev/window\\\":\\\"20s\\\",\\\"deployment.mcp.io/version\\\":\\\"phase3-v2-final\\\"}},\\\"spec\\\":{\\\"containerConcurrency\\\":0,\\\"containers\\\":[{\\\"env\\\":[{\\\"name\\\":\\\"HOST\\\",\\\"value\\\":\\\"0.0.0.0\\\"},{\\\"name\\\":\\\"MCP_ALLOWED_HOSTS\\\",\\\"value\\\":\\\"stateless-demo,stateless-demo:*,stateless-demo.mcp-auto,stateless-demo.mcp-auto:*,stateless-demo.mcp-auto.svc,stateless-demo.mcp-auto.svc:*,stateless-demo.mcp-auto.svc.cluster.local,stateless-demo.mcp-auto.svc.cluster.local:*,stateless-demo.mcp-auto.mcp.test,stateless-demo.mcp-auto.mcp.test:*\\\"}],\\\"image\\\":\\\"localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e\\\",\\\"imagePullPolicy\\\":\\\"IfNotPresent\\\",\\\"livenessProbe\\\":{\\\"failureThreshold\\\":3,\\\"httpGet\\\":{\\\"path\\\":\\\"/health\\\",\\\"port\\\":8000},\\\"periodSeconds\\\":10},\\\"name\\\":\\\"mcp\\\",\\\"ports\\\":[{\\\"containerPort\\\":8000,\\\"name\\\":\\\"http1\\\"}],\\\"readinessProbe\\\":{\\\"failureThreshold\\\":2,\\\"httpGet\\\":{\\\"path\\\":\\\"/health\\\",\\\"port\\\":8000},\\\"periodSeconds\\\":3},\\\"resources\\\":{\\\"limits\\\":{\\\"cpu\\\":\\\"500m\\\",\\\"memory\\\":\\\"256Mi\\\"},\\\"requests\\\":{\\\"cpu\\\":\\\"50m\\\",\\\"memory\\\":\\\"96Mi\\\"}},\\\"startupProbe\\\":{\\\"failureThreshold\\\":30,\\\"httpGet\\\":{\\\"path\\\":\\\"/health\\\",\\\"port\\\":8000},\\\"periodSeconds\\\":2}}],\\\"timeoutSeconds\\\":120}},\\\"traffic\\\":[{\\\"percent\\\":100,\\\"revisionName\\\":\\\"stateless-demo-00003\\\"}]}}\\n\",\"serving.knative.dev/creator\":null,\"serving.knative.dev/lastModifier\":null}},\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"deployment.mcp.io/version\":\"phase3-v2-final\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"HOST\",\"value\":\"0.0.0.0\"},{\"name\":\"MCP_ALLOWED_HOSTS\",\"value\":\"stateless-demo,stateless-demo:*,stateless-demo.mcp-auto,stateless-demo.mcp-auto:*,stateless-demo.mcp-auto.svc,stateless-demo.mcp-auto.svc:*,stateless-demo.mcp-auto.svc.cluster.local,stateless-demo.mcp-auto.svc.cluster.local:*,stateless-demo.mcp-auto.mcp.test,stateless-demo.mcp-auto.mcp.test:*\"}],\"image\":\"localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/health\",\"port\":8000},\"periodSeconds\":10},\"name\":\"mcp\",\"ports\":[{\"containerPort\":8000,\"name\":\"http1\"}],\"readinessProbe\":{\"failureThreshold\":2,\"httpGet\":{\"path\":\"/health\",\"port\":8000},\"periodSeconds\":3},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"startupProbe\":{\"failureThreshold\":30,\"httpGet\":{\"path\":\"/health\",\"port\":8000},\"periodSeconds\":2}}],\"enableServiceLinks\":null}},\"traffic\":[{\"percent\":100,\"revisionName\":\"stateless-demo-00003\"}]}}\nto:\nResource: \"serving.knative.dev/v1, Resource=services\", GroupVersionKind: \"serving.knative.dev/v1, Kind=Service\"\nName: \"stateless-demo\", Namespace: \"mcp-auto\"\nfor: \"STDIN\": error when patching \"STDIN\": admission webhook \"validation.webhook.serving.knative.dev\" denied the request: validation failed: annotation value is immutable: metadata.annotations.serving.knative.dev/creator\nERROR: Command '['kubectl', '--kubeconfig', '.local/floci.kubeconfig', '--request-timeout=30s', '-n', 'mcp-auto', 'apply', '--dry-run=server', '-f', '-']' returned non-zero exit status 1.\n",
+  "elapsed_seconds": 70.05311989993788,
+  "counter": "reliability_a3c141e4fc794e45a6adfde9aa8f2c06",
+  "summaries": {
+    "stateless-demo": {
+      "requests": 174,
+      "successes": 174,
+      "failures": 0,
+      "scheduled_rps": 2.4838294175696563,
+      "latency_p50_seconds": 0.9026799499988556,
+      "latency_p95_seconds": 1.9844971999991685,
+      "latency_max_seconds": 2.851517600007355
+    },
+    "stateful-demo": {
+      "requests": 174,
+      "successes": 174,
+      "failures": 0,
+      "scheduled_rps": 2.4838294175696563,
+      "latency_p50_seconds": 0.29430675000185147,
+      "latency_p95_seconds": 1.528624500031583,
+      "latency_max_seconds": 2.5963552999310195
+    }
+  },
+  "operations": [
+    {
+      "phase": "independent-service-deploy",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\fixtures\\compatible_project",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\phase3-final-probe.json",
+        "--namespace",
+        "mcp-auto",
+        "--kubeconfig",
+        ".local/floci.kubeconfig",
+        "--version",
+        "phase3-independent-v1",
+        "--timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "exit_code": 0,
+      "seconds": 37.472857099957764,
+      "log": ".local\\knative-phase3-independent-v1.log"
+    },
+    {
+      "phase": "existing-service-v2-rollout",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "mcp.knative.local.json",
+        "--namespace",
+        "mcp-auto",
+        "--kubeconfig",
+        ".local/floci.kubeconfig",
+        "--version",
+        "phase3-v2-final",
+        "--timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "exit_code": 1,
+      "seconds": 10.494163700030185,
+      "log": ".local\\knative-phase3-v2-final.log"
+    }
+  ],
+  "requests": [
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 0.005957699962891638,
+      "latency_seconds": 0.3030409999191761,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 0.4143095000181347,
+      "latency_seconds": 0.3225335000315681,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 0.0002842999529093504,
+      "latency_seconds": 0.9093120999168605,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 0.8093334999866784,
+      "latency_seconds": 0.22228729992639273,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 0.40944259997922927,
+      "latency_seconds": 0.8957841000519693,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 1.2144635999575257,
+      "latency_seconds": 0.25547189998906106,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 0.8069177999859676,
+      "latency_seconds": 0.9403401999734342,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 1.208641599980183,
+      "latency_seconds": 1.1056857000803575,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 1.612003399990499,
+      "latency_seconds": 0.7474854000611231,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 2.006599699961953,
+      "latency_seconds": 0.6303624999709427,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 2.413666900014505,
+      "latency_seconds": 0.28002579999156296,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 1.6083462999667972,
+      "latency_seconds": 1.0975064999656752,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 2.8107046999502927,
+      "latency_seconds": 0.24864080001134425,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 2.0031515000155196,
+      "latency_seconds": 1.151820300030522,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 2.41739299998153,
+      "latency_seconds": 0.9203296999912709,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 3.2094379999907687,
+      "latency_seconds": 0.23910009989049286,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 2.8035993999801576,
+      "latency_seconds": 0.8855061999056488,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 3.608935899916105,
+      "latency_seconds": 0.26399520004633814,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 3.2063650999916717,
+      "latency_seconds": 0.8248221999965608,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 4.016792199923657,
+      "latency_seconds": 0.2712124000536278,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 3.6050675999140367,
+      "latency_seconds": 0.8817267999984324,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 4.4171504999976605,
+      "latency_seconds": 0.2879564999602735,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 4.013889899943024,
+      "latency_seconds": 0.8927282999502495,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 4.820559300016612,
+      "latency_seconds": 0.27080359996762127,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 4.406435400014743,
+      "latency_seconds": 0.9077537999255583,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 5.210773799917661,
+      "latency_seconds": 0.22758199996314943,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 4.815263699973002,
+      "latency_seconds": 0.8298633999656886,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 5.612623399938457,
+      "latency_seconds": 0.3071494000032544,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 5.203153199981898,
+      "latency_seconds": 0.8493661000393331,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 6.014949399977922,
+      "latency_seconds": 0.32549570000264794,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 5.608994700014591,
+      "latency_seconds": 0.9155823000473902,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 6.410097999963909,
+      "latency_seconds": 0.22961759997997433,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 6.010529499966651,
+      "latency_seconds": 0.9864540999988094,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 6.813466400024481,
+      "latency_seconds": 0.42018260003533214,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 6.405222499975935,
+      "latency_seconds": 0.9153905999846756,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 7.217357299989089,
+      "latency_seconds": 0.4035913000116125,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 6.817557399976067,
+      "latency_seconds": 0.9800274999579415,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 7.613570099929348,
+      "latency_seconds": 0.2646186000201851,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 7.213038699934259,
+      "latency_seconds": 1.0122425999725237,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 8.007614200003445,
+      "latency_seconds": 0.2911170000443235,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 7.609909199993126,
+      "latency_seconds": 0.8762469000648707,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 8.411951799993403,
+      "latency_seconds": 0.2904207000974566,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 8.002983700018376,
+      "latency_seconds": 0.8612077999860048,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 8.81520890002139,
+      "latency_seconds": 0.25333710003178567,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 8.408158999984153,
+      "latency_seconds": 0.9034987000050023,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 9.223021499929018,
+      "latency_seconds": 0.2779449999798089,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 8.811739199911244,
+      "latency_seconds": 0.8324429000495002,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 9.608925999957137,
+      "latency_seconds": 0.16462920000776649,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 9.214987399987876,
+      "latency_seconds": 0.8782886000117287,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 10.014592199935578,
+      "latency_seconds": 0.20519120001699775,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 9.604018199956045,
+      "latency_seconds": 0.7323098999913782,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 10.425149700022303,
+      "latency_seconds": 0.305586599977687,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 10.011022499995306,
+      "latency_seconds": 0.7826238999841735,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 10.813305499963462,
+      "latency_seconds": 0.30709230003412813,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 10.414596199989319,
+      "latency_seconds": 0.8809433999704197,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 11.21386659995187,
+      "latency_seconds": 0.18941670004278421,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 10.810602099983953,
+      "latency_seconds": 0.9150748999090865,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "baseline",
+      "sent_seconds": 11.612273999955505,
+      "latency_seconds": 0.18536839995067567,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 11.211096899933182,
+      "latency_seconds": 0.8545047999359667,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 12.042719400022179,
+      "latency_seconds": 0.42781969998031855,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "baseline",
+      "sent_seconds": 11.607843599980697,
+      "latency_seconds": 0.8692385000176728,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 12.417877099942416,
+      "latency_seconds": 0.35633350000716746,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 12.038821599911898,
+      "latency_seconds": 0.9353346999268979,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 12.811988199944608,
+      "latency_seconds": 0.281274399952963,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 12.409049400012009,
+      "latency_seconds": 0.9701726000057533,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 13.217803000006825,
+      "latency_seconds": 0.3178085000254214,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 12.809424899984151,
+      "latency_seconds": 0.8500640999991447,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 13.611299099982716,
+      "latency_seconds": 0.24883699999190867,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 13.2133403000189,
+      "latency_seconds": 0.8285984999965876,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 14.011074199923314,
+      "latency_seconds": 0.31392260000575334,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 13.608118299976923,
+      "latency_seconds": 0.7806900999275967,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 14.411083200015128,
+      "latency_seconds": 0.25702959997579455,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 14.007292499998584,
+      "latency_seconds": 0.888135000015609,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 14.811488699982874,
+      "latency_seconds": 0.24983660003636032,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 14.40820679999888,
+      "latency_seconds": 0.8347325000213459,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 15.206520200008526,
+      "latency_seconds": 0.21337970008607954,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 14.807667599990964,
+      "latency_seconds": 0.9059316000202671,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 15.609823999926448,
+      "latency_seconds": 0.23534779995679855,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 15.20315269997809,
+      "latency_seconds": 0.7946494999341667,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 16.006642399937846,
+      "latency_seconds": 0.35410050000064075,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 15.604078099946491,
+      "latency_seconds": 0.957260699942708,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 16.00321230001282,
+      "latency_seconds": 1.1190656999824569,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 16.413084600004368,
+      "latency_seconds": 0.7622275000903755,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 16.409095200011507,
+      "latency_seconds": 1.0547647000057623,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 16.810574400005862,
+      "latency_seconds": 1.0858676000498235,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 17.221183800022118,
+      "latency_seconds": 0.9535285000456497,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 17.619344100006856,
+      "latency_seconds": 0.7833291999995708,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 16.802895199973136,
+      "latency_seconds": 1.6408338999608532,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 17.615087699959986,
+      "latency_seconds": 1.8228476999793202,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 17.217191000003368,
+      "latency_seconds": 2.4562069000676274,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 18.00596510001924,
+      "latency_seconds": 1.6679703000700101,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 18.810321499942802,
+      "latency_seconds": 1.242455199942924,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 18.002247199998237,
+      "latency_seconds": 2.0508305000839755,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 19.214890499948524,
+      "latency_seconds": 0.9271051000105217,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 18.402821899973787,
+      "latency_seconds": 1.7975924999918789,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 18.40977909998037,
+      "latency_seconds": 1.8176109000341967,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 18.806604599929415,
+      "latency_seconds": 1.5126148000126705,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 20.017296199919656,
+      "latency_seconds": 0.3294739000266418,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 19.61222279991489,
+      "latency_seconds": 0.7357511000009254,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 19.210856599966064,
+      "latency_seconds": 1.363703899900429,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 20.41968569997698,
+      "latency_seconds": 0.38059159996919334,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 19.60839930002112,
+      "latency_seconds": 1.2316725000273436,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 20.013512399978936,
+      "latency_seconds": 1.1220296999672428,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 20.414963599992916,
+      "latency_seconds": 0.9202607000479475,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 20.80620029999409,
+      "latency_seconds": 0.5649935000110418,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 21.21442630002275,
+      "latency_seconds": 0.36109680007211864,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 21.613174699945375,
+      "latency_seconds": 0.27481400000397116,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 20.800896600005217,
+      "latency_seconds": 1.1829624000238255,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 21.210199999972247,
+      "latency_seconds": 1.0174944000318646,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 22.00618109991774,
+      "latency_seconds": 0.47733609995339066,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 21.609343399992213,
+      "latency_seconds": 0.9922552000498399,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 22.40915760002099,
+      "latency_seconds": 0.5211502000456676,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 22.002489099977538,
+      "latency_seconds": 1.0712774000130594,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 22.80615379998926,
+      "latency_seconds": 0.3545515000587329,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 22.405371299944818,
+      "latency_seconds": 1.1856672000139952,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 23.210356399999,
+      "latency_seconds": 0.3820055000251159,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 22.80106029997114,
+      "latency_seconds": 0.9303664999315515,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 23.610533599974588,
+      "latency_seconds": 0.2966936999000609,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 23.206164499977604,
+      "latency_seconds": 0.9481713999994099,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 24.01184429996647,
+      "latency_seconds": 0.29645559994969517,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 23.60650200000964,
+      "latency_seconds": 0.7951324000023305,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 24.40460379992146,
+      "latency_seconds": 0.2752681999700144,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 24.00841060001403,
+      "latency_seconds": 0.898511299979873,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 24.815353699959815,
+      "latency_seconds": 0.2985605000285432,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 24.401805899920873,
+      "latency_seconds": 0.9293353999964893,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 25.21536529995501,
+      "latency_seconds": 0.4296224999707192,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 24.80910930002574,
+      "latency_seconds": 0.8854182000504807,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 25.606640100013465,
+      "latency_seconds": 0.4113721000030637,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 25.21109539992176,
+      "latency_seconds": 1.110010499949567,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 25.60303609992843,
+      "latency_seconds": 1.1224289999809116,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 26.00924139993731,
+      "latency_seconds": 0.8560427000047639,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 26.41405499994289,
+      "latency_seconds": 1.0417693000053987,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 26.00558060000185,
+      "latency_seconds": 1.5242744000861421,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 26.807047199923545,
+      "latency_seconds": 1.5205095000565052,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 26.405821099993773,
+      "latency_seconds": 2.4741229000501335,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 26.80304469994735,
+      "latency_seconds": 2.2251601999159902,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 27.2110657999292,
+      "latency_seconds": 1.9407860999926925,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 27.631590600009076,
+      "latency_seconds": 2.1775432999711484,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 27.21453949995339,
+      "latency_seconds": 2.5963552999310195,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 28.407734400010668,
+      "latency_seconds": 1.9178344000829384,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 27.619063399964944,
+      "latency_seconds": 2.851517600007355,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 28.059153000009246,
+      "latency_seconds": 2.470909300027415,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 28.40384499996435,
+      "latency_seconds": 2.3187614999478683,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 28.027033200021833,
+      "latency_seconds": 2.7532679999712855,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 28.823348699952476,
+      "latency_seconds": 2.193504499970004,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 29.20542759995442,
+      "latency_seconds": 1.882355000008829,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 30.015255199978128,
+      "latency_seconds": 1.1279350999975577,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 28.816992399981245,
+      "latency_seconds": 2.326499400078319,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 29.211946199997328,
+      "latency_seconds": 1.931764499982819,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 29.6176386999432,
+      "latency_seconds": 1.528624500031583,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 30.41363849991467,
+      "latency_seconds": 0.8457455000607297,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 30.815745699917898,
+      "latency_seconds": 0.4474140000529587,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 31.220019200001843,
+      "latency_seconds": 0.24398510006722063,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 30.009579599951394,
+      "latency_seconds": 1.5649402999551967,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 29.608835399965756,
+      "latency_seconds": 1.9844971999991685,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 30.407899099984206,
+      "latency_seconds": 1.316496800049208,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 30.81172739993781,
+      "latency_seconds": 1.0007283999584615,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 31.61021219997201,
+      "latency_seconds": 0.2999275999609381,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 31.2152387999231,
+      "latency_seconds": 0.8877033999888226,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 32.01333909993991,
+      "latency_seconds": 0.27039249998051673,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 31.606064899940975,
+      "latency_seconds": 0.7899453999707475,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 32.40924469998572,
+      "latency_seconds": 0.5448667000746354,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 32.00972129998263,
+      "latency_seconds": 0.9598069000057876,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 32.81070679996628,
+      "latency_seconds": 0.43681549991015345,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 32.40523519995622,
+      "latency_seconds": 0.9134642999852076,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 33.20984319993295,
+      "latency_seconds": 0.29998320003505796,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 32.80745909991674,
+      "latency_seconds": 0.9593471999978647,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 33.60987129993737,
+      "latency_seconds": 0.3476428999565542,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 33.205512700020336,
+      "latency_seconds": 0.8848335000220686,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 34.01077389996499,
+      "latency_seconds": 0.3030419999267906,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 33.60538069996983,
+      "latency_seconds": 0.8952839999692515,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 34.40883989993017,
+      "latency_seconds": 0.23867099999915808,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 34.00699939997867,
+      "latency_seconds": 0.8927434999495745,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 34.813360899919644,
+      "latency_seconds": 0.22402329999022186,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 34.40298669994809,
+      "latency_seconds": 0.8494978999951854,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 35.211619499954395,
+      "latency_seconds": 0.25125859992112964,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 34.80920999997761,
+      "latency_seconds": 0.8388905999017879,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 35.61293129995465,
+      "latency_seconds": 0.23039520008023828,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 35.20746419997886,
+      "latency_seconds": 0.8752421999815851,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 36.00844939996023,
+      "latency_seconds": 0.24296730000060052,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 35.60898219991941,
+      "latency_seconds": 0.8467930000042543,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 36.4138422999531,
+      "latency_seconds": 0.2527000999543816,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 36.005354100023396,
+      "latency_seconds": 0.8584487000480294,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 36.81351559993345,
+      "latency_seconds": 0.2509758999804035,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 36.40898049995303,
+      "latency_seconds": 0.8502996999304742,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 37.21830319997389,
+      "latency_seconds": 0.26864049991127104,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 36.80968269996811,
+      "latency_seconds": 0.8230246999301016,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 37.60864310001489,
+      "latency_seconds": 0.30569950002245605,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 37.2114578000037,
+      "latency_seconds": 0.8575798000674695,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 38.01282950001769,
+      "latency_seconds": 0.24621940008364618,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 37.60473479994107,
+      "latency_seconds": 0.9078318000538275,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 38.414154800004326,
+      "latency_seconds": 0.26401010004337877,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 38.009657999966294,
+      "latency_seconds": 0.897118299966678,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 38.80801049992442,
+      "latency_seconds": 0.2478062000591308,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 38.40815399994608,
+      "latency_seconds": 0.8558836999582127,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 39.21775609999895,
+      "latency_seconds": 0.2750992000801489,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 38.8042129999958,
+      "latency_seconds": 0.8762542000040412,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 39.61853540001903,
+      "latency_seconds": 0.19077710004057735,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 39.21423959999811,
+      "latency_seconds": 0.8414200000697747,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 40.01295499992557,
+      "latency_seconds": 0.32253809995017946,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 39.61403029994108,
+      "latency_seconds": 0.7372910999692976,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 40.41047110001091,
+      "latency_seconds": 0.28420270001515746,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 40.00728399993386,
+      "latency_seconds": 0.9142510000383481,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 40.80837189999875,
+      "latency_seconds": 0.18318659998476505,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 40.40594899991993,
+      "latency_seconds": 0.8536894000135362,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 41.21269289997872,
+      "latency_seconds": 0.19536279991734773,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 40.80542180000339,
+      "latency_seconds": 0.7531351000070572,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 41.613942399970256,
+      "latency_seconds": 0.28584270004648715,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 41.208999300026335,
+      "latency_seconds": 0.8455456000519916,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 42.01225079991855,
+      "latency_seconds": 0.23878010001499206,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 41.60800979996566,
+      "latency_seconds": 0.890673500020057,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 42.4118552999571,
+      "latency_seconds": 0.21718019992113113,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 42.008813999942504,
+      "latency_seconds": 0.7417447000043467,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 42.808977699954994,
+      "latency_seconds": 0.15228519996162504,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 42.40840780001599,
+      "latency_seconds": 0.8047363000223413,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 43.20638139999937,
+      "latency_seconds": 0.32566279999446124,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 42.805281099979766,
+      "latency_seconds": 0.8193957000039518,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 43.61165079998318,
+      "latency_seconds": 0.21526989992707968,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 43.20283889991697,
+      "latency_seconds": 0.9277174000162631,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 44.009578199940734,
+      "latency_seconds": 0.24361090001184493,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 43.608525099931285,
+      "latency_seconds": 0.8541872999630868,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 44.40952360001393,
+      "latency_seconds": 0.22621950006578118,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 44.005205099936575,
+      "latency_seconds": 0.8574646000051871,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 44.806666899938136,
+      "latency_seconds": 0.2232096999650821,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 44.40541969996411,
+      "latency_seconds": 0.7819289999315515,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 45.21059749997221,
+      "latency_seconds": 0.2785779999103397,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 44.803343300009146,
+      "latency_seconds": 0.8308552000671625,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 45.61269560002256,
+      "latency_seconds": 0.2590341999894008,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 45.206539499922656,
+      "latency_seconds": 0.9018611999927089,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 46.007983100018464,
+      "latency_seconds": 0.3129937000339851,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 45.60985849995632,
+      "latency_seconds": 0.8837331000249833,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 46.407875799923204,
+      "latency_seconds": 0.29215790005400777,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 46.00360880000517,
+      "latency_seconds": 0.934825100004673,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 46.820951299974695,
+      "latency_seconds": 0.4202676999848336,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 46.403586599975824,
+      "latency_seconds": 0.8492375999921933,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 47.20638450002298,
+      "latency_seconds": 0.32946879998780787,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 46.81710029998794,
+      "latency_seconds": 0.9065490000648424,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 47.60884499992244,
+      "latency_seconds": 0.2751732999458909,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 47.20172209991142,
+      "latency_seconds": 0.9126669999677688,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 48.01772489992436,
+      "latency_seconds": 0.28938680002465844,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 47.60518840001896,
+      "latency_seconds": 0.8434112999821082,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 48.41829709999729,
+      "latency_seconds": 0.36788640008307993,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 48.01328019995708,
+      "latency_seconds": 0.8636474000522867,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 48.809779300005175,
+      "latency_seconds": 0.27964710001833737,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 48.41443549992982,
+      "latency_seconds": 1.0598171999445185,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 49.21656259999145,
+      "latency_seconds": 0.47439590003341436,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 48.806042499956675,
+      "latency_seconds": 0.9421014999970794,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 49.609546400024556,
+      "latency_seconds": 0.3446793999755755,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 50.01293289999012,
+      "latency_seconds": 0.25005630007945,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 49.212148800026625,
+      "latency_seconds": 1.0631349999457598,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 49.605818299925886,
+      "latency_seconds": 0.8545036000432447,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 50.4153004999971,
+      "latency_seconds": 0.21822599996812642,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 50.00897319999058,
+      "latency_seconds": 0.8742444000672549,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 50.8096200999571,
+      "latency_seconds": 0.318945899954997,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 50.412899899994954,
+      "latency_seconds": 0.8614913000492379,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 51.21584369998891,
+      "latency_seconds": 0.31413300009444356,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 50.80762500001583,
+      "latency_seconds": 0.9209613000275567,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 51.61452609999105,
+      "latency_seconds": 0.24772380001377314,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 51.21243209997192,
+      "latency_seconds": 0.9296478999312967,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 52.014016499975696,
+      "latency_seconds": 0.29145739995874465,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 51.61098639992997,
+      "latency_seconds": 0.8762024999596179,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 52.41889039997477,
+      "latency_seconds": 0.2743542999960482,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 52.01082989992574,
+      "latency_seconds": 0.9116308999946341,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 52.80897519993596,
+      "latency_seconds": 0.2668197000166401,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 52.414432600024156,
+      "latency_seconds": 0.900979199912399,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 53.221696999971755,
+      "latency_seconds": 0.2511642000172287,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 52.806497199926525,
+      "latency_seconds": 0.8676215999294072,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 53.60645389999263,
+      "latency_seconds": 0.28952260001096874,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 53.21419700002298,
+      "latency_seconds": 0.8263384000165388,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 54.01294859999325,
+      "latency_seconds": 0.19741310004610568,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 53.60234179999679,
+      "latency_seconds": 0.8951536999084055,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 54.41201179998461,
+      "latency_seconds": 0.2457206998951733,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 54.01020509994123,
+      "latency_seconds": 0.7274782999884337,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 54.8097350000171,
+      "latency_seconds": 0.2812841000268236,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 54.40911419992335,
+      "latency_seconds": 0.7900071999756619,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 55.21838440001011,
+      "latency_seconds": 0.24143159994855523,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 54.806022199918516,
+      "latency_seconds": 0.8966286999639124,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 55.61785969999619,
+      "latency_seconds": 0.25726900005247444,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 55.21502619993407,
+      "latency_seconds": 0.8298564000288025,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 56.011359600001015,
+      "latency_seconds": 0.3096173000521958,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 55.6138022999512,
+      "latency_seconds": 0.8747512999689206,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 56.406461099977605,
+      "latency_seconds": 0.2538280999287963,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 56.00477240001783,
+      "latency_seconds": 0.9149416000582278,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 56.81356899999082,
+      "latency_seconds": 0.24812199990265071,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 56.40296540001873,
+      "latency_seconds": 0.913925200002268,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 57.21775029995479,
+      "latency_seconds": 0.3096238999860361,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 56.81011670001317,
+      "latency_seconds": 0.8595827000681311,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 57.61854489997495,
+      "latency_seconds": 0.2407718999311328,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 57.20919939992018,
+      "latency_seconds": 0.8776483999099582,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 58.012897299951874,
+      "latency_seconds": 0.21828669996466488,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 57.6152045999188,
+      "latency_seconds": 0.8280396000482142,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 58.41488699999172,
+      "latency_seconds": 0.32242989994119853,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "independent-service-deploy",
+      "sent_seconds": 58.008785699959844,
+      "latency_seconds": 0.8476612999802455,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 58.819790399982594,
+      "latency_seconds": 0.26970339997205883,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 58.41108180000447,
+      "latency_seconds": 0.8889505000552163,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 59.20859319996089,
+      "latency_seconds": 0.3146570000099018,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 58.81501639995258,
+      "latency_seconds": 0.8713103999616578,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 59.60650009999517,
+      "latency_seconds": 0.31977490009739995,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 59.20474890002515,
+      "latency_seconds": 0.8979379000375047,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 60.005088399979286,
+      "latency_seconds": 0.24325599998701364,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 59.6022731999401,
+      "latency_seconds": 0.8845707000000402,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 60.41011219995562,
+      "latency_seconds": 0.2642649000044912,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 60.010104199987836,
+      "latency_seconds": 1.0108453000430018,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 60.815951799973845,
+      "latency_seconds": 0.6370593999745324,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 60.406541500007734,
+      "latency_seconds": 1.0473450999706984,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 61.21254310000222,
+      "latency_seconds": 0.49868960003368556,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 60.812402299954556,
+      "latency_seconds": 0.9667106999550015,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 61.60877769999206,
+      "latency_seconds": 0.2816031000111252,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 61.20829560002312,
+      "latency_seconds": 0.9274798000697047,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 62.007673599990085,
+      "latency_seconds": 0.27980760007631034,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 61.605029799975455,
+      "latency_seconds": 0.8107883998891339,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 62.409009699942544,
+      "latency_seconds": 0.2822928000241518,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 62.001722599961795,
+      "latency_seconds": 0.8274833998875692,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 62.81551310000941,
+      "latency_seconds": 0.2779667000286281,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 62.40519239997957,
+      "latency_seconds": 0.8911560999695212,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 63.21267539996188,
+      "latency_seconds": 0.31699619989376515,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 62.81349109997973,
+      "latency_seconds": 0.9386480000102893,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 63.61409549997188,
+      "latency_seconds": 0.36297739995643497,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 63.20752850000281,
+      "latency_seconds": 0.9595325000118464,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 64.01450149994344,
+      "latency_seconds": 0.3550463999854401,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 63.60960480000358,
+      "latency_seconds": 1.3756565999938175,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 64.01055659994017,
+      "latency_seconds": 1.277236699941568,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 64.41316190001089,
+      "latency_seconds": 0.9355776000302285,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 64.81365139991976,
+      "latency_seconds": 0.6378691999707371,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 65.2180407999549,
+      "latency_seconds": 0.47411969990935177,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 64.40822340000886,
+      "latency_seconds": 1.6478113000048324,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 64.80846079997718,
+      "latency_seconds": 1.2883974999422207,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 65.62009540002327,
+      "latency_seconds": 0.5083634000038728,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 65.21324840001762,
+      "latency_seconds": 1.0504080000100657,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 66.01057109993417,
+      "latency_seconds": 0.4089405999984592,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 66.4107727999799,
+      "latency_seconds": 0.3219110999489203,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 65.61465629993472,
+      "latency_seconds": 1.1794717999873683,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 66.0064379000105,
+      "latency_seconds": 0.9141543000005186,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 66.81205309997313,
+      "latency_seconds": 0.4321233999216929,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 66.40733109996654,
+      "latency_seconds": 1.158096699975431,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 67.21338919992559,
+      "latency_seconds": 0.519206800032407,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 66.80855099996552,
+      "latency_seconds": 1.2728868999984115,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 67.61001319997013,
+      "latency_seconds": 0.5871873999712989,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 67.20913279999513,
+      "latency_seconds": 1.0355631000129506,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 68.00590099999681,
+      "latency_seconds": 0.27301500004250556,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 68.41056879993994,
+      "latency_seconds": 0.2811064999550581,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 67.60575190000236,
+      "latency_seconds": 1.192348700016737,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 68.00259329995606,
+      "latency_seconds": 0.8813484000274912,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 68.80660429992713,
+      "latency_seconds": 0.2831145999953151,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 68.40694809996057,
+      "latency_seconds": 0.8754065999528393,
+      "success": true
+    },
+    {
+      "service": "stateful-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 69.2112031999277,
+      "latency_seconds": 0.3051708999555558,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 68.8008127999492,
+      "latency_seconds": 0.8652067999355495,
+      "success": true
+    },
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 69.20605539996177,
+      "latency_seconds": 0.8467572999652475,
+      "success": true
+    }
+  ]
+}

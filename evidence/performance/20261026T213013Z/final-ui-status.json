@@ -1,0 +1,301 @@
+﻿{
+    "items":  [
+                  {
+                      "namespace":  "mcp-auto",
+                      "name":  "contract-probe",
+                      "backend":  "knative",
+                      "mode":  "stateless",
+                      "version":  "sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "image":  "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "desired_replicas":  0,
+                      "healthy_replicas":  0,
+                      "health":  "Ready (scaled to zero)",
+                      "endpoint":  "http://contract-probe.mcp-auto.mcp.test/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:05:37Z",
+                                             "status":  "True",
+                                             "type":  "ConfigurationsReady"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:05:44Z",
+                                             "status":  "True",
+                                             "type":  "Ready"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:05:44Z",
+                                             "status":  "True",
+                                             "type":  "RoutesReady"
+                                         }
+                                     ],
+                      "project_id":  "contract-probe",
+                      "traffic":  [
+                                      {
+                                          "latestRevision":  false,
+                                          "percent":  100,
+                                          "revisionName":  "contract-probe-00003"
+                                      }
+                                  ],
+                      "latest_ready":  "contract-probe-00003",
+                      "configured_image":  "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "release":  "demo-20261026T194844428045Z-independent"
+                  },
+                  {
+                      "namespace":  "mcp-demo",
+                      "name":  "contract-probe",
+                      "backend":  "always-on",
+                      "mode":  "stateless",
+                      "version":  "phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "image":  "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "desired_replicas":  2,
+                      "healthy_replicas":  2,
+                      "health":  "Healthy",
+                      "endpoint":  "http://contract-probe.mcp-demo.svc.cluster.local:8000/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T18:16:36Z",
+                                             "lastUpdateTime":  "2026-10-26T18:17:00Z",
+                                             "message":  "ReplicaSet \"contract-probe-5685dccb9c\" has successfully progressed.",
+                                             "reason":  "NewReplicaSetAvailable",
+                                             "status":  "True",
+                                             "type":  "Progressing"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T18:49:47Z",
+                                             "lastUpdateTime":  "2026-10-26T18:49:47Z",
+                                             "message":  "Deployment has minimum availability.",
+                                             "reason":  "MinimumReplicasAvailable",
+                                             "status":  "True",
+                                             "type":  "Available"
+                                         }
+                                     ],
+                      "project_id":  "contract-probe"
+                  },
+                  {
+                      "namespace":  "mcp-auto",
+                      "name":  "phase3-final-probe",
+                      "backend":  "knative",
+                      "mode":  "stateless",
+                      "version":  "sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "image":  "localhost:4566/000000000000/us-east-1/phase3-final-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "desired_replicas":  0,
+                      "healthy_replicas":  0,
+                      "health":  "Ready (scaled to zero)",
+                      "endpoint":  "http://phase3-final-probe.mcp-auto.mcp.test/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:11:59Z",
+                                             "status":  "True",
+                                             "type":  "ConfigurationsReady"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:12:00Z",
+                                             "status":  "True",
+                                             "type":  "Ready"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:12:00Z",
+                                             "status":  "True",
+                                             "type":  "RoutesReady"
+                                         }
+                                     ],
+                      "project_id":  null,
+                      "traffic":  [
+                                      {
+                                          "latestRevision":  false,
+                                          "percent":  100,
+                                          "revisionName":  "phase3-final-probe-00001"
+                                      }
+                                  ],
+                      "latest_ready":  "phase3-final-probe-00001",
+                      "configured_image":  "localhost:4566/000000000000/us-east-1/phase3-final-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "release":  "phase3-independent-v1"
+                  },
+                  {
+                      "namespace":  "mcp-auto",
+                      "name":  "phase3-verified-probe",
+                      "backend":  "knative",
+                      "mode":  "stateless",
+                      "version":  "sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "image":  "localhost:4566/000000000000/us-east-1/phase3-verified-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "desired_replicas":  0,
+                      "healthy_replicas":  0,
+                      "health":  "Ready (scaled to zero)",
+                      "endpoint":  "http://phase3-verified-probe.mcp-auto.mcp.test/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:16:10Z",
+                                             "status":  "True",
+                                             "type":  "ConfigurationsReady"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:16:14Z",
+                                             "status":  "True",
+                                             "type":  "Ready"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:16:14Z",
+                                             "status":  "True",
+                                             "type":  "RoutesReady"
+                                         }
+                                     ],
+                      "project_id":  null,
+                      "traffic":  [
+                                      {
+                                          "latestRevision":  false,
+                                          "percent":  100,
+                                          "revisionName":  "phase3-verified-probe-00001"
+                                      }
+                                  ],
+                      "latest_ready":  "phase3-verified-probe-00001",
+                      "configured_image":  "localhost:4566/000000000000/us-east-1/phase3-verified-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                      "release":  "phase3-independent-v1"
+                  },
+                  {
+                      "namespace":  "mcp-auto",
+                      "name":  "stateful-demo",
+                      "backend":  "knative",
+                      "mode":  "stateful",
+                      "version":  "sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+                      "image":  "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+                      "desired_replicas":  0,
+                      "healthy_replicas":  0,
+                      "health":  "Ready (scaled to zero)",
+                      "endpoint":  "http://stateful-demo.mcp-auto.mcp.test/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:04:35Z",
+                                             "status":  "True",
+                                             "type":  "ConfigurationsReady"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:04:37Z",
+                                             "status":  "True",
+                                             "type":  "Ready"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:04:37Z",
+                                             "status":  "True",
+                                             "type":  "RoutesReady"
+                                         }
+                                     ],
+                      "project_id":  "stateful",
+                      "traffic":  [
+                                      {
+                                          "latestRevision":  false,
+                                          "percent":  100,
+                                          "revisionName":  "stateful-demo-00004"
+                                      }
+                                  ],
+                      "latest_ready":  "stateful-demo-00004",
+                      "configured_image":  "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+                      "release":  "demo-20261026T194844428045Z-continuity"
+                  },
+                  {
+                      "namespace":  "mcp-demo",
+                      "name":  "stateful-demo",
+                      "backend":  "always-on",
+                      "mode":  "stateful",
+                      "version":  "ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+                      "image":  "localhost:4566/000000000000/us-east-1/stateful-demo:ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+                      "desired_replicas":  2,
+                      "healthy_replicas":  2,
+                      "health":  "Healthy",
+                      "endpoint":  "http://stateful-demo.mcp-demo.svc.cluster.local:8000/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T20:17:11Z",
+                                             "lastUpdateTime":  "2026-10-26T20:17:11Z",
+                                             "message":  "Deployment has minimum availability.",
+                                             "reason":  "MinimumReplicasAvailable",
+                                             "status":  "True",
+                                             "type":  "Available"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T18:15:08Z",
+                                             "lastUpdateTime":  "2026-10-26T21:07:21Z",
+                                             "message":  "ReplicaSet \"stateful-demo-947d69fdc\" has successfully progressed.",
+                                             "reason":  "NewReplicaSetAvailable",
+                                             "status":  "True",
+                                             "type":  "Progressing"
+                                         }
+                                     ],
+                      "project_id":  "stateful"
+                  },
+                  {
+                      "namespace":  "mcp-auto",
+                      "name":  "stateless-demo",
+                      "backend":  "knative",
+                      "mode":  "stateless",
+                      "version":  "sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+                      "image":  "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+                      "desired_replicas":  0,
+                      "healthy_replicas":  0,
+                      "health":  "Ready (scaled to zero)",
+                      "endpoint":  "http://stateless-demo.mcp-auto.mcp.test/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T21:28:46Z",
+                                             "status":  "True",
+                                             "type":  "ConfigurationsReady"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T21:28:48Z",
+                                             "status":  "True",
+                                             "type":  "Ready"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T21:28:48Z",
+                                             "status":  "True",
+                                             "type":  "RoutesReady"
+                                         }
+                                     ],
+                      "project_id":  "stateless",
+                      "traffic":  [
+                                      {
+                                          "latestRevision":  false,
+                                          "percent":  100,
+                                          "revisionName":  "stateless-demo-00015"
+                                      }
+                                  ],
+                      "latest_ready":  "stateless-demo-00015",
+                      "configured_image":  "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+                      "release":  "performance-20261026T212809Z"
+                  },
+                  {
+                      "namespace":  "mcp-demo",
+                      "name":  "stateless-demo",
+                      "backend":  "always-on",
+                      "mode":  "stateless",
+                      "version":  "ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+                      "image":  "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+                      "desired_replicas":  2,
+                      "healthy_replicas":  2,
+                      "health":  "Healthy",
+                      "endpoint":  "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp",
+                      "conditions":  [
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T18:13:42Z",
+                                             "lastUpdateTime":  "2026-10-26T18:13:42Z",
+                                             "message":  "Deployment has minimum availability.",
+                                             "reason":  "MinimumReplicasAvailable",
+                                             "status":  "True",
+                                             "type":  "Available"
+                                         },
+                                         {
+                                             "lastTransitionTime":  "2026-10-26T19:48:24Z",
+                                             "lastUpdateTime":  "2026-10-26T21:09:08Z",
+                                             "message":  "ReplicaSet \"stateless-demo-75f974cf9b\" has successfully progressed.",
+                                             "reason":  "NewReplicaSetAvailable",
+                                             "status":  "True",
+                                             "type":  "Progressing"
+                                         }
+                                     ],
+                      "project_id":  "stateless"
+                  }
+              ],
+    "errors":  [
+
+               ],
+    "observed_at":  "2026-10-26T21:36:02.106512+00:00"
+}

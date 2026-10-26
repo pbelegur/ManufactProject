@@ -1,0 +1,295 @@
+﻿{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.0.13"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "contract-probe-5685dccb9c-bjpbc",
+                        "namespace": "mcp-demo",
+                        "uid": "8e905c90-f431-47f4-86e0-5f664d541ca9"
+                    },
+                    "zone": "us-east-1a"
+                },
+                {
+                    "addresses": [
+                        "10.42.0.12"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "contract-probe-5685dccb9c-cptt6",
+                        "namespace": "mcp-demo",
+                        "uid": "4b29e67d-7381-47cb-921a-1267d223be96"
+                    },
+                    "zone": "us-east-1a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-26T18:22:30Z"
+                },
+                "creationTimestamp": "2026-10-26T18:16:37Z",
+                "generateName": "contract-probe-",
+                "generation": 9,
+                "labels": {
+                    "app": "contract-probe",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "contract-probe"
+                },
+                "name": "contract-probe-88krm",
+                "namespace": "mcp-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "contract-probe",
+                        "uid": "c0dcb8fe-f029-4b5f-9113-e2d041591607"
+                    }
+                ],
+                "resourceVersion": "1446",
+                "uid": "60654854-b011-45c5-90f6-82530a862120"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.0.10"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "stateful-demo-7688cd9947-hxq8z",
+                        "namespace": "mcp-demo",
+                        "uid": "e27c37f3-992d-47a9-b8cd-23116034e777"
+                    },
+                    "zone": "us-east-1a"
+                },
+                {
+                    "addresses": [
+                        "10.42.0.19"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "stateful-demo-7688cd9947-dkhx7",
+                        "namespace": "mcp-demo",
+                        "uid": "3ee839c2-ceb1-4578-a7c1-403d4f6c5e1d"
+                    },
+                    "zone": "us-east-1a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-26T18:22:36Z"
+                },
+                "creationTimestamp": "2026-10-26T18:15:09Z",
+                "generateName": "stateful-demo-",
+                "generation": 9,
+                "labels": {
+                    "app": "stateful-demo",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "stateful-demo"
+                },
+                "name": "stateful-demo-ck5sc",
+                "namespace": "mcp-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "stateful-demo",
+                        "uid": "4c5881a4-f891-4a22-8b9b-4834de505492"
+                    }
+                ],
+                "resourceVersion": "1458",
+                "uid": "abec79b1-5d16-4946-8a10-b3c63da88247"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.0.8"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "stateful-demo-redis-64cbc84954-nvccf",
+                        "namespace": "mcp-demo",
+                        "uid": "696f1164-de20-46d7-af94-bd2cf5859cc6"
+                    },
+                    "zone": "us-east-1a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-26T18:15:07Z"
+                },
+                "creationTimestamp": "2026-10-26T18:14:06Z",
+                "generateName": "stateful-demo-redis-",
+                "generation": 3,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "stateful-demo-redis"
+                },
+                "name": "stateful-demo-redis-q5rgq",
+                "namespace": "mcp-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "stateful-demo-redis",
+                        "uid": "ff0706f0-6cfc-4e97-a227-bea1f9b99fd5"
+                    }
+                ],
+                "resourceVersion": "899",
+                "uid": "5a61fdcf-acac-486d-afab-a9ce78f73a0c"
+            },
+            "ports": [
+                {
+                    "name": "",
+                    "port": 6379,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.0.11"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "stateless-demo-6b654d576b-lbmcg",
+                        "namespace": "mcp-demo",
+                        "uid": "0776edd6-d2e1-4d10-97bd-71886a0d199c"
+                    },
+                    "zone": "us-east-1a"
+                },
+                {
+                    "addresses": [
+                        "10.42.0.14"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "stateless-demo-6b654d576b-h9wg9",
+                        "namespace": "mcp-demo",
+                        "uid": "fad78f20-fbb0-46e6-a95f-a6b5185d94d5"
+                    },
+                    "zone": "us-east-1a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:11:47Z",
+                "generateName": "stateless-demo-",
+                "generation": 20,
+                "labels": {
+                    "app": "stateless-demo",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "stateless-demo"
+                },
+                "name": "stateless-demo-ts48q",
+                "namespace": "mcp-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "stateless-demo",
+                        "uid": "fbf1a920-0dfb-4c43-83de-b2963c63c043"
+                    }
+                ],
+                "resourceVersion": "1275",
+                "uid": "09e1c54a-ed5b-4f43-b244-aba23c807632"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

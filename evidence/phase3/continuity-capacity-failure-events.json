@@ -1,0 +1,935 @@
+﻿{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:12.247838Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "contract-probe-00001-deployment-64fc85c787-c8qx9",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6105",
+                "uid": "4ef3bd86-1cfb-41f9-8952-97b642f5c01a"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:12Z",
+                "name": "contract-probe-00001-deployment-64fc85c787-c8qx9.18e228b7f7c4a65c",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6123",
+                "uid": "46fe23f9-8ee6-4c3f-a1c5-2af41286030c"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.929619Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "contract-probe-00001-deployment-64fc85c787-c8qx9",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6127",
+                "uid": "4ef3bd86-1cfb-41f9-8952-97b642f5c01a"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:19Z",
+                "name": "contract-probe-00001-deployment-64fc85c787-c8qx9.18e228b98608429c",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6244",
+                "uid": "30343ed1-9f95-49b9-b6f8-b59c15359517"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.919406Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:09.333955Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "contract-probe-00001-deployment-64fc85c787-mhrbg",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6081",
+                "uid": "98df129f-c399-4ebc-ad49-6f5dad19251f"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:09Z",
+                "name": "contract-probe-00001-deployment-64fc85c787-mhrbg.18e228b74a16186f",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6095",
+                "uid": "17d3c58c-15c7-4bf2-816c-43767fd8e592"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.926998Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "contract-probe-00001-deployment-64fc85c787-mhrbg",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6101",
+                "uid": "98df129f-c399-4ebc-ad49-6f5dad19251f"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:20Z",
+                "name": "contract-probe-00001-deployment-64fc85c787-mhrbg.18e228b985e038c1",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6242",
+                "uid": "893dd2e5-cfb6-4a3a-abe4-5d86ad4f7e52"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.833757Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:26.648731Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-2ntdh",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5779",
+                "uid": "a78e09be-96c4-44db-b389-c13b3f6ff8c4"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:26Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-2ntdh.18e228ad59d94615",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5782",
+                "uid": "ba575ee3-99fa-4a11-bb8d-91e37c301176"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.529546Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-2ntdh",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5785",
+                "uid": "a78e09be-96c4-44db-b389-c13b3f6ff8c4"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:56Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-2ntdh.18e228b44ee255e9",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6213",
+                "uid": "ec078b58-9a14-4488-bb0d-bfb9207dcae0"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.039646Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:32.727375Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-862dr",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5823",
+                "uid": "d80bfc7c-e036-4eea-b30b-9a5d7595096c"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:32Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-862dr.18e228aec42a0c91",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5834",
+                "uid": "d1490f4b-c345-4e16-9ebd-845ea2acb85a"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.531134Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-862dr",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5838",
+                "uid": "d80bfc7c-e036-4eea-b30b-9a5d7595096c"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:56Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-862dr.18e228b44efa7d05",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6205",
+                "uid": "1b71a620-c25c-4fa8-afa5-124ca9c3a84d"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.238838Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:31.526670Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-f4mbj",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5814",
+                "uid": "fe5e5df2-71b0-4af7-829d-7dbbff1d0bbc"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:32Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-f4mbj.18e228ae7c9930ca",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5830",
+                "uid": "961a73c3-6da9-4b29-b1ff-f00f0f5229aa"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.530680Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-f4mbj",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5836",
+                "uid": "fe5e5df2-71b0-4af7-829d-7dbbff1d0bbc"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:56Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-f4mbj.18e228b44ef38ee2",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6214",
+                "uid": "2d66be21-864a-4912-a063-ae0a49a966e7"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.238007Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:26.640456Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-h4bl2",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5778",
+                "uid": "282b239a-e3ed-49ca-aa4e-eb60fc274317"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:26Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-h4bl2.18e228ad595b4644",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5784",
+                "uid": "5db11193-838b-4d32-ab09-77106f522952"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.528393Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-h4bl2",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5786",
+                "uid": "282b239a-e3ed-49ca-aa4e-eb60fc274317"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:56Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-h4bl2.18e228b44ed0db4d",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5983",
+                "uid": "20fe1c5b-a26a-4b70-bf0e-5d4bf36d4020"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:30.337045Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-zm852",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5808",
+                "uid": "bf6827e5-265d-4e0a-a4f7-acc12c1daa90"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:30Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-zm852.18e228ae35b086c7",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5816",
+                "uid": "a530316c-f99b-49b8-b2eb-218b53635267"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.530217Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateful-demo-00001-deployment-7d9657c497-zm852",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5820",
+                "uid": "bf6827e5-265d-4e0a-a4f7-acc12c1daa90"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:56Z",
+                "name": "stateful-demo-00001-deployment-7d9657c497-zm852.18e228b44eec8cd2",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6211",
+                "uid": "2637aa17-e02f-4b07-9d53-4e07f60d92ff"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.236682Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:14.146428Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-5h725",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6110",
+                "uid": "6f26a3c1-162f-4ac2-9539-0d6799d7f60d"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:14Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-5h725.18e228b868eeae2f",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6135",
+                "uid": "2db27a99-2b71-468a-acbb-67bf94ea484a"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.930848Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-5h725",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6143",
+                "uid": "6f26a3c1-162f-4ac2-9539-0d6799d7f60d"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:19Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-5h725.18e228b9861bc21d",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6249",
+                "uid": "e7f16827-627f-4c11-ab65-20eeb5bf5355"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.837322Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:08.243987Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-blm47",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6069",
+                "uid": "69587216-f24b-4e4c-87bf-ced0805a8de4"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:08Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-blm47.18e228b7091e75b7",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6082",
+                "uid": "626a2e11-5581-4b62-b5ab-b294551f873f"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.926659Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-blm47",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6085",
+                "uid": "69587216-f24b-4e4c-87bf-ced0805a8de4"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:19Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-blm47.18e228b985db1162",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6243",
+                "uid": "af3294a5-06a2-4592-a1ca-678a083d7146"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.822669Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:37.525665Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-g4rv2",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5876",
+                "uid": "8eacbfa1-949b-40c8-ba19-92e8e75a378c"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:37Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-g4rv2.18e228afe22a30cb",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5881",
+                "uid": "1d7e8019-8ecb-4c76-9df2-8ee44ef7fa1f"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.827229Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-g4rv2",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5885",
+                "uid": "8eacbfa1-949b-40c8-ba19-92e8e75a378c"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:57Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-g4rv2.18e228b460a09d0f",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6208",
+                "uid": "191ffb54-3d30-4882-acbf-e81138779db2"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.316902Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:11.533962Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-ggz5c",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6103",
+                "uid": "acc06744-c336-49f8-9081-2ec1c38ca084"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:12Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-ggz5c.18e228b7cd3784c4",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6120",
+                "uid": "abe3cdde-6508-4ab9-9f75-6448814052e4"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.928809Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-ggz5c",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6118",
+                "uid": "acc06744-c336-49f8-9081-2ec1c38ca084"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:20Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-ggz5c.18e228b985fbe1b1",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6247",
+                "uid": "f223c77f-4895-4d43-9cb3-9f34db63b8ae"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.838703Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:40.445085Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-jv47t",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5904",
+                "uid": "971c7243-61bc-4f44-89b6-6805b30f2473"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:40Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-jv47t.18e228b0902ce1fb",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5911",
+                "uid": "f2a6248d-f1e2-4dcd-8800-6e4f737f327d"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.828488Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-jv47t",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5915",
+                "uid": "971c7243-61bc-4f44-89b6-6805b30f2473"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:57Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-jv47t.18e228b460b3ca1e",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6206",
+                "uid": "665db4ed-a5d8-42c1-b373-0794b77f0e22"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.321362Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:10.128516Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-pmn7h",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6088",
+                "uid": "5e9c7d99-a781-4a6d-89a7-a222c205871a"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:10Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-pmn7h.18e228b779722100",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6106",
+                "uid": "0237615a-449e-451b-aee6-422a6caac7c1"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.928300Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-pmn7h",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6111",
+                "uid": "5e9c7d99-a781-4a6d-89a7-a222c205871a"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:20Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-pmn7h.18e228b985f45295",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6245",
+                "uid": "e6d7bf81-358c-46e9-9206-a2bfb9273f93"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.838047Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:34.166154Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-rt5ps",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5839",
+                "uid": "b1b95608-cb99-4ef0-84f8-4e392ab361de"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:34Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-rt5ps.18e228af19ebfa14",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5847",
+                "uid": "6b4e0824-4620-49b0-a9a1-0fd1d9d9d5a1"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:45:56.613377Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-rt5ps",
+                "namespace": "mcp-auto",
+                "resourceVersion": "5845",
+                "uid": "b1b95608-cb99-4ef0-84f8-4e392ab361de"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:45:57Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-rt5ps.18e228b453e17af0",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6200",
+                "uid": "8fd75ef2-9e8b-41c9-8080-80de0b965161"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:19.251907Z"
+            },
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:09.539070Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-zshpw",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6084",
+                "uid": "c30033fb-d3b3-44d7-a9f8-9172626fffdc"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:09Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-zshpw.18e228b7565009ca",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6098",
+                "uid": "45e87546-c94d-415d-9429-59297889765f"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "source": {},
+            "type": "Warning"
+        },
+        {
+            "action": "Scheduling",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-26T18:46:18.927320Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-zshpw",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6102",
+                "uid": "c30033fb-d3b3-44d7-a9f8-9172626fffdc"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+            "metadata": {
+                "creationTimestamp": "2026-10-26T18:46:20Z",
+                "name": "stateless-demo-00001-deployment-69c8fdb75c-zshpw.18e228b985e5200e",
+                "namespace": "mcp-auto",
+                "resourceVersion": "6246",
+                "uid": "61b096e2-cd31-42a3-859d-3fd5fb8f92b1"
+            },
+            "reason": "FailedScheduling",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-9907087e45e8",
+            "series": {
+                "count": 2,
+                "lastObservedTime": "2026-10-26T18:46:23.833000Z"
+            },
+            "source": {},
+            "type": "Warning"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

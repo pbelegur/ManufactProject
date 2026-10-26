@@ -1,0 +1,3365 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"contract-probe\"},\"name\":\"contract-probe\",\"namespace\":\"mcp-demo\"},\"spec\":{\"minReadySeconds\":3,\"progressDeadlineSeconds\":180,\"replicas\":2,\"revisionHistoryLimit\":5,\"selector\":{\"matchLabels\":{\"app\":\"contract-probe\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"labels\":{\"app\":\"contract-probe\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"env\":[{\"name\":\"HOST\",\"value\":\"0.0.0.0\"},{\"name\":\"MCP_ALLOWED_HOSTS\",\"value\":\"contract-probe,contract-probe:*,contract-probe.mcp-demo,contract-probe.mcp-demo:*,contract-probe.mcp-demo.svc,contract-probe.mcp-demo.svc:*,contract-probe.mcp-demo.svc.cluster.local,contract-probe.mcp-demo.svc.cluster.local:*\"},{\"name\":\"PORT\",\"value\":\"8000\"},{\"name\":\"PROBE_LABEL\",\"value\":\"configured-by-project\"}],\"image\":\"localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":10},\"name\":\"mcp\",\"ports\":[{\"containerPort\":8000,\"name\":\"http\"}],\"readinessProbe\":{\"failureThreshold\":2,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":3},\"resources\":{\"limits\":{\"cpu\":\"300m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"startupProbe\":{\"failureThreshold\":30,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":2}}],\"terminationGracePeriodSeconds\":30}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:16:36Z",
+        "generation": 8,
+        "labels": {
+          "app": "contract-probe"
+        },
+        "name": "contract-probe",
+        "namespace": "mcp-demo",
+        "resourceVersion": "9256",
+        "uid": "734b24f8-7035-4e99-989d-b95bca57affb"
+      },
+      "spec": {
+        "minReadySeconds": 3,
+        "progressDeadlineSeconds": 180,
+        "replicas": 2,
+        "revisionHistoryLimit": 5,
+        "selector": {
+          "matchLabels": {
+            "app": "contract-probe"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "contract-probe"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "HOST",
+                    "value": "0.0.0.0"
+                  },
+                  {
+                    "name": "MCP_ALLOWED_HOSTS",
+                    "value": "contract-probe,contract-probe:*,contract-probe.mcp-demo,contract-probe.mcp-demo:*,contract-probe.mcp-demo.svc,contract-probe.mcp-demo.svc:*,contract-probe.mcp-demo.svc.cluster.local,contract-probe.mcp-demo.svc.cluster.local:*"
+                  },
+                  {
+                    "name": "PORT",
+                    "value": "8000"
+                  },
+                  {
+                    "name": "PROBE_LABEL",
+                    "value": "configured-by-project"
+                  }
+                ],
+                "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "mcp",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "name": "http",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 2,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 3,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "300m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "startupProbe": {
+                  "failureThreshold": 30,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 2,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:16:36Z",
+            "lastUpdateTime": "2026-10-26T18:17:00Z",
+            "message": "ReplicaSet \"contract-probe-5685dccb9c\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:49:47Z",
+            "lastUpdateTime": "2026-10-26T18:49:47Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 8,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "updatedReplicas": 2
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"stateful-demo\"},\"name\":\"stateful-demo\",\"namespace\":\"mcp-demo\"},\"spec\":{\"minReadySeconds\":3,\"progressDeadlineSeconds\":180,\"replicas\":2,\"revisionHistoryLimit\":5,\"selector\":{\"matchLabels\":{\"app\":\"stateful-demo\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"labels\":{\"app\":\"stateful-demo\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"env\":[{\"name\":\"HOST\",\"value\":\"0.0.0.0\"},{\"name\":\"MCP_ALLOWED_HOSTS\",\"value\":\"stateful-demo,stateful-demo:*,stateful-demo.mcp-demo,stateful-demo.mcp-demo:*,stateful-demo.mcp-demo.svc,stateful-demo.mcp-demo.svc:*,stateful-demo.mcp-demo.svc.cluster.local,stateful-demo.mcp-demo.svc.cluster.local:*\"},{\"name\":\"PORT\",\"value\":\"8000\"},{\"name\":\"REDIS_URL\",\"value\":\"redis://stateful-demo-redis:6379/0\"}],\"image\":\"localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":10},\"name\":\"mcp\",\"ports\":[{\"containerPort\":8000,\"name\":\"http\"}],\"readinessProbe\":{\"failureThreshold\":2,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":3},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"startupProbe\":{\"failureThreshold\":30,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":2}}],\"terminationGracePeriodSeconds\":30}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:15:08Z",
+        "generation": 1,
+        "labels": {
+          "app": "stateful-demo"
+        },
+        "name": "stateful-demo",
+        "namespace": "mcp-demo",
+        "resourceVersion": "31209",
+        "uid": "b812a882-39be-42d7-a29e-09c1ef246afb"
+      },
+      "spec": {
+        "minReadySeconds": 3,
+        "progressDeadlineSeconds": 180,
+        "replicas": 2,
+        "revisionHistoryLimit": 5,
+        "selector": {
+          "matchLabels": {
+            "app": "stateful-demo"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "stateful-demo"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "HOST",
+                    "value": "0.0.0.0"
+                  },
+                  {
+                    "name": "MCP_ALLOWED_HOSTS",
+                    "value": "stateful-demo,stateful-demo:*,stateful-demo.mcp-demo,stateful-demo.mcp-demo:*,stateful-demo.mcp-demo.svc,stateful-demo.mcp-demo.svc:*,stateful-demo.mcp-demo.svc.cluster.local,stateful-demo.mcp-demo.svc.cluster.local:*"
+                  },
+                  {
+                    "name": "PORT",
+                    "value": "8000"
+                  },
+                  {
+                    "name": "REDIS_URL",
+                    "value": "redis://stateful-demo-redis:6379/0"
+                  }
+                ],
+                "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "mcp",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "name": "http",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 2,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 3,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                },
+                "startupProbe": {
+                  "failureThreshold": 30,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 2,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:15:08Z",
+            "lastUpdateTime": "2026-10-26T18:15:33Z",
+            "message": "ReplicaSet \"stateful-demo-7688cd9947\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T20:17:11Z",
+            "lastUpdateTime": "2026-10-26T20:17:11Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "updatedReplicas": 2
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"stateful-demo-redis\",\"namespace\":\"mcp-demo\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"stateful-demo-redis\"}},\"strategy\":{\"type\":\"Recreate\"},\"template\":{\"metadata\":{\"labels\":{\"app\":\"stateful-demo-redis\"}},\"spec\":{\"containers\":[{\"command\":[\"redis-server\",\"--appendonly\",\"yes\"],\"image\":\"redis:7-alpine\",\"name\":\"redis\",\"ports\":[{\"containerPort\":6379}],\"readinessProbe\":{\"exec\":{\"command\":[\"redis-cli\",\"ping\"]},\"periodSeconds\":3},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"64Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/data\",\"name\":\"data\"}]}],\"terminationGracePeriodSeconds\":30,\"volumes\":[{\"name\":\"data\",\"persistentVolumeClaim\":{\"claimName\":\"stateful-demo-redis-data\"}}]}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:14:05Z",
+        "generation": 1,
+        "name": "stateful-demo-redis",
+        "namespace": "mcp-demo",
+        "resourceVersion": "902",
+        "uid": "c8117aa9-e8d3-4b65-91b5-d997f9ae64a6"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "stateful-demo-redis"
+          }
+        },
+        "strategy": {
+          "type": "Recreate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "stateful-demo-redis"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "command": [
+                  "redis-server",
+                  "--appendonly",
+                  "yes"
+                ],
+                "image": "redis:7-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "redis",
+                "ports": [
+                  {
+                    "containerPort": 6379,
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "exec": {
+                    "command": [
+                      "redis-cli",
+                      "ping"
+                    ]
+                  },
+                  "failureThreshold": 3,
+                  "periodSeconds": 3,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/data",
+                    "name": "data"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "stateful-demo-redis-data"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:15:07Z",
+            "lastUpdateTime": "2026-10-26T18:15:07Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:14:05Z",
+            "lastUpdateTime": "2026-10-26T18:15:07Z",
+            "message": "ReplicaSet \"stateful-demo-redis-64cbc84954\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "13",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"stateless-demo\"},\"name\":\"stateless-demo\",\"namespace\":\"mcp-demo\"},\"spec\":{\"minReadySeconds\":3,\"progressDeadlineSeconds\":180,\"replicas\":2,\"revisionHistoryLimit\":5,\"selector\":{\"matchLabels\":{\"app\":\"stateless-demo\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"labels\":{\"app\":\"stateless-demo\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"env\":[{\"name\":\"HOST\",\"value\":\"0.0.0.0\"},{\"name\":\"MCP_ALLOWED_HOSTS\",\"value\":\"stateless-demo,stateless-demo:*,stateless-demo.mcp-demo,stateless-demo.mcp-demo:*,stateless-demo.mcp-demo.svc,stateless-demo.mcp-demo.svc:*,stateless-demo.mcp-demo.svc.cluster.local,stateless-demo.mcp-demo.svc.cluster.local:*\"},{\"name\":\"PORT\",\"value\":\"8000\"}],\"image\":\"localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":10},\"name\":\"mcp\",\"ports\":[{\"containerPort\":8000,\"name\":\"http\"}],\"readinessProbe\":{\"failureThreshold\":2,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":3},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"startupProbe\":{\"failureThreshold\":30,\"httpGet\":{\"path\":\"/health\",\"port\":\"http\"},\"periodSeconds\":2}}],\"terminationGracePeriodSeconds\":30}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:11:46Z",
+        "generation": 13,
+        "labels": {
+          "app": "stateless-demo"
+        },
+        "name": "stateless-demo",
+        "namespace": "mcp-demo",
+        "resourceVersion": "30812",
+        "uid": "3c454f61-e470-4e19-8b32-8e475c721701"
+      },
+      "spec": {
+        "minReadySeconds": 3,
+        "progressDeadlineSeconds": 180,
+        "replicas": 2,
+        "revisionHistoryLimit": 5,
+        "selector": {
+          "matchLabels": {
+            "app": "stateless-demo"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "stateless-demo"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "HOST",
+                    "value": "0.0.0.0"
+                  },
+                  {
+                    "name": "MCP_ALLOWED_HOSTS",
+                    "value": "stateless-demo,stateless-demo:*,stateless-demo.mcp-demo,stateless-demo.mcp-demo:*,stateless-demo.mcp-demo.svc,stateless-demo.mcp-demo.svc:*,stateless-demo.mcp-demo.svc.cluster.local,stateless-demo.mcp-demo.svc.cluster.local:*"
+                  },
+                  {
+                    "name": "PORT",
+                    "value": "8000"
+                  }
+                ],
+                "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "mcp",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "name": "http",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 2,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 3,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                },
+                "startupProbe": {
+                  "failureThreshold": 30,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 2,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:13:42Z",
+            "lastUpdateTime": "2026-10-26T18:13:42Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T19:48:24Z",
+            "lastUpdateTime": "2026-10-26T20:15:26Z",
+            "message": "ReplicaSet \"stateless-demo-8697956f78\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 13,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "updatedReplicas": 2
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T18:16:36Z",
+        "generateName": "contract-probe-5685dccb9c-",
+        "generation": 1,
+        "labels": {
+          "app": "contract-probe",
+          "pod-template-hash": "5685dccb9c"
+        },
+        "name": "contract-probe-5685dccb9c-bjpbc",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "contract-probe-5685dccb9c",
+            "uid": "2066626b-78ca-4343-9052-4ece7e83947f"
+          }
+        ],
+        "resourceVersion": "1164",
+        "uid": "8e905c90-f431-47f4-86e0-5f664d541ca9"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "MCP_ALLOWED_HOSTS",
+                "value": "contract-probe,contract-probe:*,contract-probe.mcp-demo,contract-probe.mcp-demo:*,contract-probe.mcp-demo.svc,contract-probe.mcp-demo.svc:*,contract-probe.mcp-demo.svc.cluster.local,contract-probe.mcp-demo.svc.cluster.local:*"
+              },
+              {
+                "name": "PORT",
+                "value": "8000"
+              },
+              {
+                "name": "PROBE_LABEL",
+                "value": "configured-by-project"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "mcp",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              }
+            },
+            "startupProbe": {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 2,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:37Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:57Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:57Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:36Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "96Mi"
+            },
+            "containerID": "containerd://92d8e6ae09d9d414f72b1b7f93fde76c85e200085622d43af3da632239f7b101",
+            "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+            "imageID": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+            "lastState": {},
+            "name": "mcp",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T18:16:45Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            }
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.13",
+        "podIPs": [
+          {
+            "ip": "10.42.0.13"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T18:16:37Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T18:16:36Z",
+        "generateName": "contract-probe-5685dccb9c-",
+        "generation": 1,
+        "labels": {
+          "app": "contract-probe",
+          "pod-template-hash": "5685dccb9c"
+        },
+        "name": "contract-probe-5685dccb9c-cptt6",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "contract-probe-5685dccb9c",
+            "uid": "2066626b-78ca-4343-9052-4ece7e83947f"
+          }
+        ],
+        "resourceVersion": "1157",
+        "uid": "4b29e67d-7381-47cb-921a-1267d223be96"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "MCP_ALLOWED_HOSTS",
+                "value": "contract-probe,contract-probe:*,contract-probe.mcp-demo,contract-probe.mcp-demo:*,contract-probe.mcp-demo.svc,contract-probe.mcp-demo.svc:*,contract-probe.mcp-demo.svc.cluster.local,contract-probe.mcp-demo.svc.cluster.local:*"
+              },
+              {
+                "name": "PORT",
+                "value": "8000"
+              },
+              {
+                "name": "PROBE_LABEL",
+                "value": "configured-by-project"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "mcp",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              }
+            },
+            "startupProbe": {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 2,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:36Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:57Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:57Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:16:36Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "96Mi"
+            },
+            "containerID": "containerd://2d9f399d6ba82384f28a5aa4b60b568cc765c6ef2fed7584d966b86de6156254",
+            "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+            "imageID": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+            "lastState": {},
+            "name": "mcp",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T18:16:45Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            }
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.12",
+        "podIPs": [
+          {
+            "ip": "10.42.0.12"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T18:16:36Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:17:24Z",
+        "generateName": "mcp-verify-64c80d03-after-",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "94eef200-5af2-448e-9f69-e931cf2b34ff",
+          "batch.kubernetes.io/job-name": "mcp-verify-64c80d03-after",
+          "controller-uid": "94eef200-5af2-448e-9f69-e931cf2b34ff",
+          "job-name": "mcp-verify-64c80d03-after"
+        },
+        "name": "mcp-verify-64c80d03-after-97fjh",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Job",
+            "name": "mcp-verify-64c80d03-after",
+            "uid": "94eef200-5af2-448e-9f69-e931cf2b34ff"
+          }
+        ],
+        "resourceVersion": "31351",
+        "uid": "dbb366bf-83d6-4dd7-9ef2-e3f470d6413a"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "command": [
+              "python",
+              "/test/client.py"
+            ],
+            "env": [
+              {
+                "name": "PERSISTED_COUNTER",
+                "value": "replicas_665b65755a244b23a163385b0f3077c8"
+              },
+              {
+                "name": "VERIFY_GENERIC",
+                "value": "0"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "client",
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Never",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "configMap": {
+              "defaultMode": 420,
+              "name": "mcp-verify-64c80d03"
+            },
+            "name": "script"
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:52Z",
+            "observedGeneration": 1,
+            "status": "False",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:25Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:51Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:51Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:25Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "64Mi"
+            },
+            "containerID": "containerd://997897c1a939f50273e008c1742e0783780ecacce385fdac73289d59709caa42",
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "lastState": {},
+            "name": "client",
+            "ready": false,
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "terminated": {
+                "containerID": "containerd://997897c1a939f50273e008c1742e0783780ecacce385fdac73289d59709caa42",
+                "exitCode": 0,
+                "finishedAt": "2026-10-26T20:17:50Z",
+                "reason": "Completed",
+                "startedAt": "2026-10-26T20:17:26Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Succeeded",
+        "podIP": "10.42.0.222",
+        "podIPs": [
+          {
+            "ip": "10.42.0.222"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:17:25Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:16:24Z",
+        "generateName": "mcp-verify-64c80d03-before-",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "a0fac89c-d769-4004-ab17-74cc45fb0522",
+          "batch.kubernetes.io/job-name": "mcp-verify-64c80d03-before",
+          "controller-uid": "a0fac89c-d769-4004-ab17-74cc45fb0522",
+          "job-name": "mcp-verify-64c80d03-before"
+        },
+        "name": "mcp-verify-64c80d03-before-vpsxt",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Job",
+            "name": "mcp-verify-64c80d03-before",
+            "uid": "a0fac89c-d769-4004-ab17-74cc45fb0522"
+          }
+        ],
+        "resourceVersion": "31107",
+        "uid": "337d498a-cd1f-4798-9310-b9fe66b74939"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "command": [
+              "python",
+              "/test/client.py"
+            ],
+            "env": [
+              {
+                "name": "PERSISTED_COUNTER",
+                "value": "replicas_665b65755a244b23a163385b0f3077c8"
+              },
+              {
+                "name": "VERIFY_GENERIC",
+                "value": "0"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "client",
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Never",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "configMap": {
+              "defaultMode": 420,
+              "name": "mcp-verify-64c80d03"
+            },
+            "name": "script"
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:52Z",
+            "observedGeneration": 1,
+            "status": "False",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:24Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:51Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:51Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "64Mi"
+            },
+            "containerID": "containerd://18185c8c21161e95dc87620806e35e61f0e7c2a199e23f33cf8f9f7cb1db3d87",
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "lastState": {},
+            "name": "client",
+            "ready": false,
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "terminated": {
+                "containerID": "containerd://18185c8c21161e95dc87620806e35e61f0e7c2a199e23f33cf8f9f7cb1db3d87",
+                "exitCode": 0,
+                "finishedAt": "2026-10-26T20:16:50Z",
+                "reason": "Completed",
+                "startedAt": "2026-10-26T20:16:25Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Succeeded",
+        "podIP": "10.42.0.220",
+        "podIPs": [
+          {
+            "ip": "10.42.0.220"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:16:24Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:13:39Z",
+        "generateName": "mcp-verify-6c0bde8b-after-",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "201d054c-83dd-4bad-809a-82ded29852ca",
+          "batch.kubernetes.io/job-name": "mcp-verify-6c0bde8b-after",
+          "controller-uid": "201d054c-83dd-4bad-809a-82ded29852ca",
+          "job-name": "mcp-verify-6c0bde8b-after"
+        },
+        "name": "mcp-verify-6c0bde8b-after-gswx5",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Job",
+            "name": "mcp-verify-6c0bde8b-after",
+            "uid": "201d054c-83dd-4bad-809a-82ded29852ca"
+          }
+        ],
+        "resourceVersion": "30441",
+        "uid": "14b4db5c-0d3a-4dae-8c7b-64474d02480c"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "command": [
+              "python",
+              "/test/client.py"
+            ],
+            "env": [
+              {
+                "name": "PERSISTED_COUNTER",
+                "value": "replicas_f9da3238a34f481eabea7fd49e3524ff"
+              },
+              {
+                "name": "VERIFY_GENERIC",
+                "value": "0"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "client",
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Never",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "configMap": {
+              "defaultMode": 420,
+              "name": "mcp-verify-6c0bde8b"
+            },
+            "name": "script"
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:14:04Z",
+            "observedGeneration": 1,
+            "status": "False",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:13:39Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:14:03Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:14:03Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:13:39Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "64Mi"
+            },
+            "containerID": "containerd://8fbf2f130be9da4346e847c83447d16e7780b71a951c7e45493e624336e7c377",
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "lastState": {},
+            "name": "client",
+            "ready": false,
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "terminated": {
+                "containerID": "containerd://8fbf2f130be9da4346e847c83447d16e7780b71a951c7e45493e624336e7c377",
+                "exitCode": 0,
+                "finishedAt": "2026-10-26T20:14:02Z",
+                "reason": "Completed",
+                "startedAt": "2026-10-26T20:13:40Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Succeeded",
+        "podIP": "10.42.0.215",
+        "podIPs": [
+          {
+            "ip": "10.42.0.215"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:13:39Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:12:39Z",
+        "generateName": "mcp-verify-6c0bde8b-before-",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "bc0159ac-cc9f-4883-9051-0c1f4f11b48d",
+          "batch.kubernetes.io/job-name": "mcp-verify-6c0bde8b-before",
+          "controller-uid": "bc0159ac-cc9f-4883-9051-0c1f4f11b48d",
+          "job-name": "mcp-verify-6c0bde8b-before"
+        },
+        "name": "mcp-verify-6c0bde8b-before-qptd9",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Job",
+            "name": "mcp-verify-6c0bde8b-before",
+            "uid": "bc0159ac-cc9f-4883-9051-0c1f4f11b48d"
+          }
+        ],
+        "resourceVersion": "30240",
+        "uid": "47bde822-0c00-4422-adce-91634dd8378d"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "command": [
+              "python",
+              "/test/client.py"
+            ],
+            "env": [
+              {
+                "name": "PERSISTED_COUNTER",
+                "value": "replicas_f9da3238a34f481eabea7fd49e3524ff"
+              },
+              {
+                "name": "VERIFY_GENERIC",
+                "value": "0"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "client",
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Never",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "configMap": {
+              "defaultMode": 420,
+              "name": "mcp-verify-6c0bde8b"
+            },
+            "name": "script"
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:13:05Z",
+            "observedGeneration": 1,
+            "status": "False",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:12:39Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:13:03Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:13:03Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:12:39Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "64Mi"
+            },
+            "containerID": "containerd://ac5b90ba2c33173ac9cdeebe007e452083d822645fe35cb30768a1f6aaf9a849",
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "lastState": {},
+            "name": "client",
+            "ready": false,
+            "resources": {
+              "limits": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "terminated": {
+                "containerID": "containerd://ac5b90ba2c33173ac9cdeebe007e452083d822645fe35cb30768a1f6aaf9a849",
+                "exitCode": 0,
+                "finishedAt": "2026-10-26T20:13:03Z",
+                "reason": "Completed",
+                "startedAt": "2026-10-26T20:12:40Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/test",
+                "name": "script",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Succeeded",
+        "podIP": "10.42.0.213",
+        "podIPs": [
+          {
+            "ip": "10.42.0.213"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:12:39Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:16:56Z",
+        "generateName": "stateful-demo-7688cd9947-",
+        "generation": 1,
+        "labels": {
+          "app": "stateful-demo",
+          "pod-template-hash": "7688cd9947"
+        },
+        "name": "stateful-demo-7688cd9947-qlf5n",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "stateful-demo-7688cd9947",
+            "uid": "b609be37-7390-4af8-80e1-82a20ef509c8"
+          }
+        ],
+        "resourceVersion": "31183",
+        "uid": "ebee81f9-eddd-4110-b7e7-99d6886ee14e"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "MCP_ALLOWED_HOSTS",
+                "value": "stateful-demo,stateful-demo:*,stateful-demo.mcp-demo,stateful-demo.mcp-demo:*,stateful-demo.mcp-demo.svc,stateful-demo.mcp-demo.svc:*,stateful-demo.mcp-demo.svc.cluster.local,stateful-demo.mcp-demo.svc.cluster.local:*"
+              },
+              {
+                "name": "PORT",
+                "value": "8000"
+              },
+              {
+                "name": "REDIS_URL",
+                "value": "redis://stateful-demo-redis:6379/0"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "mcp",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "startupProbe": {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 2,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:57Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:56Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:08Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:17:08Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:16:56Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "100m",
+              "memory": "128Mi"
+            },
+            "containerID": "containerd://e1da2db746c9b50de8577789e2dc3734ee5432666531cd22266ec33bbeb22ac5",
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "lastState": {},
+            "name": "mcp",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T20:16:57Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            }
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.221",
+        "podIPs": [
+          {
+            "ip": "10.42.0.221"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:16:56Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T19:50:21Z",
+        "generateName": "stateful-demo-7688cd9947-",
+        "generation": 1,
+        "labels": {
+          "app": "stateful-demo",
+          "pod-template-hash": "7688cd9947"
+        },
+        "name": "stateful-demo-7688cd9947-wqrqp",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "stateful-demo-7688cd9947",
+            "uid": "b609be37-7390-4af8-80e1-82a20ef509c8"
+          }
+        ],
+        "resourceVersion": "23069",
+        "uid": "6960d160-da60-43e7-acca-67bec778454d"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "MCP_ALLOWED_HOSTS",
+                "value": "stateful-demo,stateful-demo:*,stateful-demo.mcp-demo,stateful-demo.mcp-demo:*,stateful-demo.mcp-demo.svc,stateful-demo.mcp-demo.svc:*,stateful-demo.mcp-demo.svc.cluster.local,stateful-demo.mcp-demo.svc.cluster.local:*"
+              },
+              {
+                "name": "PORT",
+                "value": "8000"
+              },
+              {
+                "name": "REDIS_URL",
+                "value": "redis://stateful-demo-redis:6379/0"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "mcp",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "startupProbe": {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 2,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T19:50:22Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T19:50:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T19:50:33Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T19:50:33Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T19:50:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "100m",
+              "memory": "128Mi"
+            },
+            "containerID": "containerd://f4266e3fbcfcecb09b5f42813137b41e1806be40aa1713c4fa1e72b4df4570b9",
+            "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+            "lastState": {},
+            "name": "mcp",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T19:50:22Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            }
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.165",
+        "podIPs": [
+          {
+            "ip": "10.42.0.165"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T19:50:21Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T18:14:05Z",
+        "generateName": "stateful-demo-redis-64cbc84954-",
+        "generation": 1,
+        "labels": {
+          "app": "stateful-demo-redis",
+          "pod-template-hash": "64cbc84954"
+        },
+        "name": "stateful-demo-redis-64cbc84954-nvccf",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "stateful-demo-redis-64cbc84954",
+            "uid": "4c7e1d85-a939-4d99-80c7-e5d19a6f7890"
+          }
+        ],
+        "resourceVersion": "898",
+        "uid": "696f1164-de20-46d7-af94-bd2cf5859cc6"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "redis-server",
+              "--appendonly",
+              "yes"
+            ],
+            "image": "redis:7-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "redis",
+            "ports": [
+              {
+                "containerPort": 6379,
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "exec": {
+                "command": [
+                  "redis-cli",
+                  "ping"
+                ]
+              },
+              "failureThreshold": 3,
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/data",
+                "name": "data"
+              },
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-fj52x",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "stateful-demo-redis-data"
+            }
+          },
+          {
+            "name": "kube-api-access-fj52x",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:15:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:14:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:15:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:15:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T18:14:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "50m",
+              "memory": "64Mi"
+            },
+            "containerID": "containerd://7592d1ea4d5e7f4ee9a7e5d5e36a2febe4e1577dee256eee7795c2da985d311e",
+            "image": "docker.io/library/redis:7-alpine",
+            "imageID": "docker.io/library/redis@sha256:6ba19c50b56777f5c11c58eff8ddb69d0d5f27ba131cffb63f180ccfd43c66af",
+            "lastState": {},
+            "name": "redis",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T18:15:06Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/data",
+                "name": "data"
+              },
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-fj52x",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.8",
+        "podIPs": [
+          {
+            "ip": "10.42.0.8"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T18:14:58Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:14:56Z",
+        "generateName": "stateless-demo-8697956f78-",
+        "generation": 1,
+        "labels": {
+          "app": "stateless-demo",
+          "pod-template-hash": "8697956f78"
+        },
+        "name": "stateless-demo-8697956f78-c2r8d",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "stateless-demo-8697956f78",
+            "uid": "c82b28e1-575c-423f-af29-189cf4528b19"
+          }
+        ],
+        "resourceVersion": "30718",
+        "uid": "ef504ec8-0ffd-46cd-8c66-3577a9da0d9f"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "MCP_ALLOWED_HOSTS",
+                "value": "stateless-demo,stateless-demo:*,stateless-demo.mcp-demo,stateless-demo.mcp-demo:*,stateless-demo.mcp-demo.svc,stateless-demo.mcp-demo.svc:*,stateless-demo.mcp-demo.svc.cluster.local,stateless-demo.mcp-demo.svc.cluster.local:*"
+              },
+              {
+                "name": "PORT",
+                "value": "8000"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "mcp",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "startupProbe": {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 2,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:14:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:14:56Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:08Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:08Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:14:56Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "100m",
+              "memory": "128Mi"
+            },
+            "containerID": "containerd://b6bee9d19412135da8bdeefc316a028b4a2cc27bf6f7c7d245690658ae972bd2",
+            "image": "sha256:1e56869e232d71b484c8049e6e73ded41b3862066a27067f95afad430170120e",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+            "lastState": {},
+            "name": "mcp",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T20:14:57Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            }
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.218",
+        "podIPs": [
+          {
+            "ip": "10.42.0.218"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:14:56Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T20:15:11Z",
+        "generateName": "stateless-demo-8697956f78-",
+        "generation": 1,
+        "labels": {
+          "app": "stateless-demo",
+          "pod-template-hash": "8697956f78"
+        },
+        "name": "stateless-demo-8697956f78-x8vv9",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "stateless-demo-8697956f78",
+            "uid": "c82b28e1-575c-423f-af29-189cf4528b19"
+          }
+        ],
+        "resourceVersion": "30788",
+        "uid": "40ad36c4-269c-4a9b-a251-79dbbcc6c838"
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "MCP_ALLOWED_HOSTS",
+                "value": "stateless-demo,stateless-demo:*,stateless-demo.mcp-demo,stateless-demo.mcp-demo:*,stateless-demo.mcp-demo.svc,stateless-demo.mcp-demo.svc:*,stateless-demo.mcp-demo.svc.cluster.local,stateless-demo.mcp-demo.svc.cluster.local:*"
+              },
+              {
+                "name": "PORT",
+                "value": "8000"
+              }
+            ],
+            "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "mcp",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 3,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "startupProbe": {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 2,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File"
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:11Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:23Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:23Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-26T20:15:11Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "100m",
+              "memory": "128Mi"
+            },
+            "containerID": "containerd://2dd3e572478ce3190ac758805d31be1e9cdc1b192a0c86fcb5edda275f04194d",
+            "image": "sha256:1e56869e232d71b484c8049e6e73ded41b3862066a27067f95afad430170120e",
+            "imageID": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+            "lastState": {},
+            "name": "mcp",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-26T20:15:12Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 10001,
+                "supplementalGroups": [
+                  10001
+                ],
+                "uid": 10001
+              }
+            }
+          }
+        ],
+        "hostIP": "172.17.0.4",
+        "hostIPs": [
+          {
+            "ip": "172.17.0.4"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.42.0.219",
+        "podIPs": [
+          {
+            "ip": "10.42.0.219"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-26T20:15:11Z"
+      }
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.42.0.13"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "contract-probe-5685dccb9c-bjpbc",
+            "namespace": "mcp-demo",
+            "uid": "8e905c90-f431-47f4-86e0-5f664d541ca9"
+          },
+          "zone": "us-east-1a"
+        },
+        {
+          "addresses": [
+            "10.42.0.12"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "contract-probe-5685dccb9c-cptt6",
+            "namespace": "mcp-demo",
+            "uid": "4b29e67d-7381-47cb-921a-1267d223be96"
+          },
+          "zone": "us-east-1a"
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "creationTimestamp": "2026-10-26T18:16:37Z",
+        "generateName": "contract-probe-",
+        "generation": 19,
+        "labels": {
+          "app": "contract-probe",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "contract-probe"
+        },
+        "name": "contract-probe-88krm",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "contract-probe",
+            "uid": "c0dcb8fe-f029-4b5f-9113-e2d041591607"
+          }
+        ],
+        "resourceVersion": "9319",
+        "uid": "60654854-b011-45c5-90f6-82530a862120"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.42.0.165"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "stateful-demo-7688cd9947-wqrqp",
+            "namespace": "mcp-demo",
+            "uid": "6960d160-da60-43e7-acca-67bec778454d"
+          },
+          "zone": "us-east-1a"
+        },
+        {
+          "addresses": [
+            "10.42.0.221"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "stateful-demo-7688cd9947-qlf5n",
+            "namespace": "mcp-demo",
+            "uid": "ebee81f9-eddd-4110-b7e7-99d6886ee14e"
+          },
+          "zone": "us-east-1a"
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-26T20:17:08Z"
+        },
+        "creationTimestamp": "2026-10-26T18:15:09Z",
+        "generateName": "stateful-demo-",
+        "generation": 44,
+        "labels": {
+          "app": "stateful-demo",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "stateful-demo"
+        },
+        "name": "stateful-demo-ck5sc",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "stateful-demo",
+            "uid": "4c5881a4-f891-4a22-8b9b-4834de505492"
+          }
+        ],
+        "resourceVersion": "31185",
+        "uid": "abec79b1-5d16-4946-8a10-b3c63da88247"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.42.0.8"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "stateful-demo-redis-64cbc84954-nvccf",
+            "namespace": "mcp-demo",
+            "uid": "696f1164-de20-46d7-af94-bd2cf5859cc6"
+          },
+          "zone": "us-east-1a"
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-26T18:15:07Z"
+        },
+        "creationTimestamp": "2026-10-26T18:14:06Z",
+        "generateName": "stateful-demo-redis-",
+        "generation": 3,
+        "labels": {
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "stateful-demo-redis"
+        },
+        "name": "stateful-demo-redis-q5rgq",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "stateful-demo-redis",
+            "uid": "ff0706f0-6cfc-4e97-a227-bea1f9b99fd5"
+          }
+        ],
+        "resourceVersion": "899",
+        "uid": "5a61fdcf-acac-486d-afab-a9ce78f73a0c"
+      },
+      "ports": [
+        {
+          "name": "",
+          "port": 6379,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.42.0.218"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "stateless-demo-8697956f78-c2r8d",
+            "namespace": "mcp-demo",
+            "uid": "ef504ec8-0ffd-46cd-8c66-3577a9da0d9f"
+          },
+          "zone": "us-east-1a"
+        },
+        {
+          "addresses": [
+            "10.42.0.219"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "i-f8241bc031e1365ba.ec2.internal",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "stateless-demo-8697956f78-x8vv9",
+            "namespace": "mcp-demo",
+            "uid": "40ad36c4-269c-4a9b-a251-79dbbcc6c838"
+          },
+          "zone": "us-east-1a"
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-26T20:15:28Z"
+        },
+        "creationTimestamp": "2026-10-26T18:11:47Z",
+        "generateName": "stateless-demo-",
+        "generation": 69,
+        "labels": {
+          "app": "stateless-demo",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "stateless-demo"
+        },
+        "name": "stateless-demo-ts48q",
+        "namespace": "mcp-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "stateless-demo",
+            "uid": "fbf1a920-0dfb-4c43-83de-b2963c63c043"
+          }
+        ],
+        "resourceVersion": "30825",
+        "uid": "09e1c54a-ed5b-4f43-b244-aba23c807632"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

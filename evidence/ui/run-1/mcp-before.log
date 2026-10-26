@@ -1,0 +1,2 @@
+{"result": "PASS", "routing": "Kubernetes ClusterIP Services", "stateless": ["echo", "add_numbers"], "stateful": ["increment_counter", "get_counter"], "persisted_counter": null, "generic_project": true}
+{"seeded_counter": "ui_persist_a59837a6a3", "value": 13}

@@ -1,0 +1,26 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get deployment/stateful-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateful-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+namespace/mcp-auto unchanged
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+persistentvolumeclaim/stateful-demo-redis-data unchanged
+deployment.apps/stateful-demo-redis unchanged
+service/stateful-demo-redis unchanged
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto rollout status deployment/stateful-demo-redis --timeout=180s
+deployment "stateful-demo-redis" successfully rolled out
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply --dry-run=server -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateful-demo configured (server dry run)
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateful-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateful-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get revisions.serving.knative.dev/stateful-demo-00003 --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto wait revision/stateful-demo-00003 --for=condition=Ready --timeout=180s
+revision.serving.knative.dev/stateful-demo-00003 condition met
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateful-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get ksvc/stateful-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get ksvc/stateful-demo --ignore-not-found -o json
+{"status": "healthy", "backend": "knative", "name": "stateful-demo", "namespace": "mcp-auto", "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510", "revision": "stateful-demo-00003", "mcp_url": "http://stateful-demo.mcp-auto.mcp.test/mcp"}

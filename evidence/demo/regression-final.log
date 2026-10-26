@@ -1,0 +1,14 @@
+.\.venv\Scripts\python.exe : ERROR: rollout failed; collecting diagnostics and restoring previous application resources
+At line:2 char:60
++ ... imeout 120; .\.venv\Scripts\python.exe -m pytest -q -s tests --run-in ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: rollout ...ation resources:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+........ROLLBACK OK: previous healthy deployment restored
+............{"status": "healthy", "backend": "knative", "name": "arbitrary-service", "namespace": "test", "image": "image:v2", "revision": "new", "mcp_url": "http://sample/mcp"}
+ Container mcp-deployment-platform-starter-stateful-1 Restarting 
+ Container mcp-deployment-platform-starter-stateful-1 Started 
+........Redis counter restart_1167e4320d0544328eb5ae69ccb03fc4: 7 before restart, 7 after restart
+.
+29 passed in 14.54s

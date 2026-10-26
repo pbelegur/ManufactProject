@@ -1,0 +1,73 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "check": "Missing/invalid import CSRF",
+      "status": 403
+    },
+    {
+      "check": "Untrusted URL / SSRF rejected before fetch",
+      "status": 422
+    },
+    {
+      "check": "Existing name reserved",
+      "status": 409,
+      "result": "PASS"
+    },
+    {
+      "check": "Redis runtime name reserved",
+      "status": 409,
+      "result": "PASS"
+    },
+    {
+      "check": "Alternate port rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Alternate MCP endpoint rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Build context traversal rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Absolute Dockerfile rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Mutation tool rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Read-only confirmation required",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Tool arguments must be object",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Raw command field forbidden",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Shell-looking release rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "Explicit state model required",
+      "status": 422,
+      "result": "PASS"
+    }
+  ]
+}

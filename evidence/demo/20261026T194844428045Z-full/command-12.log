@@ -1,0 +1,20 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get deployment/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+namespace/mcp-auto unchanged
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply --dry-run=server -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateless-demo configured (server dry run)
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get revisions.serving.knative.dev/stateless-demo-00010 --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto wait revision/stateless-demo-00010 --for=condition=Ready --timeout=180s
+revision.serving.knative.dev/stateless-demo-00010 condition met
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get ksvc/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-auto get ksvc/stateless-demo --ignore-not-found -o json
+{"status": "healthy", "backend": "knative", "name": "stateless-demo", "namespace": "mcp-auto", "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e", "revision": "stateless-demo-00010", "mcp_url": "http://stateless-demo.mcp-auto.mcp.test/mcp"}

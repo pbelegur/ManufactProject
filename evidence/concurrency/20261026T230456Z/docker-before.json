@@ -1,0 +1,101 @@
+[
+  {
+    "BlockIO": "5.05MB / 0B",
+    "CPUPerc": "0.51%",
+    "Container": "ce600924553f44efc6c9edd5b60d59ad03b1c6503c105113fb2863a6ee8f8847",
+    "ID": "ce600924553f",
+    "MemPerc": "0.86%",
+    "MemUsage": "67.26MiB / 7.633GiB",
+    "Name": "mcp-deployment-platform-starter-stateless-1",
+    "NetIO": "64.8kB / 71kB",
+    "PIDs": "408"
+  },
+  {
+    "BlockIO": "1.72MB / 0B",
+    "CPUPerc": "0.72%",
+    "Container": "57e62a797983ede7639df4fdcd451f9865a1e39276085679d116228c5659360a",
+    "ID": "57e62a797983",
+    "MemPerc": "0.85%",
+    "MemUsage": "66.22MiB / 7.633GiB",
+    "Name": "mcp-deployment-platform-starter-stateful-1",
+    "NetIO": "5.45kB / 4.97kB",
+    "PIDs": "292"
+  },
+  {
+    "BlockIO": "216MB / 5.42GB",
+    "CPUPerc": "125.32%",
+    "Container": "9907087e45e8f9dfd51f846673485fd5a6de6dbc8b677bfa66aa86f9b1045792",
+    "ID": "9907087e45e8",
+    "MemPerc": "28.47%",
+    "MemUsage": "1.738GiB / 6.105GiB",
+    "Name": "floci-aws-eks-mcp-platform",
+    "NetIO": "346MB / 129MB",
+    "PIDs": "955"
+  },
+  {
+    "BlockIO": "27.3MB / 57.7MB",
+    "CPUPerc": "0.19%",
+    "Container": "0af08c92a0ba1813ec6c6321df1f1f0923c777d1d5508eb6c8426c163c8cc47a",
+    "ID": "0af08c92a0ba",
+    "MemPerc": "1.76%",
+    "MemUsage": "137.6MiB / 7.633GiB",
+    "Name": "mcp-deployment-platform-starter-floci-1",
+    "NetIO": "89.8MB / 89.9MB",
+    "PIDs": "238"
+  },
+  {
+    "BlockIO": "5.81MB / 102MB",
+    "CPUPerc": "0.00%",
+    "Container": "bafd41f7df2be1ad35068dd1f1c18c9a83f250143b77a45c1459453b738db0f7",
+    "ID": "bafd41f7df2b",
+    "MemPerc": "0.17%",
+    "MemUsage": "13.11MiB / 7.633GiB",
+    "Name": "floci-aws-ecr-registry",
+    "NetIO": "102MB / 101MB",
+    "PIDs": "12"
+  },
+  {
+    "BlockIO": "1.48MB / 147kB",
+    "CPUPerc": "12.54%",
+    "Container": "67e885619083c431938315a79d3abfef219aaaf529555cfe01b872b00c15b3cd",
+    "ID": "67e885619083",
+    "MemPerc": "0.06%",
+    "MemUsage": "4.324MiB / 7.633GiB",
+    "Name": "mcp-deployment-platform-starter-redis-1",
+    "NetIO": "153kB / 85.6kB",
+    "PIDs": "6"
+  },
+  {
+    "BlockIO": "13.8MB / 253MB",
+    "CPUPerc": "0.54%",
+    "Container": "c33aef377579c4cf28035a26a3e213bf384b0cb218681b33173cae2bd55bfec7",
+    "ID": "c33aef377579",
+    "MemPerc": "56.43%",
+    "MemUsage": "577.9MiB / 1GiB",
+    "Name": "manufact-keycloak",
+    "NetIO": "722kB / 23.4MB",
+    "PIDs": "47"
+  },
+  {
+    "BlockIO": "423MB / 8.04GB",
+    "CPUPerc": "85.84%",
+    "Container": "45976b3fc74ce3b6166a0405ba9c91fa8b98209330587948f1c89512614a774c",
+    "ID": "45976b3fc74c",
+    "MemPerc": "17.20%",
+    "MemUsage": "1.313GiB / 7.633GiB",
+    "Name": "manufact-lab-control-plane",
+    "NetIO": "1.14GB / 92MB",
+    "PIDs": "520"
+  },
+  {
+    "BlockIO": "311kB / 0B",
+    "CPUPerc": "0.00%",
+    "Container": "1d828ffe6b9fe8b8ee9b5293f7a395ad97f42eed1248ab9c2788e99d8d8abf75",
+    "ID": "1d828ffe6b9f",
+    "MemPerc": "0.27%",
+    "MemUsage": "352KiB / 128MiB",
+    "Name": "memory-test",
+    "NetIO": "1.17kB / 126B",
+    "PIDs": "1"
+  }
+]

@@ -1,6 +1,7 @@
 """Build/publish/roll out any MCP container project. No MCP traffic uses this CLI."""
 import argparse
 import copy
+from datetime import datetime, timezone
 from hashlib import sha256
 import json
 import os
@@ -10,6 +11,11 @@ import subprocess
 import sys
 import tempfile
 import time
+
+
+def deployment_stage(stage, message):
+    print("@@MCP_DEPLOY_STAGE " + json.dumps({"stage": stage, "message": message,
+        "at": datetime.now(timezone.utc).isoformat(), "job_id": os.getenv("MCP_DEPLOY_JOB_ID")}), flush=True)
 
 
 def run(args, stdin=None, capture=False, timeout=1200, env=None):
@@ -243,6 +249,7 @@ def contains(actual, expected):
 
 
 def wait_knative(kube, name, template=None):
+    deployment_stage("VERIFYING", "Waiting for the candidate Knative revision to become ready")
     deadline = time.monotonic() + kube.timeout
     while True:
         service = kube.get("services.serving.knative.dev", name)
@@ -259,6 +266,7 @@ def wait_knative(kube, name, template=None):
 
 
 def wait_knative_route(kube, name, revision):
+    deployment_stage("VERIFYING", "Waiting for the actual Knative route to the ready revision")
     deadline = time.monotonic() + kube.timeout
     while True:
         current = kube.get("ksvc", name)
@@ -292,11 +300,13 @@ def deploy_knative(kube, cfg, image, version, previous, rollback_timeout=180):
     try:
         kube.apply([resource])
         revision = wait_knative(kube, name, resource["spec"]["template"])
+        deployment_stage("DEPLOYING", "Promoting traffic to the verified Knative revision")
         resource["spec"]["traffic"] = [{"revisionName": revision, "percent": 100}]
         kube.apply([resource])
         current = wait_knative_route(kube, name, revision)
     except (subprocess.SubprocessError, OSError, RuntimeError):
         print("ERROR: Knative rollout failed; restoring previous route/configuration", file=sys.stderr)
+        deployment_stage("DEPLOYING", "Candidate failed; restoring previous Knative route and configuration")
         failed_service = kube.get("ksvc", name)
         failed_revision = failed_service.get("status", {}).get("latestCreatedRevisionName") if failed_service else None
         for command in (["get", "revisions,pods", "-l", f"serving.knative.dev/service={name}", "-o", "wide"],
@@ -371,6 +381,7 @@ def healthy(deployment):
 
 
 def wait_deployment(kube, name):
+    deployment_stage("VERIFYING", "Waiting for deployment readiness and exact replica counts")
     kube.wait(name)
     # rollout status can finish before a scale-down's status counters settle.
     # Wait for current generation and exact counts instead of falsely rolling
@@ -395,7 +406,7 @@ def restorable(resource):
 
 def build_image(folder, name, version, registry, build=None):
     # Full build ID prevents replacing a previous version with different bytes.
-    # Cached repeat builds resolve to the same tag and unchanged pod template.
+    # Terminal cached repeats keep their identity; UI jobs add a unique label.
     if not re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_.-]{0,62}", version):
         raise ValueError("version must be a Docker tag prefix of at most 63 characters")
     with tempfile.TemporaryDirectory(prefix="mcp-build-") as temporary:
@@ -406,8 +417,13 @@ def build_image(folder, name, version, registry, build=None):
         context = project_path(folder, build.get("context", "."), directory=True)
         dockerfile = project_path(folder, build.get("dockerfile", "Dockerfile")) if build else folder / "Dockerfile"
         command = ["docker", "build", "--iidfile", str(iidfile)]
+        job_id = os.getenv("MCP_DEPLOY_JOB_ID", "")
+        if job_id:
+            if not re.fullmatch(r"[0-9a-f]{32}", job_id):
+                raise ValueError("MCP_DEPLOY_JOB_ID must be a job UUID")
+            command += ["--label", "deployment.mcp.io/job-id=" + job_id]
         if build.get("bounded"):
-            # Opt-in trusted local imports only. Legacy RUN cgroups give hard
+            # Requested by the UI or trusted operator. Legacy RUN cgroups give hard
             # limits on the existing Docker engine, without creating a builder.
             # Fail closed if this engine has removed legacy-builder support.
             command += ["--memory", "1g", "--memory-swap", "1g", "--cpu-period", "100000",
@@ -449,9 +465,12 @@ def cmd_deploy(args):
             raise ValueError("Knative already owns this name; use a separate namespace or an explicit migration")
     if previous.get("deployment") and not healthy(previous["deployment"]):
         raise ValueError("existing deployment is not fully healthy; recover it before deploying a new version")
+    if not args.image:
+        deployment_stage("BUILDING", "Building the project Dockerfile")
     image = args.image or build_image(folder, name, args.version, args.push_registry, cfg.get("build"))
     if not args.image:
         if args.push_registry:
+            deployment_stage("PUSHING", "Publishing the immutable application image to the registry")
             if getattr(args, "ensure_floci_repository", False):
                 if args.push_registry != "localhost:4566/000000000000/us-east-1":
                     raise ValueError("--ensure-floci-repository is restricted to the local demo registry")
@@ -467,9 +486,11 @@ def cmd_deploy(args):
                     pass
             run(["docker", "push", image])
         elif args.kind_cluster:
+            deployment_stage("PUSHING", "Loading the application image into the existing kind cluster")
             run(["kind", "load", "docker-image", image, "--name", args.kind_cluster])
         else:
             raise ValueError("choose --push-registry or --kind-cluster to make built images accessible")
+    deployment_stage("DEPLOYING", "Applying application resources; previous serving pods remain until readiness")
     kube.apply([{"apiVersion": "v1", "kind": "Namespace", "metadata": {"name": args.namespace}}])
     if cfg["mode"] == "stateful" and "REDIS_URL" not in cfg["env"]:
         redis = cfg["redis"]
@@ -494,6 +515,7 @@ def cmd_deploy(args):
         current = wait_deployment(kube, name)
     except (subprocess.SubprocessError, OSError, RuntimeError):
         print("ERROR: rollout failed; collecting diagnostics and restoring previous application resources", file=sys.stderr)
+        deployment_stage("DEPLOYING", "Rollout failed; collecting diagnostics and restoring previous resources")
         kube.diagnostics(name)
         try:
             kube.timeout = positive(getattr(args, "rollback_timeout", 180))

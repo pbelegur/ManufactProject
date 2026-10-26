@@ -1,0 +1,246 @@
+{
+  "mode": "Quick",
+  "started_utc": "20261026T201126606796Z",
+  "result": "PASS",
+  "steps": [
+    {
+      "name": "Existing infrastructure health (read only)",
+      "result": "PASS",
+      "detail": {
+        "docker_cpus": 8,
+        "docker_memory_bytes": 8195891200,
+        "runtime_cpu_quota": 4.0,
+        "runtime_id": "9907087e45e8f9dfd51f846673485fd5a6de6dbc8b677bfa66aa86f9b1045792",
+        "runtime_started": "2026-10-26T18:12:54.846142035Z",
+        "nodes": [
+          {
+            "name": "i-f8241bc031e1365ba.ec2.internal",
+            "version": "v1.34.1+k3s1",
+            "allocatable": {
+              "cpu": "1930m",
+              "ephemeral-storage": "972991057538",
+              "hugepages-1Gi": "0",
+              "hugepages-2Mi": "0",
+              "memory": "5072088Ki",
+              "pods": "110"
+            }
+          }
+        ],
+        "infrastructure": {
+          "knative-serving": {
+            "activator": 1,
+            "autoscaler": 1,
+            "controller": 1,
+            "net-kourier-controller": 1,
+            "webhook": 1
+          },
+          "kourier-system": {
+            "3scale-kourier-gateway": 1
+          }
+        }
+      },
+      "seconds": 10.898
+    },
+    {
+      "name": "Reuse/deploy two ready replicas and Service endpoints each",
+      "result": "PASS",
+      "detail": {
+        "stateless-demo": {
+          "ready_replicas": 2,
+          "ready_endpoints": 2,
+          "action": "reuse existing deployment"
+        },
+        "stateful-demo": {
+          "ready_replicas": 2,
+          "ready_endpoints": 2,
+          "action": "reuse existing deployment"
+        }
+      },
+      "seconds": 2.137
+    },
+    {
+      "name": "Real MCP echo/add, shared Redis across replicas, pod recovery",
+      "result": "PASS",
+      "detail": {
+        "result": "PASS",
+        "counter_after_pod_replacement": 13,
+        "evidence": "mcp-before.json"
+      },
+      "seconds": 148.737
+    },
+    {
+      "name": "Published v1 to v2 rolling update",
+      "result": "PASS",
+      "detail": {
+        "v1_image": "localhost:4566/000000000000/us-east-1/stateless-demo:phase2-v2-109b4a37e6d6196e1124c12d29827b0c42eb1dbad18aab653d9fb30a407093ff",
+        "v2_image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+        "before_generation": 12,
+        "after_generation": 13,
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "note": "Existing published versions reused; this Quick check does not measure uninterrupted traffic"
+      },
+      "seconds": 80.221
+    },
+    {
+      "name": "Real MCP and Redis after rolling update",
+      "result": "PASS",
+      "detail": {
+        "result": "PASS",
+        "counter_after_pod_replacement": 13,
+        "evidence": "mcp-after.json"
+      },
+      "seconds": 148.254
+    },
+    {
+      "name": "Final health and preserved environment",
+      "result": "PASS",
+      "detail": {
+        "runtime_preserved": true,
+        "always_on_replicas": {
+          "stateless-demo": 2,
+          "stateful-demo": 2
+        }
+      },
+      "seconds": 3.432
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "info",
+        "--format",
+        "{\"NCPU\":{{.NCPU}},\"MemTotal\":{{.MemTotal}}}"
+      ],
+      "exit_code": 0,
+      "seconds": 1.245,
+      "log": "command-01.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{\"Id\":{{json .Id}},\"State\":{{json .State}},\"HostConfig\":{\"NanoCpus\":{{.HostConfig.NanoCpus}}}}",
+        "floci-aws-eks-mcp-platform"
+      ],
+      "exit_code": 0,
+      "seconds": 0.239,
+      "log": "command-02.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-f",
+        "compose.floci.yaml",
+        "ps",
+        "-q",
+        "floci"
+      ],
+      "exit_code": 0,
+      "seconds": 0.656,
+      "log": "command-03.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{range .Config.Env}}{{if eq . \"FLOCI_SERVICES_EKS_MOCK=false\"}}real{{end}}{{end}}",
+        "0af08c92a0ba1813ec6c6321df1f1f0923c777d1d5508eb6c8426c163c8cc47a"
+      ],
+      "exit_code": 0,
+      "seconds": 0.204,
+      "log": "command-04.log"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "tests/verify_kubernetes.py",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--output",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\demo\\20261026T201126606796Z-quick\\mcp-before.json"
+      ],
+      "exit_code": 0,
+      "seconds": 148.706,
+      "log": "command-05.log"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "deployctl.py",
+        "deploy",
+        "servers/stateless",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--namespace",
+        "mcp-demo",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo:phase2-v2-109b4a37e6d6196e1124c12d29827b0c42eb1dbad18aab653d9fb30a407093ff",
+        "--version",
+        "demo-v1",
+        "--replicas",
+        "2"
+      ],
+      "exit_code": 0,
+      "seconds": 39.663,
+      "log": "command-06.log"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "deployctl.py",
+        "deploy",
+        "servers/stateless",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--namespace",
+        "mcp-demo",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+        "--version",
+        "demo-v2",
+        "--replicas",
+        "2"
+      ],
+      "exit_code": 0,
+      "seconds": 36.125,
+      "log": "command-07.log"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "tests/verify_kubernetes.py",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--output",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\demo\\20261026T201126606796Z-quick\\mcp-after.json"
+      ],
+      "exit_code": 0,
+      "seconds": 148.235,
+      "log": "command-08.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "floci-aws-eks-mcp-platform"
+      ],
+      "exit_code": 0,
+      "seconds": 0.266,
+      "log": "command-09.log"
+    }
+  ],
+  "elapsed_seconds": 393.708,
+  "finished_utc": "2026-10-26T20:18:00.318235+00:00"
+}

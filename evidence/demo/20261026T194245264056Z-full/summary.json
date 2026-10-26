@@ -1,0 +1,166 @@
+{
+  "mode": "Full",
+  "started_utc": "20261026T194245264056Z",
+  "result": "FAIL",
+  "steps": [
+    {
+      "name": "Existing infrastructure health (read only)",
+      "result": "PASS",
+      "detail": {
+        "docker_cpus": 8,
+        "docker_memory_bytes": 8195891200,
+        "runtime_cpu_quota": 4.0,
+        "runtime_id": "9907087e45e8f9dfd51f846673485fd5a6de6dbc8b677bfa66aa86f9b1045792",
+        "runtime_started": "2026-10-26T18:12:54.846142035Z",
+        "nodes": [
+          {
+            "name": "i-f8241bc031e1365ba.ec2.internal",
+            "version": "v1.34.1+k3s1",
+            "allocatable": {
+              "cpu": "1930m",
+              "ephemeral-storage": "972991057538",
+              "hugepages-1Gi": "0",
+              "hugepages-2Mi": "0",
+              "memory": "5072088Ki",
+              "pods": "110"
+            }
+          }
+        ],
+        "infrastructure": {
+          "knative-serving": {
+            "activator": 1,
+            "autoscaler": 1,
+            "controller": 1,
+            "net-kourier-controller": 1,
+            "webhook": 1
+          },
+          "kourier-system": {
+            "3scale-kourier-gateway": 1
+          }
+        }
+      },
+      "seconds": 9.902
+    },
+    {
+      "name": "Reuse/deploy two ready replicas and Service endpoints each",
+      "result": "PASS",
+      "detail": {
+        "stateless-demo": {
+          "ready_replicas": 2,
+          "ready_endpoints": 2,
+          "action": "reuse existing deployment"
+        },
+        "stateful-demo": {
+          "ready_replicas": 2,
+          "ready_endpoints": 2,
+          "action": "reuse existing deployment"
+        }
+      },
+      "seconds": 2.005
+    },
+    {
+      "name": "Real MCP echo/add, shared Redis across replicas, pod recovery",
+      "result": "PASS",
+      "detail": {
+        "result": "PASS",
+        "counter_after_pod_replacement": 13,
+        "evidence": "mcp-before.json"
+      },
+      "seconds": 137.155
+    },
+    {
+      "name": "Published v1 to v2 rolling update",
+      "result": "FAIL",
+      "error": "RuntimeError: Command failed (1); see C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\demo\\20261026T194245264056Z-full\\command-06.log",
+      "seconds": 193.667
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "info",
+        "--format",
+        "{\"NCPU\":{{.NCPU}},\"MemTotal\":{{.MemTotal}}}"
+      ],
+      "exit_code": 0,
+      "seconds": 1.217,
+      "log": "command-01.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{\"Id\":{{json .Id}},\"State\":{{json .State}},\"HostConfig\":{\"NanoCpus\":{{.HostConfig.NanoCpus}}}}",
+        "floci-aws-eks-mcp-platform"
+      ],
+      "exit_code": 0,
+      "seconds": 0.15,
+      "log": "command-02.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-f",
+        "compose.floci.yaml",
+        "ps",
+        "-q",
+        "floci"
+      ],
+      "exit_code": 0,
+      "seconds": 0.451,
+      "log": "command-03.log"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{range .Config.Env}}{{if eq . \"FLOCI_SERVICES_EKS_MOCK=false\"}}real{{end}}{{end}}",
+        "0af08c92a0ba1813ec6c6321df1f1f0923c777d1d5508eb6c8426c163c8cc47a"
+      ],
+      "exit_code": 0,
+      "seconds": 0.224,
+      "log": "command-04.log"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "tests/verify_kubernetes.py",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--output",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\demo\\20261026T194245264056Z-full\\mcp-before.json"
+      ],
+      "exit_code": 0,
+      "seconds": 137.131,
+      "log": "command-05.log"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "deployctl.py",
+        "deploy",
+        "servers/stateless",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--namespace",
+        "mcp-demo",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016",
+        "--version",
+        "demo-v1",
+        "--replicas",
+        "2"
+      ],
+      "exit_code": 1,
+      "seconds": 192.699,
+      "log": "command-06.log"
+    }
+  ],
+  "error": "RuntimeError: Command failed (1); see C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\demo\\20261026T194245264056Z-full\\command-06.log",
+  "elapsed_seconds": 342.744,
+  "finished_utc": "2026-10-26T19:48:28.011691+00:00"
+}

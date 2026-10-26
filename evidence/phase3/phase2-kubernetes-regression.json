@@ -1,0 +1,112 @@
+{
+  "deployments": {
+    "stateless-demo": {
+      "ready": 2,
+      "generation": 4,
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo:phase2-v2-109b4a37e6d6196e1124c12d29827b0c42eb1dbad18aab653d9fb30a407093ff"
+    },
+    "stateful-demo": {
+      "ready": 2,
+      "generation": 1,
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702"
+    },
+    "contract-probe": {
+      "ready": 2,
+      "generation": 3,
+      "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+    }
+  },
+  "endpoints": {
+    "stateless-demo": [
+      [
+        "10.42.0.11"
+      ],
+      [
+        "10.42.0.14"
+      ]
+    ],
+    "stateful-demo": [
+      [
+        "10.42.0.10"
+      ],
+      [
+        "10.42.0.19"
+      ]
+    ],
+    "contract-probe": [
+      [
+        "10.42.0.13"
+      ],
+      [
+        "10.42.0.12"
+      ]
+    ]
+  },
+  "replica_checks": [
+    {
+      "pod": "stateful-demo-7688cd9947-dkhx7",
+      "tool": "increment_counter",
+      "expected": 11
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-hxq8z",
+      "tool": "get_counter",
+      "expected": 11
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-hxq8z",
+      "tool": "increment_counter",
+      "expected": 13
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-dkhx7",
+      "tool": "get_counter",
+      "expected": 13
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-c9frf",
+      "tool": "get_counter",
+      "expected": 13
+    }
+  ],
+  "pvcs": [
+    {
+      "name": "stateful-demo-redis-data",
+      "phase": "Bound",
+      "storage_class": "local-path"
+    }
+  ],
+  "before_service_test": {
+    "result": "PASS",
+    "routing": "Kubernetes ClusterIP Services",
+    "stateless": [
+      "echo",
+      "add_numbers"
+    ],
+    "stateful": [
+      "increment_counter",
+      "get_counter"
+    ],
+    "persisted_counter": "replicas_df1295a9d21847f6913fe7f527534ed8",
+    "generic_project": true
+  },
+  "after_service_test": {
+    "result": "PASS",
+    "routing": "Kubernetes ClusterIP Services",
+    "stateless": [
+      "echo",
+      "add_numbers"
+    ],
+    "stateful": [
+      "increment_counter",
+      "get_counter"
+    ],
+    "persisted_counter": "replicas_df1295a9d21847f6913fe7f527534ed8",
+    "generic_project": true
+  },
+  "deleted_pod": "stateful-demo-7688cd9947-dkhx7",
+  "replacement_pod": "stateful-demo-7688cd9947-c9frf",
+  "counter": "replicas_df1295a9d21847f6913fe7f527534ed8",
+  "counter_after_deletion": 13,
+  "result": "PASS"
+}

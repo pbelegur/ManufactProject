@@ -1,0 +1,12 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/manufact-invalid-build --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/manufact-invalid-build --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/manufact-invalid-build --ignore-not-found -o json
+$ docker build --iidfile C:\Users\Devi\AppData\Local\Temp\mcp-build-heetgvl8\image-id --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\imports\51b1fb84d1544940af4831cd566f4e61\project\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\imports\51b1fb84d1544940af4831cd566f4e61\project
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+Sending build context to Docker daemon  4.608kB
+
+Error response from daemon: dockerfile parse error on line 1: unknown instruction: NOT_A_DOCKERFILE
+ERROR: Command '['docker', 'build', '--iidfile', 'C:\\Users\\Devi\\AppData\\Local\\Temp\\mcp-build-heetgvl8\\image-id', '--memory', '1g', '--memory-swap', '1g', '--cpu-period', '100000', '--cpu-quota', '100000', '--force-rm', '--network', 'default', '-f', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\51b1fb84d1544940af4831cd566f4e61\\project\\Dockerfile', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\51b1fb84d1544940af4831cd566f4e61\\project']' returned non-zero exit status 1.

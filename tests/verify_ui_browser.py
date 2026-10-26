@@ -88,7 +88,7 @@ if os.getenv("UI_SEED_COUNTER"):
                 (output / (job_id + ".json")).write_text(json.dumps({k: v for k, v in job.items() if k != "log"}, indent=2), encoding="utf-8")
                 assert job["status"] == expected, job["error"] or job["log"][-5000:]
                 await page.wait_for_function("document.body.dataset.jobStatus === '" + expected + "'", timeout=10000)
-                assert await page.locator("#job-status").inner_text() == expected
+                assert await page.locator("#job-status").inner_text() == expected.upper()
                 await page.screenshot(path=str(output / (job_id + ".png")), full_page=True)
                 print(job_id, job["name"], job["backend"], job["status"], "exit", job["exit_code"], flush=True)
                 return job

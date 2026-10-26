@@ -1,0 +1,443 @@
+[
+  {
+    "at": "2026-10-26T23:04:57.061656+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "get",
+      "deployments,pods,services,endpointslices,pvc",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:00.692025+00:00",
+    "argv": [
+      "docker",
+      "stats",
+      "--no-stream",
+      "--format",
+      "{{json .}}"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:02.193481+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "apply",
+      "-f",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\concurrency\\20261026T230456Z\\client-resources.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:03.534122+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "wait",
+      "--for=condition=Ready",
+      "pod/concurrency-client-9c0e26d748",
+      "--timeout=90s"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:07.848044+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-u",
+      "/validation/worker.py",
+      "--worker"
+    ]
+  },
+  {
+    "at": "2026-10-26T23:05:07.876472+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:14.729539+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:18.909417+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:23.113725+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:26.962420+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:31.596043+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:35.924946+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; print(Path('/tmp/traffic-ready').exists())"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:05:53.409794+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "c7b9a86a55fb"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:06:06.783330+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "42209c3dd60c"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:06:07.753385+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "18c80722e4ab"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:07:52.831324+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "8326bde58879"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:07:54.478346+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "737b83d1726c"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:00.811370+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "60b3c0db7d90"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:02.159238+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "d104cbe919ce"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:05.743217+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "f3855c0cfc79"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:08.229942+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "b0ca452ee7a3"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:12.952565+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "e575db7d9602"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:14.274828+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "cf2a27b3c376"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:16.712343+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "d845bfc28d25"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:18.035086+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "37347e6c2e05"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:20.489076+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "91b318775ab0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:22.947150+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "6af7fa44aaf1"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:24.249703+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "5690cd15e83d"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:08:26.677497+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "2e4c8b0dfca3"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:09:38.125819+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "a69ae5082bcb"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:10:26.181705+00:00",
+    "argv": [
+      "docker",
+      "inspect",
+      "066dd994d949"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:12:29.287109+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "get",
+      "deployments,pods,services,endpointslices,pvc",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:12:36.333103+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "python",
+      "-c",
+      "from pathlib import Path; Path('/tmp/stop-traffic').touch()"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:12:41.954428+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "concurrency-client-9c0e26d748",
+      "--",
+      "cat",
+      "/tmp/traffic.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "at": "2026-10-26T23:12:43.897969+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--request-timeout=20s",
+      "-n",
+      "mcp-demo",
+      "delete",
+      "pod,configmap",
+      "concurrency-client-9c0e26d748",
+      "--ignore-not-found=true",
+      "--wait=false"
+    ],
+    "exit_code": 0
+  }
+]

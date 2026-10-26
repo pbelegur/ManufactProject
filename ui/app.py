@@ -1,5 +1,6 @@
 """Localhost UI adapter: read Kubernetes; execute only the existing deployctl."""
 import asyncio
+import copy
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 import ipaddress
@@ -9,9 +10,11 @@ import os
 from pathlib import Path
 import re
 import secrets
+import shutil
 import subprocess
 import sys
 import time
+import threading
 import zipfile
 from typing import Literal
 from uuid import uuid4
@@ -27,6 +30,7 @@ from fastapi.responses import Response
 import deployctl
 from ui.sources import Sources, MAX_ZIP, atomic_json
 from ui.monitoring import health as runtime_health, redact, redis_view, job_matches_runtime
+from ui.jobs import DeploymentQueue, BoundedLog, LogRedactor, run_pipeline, snapshot_project, worker_limit, STAGES
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMESPACES = {"always-on": "mcp-demo", "knative": "mcp-auto"}
@@ -73,6 +77,15 @@ class Platform:
         self.registry = os.environ.get("MCP_UI_REGISTRY", "localhost:4566/000000000000/us-east-1").rstrip("/")
         self.jobs_dir = ROOT / ".local/ui/jobs"
         self.jobs_dir.mkdir(parents=True, exist_ok=True)
+        self.job_guard = threading.RLock()
+        self.log_bytes = int(os.environ.get("MCP_UI_JOB_LOG_BYTES", "1048576"))
+        if not 65536 <= self.log_bytes <= 16 * 1024 * 1024:
+            raise ValueError("MCP_UI_JOB_LOG_BYTES must be 65536..16777216")
+        self.max_jobs = worker_limit()
+        self.job_inputs = {}
+        self.logs = {}
+        self.work_dir = ROOT / ".local/ui/work"
+        self.work_dir.mkdir(parents=True, exist_ok=True)
         self.projects = json.loads((ROOT / "ui/projects.json").read_text(encoding="utf-8"))
         self.sources = Sources(ROOT)
         self.projects.update({p["id"]: p for p in self.sources.registered.values()})
@@ -90,10 +103,11 @@ class Platform:
             job = json.loads(path.read_text(encoding="utf-8"))
             if job["status"] in ("queued", "running"):
                 job.update(status="interrupted", finished_at=now(),
+                           stage="FAILED", stage_at=now(),
                            error="UI restarted before completion was recorded. Inspect Kubernetes and the log before retrying; a CLI process may still be running.")
                 self.persist(job)
             self.jobs[job["id"]] = job
-        self.queue = asyncio.Queue(maxsize=8)
+        self.queue = DeploymentQueue(self.max_jobs, capacity=8)
         self.csrf = secrets.token_urlsafe(32)
         self.cache = None
         self.cached_at = 0
@@ -221,7 +235,9 @@ class Platform:
                 "endpoint": endpoint, "conditions": conditions, "project_id": project_id}
 
     def server_jobs(self, namespace, name):
-        return sorted((j for j in self.jobs.values() if j["namespace"] == namespace and j["name"] == name),
+        with self.job_guard:
+            jobs = copy.deepcopy(list(self.jobs.values()))
+        return sorted((j for j in jobs if j["namespace"] == namespace and j["name"] == name),
                       key=lambda j: j["created_at"], reverse=True)
 
     def enrich(self, row, resource, resources, services):
@@ -290,10 +306,25 @@ class Platform:
         return row, inventory["observed_at"]
 
     def persist(self, job):
-        path = self.jobs_dir / (job["id"] + ".json")
-        temporary = path.with_suffix(".tmp")
-        temporary.write_text(json.dumps(job, indent=2), encoding="utf-8")
-        temporary.replace(path)
+        with self.job_guard:
+            path = self.jobs_dir / (job["id"] + ".json")
+            temporary = path.with_suffix(".tmp")
+            temporary.write_text(json.dumps(job, indent=2), encoding="utf-8")
+            temporary.replace(path)
+
+    def transition(self, job, stage, message):
+        if stage not in STAGES:
+            raise ValueError("Unknown deployment stage")
+        with self.job_guard:
+            message = redact(message)[:1000]
+            if job.get("stage") == stage and job.get("stage_message") == message:
+                return
+            event = {"stage": stage, "at": now(), "message": message}
+            job.update(stage=stage, stage_at=event["at"], stage_message=message)
+            history = job.setdefault("stage_history", [])
+            history.append(event)
+            del history[:-128]
+            self.persist(job)
 
     async def register(self, identifier, payload):
         if not payload.trusted_code:
@@ -390,90 +421,126 @@ class Platform:
                "namespace": namespace, "backend": payload.backend, "mode": cfg["mode"], "version": payload.version,
                "source": payload.source, "created_at": now(), "started_at": None, "finished_at": None,
                "exit_code": None, "error": None, "command": command}
+        job.update(stage="QUEUED", stage_at=job["created_at"], stage_message="Waiting for a worker and resource ownership",
+                   stage_history=[{"stage": "QUEUED", "at": job["created_at"], "message": "Job accepted"}],
+                   build_limits={"cpu": 1, "memory_bytes": 1073741824, "build_timeout_seconds": 300},
+                   log_policy={"segment_bytes": self.log_bytes, "segments": 3, "browser_tail_bytes": 256000})
+        keys = [namespace + "/" + cfg["name"]]
+        if cfg["mode"] == "stateful" and "REDIS_URL" not in cfg["env"]:
+            keys.append(namespace + "/" + cfg["redis"]["name"])
+        job["resource_keys"] = keys
+        with self.job_guard:
+            self.jobs[job["id"]] = job
+            self.job_inputs[job["id"]] = {"folder": project["folder"], "cfg": copy.deepcopy(cfg)}
+            self.persist(job)
         try:
-            self.queue.put_nowait(job)
+            await self.queue.put(job, keys)
         except asyncio.QueueFull:
+            with self.job_guard:
+                self.jobs.pop(job["id"], None)
+                self.job_inputs.pop(job["id"], None)
+                (self.jobs_dir / (job["id"] + ".json")).unlink(missing_ok=True)
             raise HTTPException(429, "Local deployment queue is full; wait for a job to finish")
-        self.jobs[job["id"]] = job
-        self.persist(job)
         return job
 
     def execute(self, job):
-        job.update(status="running", started_at=now())
-        self.persist(job)
-        try:
-            env = dict(os.environ, PYTHONUNBUFFERED="1", PYTHONIOENCODING="utf-8")
-            with (self.jobs_dir / (job["id"] + ".log")).open("wb") as log:
-                process = subprocess.Popen(job["command"], cwd=ROOT, env=env, shell=False, stdout=log, stderr=subprocess.STDOUT)
-                job["pid"] = process.pid
-                self.persist(job)
-                try:
-                    code = process.wait(timeout=1200)
-                except subprocess.TimeoutExpired:
-                    if os.name == "nt":
-                        subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"], capture_output=True, timeout=15)
-                    else:
-                        process.kill()
-                    raise RuntimeError("Deployment exceeded the 20-minute job limit. Inspect runtime status before any manual retry.")
-            job.update(status="succeeded" if code == 0 else "failed", exit_code=code,
-                       error=None if code == 0 else f"deployctl.py exited {code}. See the real CLI log, including recovery diagnostics.")
-            if code == 0:
-                for line in (self.jobs_dir / (job["id"] + ".log")).read_text(encoding="utf-8", errors="replace").splitlines():
-                    try:
-                        record = json.loads(line)
-                        if isinstance(record, dict) and record.get("status") == "healthy" and record.get("name") == job["name"]:
-                            job["deployment_result"] = record
-                    except ValueError:
-                        pass
-        except Exception as exc:
-            job.update(status="failed", error=f"{type(exc).__name__}: {exc}")
-        finally:
-            job["finished_at"] = now()
+        inputs = self.job_inputs[job["id"]]
+        cfg = inputs["cfg"]
+        secret_key = re.compile(r"SECRET|PASSWORD|TOKEN|CREDENTIAL|API_KEY|ACCESS_KEY|PRIVATE_KEY", re.I)
+        hidden = [value for values in (os.environ, cfg.get("env", {})) for key, value in values.items() if secret_key.search(key)]
+        log = BoundedLog(self.jobs_dir / (job["id"] + ".log"), self.log_bytes,
+                         guard=self.job_guard, redactor=LogRedactor(hidden))
+        self.logs[job["id"]] = log
+        work = self.work_dir / job["id"]
+        with self.job_guard:
+            job.update(status="running", started_at=now())
             self.persist(job)
+        self.transition(job, "BUILDING" if job["source"] == "build" else "DEPLOYING", "Preparing a private source/configuration snapshot")
+        log.append("Worker claimed job " + job["id"] + "; held resources: " + ", ".join(job["resource_keys"]))
+        try:
+            work.mkdir(exist_ok=False)
+            snapshot = snapshot_project(inputs["folder"], work / "source")
+            cfg.setdefault("build", {})["bounded"] = True
+            # Runtime environment values must not become part of Docker's context.
+            atomic_json(work / ".job-deploy.json", cfg)
+            temporary = work / "tmp"
+            temporary.mkdir()
+            command = list(job["command"])
+            command[3] = str(work / "source")
+            command[command.index("--config") + 1] = str(work / ".job-deploy.json")
+            with self.job_guard:
+                job.update(command=command, source_snapshot=snapshot, context_path=str(work / "source"))
+                self.persist(job)
+            env = dict(os.environ, PYTHONUNBUFFERED="1", PYTHONIOENCODING="utf-8", MCP_DEPLOY_JOB_ID=job["id"],
+                       TEMP=str(temporary), TMP=str(temporary), TMPDIR=str(temporary))
+            result = {}
+            def received(record):
+                if record.get("name") == job["name"] and record.get("namespace") == job["namespace"]:
+                    result.update({k: v for k, v in record.items() if k in {"status", "name", "namespace", "image", "revision", "mcp_url", "ready_replicas", "backend"}})
+            def pid(value):
+                with self.job_guard:
+                    job["pid"] = value
+                    self.persist(job)
+            code = run_pipeline(command, cwd=ROOT, env=env, log=log, on_stage=lambda stage, message: self.transition(job, stage, message),
+                                on_result=received, on_pid=pid)
+            if code == 0 and not result:
+                raise RuntimeError("CLI exited zero without a verified deployment result; inspect runtime status")
+            with self.job_guard:
+                job.update(status="succeeded" if code == 0 else "failed", exit_code=code,
+                           error=None if code == 0 else f"deployctl.py exited {code}. See the timestamped job log and recovery diagnostics.")
+                if code == 0 and result:
+                    job["deployment_result"] = result
+            self.transition(job, "SUCCEEDED" if code == 0 else "FAILED", "CLI completed successfully" if code == 0 else job["error"])
+            log.append(job["stage"] + ": " + job["stage_message"])
+        except Exception as exc:
+            with self.job_guard:
+                job.update(status="failed", error=redact(f"{type(exc).__name__}: {exc}"))
+            self.transition(job, "FAILED", job["error"])
+            log.append("FAILED: " + job["error"])
+        finally:
+            try:
+                if work.exists():
+                    if work.resolve().parent != self.work_dir.resolve() or not re.fullmatch(r"[0-9a-f]{32}", work.name):
+                        raise RuntimeError("Refusing build cleanup outside the job work directory")
+                    shutil.rmtree(work)
+            except OSError as exc:
+                log.append("Build snapshot cleanup failed: " + str(exc))
+            with self.job_guard:
+                job.update(finished_at=now(), log_rotations=log.rotations)
+                self.persist(job)
+                self.job_inputs.pop(job["id"], None)
 
     async def worker(self):
         while True:
-            job = await self.queue.get()
+            job = await self.queue.claim()
+            if job is None:
+                return
             try:
-                if job is None:
-                    return
                 await asyncio.to_thread(self.execute, job)
                 self.cached_at = 0
+            except Exception as exc:
+                with self.job_guard:
+                    job.update(status="failed", error=redact(str(exc)), finished_at=now())
+                    self.transition(job, "FAILED", "Worker error: " + job["error"])
             finally:
-                self.queue.task_done()
+                await self.queue.release(job["id"])
 
     def get_job(self, job_id):
         if not re.fullmatch(r"[0-9a-f]{32}", job_id) or job_id not in self.jobs:
             raise HTTPException(404, "Job not found")
-        return self.jobs[job_id]
+        with self.job_guard:
+            return copy.deepcopy(self.jobs[job_id])
 
     def job_log(self, job_id):
         self.get_job(job_id)
         path = self.jobs_dir / (job_id + ".log")
         if not path.exists():
             return "Waiting for the deployment worker."
-        # Bound a browser response, retaining the full log on disk.
-        with path.open("rb") as source:
-            size = source.seek(0, 2)
-            source.seek(max(0, size - 256_000))
-            return redact(("[Showing last 256 KB; full log retained locally]\n" if size > 256_000 else "") + source.read().decode("utf-8", errors="replace"))
+        log = self.logs.get(job_id) or BoundedLog(path, self.log_bytes, guard=self.job_guard)
+        return "[Retained job-local log tail; up to 256 KB shown; older output may be rotated]\n" + redact(log.tail())
 
     def progress(self, job):
-        if job["status"] not in {"queued", "running"}:
-            return job["status"]
-        phase = "Queued" if job["status"] == "queued" else "Inspecting current workload"
-        for line in self.job_log(job["id"]).splitlines():
-            if "docker build" in line or re.match(r"Step \d+/", line):
-                phase = "Building Docker image"
-            if "docker push" in line:
-                phase = "Publishing to Floci ECR"
-            if "--dry-run=server" in line:
-                phase = "Validating Kubernetes resources"
-            if " apply " in line or "rollout status" in line or " wait revision" in line:
-                phase = "Deploying / waiting for readiness"
-            if "restoring previous" in line or "ROLLBACK" in line:
-                phase = "Recovering previous deployment"
-        return phase
+        return job.get("stage") or ("FAILED" if job["status"] == "interrupted" else job["status"].upper())
 
 
 def create_app():
@@ -481,11 +548,11 @@ def create_app():
     async def lifespan(app):
         platform = Platform()
         app.state.platform = platform
-        worker = asyncio.create_task(platform.worker())
+        workers = [asyncio.create_task(platform.worker()) for _ in range(platform.max_jobs)]
         yield
         platform.accepting = False
-        await platform.queue.put(None)
-        await worker  # Let the CLI finish its rollout/recovery; never cancel it mid-update.
+        await platform.queue.close()
+        await asyncio.gather(*workers)  # Drain accepted jobs, including queued resource conflicts.
 
     app = FastAPI(title="MCP deployment platform", lifespan=lifespan, docs_url=None, redoc_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "[::1]"])
@@ -651,13 +718,15 @@ def create_app():
     async def deploy_api(request: Request, payload: DeploymentRequest):
         csrf(request, request.headers.get("x-csrf-token"))
         job = await request.app.state.platform.enqueue(payload)
-        return {"job_id": job["id"], "status": job["status"], "url": "/jobs/" + job["id"]}
+        return {"job_id": job["id"], "status": job["status"], "stage": job["stage"], "url": "/jobs/" + job["id"]}
 
     @app.get("/api/jobs/{job_id}")
     async def job_api(request: Request, job_id: str):
         platform = request.app.state.platform
         job = platform.get_job(job_id)
-        return {**job, "phase": await asyncio.to_thread(platform.progress, job), "log": await asyncio.to_thread(platform.job_log, job_id)}
+        stage = platform.progress(job)
+        return {**job, "stage": stage, "phase": stage, **platform.queue.waiting(job_id), "max_concurrent_jobs": platform.max_jobs,
+                "log": await asyncio.to_thread(platform.job_log, job_id)}
 
     @app.get("/api/deployments/{namespace}/{name}/logs")
     async def app_logs(request: Request, namespace: str, name: str):

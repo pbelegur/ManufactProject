@@ -1,0 +1,14 @@
+{
+  "v1_image": "localhost:4566/000000000000/us-east-1/stateless-demo:phase2-v2-109b4a37e6d6196e1124c12d29827b0c42eb1dbad18aab653d9fb30a407093ff",
+  "v2_image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+  "before_generation": 10,
+  "after_generation": 11,
+  "strategy": {
+    "rollingUpdate": {
+      "maxSurge": 1,
+      "maxUnavailable": 0
+    },
+    "type": "RollingUpdate"
+  },
+  "note": "Existing published versions reused; this Quick check does not measure uninterrupted traffic"
+}

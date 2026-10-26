@@ -1,0 +1,262 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/manufact-text-tools --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/manufact-text-tools --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/manufact-text-tools --ignore-not-found -o json
+$ docker build --iidfile C:\Users\Devi\AppData\Local\Temp\mcp-build-ytnwkwy9\image-id --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\imports\9a1c65f1bfd64bc4845917450119cc24\project\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\imports\9a1c65f1bfd64bc4845917450119cc24\project
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+Sending build context to Docker daemon  9.216kB
+
+Step 1/12 : FROM python:3.12-slim
+3.12-slim: Pulling from library/python
+Digest: sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704
+Status: Downloaded newer image for python:3.12-slim
+ ---> a0f57064cbdc
+Step 2/12 : WORKDIR /app
+ ---> Running in ccf72bcc7f9a
+ ---> Removed intermediate container ccf72bcc7f9a
+ ---> be8c4780ddcb
+Step 3/12 : ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HOST=0.0.0.0 PORT=8000
+ ---> Running in a8e6eac87340
+ ---> Removed intermediate container a8e6eac87340
+ ---> 3f9cd5c58450
+Step 4/12 : COPY requirements.txt .
+ ---> 26c824555238
+Step 5/12 : RUN pip install --no-cache-dir -r requirements.txt
+ ---> Running in 2dd29217ce50
+Collecting mcp==2.3.0 (from -r requirements.txt (line 1))
+  Downloading mcp-2.3.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting anyio>=4.9 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting httpx2>=2.10.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+Collecting jsonschema>=4.20.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting mcp-types==2.3.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading mcp_types-2.3.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting opentelemetry-api>=1.28.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting pydantic>=2.12.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading pyjwt-2.15.1-py3-none-any.whl.metadata (3.5 kB)
+Collecting python-multipart>=0.0.9 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Collecting sse-starlette>=3.0.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading sse_starlette-3.6.0-py3-none-any.whl.metadata (15 kB)
+Collecting starlette>=0.27 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting typing-extensions>=4.13.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.1 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting uvicorn>=0.31.1 (from mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting idna>=2.8 (from anyio>=4.9->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting httpcore2==2.16.0 (from httpx2>=2.10.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+Collecting truststore>=0.10 (from httpx2>=2.10.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2>=2.10.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.12.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.1 (from pydantic>=2.12.0->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+Collecting click>=7.0 (from uvicorn>=0.31.1->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Downloading mcp-2.3.0-py3-none-any.whl (368 kB)
+Downloading mcp_types-2.3.0-py3-none-any.whl (69 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading httpx2-2.16.0-py3-none-any.whl (97 kB)
+Downloading httpcore2-2.16.0-py3-none-any.whl (85 kB)
+Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 553.6 kB/s eta 0:00:00
+Downloading pyjwt-2.15.1-py3-none-any.whl (33 kB)
+Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Downloading sse_starlette-3.6.0-py3-none-any.whl (17 kB)
+Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 1.2 MB/s eta 0:00:00
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Installing collected packages: typing-extensions, truststore, rpds-py, python-multipart, pyjwt, pycparser, idna, h11, click, attrs, annotated-types, uvicorn, typing-inspection, referencing, pydantic-core, opentelemetry-api, httpcore2, cffi, anyio, starlette, pydantic, jsonschema-specifications, httpx2, cryptography, sse-starlette, mcp-types, jsonschema, mcp
+Successfully installed annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 cffi-2.1.1 click-8.5.0 cryptography-50.0.2 h11-0.16.0 httpcore2-2.16.0 httpx2-2.16.0 idna-3.20 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 mcp-2.3.0 mcp-types-2.3.0 opentelemetry-api-1.45.1 pycparser-3.12 pydantic-2.14.1 pydantic-core-2.50.1 pyjwt-2.15.1 python-multipart-0.0.32 referencing-0.37.0 rpds-py-2026.9.1 sse-starlette-3.6.0 starlette-1.10.0 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[0m[91m
+[notice] A new release of pip is available: 25.0.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+[0m ---> Removed intermediate container 2dd29217ce50
+ ---> e3a5f94db527
+Step 6/12 : COPY server.py .
+ ---> a400efe72fd8
+Step 7/12 : RUN useradd --uid 10001 --create-home mcpuser
+ ---> Running in ea1666e3303d
+ ---> Removed intermediate container ea1666e3303d
+ ---> c6bf853b0634
+Step 8/12 : USER mcpuser
+ ---> Running in 269b17d3126c
+ ---> Removed intermediate container 269b17d3126c
+ ---> 5ad34228d148
+Step 9/12 : EXPOSE 8000
+ ---> Running in 1c1bf0d9c2b4
+ ---> Removed intermediate container 1c1bf0d9c2b4
+ ---> 478e291ef418
+Step 10/12 : STOPSIGNAL SIGTERM
+ ---> Running in 933b374d829b
+ ---> Removed intermediate container 933b374d829b
+ ---> b2441310b1bd
+Step 11/12 : HEALTHCHECK --interval=3s --timeout=2s --start-period=10s CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=1).close()"
+ ---> Running in 4ee3e9b318bf
+ ---> Removed intermediate container 4ee3e9b318bf
+ ---> 877da9ca936c
+Step 12/12 : CMD ["python", "server.py"]
+ ---> Running in b2e349778158
+ ---> Removed intermediate container b2e349778158
+ ---> ce7382a9b2b5
+Successfully built ce7382a9b2b5
+$ docker tag sha256:ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7 localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7
+Created application ECR repository: manufact-text-tools
+$ docker push localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7
+The push refers to repository [localhost:4566/000000000000/us-east-1/manufact-text-tools]
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+f2be67225471: Mounted from 000000000000/us-east-1/stateless-demo
+5c397e4307db: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Mounted from 000000000000/us-east-1/stateless-demo
+1fd81a683429: Waiting
+8206314291ef: Waiting
+3a8504d96342: Waiting
+1fd81a683429: Waiting
+8206314291ef: Waiting
+d397f426f245: Waiting
+5c397e4307db: Mounted from 000000000000/us-east-1/stateless-demo
+be6443c06d3c: Mounted from 000000000000/us-east-1/stateless-demo
+3a8504d96342: Waiting
+1fd81a683429: Waiting
+8206314291ef: Waiting
+d397f426f245: Waiting
+3a8504d96342: Waiting
+1fd81a683429: Waiting
+8206314291ef: Waiting
+d397f426f245: Waiting
+37654e256109: Waiting
+d397f426f245: Waiting
+37654e256109: Waiting
+3a8504d96342: Waiting
+1fd81a683429: Waiting
+8206314291ef: Waiting
+37654e256109: Waiting
+3a8504d96342: Waiting
+d397f426f245: Waiting
+37654e256109: Waiting
+3a8504d96342: Waiting
+37654e256109: Waiting
+8206314291ef: Pushed
+37654e256109: Waiting
+1fd81a683429: Pushed
+3a8504d96342: Pushed
+37654e256109: Pushed
+d397f426f245: Pushed
+phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7: digest: sha256:ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7 size: 2270
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+namespace/mcp-demo unchanged
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+deployment.apps/manufact-text-tools created (server dry run)
+service/manufact-text-tools created (server dry run)
+poddisruptionbudget.policy/manufact-text-tools created (server dry run)
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+deployment.apps/manufact-text-tools created
+service/manufact-text-tools created
+poddisruptionbudget.policy/manufact-text-tools created
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/manufact-text-tools --timeout=180s
+Waiting for deployment "manufact-text-tools" rollout to finish: 0 out of 2 new replicas have been updated...
+Waiting for deployment "manufact-text-tools" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "manufact-text-tools" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "manufact-text-tools" rollout to finish: 0 of 2 updated replicas are available...
+deployment "manufact-text-tools" successfully rolled out
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/manufact-text-tools --ignore-not-found -o json
+{"status": "healthy", "name": "manufact-text-tools", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7", "ready_replicas": 2, "mcp_url": "http://manufact-text-tools.mcp-demo.svc.cluster.local:8000/mcp"}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=manufact-text-tools
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/manufact-text-tools   2/2     2            2           77s
+
+NAME                          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/manufact-text-tools   ClusterIP   10.100.157.200   <none>        8000/TCP   77s
+
+NAME                                             MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+poddisruptionbudget.policy/manufact-text-tools   1               N/A               1                     77s

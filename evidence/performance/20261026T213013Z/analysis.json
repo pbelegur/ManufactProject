@@ -1,0 +1,2011 @@
+{
+  "warm_source": "evidence\\performance\\20261026T213013Z",
+  "rollout_source": "evidence\\performance\\20261026T212500Z",
+  "warm_summary": [
+    {
+      "route": "service-stateless",
+      "tool": "echo",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 12.856695997470524,
+      "p95_ms": 34.038839003187604,
+      "p99_ms": 45.51788901153486,
+      "max_ms": 59.97236300026998
+    },
+    {
+      "route": "service-stateless",
+      "tool": "add_numbers",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 13.496923493221402,
+      "p95_ms": 38.48853500676341,
+      "p99_ms": 94.19198099931236,
+      "max_ms": 147.89362499141134
+    },
+    {
+      "route": "knative-stateless",
+      "tool": "echo",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 18.12046649865806,
+      "p95_ms": 41.8483079993166,
+      "p99_ms": 84.55399201193359,
+      "max_ms": 156.03194299910683
+    },
+    {
+      "route": "knative-stateless",
+      "tool": "add_numbers",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 20.26021900383057,
+      "p95_ms": 56.1537580069853,
+      "p99_ms": 95.74979500030167,
+      "max_ms": 131.25714600028004
+    },
+    {
+      "route": "private-stateless",
+      "tool": "echo",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 15.246248003677465,
+      "p95_ms": 40.331639000214636,
+      "p99_ms": 68.30354199337307,
+      "max_ms": 70.76994799717795
+    },
+    {
+      "route": "private-stateless",
+      "tool": "add_numbers",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 16.105969501950312,
+      "p95_ms": 43.830673006596044,
+      "p99_ms": 103.92580399638973,
+      "max_ms": 124.04671699914616
+    },
+    {
+      "route": "service-stateful",
+      "tool": "increment_counter",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 20.70480949623743,
+      "p95_ms": 49.57892499805894,
+      "p99_ms": 88.38117499544751,
+      "max_ms": 88.52996399218682
+    },
+    {
+      "route": "service-stateful",
+      "tool": "get_counter",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 19.847629002470057,
+      "p95_ms": 47.77668901078869,
+      "p99_ms": 87.44439399742987,
+      "max_ms": 87.80788200965617
+    },
+    {
+      "route": "knative-stateful",
+      "tool": "increment_counter",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 25.983318002545275,
+      "p95_ms": 77.12130699655972,
+      "p99_ms": 99.52837700257078,
+      "max_ms": 113.77832001016941
+    },
+    {
+      "route": "knative-stateful",
+      "tool": "get_counter",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 25.176253002427984,
+      "p95_ms": 77.54181299242191,
+      "p99_ms": 105.78518299735151,
+      "max_ms": 106.91086499718949
+    },
+    {
+      "route": "private-stateful",
+      "tool": "increment_counter",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 22.381674003554508,
+      "p95_ms": 77.11612599086948,
+      "p99_ms": 290.3408869897248,
+      "max_ms": 391.3098640041426
+    },
+    {
+      "route": "private-stateful",
+      "tool": "get_counter",
+      "attempts": 100,
+      "failures": 0,
+      "n": 100,
+      "p50_ms": 22.617762493609916,
+      "p95_ms": 85.18632699269801,
+      "p99_ms": 180.10693200631067,
+      "max_ms": 188.66853299550712
+    }
+  ],
+  "warm_protocols": [
+    "2026-07-28"
+  ],
+  "warm_connections": [
+    {
+      "route": "knative-stateful",
+      "protocols": [
+        "2026-07-28"
+      ],
+      "factory_ms": {
+        "n": 12,
+        "p50_ms": 36.781263996090274,
+        "p95_ms": 95.34476400585845,
+        "p99_ms": 95.34476400585845,
+        "max_ms": 95.34476400585845
+      },
+      "mcp_initialize_ms": {
+        "n": 12,
+        "p50_ms": 29.35046600032365,
+        "p95_ms": 133.04805599909741,
+        "p99_ms": 133.04805599909741,
+        "max_ms": 133.04805599909741
+      },
+      "mcp_teardown_ms": {
+        "n": 12,
+        "p50_ms": 1.7854300022008829,
+        "p95_ms": 6.004794006003067,
+        "p99_ms": 6.004794006003067,
+        "max_ms": 6.004794006003067
+      },
+      "connection_total_ms": {
+        "n": 12,
+        "p50_ms": 108.57813450274989,
+        "p95_ms": 293.7265640066471,
+        "p99_ms": 293.7265640066471,
+        "max_ms": 293.7265640066471
+      },
+      "first_call_ms": {
+        "n": 12,
+        "p50_ms": 43.92468949663453,
+        "p95_ms": 102.78017399832606,
+        "p99_ms": 102.78017399832606,
+        "max_ms": 102.78017399832606
+      },
+      "whole_connection_ms": {
+        "n": 12,
+        "p50_ms": 110.7868065009825,
+        "p95_ms": 296.77223799808417,
+        "p99_ms": 296.77223799808417,
+        "max_ms": 296.77223799808417
+      }
+    },
+    {
+      "route": "knative-stateless",
+      "protocols": [
+        "2026-07-28"
+      ],
+      "factory_ms": {
+        "n": 12,
+        "p50_ms": 39.85200099850772,
+        "p95_ms": 219.26658500160556,
+        "p99_ms": 219.26658500160556,
+        "max_ms": 219.26658500160556
+      },
+      "mcp_initialize_ms": {
+        "n": 12,
+        "p50_ms": 30.96366750105517,
+        "p95_ms": 106.96711100172251,
+        "p99_ms": 106.96711100172251,
+        "max_ms": 106.96711100172251
+      },
+      "mcp_teardown_ms": {
+        "n": 12,
+        "p50_ms": 1.690394499746617,
+        "p95_ms": 35.44031300407369,
+        "p99_ms": 35.44031300407369,
+        "max_ms": 35.44031300407369
+      },
+      "connection_total_ms": {
+        "n": 12,
+        "p50_ms": 123.13319549866719,
+        "p95_ms": 548.6309199914103,
+        "p99_ms": 548.6309199914103,
+        "max_ms": 548.6309199914103
+      },
+      "first_call_ms": {
+        "n": 12,
+        "p50_ms": 43.90917949785944,
+        "p95_ms": 304.75824599852785,
+        "p99_ms": 304.75824599852785,
+        "max_ms": 304.75824599852785
+      },
+      "whole_connection_ms": {
+        "n": 12,
+        "p50_ms": 126.334811495326,
+        "p95_ms": 555.826732001151,
+        "p99_ms": 555.826732001151,
+        "max_ms": 555.826732001151
+      }
+    },
+    {
+      "route": "private-stateful",
+      "protocols": [
+        "2026-07-28"
+      ],
+      "factory_ms": {
+        "n": 12,
+        "p50_ms": 32.42840849998174,
+        "p95_ms": 85.06431100249756,
+        "p99_ms": 85.06431100249756,
+        "max_ms": 85.06431100249756
+      },
+      "mcp_initialize_ms": {
+        "n": 12,
+        "p50_ms": 19.773533997067716,
+        "p95_ms": 111.52985099761281,
+        "p99_ms": 111.52985099761281,
+        "max_ms": 111.52985099761281
+      },
+      "mcp_teardown_ms": {
+        "n": 12,
+        "p50_ms": 1.5445440003531985,
+        "p95_ms": 2.3786230012774467,
+        "p99_ms": 2.3786230012774467,
+        "max_ms": 2.3786230012774467
+      },
+      "connection_total_ms": {
+        "n": 12,
+        "p50_ms": 85.6322010004078,
+        "p95_ms": 506.1102189938538,
+        "p99_ms": 506.1102189938538,
+        "max_ms": 506.1102189938538
+      },
+      "first_call_ms": {
+        "n": 12,
+        "p50_ms": 33.81243650073884,
+        "p95_ms": 328.94747899263166,
+        "p99_ms": 328.94747899263166,
+        "max_ms": 328.94747899263166
+      },
+      "whole_connection_ms": {
+        "n": 12,
+        "p50_ms": 87.88274849939626,
+        "p95_ms": 508.50971198815387,
+        "p99_ms": 508.50971198815387,
+        "max_ms": 508.50971198815387
+      }
+    },
+    {
+      "route": "private-stateless",
+      "protocols": [
+        "2026-07-28"
+      ],
+      "factory_ms": {
+        "n": 12,
+        "p50_ms": 45.147409990022425,
+        "p95_ms": 278.6199029942509,
+        "p99_ms": 278.6199029942509,
+        "max_ms": 278.6199029942509
+      },
+      "mcp_initialize_ms": {
+        "n": 12,
+        "p50_ms": 25.227498503227253,
+        "p95_ms": 730.1976460003061,
+        "p99_ms": 730.1976460003061,
+        "max_ms": 730.1976460003061
+      },
+      "mcp_teardown_ms": {
+        "n": 12,
+        "p50_ms": 1.6016515000956133,
+        "p95_ms": 46.65349199785851,
+        "p99_ms": 46.65349199785851,
+        "max_ms": 46.65349199785851
+      },
+      "connection_total_ms": {
+        "n": 12,
+        "p50_ms": 113.00263249722775,
+        "p95_ms": 1962.9925839981297,
+        "p99_ms": 1962.9925839981297,
+        "max_ms": 1962.9925839981297
+      },
+      "first_call_ms": {
+        "n": 12,
+        "p50_ms": 39.46546999941347,
+        "p95_ms": 903.9562969992403,
+        "p99_ms": 903.9562969992403,
+        "max_ms": 903.9562969992403
+      },
+      "whole_connection_ms": {
+        "n": 12,
+        "p50_ms": 116.60038550326135,
+        "p95_ms": 1976.015442996868,
+        "p99_ms": 1976.015442996868,
+        "max_ms": 1976.015442996868
+      }
+    },
+    {
+      "route": "service-stateful",
+      "protocols": [
+        "2026-07-28"
+      ],
+      "factory_ms": {
+        "n": 12,
+        "p50_ms": 44.964660999539774,
+        "p95_ms": 592.1216809947509,
+        "p99_ms": 592.1216809947509,
+        "max_ms": 592.1216809947509
+      },
+      "mcp_initialize_ms": {
+        "n": 12,
+        "p50_ms": 24.549543006287422,
+        "p95_ms": 505.348752005375,
+        "p99_ms": 505.348752005375,
+        "max_ms": 505.348752005375
+      },
+      "mcp_teardown_ms": {
+        "n": 12,
+        "p50_ms": 1.7106680097640492,
+        "p95_ms": 17.36699399771169,
+        "p99_ms": 17.36699399771169,
+        "max_ms": 17.36699399771169
+      },
+      "connection_total_ms": {
+        "n": 12,
+        "p50_ms": 116.27784300071653,
+        "p95_ms": 1264.1996210004436,
+        "p99_ms": 1264.1996210004436,
+        "max_ms": 1264.1996210004436
+      },
+      "first_call_ms": {
+        "n": 12,
+        "p50_ms": 40.750689498963766,
+        "p95_ms": 150.53552799508907,
+        "p99_ms": 150.53552799508907,
+        "max_ms": 150.53552799508907
+      },
+      "whole_connection_ms": {
+        "n": 12,
+        "p50_ms": 118.63785549940076,
+        "p95_ms": 1266.9278310058871,
+        "p99_ms": 1266.9278310058871,
+        "max_ms": 1266.9278310058871
+      }
+    },
+    {
+      "route": "service-stateless",
+      "protocols": [
+        "2026-07-28"
+      ],
+      "factory_ms": {
+        "n": 12,
+        "p50_ms": 37.62945300695719,
+        "p95_ms": 110.11497899016831,
+        "p99_ms": 110.11497899016831,
+        "max_ms": 110.11497899016831
+      },
+      "mcp_initialize_ms": {
+        "n": 12,
+        "p50_ms": 26.184321497566998,
+        "p95_ms": 257.36302000586875,
+        "p99_ms": 257.36302000586875,
+        "max_ms": 257.36302000586875
+      },
+      "mcp_teardown_ms": {
+        "n": 12,
+        "p50_ms": 1.6456829980597831,
+        "p95_ms": 3.5418199986452237,
+        "p99_ms": 3.5418199986452237,
+        "max_ms": 3.5418199986452237
+      },
+      "connection_total_ms": {
+        "n": 12,
+        "p50_ms": 103.05129650805611,
+        "p95_ms": 771.3229329965543,
+        "p99_ms": 771.3229329965543,
+        "max_ms": 771.3229329965543
+      },
+      "first_call_ms": {
+        "n": 12,
+        "p50_ms": 32.04572949471185,
+        "p95_ms": 601.0035020008218,
+        "p99_ms": 601.0035020008218,
+        "max_ms": 601.0035020008218
+      },
+      "whole_connection_ms": {
+        "n": 12,
+        "p50_ms": 105.3689359978307,
+        "p95_ms": 788.0569310073042,
+        "p99_ms": 788.0569310073042,
+        "max_ms": 788.0569310073042
+      }
+    }
+  ],
+  "warm_http_breakdown": [
+    {
+      "route": "knative-stateful",
+      "tool": "get_counter",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 19.861479006067384,
+        "p95_ms": 61.11738599429373,
+        "p99_ms": 88.16077098890673,
+        "max_ms": 90.14526799728628
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 20.778101003088523,
+        "p95_ms": 62.05855499138124,
+        "p99_ms": 89.3880779913161,
+        "max_ms": 90.8963559922995
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.188188002444804,
+        "p95_ms": 14.888827005052008,
+        "p99_ms": 28.191058008815162,
+        "max_ms": 35.00269701180514
+      }
+    },
+    {
+      "route": "knative-stateful",
+      "tool": "increment_counter",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 20.789965499716345,
+        "p95_ms": 59.23724798776675,
+        "p99_ms": 72.96986799337901,
+        "max_ms": 97.21071999229025
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 21.525336494960357,
+        "p95_ms": 60.638848997768946,
+        "p99_ms": 89.07629999157507,
+        "max_ms": 98.08325099584181
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.103450504771899,
+        "p95_ms": 12.88412298890762,
+        "p99_ms": 34.841321990825236,
+        "max_ms": 38.88952800480183
+      }
+    },
+    {
+      "route": "knative-stateless",
+      "tool": "add_numbers",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 14.414595003472641,
+        "p95_ms": 40.57215800276026,
+        "p99_ms": 62.77751400193665,
+        "max_ms": 80.4589199979091
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 15.546359500149265,
+        "p95_ms": 42.16235601052176,
+        "p99_ms": 63.86362700141035,
+        "max_ms": 81.6416589950677
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 3.9728660121909343,
+        "p95_ms": 15.043805004097521,
+        "p99_ms": 30.157329005305655,
+        "max_ms": 67.3935189988697
+      }
+    },
+    {
+      "route": "knative-stateless",
+      "tool": "echo",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 12.880251495516859,
+        "p95_ms": 31.934689002810046,
+        "p99_ms": 63.96631299867295,
+        "max_ms": 86.29078899684828
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 14.1519934986718,
+        "p95_ms": 36.28141700755805,
+        "p99_ms": 64.8222279996844,
+        "max_ms": 90.86249698884785
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.01709700236097,
+        "p95_ms": 10.933429017313756,
+        "p99_ms": 23.14252100768499,
+        "max_ms": 65.16944601025898
+      }
+    },
+    {
+      "route": "private-stateful",
+      "tool": "get_counter",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 16.609885002253577,
+        "p95_ms": 68.83677199948579,
+        "p99_ms": 169.36950100352988,
+        "max_ms": 170.53761798888445
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 17.634855495998636,
+        "p95_ms": 73.8689779973356,
+        "p99_ms": 170.69433300639503,
+        "max_ms": 175.82387498987373
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.173639499640558,
+        "p95_ms": 17.974199989112094,
+        "p99_ms": 25.19851000397466,
+        "max_ms": 29.978205013321713
+      }
+    },
+    {
+      "route": "private-stateful",
+      "tool": "increment_counter",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 16.167973502888344,
+        "p95_ms": 56.59963299694937,
+        "p99_ms": 237.5508700060891,
+        "max_ms": 375.10370700329076
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 17.299676503171213,
+        "p95_ms": 63.382334003108554,
+        "p99_ms": 238.28365400549956,
+        "max_ms": 376.101957008359
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.073315496498253,
+        "p95_ms": 14.57226999627892,
+        "p99_ms": 52.057232984225266,
+        "max_ms": 63.425934000406414
+      }
+    },
+    {
+      "route": "private-stateless",
+      "tool": "add_numbers",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 10.53081700229086,
+        "p95_ms": 35.672830999828875,
+        "p99_ms": 84.47713700297754,
+        "max_ms": 94.4919039902743
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 11.417858499044087,
+        "p95_ms": 36.546050003380515,
+        "p99_ms": 91.2959650013363,
+        "max_ms": 95.26435899897479
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.064798507897649,
+        "p95_ms": 10.71144400339108,
+        "p99_ms": 20.31911301310174,
+        "max_ms": 28.78235800017137
+      }
+    },
+    {
+      "route": "private-stateless",
+      "tool": "echo",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 9.821435502090026,
+        "p95_ms": 29.51213800406549,
+        "p99_ms": 38.244074006797746,
+        "max_ms": 53.94632898969576
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 10.81089999206597,
+        "p95_ms": 31.915232000756077,
+        "p99_ms": 45.37265900580678,
+        "max_ms": 55.570659998920746
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.1075754998018965,
+        "p95_ms": 11.770908007747494,
+        "p99_ms": 18.093629987561144,
+        "max_ms": 31.386880000354722
+      }
+    },
+    {
+      "route": "service-stateful",
+      "tool": "get_counter",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 14.298947498900816,
+        "p95_ms": 37.49232699919958,
+        "p99_ms": 72.78872199822217,
+        "max_ms": 81.43669299897738
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 15.24035449983785,
+        "p95_ms": 38.706374005414546,
+        "p99_ms": 82.70430500851944,
+        "max_ms": 82.81326798896771
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.014602993265726,
+        "p95_ms": 13.28190098865889,
+        "p99_ms": 17.502181988675147,
+        "max_ms": 21.71566800097935
+      }
+    },
+    {
+      "route": "service-stateful",
+      "tool": "increment_counter",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 14.605254007619806,
+        "p95_ms": 34.47716300433967,
+        "p99_ms": 64.4185099954484,
+        "max_ms": 75.98442300513852
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 15.822715002286714,
+        "p95_ms": 35.97225599514786,
+        "p99_ms": 70.10342000285164,
+        "max_ms": 77.24063699424732
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.243180505000055,
+        "p95_ms": 12.172682996606454,
+        "p99_ms": 18.277754992595874,
+        "max_ms": 38.614247998339124
+      }
+    },
+    {
+      "route": "service-stateless",
+      "tool": "add_numbers",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 8.015599996724632,
+        "p95_ms": 29.527992999646813,
+        "p99_ms": 57.81797401141375,
+        "max_ms": 120.14557799557224
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 9.535257995594293,
+        "p95_ms": 30.63737000047695,
+        "p99_ms": 59.42247599887196,
+        "max_ms": 121.4146959973732
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 3.9726655013510026,
+        "p95_ms": 11.877454991918057,
+        "p99_ms": 29.171921996749006,
+        "max_ms": 34.769505000440404
+      }
+    },
+    {
+      "route": "service-stateless",
+      "tool": "echo",
+      "request_to_headers": {
+        "n": 100,
+        "p50_ms": 7.34806050604675,
+        "p95_ms": 22.34917099121958,
+        "p99_ms": 27.443782993941568,
+        "max_ms": 38.90223300550133
+      },
+      "request_to_body_complete": {
+        "n": 100,
+        "p50_ms": 8.239349510404281,
+        "p95_ms": 26.081763004185632,
+        "p99_ms": 35.20670600119047,
+        "max_ms": 39.689242010354064
+      },
+      "paired_sdk_outside_http": {
+        "n": 100,
+        "p50_ms": 4.2852730039157905,
+        "p95_ms": 16.255669994279742,
+        "p99_ms": 18.627262994414195,
+        "max_ms": 24.76565699907951
+      }
+    }
+  ],
+  "traffic_summary": [
+    {
+      "route": "knative-stateless",
+      "attempts": 127,
+      "successes": 127,
+      "failures": 0,
+      "n": 127,
+      "p50_ms": 72.93404599477071,
+      "p95_ms": 480.24738700769376,
+      "p99_ms": 729.115146008553,
+      "max_ms": 751.7532060010126
+    },
+    {
+      "route": "knative-stateful",
+      "attempts": 125,
+      "successes": 125,
+      "failures": 0,
+      "n": 125,
+      "p50_ms": 96.95756399014499,
+      "p95_ms": 695.6347269879188,
+      "p99_ms": 985.7171149924397,
+      "max_ms": 1063.8285960012581
+    }
+  ],
+  "rollout": {
+    "start": "2026-10-26T21:28:09.631627+00:00",
+    "end": "2026-10-26T21:28:49.902472+00:00",
+    "exit_code": 0,
+    "argv": [
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+      "deployctl.py",
+      "deploy",
+      "servers/stateless",
+      "--config",
+      "mcp.knative.local.json",
+      "--namespace",
+      "mcp-auto",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--image",
+      "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "--version",
+      "performance-20261026T212809Z",
+      "--timeout",
+      "100",
+      "--rollback-timeout",
+      "100"
+    ]
+  },
+  "rollout_seconds": 40.27084493637085,
+  "traffic_window": {
+    "first_sent_utc": "2026-10-26T21:28:00.701968+00:00",
+    "last_sent_utc": "2026-10-26T21:29:06.211823+00:00",
+    "attempts": 252,
+    "failures": 0
+  },
+  "traffic_during_cli": [
+    {
+      "route": "knative-stateless",
+      "attempts": 78,
+      "successes": 78,
+      "failures": 0
+    },
+    {
+      "route": "knative-stateful",
+      "attempts": 76,
+      "successes": 76,
+      "failures": 0
+    }
+  ],
+  "traffic_http_statuses": [
+    {
+      "method": "server/discover",
+      "status": 200,
+      "count": 2
+    },
+    {
+      "method": "initialize",
+      "status": 200,
+      "count": 2
+    },
+    {
+      "method": "notifications/initialized",
+      "status": 202,
+      "count": 2
+    },
+    {
+      "method": "tools/call",
+      "status": 200,
+      "count": 254
+    },
+    {
+      "method": "tools/list",
+      "status": 200,
+      "count": 2
+    }
+  ],
+  "gateway_correlation": {
+    "client_http_requests": 262,
+    "matched_gateway_lines": 262,
+    "matched_5xx_lines": [],
+    "all_5xx_lines": []
+  },
+  "endpoints": [
+    {
+      "event": "ADDED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41332",
+      "managed_field_update_utc": "2026-10-26T21:27:01Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.235"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-w9jdg",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.236"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-dw6k7",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41411",
+      "managed_field_update_utc": "2026-10-26T21:27:15Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.235"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-w9jdg",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.236"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-dw6k7",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41422",
+      "managed_field_update_utc": "2026-10-26T21:27:16Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.235"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-w9jdg",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.236"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-dw6k7",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41471",
+      "managed_field_update_utc": "2026-10-26T21:27:26Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.235"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-w9jdg",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41525",
+      "managed_field_update_utc": "2026-10-26T21:27:38Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41531",
+      "managed_field_update_utc": "2026-10-26T21:27:38Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "41542",
+      "managed_field_update_utc": "2026-10-26T21:27:39Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "ADDED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41744",
+      "managed_field_update_utc": "2026-10-26T21:28:18Z",
+      "endpoints": []
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41793",
+      "managed_field_update_utc": "2026-10-26T21:28:26Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41804",
+      "managed_field_update_utc": "2026-10-26T21:28:28Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41859",
+      "managed_field_update_utc": "2026-10-26T21:28:43Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41874",
+      "managed_field_update_utc": "2026-10-26T21:28:45Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41894",
+      "managed_field_update_utc": "2026-10-26T21:28:46Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": true,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41959",
+      "managed_field_update_utc": "2026-10-26T21:28:51Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "41963",
+      "managed_field_update_utc": "2026-10-26T21:28:51Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.245"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+          "ready": false,
+          "serving": false,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "42030",
+      "managed_field_update_utc": "2026-10-26T21:29:09Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": true,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "42033",
+      "managed_field_update_utc": "2026-10-26T21:29:09Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": true,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": false,
+          "serving": true,
+          "terminating": true
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "42063",
+      "managed_field_update_utc": "2026-10-26T21:29:14Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.244"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.245"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "42070",
+      "managed_field_update_utc": "2026-10-26T21:29:14Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": false,
+          "serving": true,
+          "terminating": true
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00014-private",
+      "resource_version": "42075",
+      "managed_field_update_utc": "2026-10-26T21:29:15Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.239"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        },
+        {
+          "ip": [
+            "10.42.0.240"
+          ],
+          "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+          "ready": false,
+          "serving": false,
+          "terminating": true
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "42097",
+      "managed_field_update_utc": "2026-10-26T21:29:21Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.245"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        }
+      ]
+    },
+    {
+      "event": "MODIFIED",
+      "service": "stateless-demo-00015-private",
+      "resource_version": "42140",
+      "managed_field_update_utc": "2026-10-26T21:29:28Z",
+      "endpoints": [
+        {
+          "ip": [
+            "10.42.0.243"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+          "ready": true,
+          "serving": true,
+          "terminating": false
+        },
+        {
+          "ip": [
+            "10.42.0.245"
+          ],
+          "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+          "ready": false,
+          "serving": true,
+          "terminating": true
+        }
+      ]
+    }
+  ],
+  "pod_transitions": [
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-dw6k7",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:25:19Z",
+      "deleting": "2026-10-26T21:28:54Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:26:58Z",
+      "ip": "10.42.0.236"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-w9jdg",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:25:19Z",
+      "deleting": "2026-10-26T21:28:56Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:27:01Z",
+      "ip": "10.42.0.235"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": null,
+      "ready_transition": null,
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": null,
+      "ready_transition": null,
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:27:12Z",
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:27:12Z",
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:27:12Z",
+      "ip": "10.42.0.239"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:27:12Z",
+      "ip": "10.42.0.240"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-dw6k7",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:25:19Z",
+      "deleting": "2026-10-26T21:27:27Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:26:58Z",
+      "ip": "10.42.0.236"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:27:38Z",
+      "ip": "10.42.0.240"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": null,
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:27:39Z",
+      "ip": "10.42.0.239"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-w9jdg",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:25:19Z",
+      "deleting": "2026-10-26T21:27:40Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:27:01Z",
+      "ip": "10.42.0.235"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": null,
+      "ready_transition": null,
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": null,
+      "ready_transition": null,
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:18Z",
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:18Z",
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:18Z",
+      "ip": "10.42.0.244"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:18Z",
+      "ip": "10.42.0.243"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-b8p4b",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:28:43Z",
+      "ip": "10.42.0.243"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": null,
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:28:45Z",
+      "ip": "10.42.0.244"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": "2026-10-26T21:30:46Z",
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:28:45Z",
+      "ip": "10.42.0.244"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:48Z",
+      "deleting": null,
+      "ready": null,
+      "ready_transition": null,
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:48Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:48Z",
+      "ip": null
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": "2026-10-26T21:30:46Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:51Z",
+      "ip": "10.42.0.244"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:48Z",
+      "deleting": null,
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:48Z",
+      "ip": "10.42.0.245"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": "2026-10-26T21:31:09Z",
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:27:39Z",
+      "ip": "10.42.0.239"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": "2026-10-26T21:31:09Z",
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:27:38Z",
+      "ip": "10.42.0.240"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:48Z",
+      "deleting": null,
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:29:13Z",
+      "ip": "10.42.0.245"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-h6hlc",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": "2026-10-26T21:31:09Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:29:14Z",
+      "ip": "10.42.0.239"
+    },
+    {
+      "pod": "stateless-demo-00014-deployment-76944d6664-7xdfb",
+      "revision": "stateless-demo-00014",
+      "created": "2026-10-26T21:27:12Z",
+      "deleting": "2026-10-26T21:31:09Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:29:14Z",
+      "ip": "10.42.0.240"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-dxjrh",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:18Z",
+      "deleting": "2026-10-26T21:29:21Z",
+      "ready": "False",
+      "ready_transition": "2026-10-26T21:28:51Z",
+      "ip": "10.42.0.244"
+    },
+    {
+      "pod": "stateless-demo-00015-deployment-66768c9857-8fdtg",
+      "revision": "stateless-demo-00015",
+      "created": "2026-10-26T21:28:48Z",
+      "deleting": "2026-10-26T21:31:28Z",
+      "ready": "True",
+      "ready_transition": "2026-10-26T21:29:13Z",
+      "ip": "10.42.0.245"
+    }
+  ],
+  "preservation": [
+    {
+      "deployment": "stateless-demo",
+      "same_uid": true,
+      "same_image": true,
+      "same_pod_uids": true,
+      "ready": 2,
+      "desired": 2,
+      "ready_endpoints": 2
+    },
+    {
+      "deployment": "stateful-demo",
+      "same_uid": true,
+      "same_image": true,
+      "same_pod_uids": true,
+      "ready": 2,
+      "desired": 2,
+      "ready_endpoints": 2
+    },
+    {
+      "deployment": "stateful-demo-redis",
+      "same_uid": true,
+      "same_image": true,
+      "same_pod_uids": true,
+      "ready": 1,
+      "desired": 1,
+      "ready_endpoints": 1
+    },
+    {
+      "deployment": "contract-probe",
+      "same_uid": true,
+      "same_image": true,
+      "same_pod_uids": true,
+      "ready": 2,
+      "desired": 2,
+      "ready_endpoints": 2
+    }
+  ],
+  "ui_errors": [],
+  "ui_services": [
+    {
+      "namespace": "mcp-auto",
+      "name": "stateful-demo",
+      "backend": "knative",
+      "mode": "stateful",
+      "version": "sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Ready",
+      "endpoint": "http://stateful-demo.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T20:04:35Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T20:04:37Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T20:04:37Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "stateful",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "stateful-demo-00004"
+        }
+      ],
+      "latest_ready": "stateful-demo-00004",
+      "configured_image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "release": "demo-20261026T194844428045Z-continuity"
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "stateful-demo",
+      "backend": "always-on",
+      "mode": "stateful",
+      "version": "ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo:ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Healthy",
+      "endpoint": "http://stateful-demo.mcp-demo.svc.cluster.local:8000/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T20:17:11Z",
+          "lastUpdateTime": "2026-10-26T20:17:11Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T18:15:08Z",
+          "lastUpdateTime": "2026-10-26T21:07:21Z",
+          "message": "ReplicaSet \"stateful-demo-947d69fdc\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        }
+      ],
+      "project_id": "stateful"
+    },
+    {
+      "namespace": "mcp-auto",
+      "name": "stateless-demo",
+      "backend": "knative",
+      "mode": "stateless",
+      "version": "sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Ready",
+      "endpoint": "http://stateless-demo.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T21:28:46Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T21:28:48Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T21:28:48Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "stateless",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "stateless-demo-00015"
+        }
+      ],
+      "latest_ready": "stateless-demo-00015",
+      "configured_image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "release": "performance-20261026T212809Z"
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "stateless-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Healthy",
+      "endpoint": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T18:13:42Z",
+          "lastUpdateTime": "2026-10-26T18:13:42Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T19:48:24Z",
+          "lastUpdateTime": "2026-10-26T21:09:08Z",
+          "message": "ReplicaSet \"stateless-demo-75f974cf9b\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        }
+      ],
+      "project_id": "stateless"
+    }
+  ],
+  "counter_checks": [
+    {
+      "route": "service-stateful",
+      "tool": "get_counter",
+      "phase": "final-counter-check",
+      "utc": "2026-10-26T21:32:31.216357+00:00",
+      "success": true,
+      "value": 105,
+      "ms": 19.92423199408222
+    },
+    {
+      "route": "knative-stateful",
+      "tool": "get_counter",
+      "phase": "final-counter-check",
+      "utc": "2026-10-26T21:32:31.236323+00:00",
+      "success": true,
+      "value": 105,
+      "ms": 21.88322300207801
+    },
+    {
+      "route": "private-stateful",
+      "tool": "get_counter",
+      "phase": "final-counter-check",
+      "utc": "2026-10-26T21:32:31.258245+00:00",
+      "success": true,
+      "value": 105,
+      "ms": 17.477768007665873
+    }
+  ],
+  "body_diagnostics": [
+    {
+      "utc": "2026-10-26T21:26:46.165576+00:00",
+      "mode": "stateless",
+      "diagnostic": "isolated tool body; not serving request instrumentation",
+      "results": [
+        {
+          "tool": "echo",
+          "n": 100,
+          "p50_ms": 0.012702003004960716,
+          "p95_ms": 0.033104995964094996,
+          "p99_ms": 0.1020139898173511,
+          "max_ms": 0.13571899035014212,
+          "last_value": "no-delay"
+        },
+        {
+          "tool": "add_numbers",
+          "n": 100,
+          "p50_ms": 0.0025999906938523054,
+          "p95_ms": 0.0027999922167509794,
+          "p99_ms": 0.0029009970603510737,
+          "max_ms": 0.0030009978218004107,
+          "last_value": 42
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-26T21:26:59.284918+00:00",
+      "mode": "stateful",
+      "diagnostic": "isolated tool body; not serving request instrumentation",
+      "results": [
+        {
+          "tool": "increment_counter",
+          "n": 100,
+          "p50_ms": 7.386509496427607,
+          "p95_ms": 38.33369800122455,
+          "p99_ms": 51.0214179957984,
+          "max_ms": 58.8667430129135,
+          "last_value": 105
+        },
+        {
+          "tool": "get_counter",
+          "n": 100,
+          "p50_ms": 4.160197000601329,
+          "p95_ms": 27.648265997413546,
+          "p99_ms": 36.426924998522736,
+          "max_ms": 40.354587996262126,
+          "last_value": 105
+        }
+      ]
+    }
+  ],
+  "request_phases": {
+    "activation-excluded": 6,
+    "warmup-excluded": 60,
+    "warm": 1200,
+    "fresh-warm": 72,
+    "final-counter-check": 3
+  },
+  "warm_all_requests": 1341,
+  "warm_all_failures": 0,
+  "cpu_before": "usage_usec 3032937\nuser_usec 2606785\nsystem_usec 426152\nnr_periods 37\nnr_throttled 3\nthrottled_usec 45595\nnr_bursts 0\nburst_usec 0\n",
+  "cpu_after": "usage_usec 32302629\nuser_usec 28072471\nsystem_usec 4230157\nnr_periods 726\nnr_throttled 6\nthrottled_usec 81776\nnr_bursts 0\nburst_usec 0\n",
+  "validation_checks": {
+    "matching_warm_protocol": true,
+    "all_warm_tools_succeeded": true,
+    "rollout_succeeded": true,
+    "all_measured_rollout_requests_succeeded": true,
+    "gateway_requests_correlated": true,
+    "ui_query_succeeded": true,
+    "always_on_resources_preserved": true,
+    "redis_counter_checks_succeeded": true
+  }
+}

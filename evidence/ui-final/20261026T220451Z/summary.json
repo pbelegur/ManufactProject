@@ -1,0 +1,705 @@
+{
+  "started_at": "2026-10-26T22:04:51.157621+00:00",
+  "result": "PASS",
+  "jobs": [
+    {
+      "id": "569481156e8a425cb309d8bfa8888685",
+      "status": "failed",
+      "project_id": "byo-51b1fb84d1544940af48",
+      "name": "manufact-invalid-build",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "phase5-v1",
+      "source": "build",
+      "created_at": "2026-10-26T22:05:49.321352+00:00",
+      "started_at": "2026-10-26T22:05:49.332033+00:00",
+      "finished_at": "2026-10-26T22:05:55.639766+00:00",
+      "exit_code": 1,
+      "error": "deployctl.py exited 1. See the real CLI log, including recovery diagnostics.",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\51b1fb84d1544940af4831cd566f4e61\\project",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\51b1fb84d1544940af4831cd566f4e61\\project\\.deploy-always-on.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "phase5-v1",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1",
+        "--ensure-floci-repository"
+      ],
+      "pid": 17816,
+      "phase": "failed"
+    },
+    {
+      "id": "4ce1cba0091c42a8bc9d7092c1db99d6",
+      "status": "succeeded",
+      "project_id": "byo-9a1c65f1bfd64bc48459",
+      "name": "manufact-text-tools",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "phase5-v1",
+      "source": "build",
+      "created_at": "2026-10-26T22:06:03.657138+00:00",
+      "started_at": "2026-10-26T22:06:03.662457+00:00",
+      "finished_at": "2026-10-26T22:12:30.515437+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\9a1c65f1bfd64bc4845917450119cc24\\project",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\9a1c65f1bfd64bc4845917450119cc24\\project\\.deploy-always-on.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "phase5-v1",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1",
+        "--ensure-floci-repository"
+      ],
+      "pid": 18104,
+      "deployment_result": {
+        "status": "healthy",
+        "name": "manufact-text-tools",
+        "namespace": "mcp-demo",
+        "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7",
+        "ready_replicas": 2,
+        "mcp_url": "http://manufact-text-tools.mcp-demo.svc.cluster.local:8000/mcp"
+      },
+      "phase": "succeeded"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Traversal import rejected in browser",
+      "result": "PASS"
+    },
+    {
+      "name": "Build failure visible without touching running deployments",
+      "result": "PASS"
+    }
+  ],
+  "mcp_checks": [
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 2404.051600024104,
+      "initialization_ms": 2405.460900045,
+      "latency_ms": 4809.59029996302,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-26T22:05:21.420718+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 868.1357000023127,
+      "initialization_ms": 1310.336200054735,
+      "latency_ms": 2178.53010003455,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-26T22:05:38.297357+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 679.2246999684721,
+      "initialization_ms": 984.9218999734148,
+      "latency_ms": 1664.2237999476492,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-26T22:06:23.868890+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 1410.0105999968946,
+      "initialization_ms": 1743.580300011672,
+      "latency_ms": 3154.8367000650615,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-26T22:06:42.867985+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 1449.496499961242,
+      "initialization_ms": 865.3080000076443,
+      "latency_ms": 2314.8814999731258,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-26T22:14:52.223260+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 930.6647999910638,
+      "initialization_ms": 834.1111000627279,
+      "latency_ms": 1765.1146000716835,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-26T22:15:06.699727+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    }
+  ],
+  "availability": [
+    {
+      "observed_at": "2026-10-26T22:05:46.800536+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:06:00.542433+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:06:10.811617+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:06:21.490098+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:06:37.659198+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:06:49.008020+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:07:00.615870+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:07:11.284919+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:07:22.783469+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:07:36.089761+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:07:48.658344+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:08:02.645070+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:08:16.830012+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:08:30.257183+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:08:44.236040+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:08:56.106788+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:09:07.421182+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:09:19.135068+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:09:30.604453+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:09:38.803547+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:09:48.978726+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:09:57.548920+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:10:07.739236+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:10:16.901161+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:10:29.558648+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:10:41.598657+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:10:53.632344+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:11:05.482614+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:11:16.899207+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:11:29.217162+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:11:39.467804+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:11:48.982747+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:12:00.000833+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:12:11.347469+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T22:12:30.937532+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    }
+  ],
+  "browser_errors": [],
+  "browser_version": "156.0.4314.42",
+  "github_import": {
+    "result": "PASS",
+    "archive_sha256": "2cf79b7f6f847ac1450edd00daa0f169f2a27af9cfe6305d4081f2a0fdde94bb",
+    "commit": "38e14ca4ce362d27dfaaa498f3b4592bea4c6710",
+    "expanded_bytes": 812571,
+    "files": 66,
+    "kind": "github",
+    "url": "https://github.com/modelcontextprotocol/quickstart-resources"
+  },
+  "project_id": "byo-9a1c65f1bfd64bc48459",
+  "observed_build_limits": [
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    }
+  ],
+  "monitor_error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_final.py\", line 230, in main\n    await monitor\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_final.py\", line 69, in availability\n    response = await context.request.get(BASE + \"/api/deployments?refresh=1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\async_api\\_generated.py\", line 603, in get\n    await self._impl_obj.get(\n    ...<11 lines>...\n    )\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_fetch.py\", line 232, in get\n    return await self.fetch(\n           ^^^^^^^^^^^^^^^^^\n    ...<12 lines>...\n    )\n    ^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_fetch.py\", line 357, in fetch\n    return await self._inner_fetch(\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<13 lines>...\n    )\n    ^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_fetch.py\", line 460, in _inner_fetch\n    response = await self._channel.send(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<18 lines>...\n    )\n    ^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 78, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 636, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TargetClosedError: APIRequestContext.get: Target page, context or browser has been closed\n",
+  "finished_at": "2026-10-26T22:12:38.976196+00:00",
+  "initial_collection_error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_final.py\", line 170, in main\n    success_job = await deploy(\"succeeded\")\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_final.py\", line 146, in deploy\n    (OUTPUT / (identifier + \".log\")).write_text(job[\"log\"])\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\pathlib\\_local.py\", line 555, in write_text\n    return PathBase.write_text(self, data, encoding, errors, newline)\n           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\pathlib\\_abc.py\", line 652, in write_text\n    return f.write(data)\n           ~~~~~~~^^^^^^\n  File \"C:\\Python313\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'charmap' codec can't encode characters in position 7081-7120: character maps to <undefined>\n",
+  "third_mcp": {
+    "success": true,
+    "response": {
+      "meta": {
+        "io.modelcontextprotocol/serverInfo": {
+          "name": "text-tools",
+          "version": ""
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"words\": 4,\n  \"characters\": 25,\n  \"lines\": 1,\n  \"slug\": \"manufact-builds-mcp-tools\"\n}",
+          "annotations": null,
+          "meta": null
+        }
+      ],
+      "structured_content": null,
+      "is_error": false,
+      "result_type": "complete"
+    },
+    "tool_latency_ms": 221.13640001043677,
+    "initialization_ms": 2299.199500004761,
+    "latency_ms": 2520.391699974425,
+    "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+    "attempts": 1,
+    "observed_at": "2026-10-26T22:14:30.317728+00:00",
+    "tool": "analyze_text",
+    "identity": "mcp-demo/manufact-text-tools"
+  },
+  "preserved_deployments": [
+    "stateless-demo",
+    "stateful-demo",
+    "stateful-demo-redis",
+    "contract-probe"
+  ],
+  "successful_job_id": "4ce1cba0091c42a8bc9d7092c1db99d6",
+  "resume_verified_at": "2026-10-26T22:15:15.412634+00:00"
+}

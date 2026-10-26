@@ -1,0 +1,96 @@
+{
+  "summaries": {
+    "stateless-demo": {
+      "requests": 648,
+      "successes": 648,
+      "failures": 0,
+      "scheduled_rps": 2.4957034356717496,
+      "latency_p50_seconds": 0.9061921999673359,
+      "latency_p95_seconds": 2.764741199905984,
+      "latency_max_seconds": 4.64771439996548
+    },
+    "stateful-demo": {
+      "requests": 648,
+      "successes": 648,
+      "failures": 0,
+      "scheduled_rps": 2.4957034356717496,
+      "latency_p50_seconds": 0.3020125499460846,
+      "latency_p95_seconds": 2.3816956999944523,
+      "latency_max_seconds": 4.489918400067836
+    }
+  },
+  "phases": {
+    "baseline/stateful-demo": {
+      "successes": 30,
+      "failures": 0,
+      "p95_seconds": 2.98310220008716,
+      "max_seconds": 3.4584778998978436
+    },
+    "baseline/stateless-demo": {
+      "successes": 30,
+      "failures": 0,
+      "p95_seconds": 3.5900797999929637,
+      "max_seconds": 3.8132990000303835
+    },
+    "independent-service-deploy/stateful-demo": {
+      "successes": 189,
+      "failures": 0,
+      "p95_seconds": 3.4410220000427216,
+      "max_seconds": 4.489918400067836
+    },
+    "independent-service-deploy/stateless-demo": {
+      "successes": 189,
+      "failures": 0,
+      "p95_seconds": 3.870055199950002,
+      "max_seconds": 4.64771439996548
+    },
+    "existing-service-v2-rollout/stateful-demo": {
+      "successes": 118,
+      "failures": 0,
+      "p95_seconds": 1.7360998999793082,
+      "max_seconds": 2.131425799918361
+    },
+    "existing-service-v2-rollout/stateless-demo": {
+      "successes": 118,
+      "failures": 0,
+      "p95_seconds": 2.1011256999336183,
+      "max_seconds": 2.8218594000209123
+    },
+    "stateful-pod-deletion/stateful-demo": {
+      "successes": 115,
+      "failures": 0,
+      "p95_seconds": 0.38012139999773353,
+      "max_seconds": 0.8205799999414012
+    },
+    "stateful-pod-deletion/stateless-demo": {
+      "successes": 115,
+      "failures": 0,
+      "p95_seconds": 0.9914056999841705,
+      "max_seconds": 1.3219130999641493
+    },
+    "failed-rollout-recovery/stateful-demo": {
+      "successes": 158,
+      "failures": 0,
+      "p95_seconds": 0.4520423000212759,
+      "max_seconds": 0.7750882999971509
+    },
+    "failed-rollout-recovery/stateless-demo": {
+      "successes": 158,
+      "failures": 0,
+      "p95_seconds": 0.9961852000560611,
+      "max_seconds": 1.2649002000689507
+    },
+    "after-recovery/stateful-demo": {
+      "successes": 38,
+      "failures": 0,
+      "p95_seconds": 0.3692847000202164,
+      "max_seconds": 0.384436700027436
+    },
+    "after-recovery/stateless-demo": {
+      "successes": 38,
+      "failures": 0,
+      "p95_seconds": 0.8998789000324905,
+      "max_seconds": 0.9450587999308482
+    }
+  }
+}

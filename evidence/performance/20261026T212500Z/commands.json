@@ -1,0 +1,1036 @@
+[
+  {
+    "utc": "2026-10-26T21:25:00.172765+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:00.843547+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:01.437805+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "knative-serving",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:02.122293+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "kourier-system",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:02.754378+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "ksvc,revisions",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:05.516257+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "apply",
+      "-f",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\evidence\\performance\\20261026T212500Z\\client-resources.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:06.283437+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "wait",
+      "--for=condition=Ready",
+      "pod/perf-client-9eba10615e",
+      "--timeout=90s"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:25:08.998842+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "python",
+      "/validation/worker.py",
+      "--counter",
+      "perf_eb719b25690e4200aecb5fa3dbfa6688",
+      "--samples",
+      "100",
+      "--worker",
+      "warm"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:26:33.852661+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "cat",
+      "/tmp/warm.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:26:34.556934+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "-i",
+      "stateless-demo-75f974cf9b-4jqv9",
+      "--",
+      "python",
+      "-",
+      "--body",
+      "stateless",
+      "--counter",
+      "perf_eb719b25690e4200aecb5fa3dbfa6688_body",
+      "--samples",
+      "100"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:26:47.006431+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "-i",
+      "stateful-demo-947d69fdc-lpd6b",
+      "--",
+      "python",
+      "-",
+      "--body",
+      "stateful",
+      "--counter",
+      "perf_eb719b25690e4200aecb5fa3dbfa6688_body",
+      "--samples",
+      "100"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:27:02.450763+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "pods",
+      "--watch",
+      "--output-watch-events",
+      "-o",
+      "json",
+      "--request-timeout=180s"
+    ],
+    "operation": "watch"
+  },
+  {
+    "utc": "2026-10-26T21:27:02.464930+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "endpointslices",
+      "--watch",
+      "--output-watch-events",
+      "-o",
+      "json",
+      "--request-timeout=180s"
+    ],
+    "operation": "watch"
+  },
+  {
+    "utc": "2026-10-26T21:27:02.482884+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "deployments",
+      "--watch",
+      "--output-watch-events",
+      "-o",
+      "json",
+      "--request-timeout=180s"
+    ],
+    "operation": "watch"
+  },
+  {
+    "utc": "2026-10-26T21:27:02.506728+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "ksvc",
+      "--watch",
+      "--output-watch-events",
+      "-o",
+      "json",
+      "--request-timeout=180s"
+    ],
+    "operation": "watch"
+  },
+  {
+    "utc": "2026-10-26T21:27:02.533521+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "python",
+      "/validation/worker.py",
+      "--counter",
+      "perf_eb719b25690e4200aecb5fa3dbfa6688",
+      "--samples",
+      "100",
+      "--worker",
+      "traffic",
+      "--seconds",
+      "150"
+    ]
+  },
+  {
+    "utc": "2026-10-26T21:27:02.533581+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:06.176560+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:08.361140+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:10.442032+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:12.220622+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:14.815728+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:16.896815+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:20.468874+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:22.562674+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:24.421789+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:26.276084+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:30.500993+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:36.462116+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:39.223130+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:42.474785+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:45.101130+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:47.951437+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:49.798149+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:52.063104+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:54.148392+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:56.059640+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:27:58.257384+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:28:01.215763+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "sh",
+      "-c",
+      "test -f /tmp/traffic-ready && echo ready"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:28:08.706351+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "ksvc/stateless-demo",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:28:09.631627+00:00",
+    "finished_utc": "2026-10-26T21:28:49.902472+00:00",
+    "argv": [
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+      "deployctl.py",
+      "deploy",
+      "servers/stateless",
+      "--config",
+      "mcp.knative.local.json",
+      "--namespace",
+      "mcp-auto",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--image",
+      "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "--version",
+      "performance-20261026T212809Z",
+      "--timeout",
+      "100",
+      "--rollback-timeout",
+      "100"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:28:49.904941+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "python",
+      "-c",
+      "import time; open('/tmp/rollout-done','w').write(str(time.time()))"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:07.691246+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "exec",
+      "perf-client-9eba10615e",
+      "--",
+      "cat",
+      "/tmp/traffic.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:09.263738+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:10.765515+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:12.028632+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "knative-serving",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:13.392184+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "kourier-system",
+      "get",
+      "deployments,pods,services,endpointslices",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:15.124423+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "ksvc,revisions",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:20.565894+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "kourier-system",
+      "logs",
+      "deployment/3scale-kourier-gateway",
+      "--since-time=2026-10-26T21:25:05.516122+00:00",
+      "--timestamps=true"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:22.000822+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "knative-serving",
+      "logs",
+      "deployment/activator",
+      "--since-time=2026-10-26T21:25:05.516122+00:00",
+      "--timestamps=true"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:23.126708+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "events",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:23.828928+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "get",
+      "ksvc/stateless-demo",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:24.326777+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "logs",
+      "-l",
+      "serving.knative.dev/revision=stateless-demo-00014",
+      "-c",
+      "user-container",
+      "--since-time=2026-10-26T21:25:05.516122+00:00",
+      "--timestamps=true",
+      "--prefix=true",
+      "--tail=-1"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:29:25.101889+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "logs",
+      "-l",
+      "serving.knative.dev/revision=stateless-demo-00014",
+      "-c",
+      "queue-proxy",
+      "--since-time=2026-10-26T21:25:05.516122+00:00",
+      "--timestamps=true",
+      "--prefix=true",
+      "--tail=-1"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:25.715252+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "logs",
+      "-l",
+      "serving.knative.dev/revision=stateless-demo-00015",
+      "-c",
+      "user-container",
+      "--since-time=2026-10-26T21:25:05.516122+00:00",
+      "--timestamps=true",
+      "--prefix=true",
+      "--tail=-1"
+    ],
+    "exit_code": 1
+  },
+  {
+    "utc": "2026-10-26T21:29:26.264553+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-auto",
+      "logs",
+      "-l",
+      "serving.knative.dev/revision=stateless-demo-00015",
+      "-c",
+      "queue-proxy",
+      "--since-time=2026-10-26T21:25:05.516122+00:00",
+      "--timestamps=true",
+      "--prefix=true",
+      "--tail=-1"
+    ],
+    "exit_code": 0
+  },
+  {
+    "utc": "2026-10-26T21:29:30.919057+00:00",
+    "argv": [
+      "kubectl",
+      "--kubeconfig",
+      ".local/floci.kubeconfig",
+      "--request-timeout=30s",
+      "-n",
+      "mcp-demo",
+      "delete",
+      "pod,configmap",
+      "perf-client-9eba10615e",
+      "--ignore-not-found=true",
+      "--wait=false"
+    ],
+    "exit_code": 0
+  }
+]

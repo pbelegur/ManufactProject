@@ -30,6 +30,7 @@ server environment:
 ```powershell
 python -m venv .venv-ui
 python -m pip --python .venv-ui install -r requirements-ui.txt
+$env:MCP_UI_MAX_JOBS = '2' # 1, 2 or 3; default 2 on the shared local host
 .\.venv-ui\Scripts\python.exe -m ui --port 8080
 ```
 
@@ -46,8 +47,10 @@ operator settings are `MCP_UI_KUBECONFIG`, `MCP_UI_DEPLOY_PYTHON` and
 3. Choose **Reuse an existing published image**, or **Build Dockerfile and
    publish to Floci ECR**. Builds use the same CLI/Dockerfiles as terminal
    deployments. A new release version creates a versioned image tag on builds.
-4. Click **Deploy**. The job page opens immediately with its ID, queue/running
-   status, actual command arguments, live CLI logs and final exit code.
+4. Click **Deploy**. The job page opens immediately with its ID and timestamped
+   **QUEUED → BUILDING → PUSHING → DEPLOYING → VERIFYING → SUCCEEDED/FAILED**
+   transitions, actual command arguments, live CLI logs and final exit code.
+   Image reuse skips build/push stages. The page polls status/logs every second.
 5. Open **Inspect Kubernetes deployment** for actual replica counts, health
    conditions, endpoint, image, application logs and a real redeploy action.
 
@@ -82,11 +85,22 @@ Image overrides are restricted to the selected project's configured ECR repo.
 Knative reuse requires an image digest, avoiding controller-side resolution of
 localhost registry tags; the build/publish CLI supplies a digest automatically.
 
-Jobs run serially in one UI process. Metadata and complete logs live in ignored
-`.local/ui/jobs/`; the browser shows the last 256 KB of a large log. Do not run
-another UI instance or deploy the same app concurrently from the terminal.
+Jobs use a bounded worker pool in one UI process: `MCP_UI_MAX_JOBS=1`, `2`
+(default), or `3`, with eight waiting jobs; a full queue returns HTTP 429.
+Conflicting namespace/name updates and shared managed-Redis updates retain
+submission order. Unrelated jobs can pass a blocked conflicting job.
+Metadata and redacted logs live in ignored `.local/ui/jobs/`. Each job retains
+three rotating 1-MiB segments by default (`MCP_UI_JOB_LOG_BYTES`, 65536–16777216
+bytes per segment); the browser shows the last 256 KB. Metadata/logs have no
+automatic expiry, so archive old jobs/images to manage total disk use. Output
+lines over 16 KiB are omitted. Redaction handles known environment secrets,
+credential fields, authorization headers, URL credentials and private-key blocks;
+it cannot guarantee sanitizing arbitrary hostile application output.
+Do not run another UI instance or deploy the same app concurrently from the
+terminal: ownership is local to this process, not a distributed lock.
 On graceful shutdown the UI lets queued/running CLI work finish. After an
-unexpected restart, unfinished jobs are marked **interrupted**, not successful;
+unexpected restart, unfinished jobs have legacy status **interrupted** and stage
+**FAILED**;
 inspect the real cluster and any remaining CLI process before retrying. This
 is a local worker, not a durable production job system or authenticated control
 plane. Delete/scale controls and a manual rollback UI are not implemented.
@@ -99,20 +113,51 @@ temporary loopback port-forward; production MCP traffic remains independent of U
 For the real third-project walkthrough, build limits, security boundaries and
 monitoring steps, see [BYO_MCP_GUIDE.md](BYO_MCP_GUIDE.md). Download the complete
 [text-tools sample](examples/text-tools-mcp) from **Import source** in the UI.
-Imported build containers have one CPU/1 GiB limits and a five-minute command
+All UI build containers have one CPU/1 GiB limits and a five-minute command
 timeout, using Docker's opt-in deprecated legacy builder on this existing engine.
-The default build behavior for original projects is unchanged. This is trusted
+Each job uses a private, bounded source snapshot and temporary directory, with
+runtime configuration outside the Docker context. A job UUID image label makes
+each UI build's image reference unique. Plain terminal CLI builds retain their
+existing defaults. Docker daemon work, image disk use and the aggregate host are
+not bounded by the build-container limits. This is trusted
 local code execution, not a sandbox for untrusted uploads; production needs auth,
 isolated workers and stronger resource/network/storage isolation.
 
 Phase 5 results: [UI_FINAL_REPORT.md](UI_FINAL_REPORT.md). Focused checks:
 
 ```powershell
+.venv-ui/Scripts/python.exe -m pytest tests/test_ui_jobs.py tests/test_ui_sources.py tests/test_deployctl.py tests/test_manifest.py -q -p no:cacheprovider --basetemp .local/pytest-ui-jobs-new-run
 .venv/Scripts/python.exe -m pytest tests/test_ui_sources.py tests/test_deployctl.py tests/test_manifest.py -q -p no:cacheprovider --basetemp .local/pytest-ui-new-run
 .venv-ui/Scripts/python.exe tests/verify_ui_guards.py
 # Read-only browser verification of the already imported evaluation deployment:
 .venv-ui/Scripts/python.exe tests/verify_ui_final.py --resume evidence/ui-final/20261026T220451Z
 ```
+
+For the controlled parallel-build demonstration, stop an **idle** UI and start
+it in its terminal with three workers. Keep only one API process:
+
+```powershell
+$env:MCP_UI_MAX_JOBS = '3'
+.\.venv-ui\Scripts\python.exe -m ui --port 8080
+```
+
+In another PowerShell terminal, with Floci/ECR and the existing registered
+`manufact-text-tools` and intentional `manufact-invalid-build` sources available:
+
+```powershell
+.\.venv-ui\Scripts\python.exe tests/verify_deployment_concurrency.py --kubeconfig .local/floci.kubeconfig
+```
+
+This deliberately submits three independent real builds, two serialized updates
+to the stateless service and one expected invalid-Dockerfile failure. Read-only
+MCP `echo`/`get_counter` traffic runs through ClusterIP Services in a temporary
+client pod, including 45 seconds after the jobs finish. The current demo fixture
+expects saved Redis key `ui_persist_a59837a6a3` to remain 13. No increments or
+request retries are performed. Raw requests, p95, queue/stage observations,
+per-job logs and resource snapshots go to `evidence/concurrency/TIMESTAMP/`.
+This is opt-in and changes application image versions; it does not recreate the
+cluster or run Full demo. See [CONCURRENCY_REPORT.md](CONCURRENCY_REPORT.md) for
+executed results and limitations.
 
 The no-argument `verify_ui_final.py` flow performs one-time imports and a real
 build/deployment with fixed names. Those names are now reserved; do not repeat

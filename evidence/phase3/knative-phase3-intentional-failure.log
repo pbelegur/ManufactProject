@@ -1,0 +1,142 @@
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get deployment/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+namespace/mcp-auto unchanged
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto apply --dry-run=server -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateless-demo configured (server dry run)
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateless-demo configured
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get revisions.serving.knative.dev/stateless-demo-00007 --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto wait revision/stateless-demo-00007 --for=condition=Ready --timeout=35s
+error: timed out waiting for the condition on revisions/stateless-demo-00007
+ERROR: Knative rollout failed; restoring previous route/configuration
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get ksvc/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get revisions,pods -l serving.knative.dev/service=stateless-demo -o wide
+NAME                                                CONFIG NAME      GENERATION   READY     REASON      ACTUAL REPLICAS   DESIRED REPLICAS
+revision.serving.knative.dev/stateless-demo-00001   stateless-demo   1            True                  0                 0
+revision.serving.knative.dev/stateless-demo-00002   stateless-demo   2            True                  0                 0
+revision.serving.knative.dev/stateless-demo-00003   stateless-demo   3            True                  0                 0
+revision.serving.knative.dev/stateless-demo-00005   stateless-demo   5            True                  0                 0
+revision.serving.knative.dev/stateless-demo-00006   stateless-demo   6            True                  2                 2
+revision.serving.knative.dev/stateless-demo-00007   stateless-demo   7            Unknown   Deploying   0                 
+
+NAME                                                   READY   STATUS         RESTARTS   AGE    IP            NODE                               NOMINATED NODE   READINESS GATES
+pod/stateless-demo-00006-deployment-bf8946b9-n4t2x     2/2     Running        0          99s    10.42.0.146   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateless-demo-00006-deployment-bf8946b9-v8j6z     2/2     Running        0          2m4s   10.42.0.144   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateless-demo-00007-deployment-6b76668557-29qdw   0/2     ErrImagePull   0          38s    10.42.0.149   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateless-demo-00007-deployment-6b76668557-z9756   0/2     ErrImagePull   0          38s    10.42.0.148   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto describe ksvc stateless-demo
+Name:         stateless-demo
+Namespace:    mcp-auto
+Labels:       app=stateless-demo
+Annotations:  serving.knative.dev/creator: system:admin
+              serving.knative.dev/lastModifier: system:admin
+API Version:  serving.knative.dev/v1
+Kind:         Service
+Metadata:
+  Creation Timestamp:  2026-10-26T18:35:21Z
+  Generation:          11
+  Resource Version:    17589
+  UID:                 574e3bc1-823a-45a5-86c5-5f8b04ed69d6
+Spec:
+  Template:
+    Metadata:
+      Annotations:
+        autoscaling.knative.dev/activation-scale:  2
+        autoscaling.knative.dev/class:             kpa.autoscaling.knative.dev
+        autoscaling.knative.dev/initial-scale:     2
+        autoscaling.knative.dev/max-scale:         4
+        autoscaling.knative.dev/metric:            concurrency
+        autoscaling.knative.dev/min-scale:         0
+        autoscaling.knative.dev/target:            2
+        autoscaling.knative.dev/window:            20s
+        deployment.mcp.io/version:                 phase3-intentional-failure
+    Spec:
+      Container Concurrency:  0
+      Containers:
+        Env:
+          Name:             HOST
+          Value:            0.0.0.0
+          Name:             MCP_ALLOWED_HOSTS
+          Value:            stateless-demo,stateless-demo:*,stateless-demo.mcp-auto,stateless-demo.mcp-auto:*,stateless-demo.mcp-auto.svc,stateless-demo.mcp-auto.svc:*,stateless-demo.mcp-auto.svc.cluster.local,stateless-demo.mcp-auto.svc.cluster.local:*,stateless-demo.mcp-auto.mcp.test,stateless-demo.mcp-auto.mcp.test:*
+        Image:              localhost:4566/000000000000/us-east-1/stateless-demo@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        Image Pull Policy:  IfNotPresent
+        Liveness Probe:
+          Failure Threshold:  3
+          Http Get:
+            Path:          /health
+            Port:          8000
+          Period Seconds:  10
+        Name:              mcp
+        Ports:
+          Container Port:  8000
+          Name:            http1
+          Protocol:        TCP
+        Readiness Probe:
+          Failure Threshold:  2
+          Http Get:
+            Path:             /health
+            Port:             8000
+          Period Seconds:     3
+          Success Threshold:  1
+          Timeout Seconds:    1
+        Resources:
+          Limits:
+            Cpu:     500m
+            Memory:  256Mi
+          Requests:
+            Cpu:     50m
+            Memory:  96Mi
+        Startup Probe:
+          Failure Threshold:  30
+          Http Get:
+            Path:          /health
+            Port:          8000
+          Period Seconds:  2
+      Timeout Seconds:     120
+  Traffic:
+    Latest Revision:  false
+    Percent:          100
+    Revision Name:    stateless-demo-00006
+Status:
+  Address:
+    URL:  http://stateless-demo.mcp-auto.svc.cluster.local
+  Conditions:
+    Last Transition Time:        2026-10-26T19:18:04Z
+    Status:                      Unknown
+    Type:                        ConfigurationsReady
+    Last Transition Time:        2026-10-26T19:18:04Z
+    Status:                      Unknown
+    Type:                        Ready
+    Last Transition Time:        2026-10-26T19:17:04Z
+    Status:                      True
+    Type:                        RoutesReady
+  Latest Created Revision Name:  stateless-demo-00007
+  Latest Ready Revision Name:    stateless-demo-00006
+  Observed Generation:           11
+  Traffic:
+    Latest Revision:  false
+    Percent:          100
+    Revision Name:    stateless-demo-00006
+  URL:                http://stateless-demo.mcp-auto.mcp.test
+Events:
+  Type    Reason   Age   From                Message
+  ----    ------   ----  ----                -------
+  Normal  Created  43m   service-controller  Created Configuration "stateless-demo"
+  Normal  Created  43m   service-controller  Created Route "stateless-demo"
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto apply -f -
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+service.serving.knative.dev/stateless-demo configured
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get services.serving.knative.dev/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get revisions.serving.knative.dev/stateless-demo-00008 --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto wait revision/stateless-demo-00008 --for=condition=Ready --timeout=180s
+revision.serving.knative.dev/stateless-demo-00008 condition met
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get ksvc/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto get revisions.serving.knative.dev/stateless-demo-00007 --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-auto delete revision/stateless-demo-00007 --ignore-not-found --wait=false
+revision.serving.knative.dev "stateless-demo-00007" deleted from mcp-auto namespace
+ROLLBACK OK: previous healthy Knative route restored
+ERROR: Command '['kubectl', '--kubeconfig', '.local/floci.kubeconfig', '--request-timeout=30s', '-n', 'mcp-auto', 'wait', 'revision/stateless-demo-00007', '--for=condition=Ready', '--timeout=35s']' returned non-zero exit status 1.

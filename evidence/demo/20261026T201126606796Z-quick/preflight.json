@@ -1,0 +1,33 @@
+{
+  "docker_cpus": 8,
+  "docker_memory_bytes": 8195891200,
+  "runtime_cpu_quota": 4.0,
+  "runtime_id": "9907087e45e8f9dfd51f846673485fd5a6de6dbc8b677bfa66aa86f9b1045792",
+  "runtime_started": "2026-10-26T18:12:54.846142035Z",
+  "nodes": [
+    {
+      "name": "i-f8241bc031e1365ba.ec2.internal",
+      "version": "v1.34.1+k3s1",
+      "allocatable": {
+        "cpu": "1930m",
+        "ephemeral-storage": "972991057538",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "5072088Ki",
+        "pods": "110"
+      }
+    }
+  ],
+  "infrastructure": {
+    "knative-serving": {
+      "activator": 1,
+      "autoscaler": 1,
+      "controller": 1,
+      "net-kourier-controller": 1,
+      "webhook": 1
+    },
+    "kourier-system": {
+      "3scale-kourier-gateway": 1
+    }
+  }
+}

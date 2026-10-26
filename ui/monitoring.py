@@ -38,8 +38,16 @@ def health(backend, desired, ready, resource, pods):
 
 
 def redact(text):
-    text = re.sub(r"(redis(?:s)?://)[^/@\s]+@", r"\1[redacted]@", text)
-    text = re.sub(r"(?i)((?:password|secret|token|api_key|authorization)\s*[=:]\s*)[^\s,}]+", r"\1[redacted]", text)
+    text = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", text)
+    text = re.sub(r"(?<![a-zA-Z0-9+.-])([a-zA-Z][a-zA-Z0-9+.-]{0,31}://)[^/@\s]+@", r"\1[redacted]@", text)
+    text = re.sub(r"(?i)(authorization\s*[:=]\s*)(?:bearer|basic)\s+[^\s\"']+", r"\1[redacted]", text)
+    sensitive = re.compile(r"password|secret|token|api[_-]?key|access[_-]?key|authorization|credential", re.I)
+    field = r'''(?<![\w-])(["']?)([A-Za-z_][A-Za-z0-9_-]{0,127})\1(\s*[:=]\s*)("[^"\n]*"|'[^'\n]*'|[^\s,}]+)'''
+    def hide(match):
+        if sensitive.search(match[2]):
+            return match[1] + match[2] + match[1] + match[3] + "[redacted]"
+        return match[0]
+    text = re.sub(field, hide, text)
     text = re.sub(r"AKIA[A-Z0-9]{16}", "[redacted-access-key]", text)
     return text
 

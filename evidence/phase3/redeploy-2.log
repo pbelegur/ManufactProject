@@ -1,0 +1,122 @@
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/contract-probe --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo get service/contract-probe --ignore-not-found -o json
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/contract-probe --ignore-not-found -o json
+$ docker build --provenance=false --iidfile C:\Users\Devi\AppData\Local\Temp\mcp-build-6ldo6gqr\image-id C:\Users\Devi\Downloads\mcp-deployment-platform-starter\tests\fixtures\compatible_project
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 328B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704
+#5 resolve docker.io/library/python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704
+#5 resolve docker.io/library/python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704 0.2s done
+#5 DONE 0.2s
+
+#4 [internal] load build context
+#4 transferring context: 64B 0.0s done
+#4 DONE 0.1s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [5/6] COPY main.py ./
+#7 CACHED
+
+#8 [3/6] COPY requirements.txt ./
+#8 CACHED
+
+#9 [4/6] RUN pip install --no-cache-dir -r requirements.txt
+#9 CACHED
+
+#10 [6/6] RUN useradd --uid 10001 --create-home mcpuser
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers 0.0s done
+#11 exporting manifest sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d done
+#11 exporting config sha256:3fd80ac498509874a9349e74ccd4a8fb6c148fbd95f4f98522292acc119c013c 0.0s done
+#11 naming to moby-dangling@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d 0.0s done
+#11 unpacking to moby-dangling@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d 0.0s done
+#11 DONE 0.2s
+$ docker tag sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d
+$ docker push localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d
+The push refers to repository [localhost:4566/000000000000/us-east-1/contract-probe]
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+be6443c06d3c: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+b524bb3aba73: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+5c397e4307db: Waiting
+f2be67225471: Waiting
+b524bb3aba73: Waiting
+be6443c06d3c: Waiting
+5c397e4307db: Layer already exists
+f2be67225471: Layer already exists
+b524bb3aba73: Layer already exists
+be6443c06d3c: Waiting
+7622bf56f756: Waiting
+21781deee7ec: Waiting
+37cfd16fe0bf: Waiting
+2f02c18d8e6f: Waiting
+21781deee7ec: Layer already exists
+37cfd16fe0bf: Layer already exists
+2f02c18d8e6f: Waiting
+0ff15c620cac: Waiting
+be6443c06d3c: Layer already exists
+7622bf56f756: Layer already exists
+2f02c18d8e6f: Layer already exists
+0ff15c620cac: Layer already exists
+phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d: digest: sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d size: 2000
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+namespace/mcp-demo unchanged
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+deployment.apps/contract-probe unchanged (server dry run)
+service/contract-probe unchanged (server dry run)
+poddisruptionbudget.policy/contract-probe configured (server dry run)
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+deployment.apps/contract-probe unchanged
+service/contract-probe unchanged
+poddisruptionbudget.policy/contract-probe configured
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/contract-probe --timeout=180s
+deployment "contract-probe" successfully rolled out
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/contract-probe --ignore-not-found -o json
+{"status": "healthy", "name": "contract-probe", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d", "ready_replicas": 2, "mcp_url": "http://contract-probe.mcp-demo.svc.cluster.local:8000/mcp"}
+$ kubectl --kubeconfig .local/floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=contract-probe
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/contract-probe   2/2     2            2           38m
+
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/contract-probe   ClusterIP   10.100.253.222   <none>        8000/TCP   38m
+
+NAME                                        MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+poddisruptionbudget.policy/contract-probe   1               N/A               1                     38m

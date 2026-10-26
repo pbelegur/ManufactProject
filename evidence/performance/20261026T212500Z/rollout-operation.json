@@ -1,0 +1,25 @@
+{
+  "start": "2026-10-26T21:28:09.631627+00:00",
+  "end": "2026-10-26T21:28:49.902472+00:00",
+  "exit_code": 0,
+  "argv": [
+    "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+    "deployctl.py",
+    "deploy",
+    "servers/stateless",
+    "--config",
+    "mcp.knative.local.json",
+    "--namespace",
+    "mcp-auto",
+    "--kubeconfig",
+    ".local/floci.kubeconfig",
+    "--image",
+    "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+    "--version",
+    "performance-20261026T212809Z",
+    "--timeout",
+    "100",
+    "--rollback-timeout",
+    "100"
+  ]
+}

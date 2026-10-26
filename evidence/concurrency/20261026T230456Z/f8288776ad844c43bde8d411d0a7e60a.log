@@ -1,0 +1,146 @@
+[Retained job-local log tail; up to 256 KB shown; older output may be rotated]
+2026-10-26T23:09:33.051470+00:00 Worker claimed job f8288776ad844c43bde8d411d0a7e60a; held resources: mcp-demo/stateless-demo
+2026-10-26T23:09:33.819461+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+2026-10-26T23:09:34.592260+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/stateless-demo --ignore-not-found -o json
+2026-10-26T23:09:35.428985+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/stateless-demo --ignore-not-found -o json
+2026-10-26T23:09:36.140571+00:00 @@MCP_DEPLOY_STAGE {"stage": "BUILDING", "message": "Building the project Dockerfile", "at": "2026-10-26T23:09:36.139678+00:00", "job_id": "f8288776ad844c43bde8d411d0a7e60a"}
+2026-10-26T23:09:36.161070+00:00 $ docker build --iidfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\f8288776ad844c43bde8d411d0a7e60a\tmp\mcp-build-n81x4t4g\image-id --label deployment.mcp.io/job-id=f8288776ad844c43bde8d411d0a7e60a --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\f8288776ad844c43bde8d411d0a7e60a\source\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\f8288776ad844c43bde8d411d0a7e60a\source
+2026-10-26T23:09:36.295128+00:00 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+2026-10-26T23:09:36.297241+00:00             BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+2026-10-26T23:09:36.298478+00:00             environment-variable.
+2026-10-26T23:09:36.299748+00:00 
+2026-10-26T23:09:36.724387+00:00 Sending build context to Docker daemon  9.216kB
+2026-10-26T23:09:36.744569+00:00 Step 1/13 : FROM python:3.12-slim
+2026-10-26T23:09:36.844127+00:00  ---> a0f57064cbdc
+2026-10-26T23:09:36.874792+00:00 Step 2/13 : WORKDIR /app
+2026-10-26T23:09:36.894269+00:00  ---> Using cache
+2026-10-26T23:09:36.932223+00:00  ---> be8c4780ddcb
+2026-10-26T23:09:36.947506+00:00 Step 3/13 : ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HOST=0.0.0.0 PORT=8000
+2026-10-26T23:09:36.962536+00:00  ---> Using cache
+2026-10-26T23:09:36.988259+00:00  ---> 3f9cd5c58450
+2026-10-26T23:09:36.989741+00:00 Step 4/13 : COPY requirements.txt ./
+2026-10-26T23:09:37.057967+00:00  ---> Using cache
+2026-10-26T23:09:37.059338+00:00  ---> 204166ae2170
+2026-10-26T23:09:37.060784+00:00 Step 5/13 : RUN pip install --no-cache-dir -r requirements.txt
+2026-10-26T23:09:37.104564+00:00  ---> Using cache
+2026-10-26T23:09:37.105841+00:00  ---> 7fa54fa2da3e
+2026-10-26T23:09:37.106915+00:00 Step 6/13 : COPY server.py ./
+2026-10-26T23:09:37.169657+00:00  ---> Using cache
+2026-10-26T23:09:37.171333+00:00  ---> b70816d90ec9
+2026-10-26T23:09:37.173155+00:00 Step 7/13 : RUN useradd --uid 10001 --create-home mcpuser
+2026-10-26T23:09:37.219493+00:00  ---> Using cache
+2026-10-26T23:09:37.220891+00:00  ---> 0936a6ebd53f
+2026-10-26T23:09:37.222195+00:00 Step 8/13 : USER mcpuser
+2026-10-26T23:09:37.290366+00:00  ---> Using cache
+2026-10-26T23:09:37.291709+00:00  ---> 3d8f278226d8
+2026-10-26T23:09:37.293054+00:00 Step 9/13 : EXPOSE 8000
+2026-10-26T23:09:37.320231+00:00  ---> Using cache
+2026-10-26T23:09:37.322012+00:00  ---> aa07256b0877
+2026-10-26T23:09:37.323401+00:00 Step 10/13 : STOPSIGNAL SIGTERM
+2026-10-26T23:09:37.361874+00:00  ---> Using cache
+2026-10-26T23:09:37.363471+00:00  ---> 1e838b996f86
+2026-10-26T23:09:37.365557+00:00 Step 11/13 : HEALTHCHECK --interval=3s --timeout=2s --start-period=10s --retries=20 CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.getenv('PORT', '8000') + '/health', timeout=1).close()"
+2026-10-26T23:09:37.408865+00:00  ---> Using cache
+2026-10-26T23:09:37.410441+00:00  ---> bc28d0f92242
+2026-10-26T23:09:37.418804+00:00 Step 12/13 : CMD ["python", "server.py"]
+2026-10-26T23:09:37.454049+00:00  ---> Using cache
+2026-10-26T23:09:37.456129+00:00  ---> b9326eff4ad6
+2026-10-26T23:09:37.457610+00:00 Step 13/13 : LABEL deployment.mcp.io/job-id=f8288776ad844c43bde8d411d0a7e60a
+2026-10-26T23:09:37.981265+00:00  ---> Running in a69ae5082bcb
+2026-10-26T23:09:44.102494+00:00  ---> Removed intermediate container a69ae5082bcb
+2026-10-26T23:09:44.103992+00:00  ---> 83f07ba601e0
+2026-10-26T23:09:44.127182+00:00 Successfully built 83f07ba601e0
+2026-10-26T23:09:44.343278+00:00 $ docker tag sha256:83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6 localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6
+2026-10-26T23:09:44.957184+00:00 @@MCP_DEPLOY_STAGE {"stage": "PUSHING", "message": "Publishing the immutable application image to the registry", "at": "2026-10-26T23:09:44.955788+00:00", "job_id": "f8288776ad844c43bde8d411d0a7e60a"}
+2026-10-26T23:09:45.020719+00:00 $ docker push localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6
+2026-10-26T23:09:45.380465+00:00 The push refers to repository [localhost:4566/000000000000/us-east-1/stateless-demo]
+2026-10-26T23:09:45.610613+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:45.612303+00:00 f2be67225471: Waiting
+2026-10-26T23:09:45.613770+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:45.615131+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:45.714231+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:45.715719+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:45.716986+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:45.718163+00:00 f2be67225471: Waiting
+2026-10-26T23:09:45.810806+00:00 f2be67225471: Waiting
+2026-10-26T23:09:45.812497+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:45.813905+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:45.815213+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:45.910601+00:00 f2be67225471: Waiting
+2026-10-26T23:09:45.912096+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:45.913370+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:45.914707+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.009284+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.011113+00:00 f2be67225471: Waiting
+2026-10-26T23:09:46.013745+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:46.015102+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:46.116109+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.143825+00:00 f2be67225471: Waiting
+2026-10-26T23:09:46.173889+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:46.180743+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:46.213838+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.215385+00:00 f2be67225471: Waiting
+2026-10-26T23:09:46.216801+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:46.218206+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:46.334247+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.335859+00:00 f2be67225471: Waiting
+2026-10-26T23:09:46.339903+00:00 be6443c06d3c: Waiting
+2026-10-26T23:09:46.341300+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:46.425238+00:00 1fd81a683429: Waiting
+2026-10-26T23:09:46.427642+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.429121+00:00 f2be67225471: Waiting
+2026-10-26T23:09:46.430429+00:00 be6443c06d3c: Layer already exists
+2026-10-26T23:09:46.431741+00:00 b524bb3aba73: Waiting
+2026-10-26T23:09:46.523418+00:00 1fd81a683429: Waiting
+2026-10-26T23:09:46.524931+00:00 5c397e4307db: Waiting
+2026-10-26T23:09:46.526370+00:00 f2be67225471: Waiting
+2026-10-26T23:09:46.527760+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:09:46.529169+00:00 b524bb3aba73: Layer already exists
+2026-10-26T23:09:46.614030+00:00 5c397e4307db: Layer already exists
+2026-10-26T23:09:46.615731+00:00 f2be67225471: Layer already exists
+2026-10-26T23:09:46.617152+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:09:46.618463+00:00 2c5736a46028: Waiting
+2026-10-26T23:09:46.619823+00:00 1fd81a683429: Waiting
+2026-10-26T23:09:46.621270+00:00 9edc65781ecb: Waiting
+2026-10-26T23:09:46.709369+00:00 1fd81a683429: Layer already exists
+2026-10-26T23:09:46.711021+00:00 9edc65781ecb: Waiting
+2026-10-26T23:09:46.712405+00:00 286e62bb6410: Waiting
+2026-10-26T23:09:46.713664+00:00 9ad67250b0cd: Layer already exists
+2026-10-26T23:09:46.714933+00:00 2c5736a46028: Waiting
+2026-10-26T23:09:46.812151+00:00 286e62bb6410: Layer already exists
+2026-10-26T23:09:46.813641+00:00 2c5736a46028: Layer already exists
+2026-10-26T23:09:46.815072+00:00 9edc65781ecb: Layer already exists
+2026-10-26T23:09:47.878637+00:00 parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6: digest: sha256:83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6 size: 2270
+2026-10-26T23:09:47.924972+00:00 @@MCP_DEPLOY_STAGE {"stage": "DEPLOYING", "message": "Applying application resources; previous serving pods remain until readiness", "at": "2026-10-26T23:09:47.924027+00:00", "job_id": "f8288776ad844c43bde8d411d0a7e60a"}
+2026-10-26T23:09:47.930951+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-26T23:09:49.110101+00:00 namespace/mcp-demo unchanged
+2026-10-26T23:09:49.147344+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+2026-10-26T23:09:50.160699+00:00 deployment.apps/stateless-demo configured (server dry run)
+2026-10-26T23:09:50.407153+00:00 service/stateless-demo unchanged (server dry run)
+2026-10-26T23:09:50.491274+00:00 poddisruptionbudget.policy/stateless-demo configured (server dry run)
+2026-10-26T23:09:50.524890+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-26T23:09:51.556386+00:00 deployment.apps/stateless-demo configured
+2026-10-26T23:09:51.907414+00:00 service/stateless-demo unchanged
+2026-10-26T23:09:52.010639+00:00 poddisruptionbudget.policy/stateless-demo configured
+2026-10-26T23:09:52.051824+00:00 @@MCP_DEPLOY_STAGE {"stage": "VERIFYING", "message": "Waiting for deployment readiness and exact replica counts", "at": "2026-10-26T23:09:52.050699+00:00", "job_id": "f8288776ad844c43bde8d411d0a7e60a"}
+2026-10-26T23:09:52.059053+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateless-demo --timeout=180s
+2026-10-26T23:09:52.690665+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:10:03.976494+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:10:06.092237+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:10:06.225197+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:10:06.265767+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:10:18.397823+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:10:21.058989+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:10:21.209420+00:00 deployment "stateless-demo" successfully rolled out
+2026-10-26T23:10:21.248309+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+2026-10-26T23:10:21.684544+00:00 {"status": "healthy", "name": "stateless-demo", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6", "ready_replicas": 2, "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"}
+2026-10-26T23:10:21.687309+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=stateless-demo
+2026-10-26T23:10:22.294738+00:00 NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+2026-10-26T23:10:22.296575+00:00 deployment.apps/stateless-demo   2/2     2            2           4h58m
+2026-10-26T23:10:22.298189+00:00 
+2026-10-26T23:10:22.300585+00:00 NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+2026-10-26T23:10:22.302812+00:00 service/stateless-demo   ClusterIP   10.100.59.127   <none>        8000/TCP   4h58m
+2026-10-26T23:10:22.304186+00:00 
+2026-10-26T23:10:22.305652+00:00 NAME                                        MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+2026-10-26T23:10:22.307189+00:00 poddisruptionbudget.policy/stateless-demo   1               N/A               1                     4h58m
+2026-10-26T23:10:22.363584+00:00 SUCCEEDED: CLI completed successfully

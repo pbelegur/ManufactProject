@@ -1,0 +1,99 @@
+{
+  "deployments": {
+    "stateless-demo": {
+      "ready": 2,
+      "generation": 11,
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+    },
+    "stateful-demo": {
+      "ready": 2,
+      "generation": 1,
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702"
+    }
+  },
+  "endpoints": {
+    "stateless-demo": [
+      [
+        "10.42.0.169"
+      ],
+      [
+        "10.42.0.170"
+      ]
+    ],
+    "stateful-demo": [
+      [
+        "10.42.0.165"
+      ],
+      [
+        "10.42.0.172"
+      ]
+    ]
+  },
+  "replica_checks": [
+    {
+      "pod": "stateful-demo-7688cd9947-mgr54",
+      "tool": "increment_counter",
+      "expected": 11
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-wqrqp",
+      "tool": "get_counter",
+      "expected": 11
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-wqrqp",
+      "tool": "increment_counter",
+      "expected": 13
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-mgr54",
+      "tool": "get_counter",
+      "expected": 13
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-pnqhv",
+      "tool": "get_counter",
+      "expected": 13
+    }
+  ],
+  "pvcs": [
+    {
+      "name": "stateful-demo-redis-data",
+      "phase": "Bound",
+      "storage_class": "local-path"
+    }
+  ],
+  "before_service_test": {
+    "result": "PASS",
+    "routing": "Kubernetes ClusterIP Services",
+    "stateless": [
+      "echo",
+      "add_numbers"
+    ],
+    "stateful": [
+      "increment_counter",
+      "get_counter"
+    ],
+    "persisted_counter": "replicas_f9da3238a34f481eabea7fd49e3524ff",
+    "generic_project": false
+  },
+  "after_service_test": {
+    "result": "PASS",
+    "routing": "Kubernetes ClusterIP Services",
+    "stateless": [
+      "echo",
+      "add_numbers"
+    ],
+    "stateful": [
+      "increment_counter",
+      "get_counter"
+    ],
+    "persisted_counter": "replicas_f9da3238a34f481eabea7fd49e3524ff",
+    "generic_project": false
+  },
+  "deleted_pod": "stateful-demo-7688cd9947-mgr54",
+  "replacement_pod": "stateful-demo-7688cd9947-pnqhv",
+  "counter": "replicas_f9da3238a34f481eabea7fd49e3524ff",
+  "counter_after_deletion": 13,
+  "result": "PASS"
+}

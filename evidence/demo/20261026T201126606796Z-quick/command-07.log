@@ -1,0 +1,33 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+namespace/mcp-demo unchanged
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+deployment.apps/stateless-demo configured (server dry run)
+service/stateless-demo unchanged (server dry run)
+poddisruptionbudget.policy/stateless-demo configured (server dry run)
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+deployment.apps/stateless-demo configured
+service/stateless-demo unchanged
+poddisruptionbudget.policy/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateless-demo --timeout=180s
+Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+deployment "stateless-demo" successfully rolled out
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+{"status": "healthy", "name": "stateless-demo", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e", "ready_replicas": 2, "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=stateless-demo
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/stateless-demo   2/2     2            2           123m
+
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/stateless-demo   ClusterIP   10.100.59.127   <none>        8000/TCP   123m
+
+NAME                                        MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+poddisruptionbudget.policy/stateless-demo   1               N/A               1                     123m

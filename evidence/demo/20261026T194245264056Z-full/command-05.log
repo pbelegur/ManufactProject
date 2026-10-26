@@ -1,0 +1,205 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get endpointslices -o json -l kubernetes.io/service-name=stateless-demo
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateful-demo -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get endpointslices -o json -l kubernetes.io/service-name=stateful-demo
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pvc -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pods -o json -l app=stateful-demo
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo exec stateful-demo-7688cd9947-6fr4x -- python -c "import asyncio,json,sys
+from mcp import Client
+async def main():
+    async with Client(\"http://localhost:8000/mcp\", read_timeout_seconds=15) as client:
+        result=await client.call_tool(sys.argv[1],json.loads(sys.argv[2]))
+        assert not result.is_error,str(result)
+        assert result.structured_content[\"result\"]==int(sys.argv[3]),str(result)
+        print(json.dumps({\"tool\":sys.argv[1],\"result\":result.structured_content[\"result\"]}))
+asyncio.run(main())
+" increment_counter "{\"name\": \"replicas_1c8d4d74ccc741e0bdb11129cb7b13ca\", \"amount\": 11}" 11
+stateful-demo-7688cd9947-6fr4x: {"tool": "increment_counter", "result": 11}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo exec stateful-demo-7688cd9947-tlr8r -- python -c "import asyncio,json,sys
+from mcp import Client
+async def main():
+    async with Client(\"http://localhost:8000/mcp\", read_timeout_seconds=15) as client:
+        result=await client.call_tool(sys.argv[1],json.loads(sys.argv[2]))
+        assert not result.is_error,str(result)
+        assert result.structured_content[\"result\"]==int(sys.argv[3]),str(result)
+        print(json.dumps({\"tool\":sys.argv[1],\"result\":result.structured_content[\"result\"]}))
+asyncio.run(main())
+" get_counter "{\"name\": \"replicas_1c8d4d74ccc741e0bdb11129cb7b13ca\"}" 11
+stateful-demo-7688cd9947-tlr8r: {"tool": "get_counter", "result": 11}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo exec stateful-demo-7688cd9947-tlr8r -- python -c "import asyncio,json,sys
+from mcp import Client
+async def main():
+    async with Client(\"http://localhost:8000/mcp\", read_timeout_seconds=15) as client:
+        result=await client.call_tool(sys.argv[1],json.loads(sys.argv[2]))
+        assert not result.is_error,str(result)
+        assert result.structured_content[\"result\"]==int(sys.argv[3]),str(result)
+        print(json.dumps({\"tool\":sys.argv[1],\"result\":result.structured_content[\"result\"]}))
+asyncio.run(main())
+" increment_counter "{\"name\": \"replicas_1c8d4d74ccc741e0bdb11129cb7b13ca\", \"amount\": 2}" 13
+stateful-demo-7688cd9947-tlr8r: {"tool": "increment_counter", "result": 13}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo exec stateful-demo-7688cd9947-6fr4x -- python -c "import asyncio,json,sys
+from mcp import Client
+async def main():
+    async with Client(\"http://localhost:8000/mcp\", read_timeout_seconds=15) as client:
+        result=await client.call_tool(sys.argv[1],json.loads(sys.argv[2]))
+        assert not result.is_error,str(result)
+        assert result.structured_content[\"result\"]==int(sys.argv[3]),str(result)
+        print(json.dumps({\"tool\":sys.argv[1],\"result\":result.structured_content[\"result\"]}))
+asyncio.run(main())
+" get_counter "{\"name\": \"replicas_1c8d4d74ccc741e0bdb11129cb7b13ca\"}" 13
+stateful-demo-7688cd9947-6fr4x: {"tool": "get_counter", "result": 13}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+configmap/mcp-verify-94219a78 created
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+job.batch/mcp-verify-94219a78-before created
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-before -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo logs job/mcp-verify-94219a78-before
+{"result": "PASS", "routing": "Kubernetes ClusterIP Services", "stateless": ["echo", "add_numbers"], "stateful": ["increment_counter", "get_counter"], "persisted_counter": "replicas_1c8d4d74ccc741e0bdb11129cb7b13ca", "generic_project": false}
+
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo delete pod stateful-demo-7688cd9947-6fr4x --wait=true --timeout=60s
+pod "stateful-demo-7688cd9947-6fr4x" deleted from mcp-demo namespace
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateful-demo --timeout=180s
+Waiting for deployment "stateful-demo" rollout to finish: 1 of 2 updated replicas are available...
+Waiting for deployment "stateful-demo" rollout to finish: 1 of 2 updated replicas are available...
+deployment "stateful-demo" successfully rolled out
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pods -o json -l app=stateful-demo
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pods -o json -l app=stateful-demo
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo exec stateful-demo-7688cd9947-lbmxm -- python -c "import asyncio,json,sys
+from mcp import Client
+async def main():
+    async with Client(\"http://localhost:8000/mcp\", read_timeout_seconds=15) as client:
+        result=await client.call_tool(sys.argv[1],json.loads(sys.argv[2]))
+        assert not result.is_error,str(result)
+        assert result.structured_content[\"result\"]==int(sys.argv[3]),str(result)
+        print(json.dumps({\"tool\":sys.argv[1],\"result\":result.structured_content[\"result\"]}))
+asyncio.run(main())
+" get_counter "{\"name\": \"replicas_1c8d4d74ccc741e0bdb11129cb7b13ca\"}" 13
+stateful-demo-7688cd9947-lbmxm: {"tool": "get_counter", "result": 13}
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+job.batch/mcp-verify-94219a78-after created
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get job/mcp-verify-94219a78-after -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo logs job/mcp-verify-94219a78-after
+{"result": "PASS", "routing": "Kubernetes ClusterIP Services", "stateless": ["echo", "add_numbers"], "stateful": ["increment_counter", "get_counter"], "persisted_counter": "replicas_1c8d4d74ccc741e0bdb11129cb7b13ca", "generic_project": false}
+
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo delete configmap mcp-verify-94219a78
+configmap "mcp-verify-94219a78" deleted from mcp-demo namespace
+{
+  "deployments": {
+    "stateless-demo": {
+      "ready": 2,
+      "generation": 7,
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+    },
+    "stateful-demo": {
+      "ready": 2,
+      "generation": 1,
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702"
+    }
+  },
+  "endpoints": {
+    "stateless-demo": [
+      [
+        "10.42.0.155"
+      ],
+      [
+        "10.42.0.156"
+      ]
+    ],
+    "stateful-demo": [
+      [
+        "10.42.0.153"
+      ],
+      [
+        "10.42.0.158"
+      ]
+    ]
+  },
+  "replica_checks": [
+    {
+      "pod": "stateful-demo-7688cd9947-6fr4x",
+      "tool": "increment_counter",
+      "expected": 11
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-tlr8r",
+      "tool": "get_counter",
+      "expected": 11
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-tlr8r",
+      "tool": "increment_counter",
+      "expected": 13
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-6fr4x",
+      "tool": "get_counter",
+      "expected": 13
+    },
+    {
+      "pod": "stateful-demo-7688cd9947-lbmxm",
+      "tool": "get_counter",
+      "expected": 13
+    }
+  ],
+  "pvcs": [
+    {
+      "name": "stateful-demo-redis-data",
+      "phase": "Bound",
+      "storage_class": "local-path"
+    }
+  ],
+  "before_service_test": {
+    "result": "PASS",
+    "routing": "Kubernetes ClusterIP Services",
+    "stateless": [
+      "echo",
+      "add_numbers"
+    ],
+    "stateful": [
+      "increment_counter",
+      "get_counter"
+    ],
+    "persisted_counter": "replicas_1c8d4d74ccc741e0bdb11129cb7b13ca",
+    "generic_project": false
+  },
+  "after_service_test": {
+    "result": "PASS",
+    "routing": "Kubernetes ClusterIP Services",
+    "stateless": [
+      "echo",
+      "add_numbers"
+    ],
+    "stateful": [
+      "increment_counter",
+      "get_counter"
+    ],
+    "persisted_counter": "replicas_1c8d4d74ccc741e0bdb11129cb7b13ca",
+    "generic_project": false
+  },
+  "deleted_pod": "stateful-demo-7688cd9947-6fr4x",
+  "replacement_pod": "stateful-demo-7688cd9947-lbmxm",
+  "counter": "replicas_1c8d4d74ccc741e0bdb11129cb7b13ca",
+  "counter_after_deletion": 13,
+  "result": "PASS"
+}

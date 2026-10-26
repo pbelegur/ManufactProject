@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 260, in run
+    self.step("Existing traffic continuity, independent deploy, v2, pod loss and rollback", self.continuity)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 83, in step
+    detail = action()
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 234, in continuity
+    require(all(s["failures"] == 0 for s in evidence["summaries"].values()), "Traffic failures observed; see reliability.json")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\scripts\demo.py", line 21, in require
+    raise RuntimeError(message)
+RuntimeError: Traffic failures observed; see reliability.json

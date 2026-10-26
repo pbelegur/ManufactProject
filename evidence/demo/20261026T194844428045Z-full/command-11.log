@@ -1,0 +1,70 @@
+stateless-demo {'seconds': 1.055, 'desired': 2, 'ready': 1, 'pods': 2, 'all_pods': 2}
+stateless-demo {'seconds': 5.253, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 8.689, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 14.328, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 19.01, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 23.551, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 27.227, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 30.548, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 33.873, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 37.368, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 40.379, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 43.366, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 46.457, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 49.523, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 52.912, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 56.532, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 59.519, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 62.901, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 65.933, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateless-demo {'seconds': 69.15, 'desired': 5, 'ready': 6, 'pods': 5, 'all_pods': 6}
+idle stateless-demo {'seconds': 2.026, 'desired': 5, 'ready': 5, 'pods': 4, 'all_pods': 6}
+idle stateless-demo {'seconds': 6.205, 'desired': 3, 'ready': 3, 'pods': 3, 'all_pods': 6}
+idle stateless-demo {'seconds': 10.16, 'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 6}
+idle stateless-demo {'seconds': 14.796, 'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 6}
+idle stateless-demo {'seconds': 18.627, 'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 6}
+idle stateless-demo {'seconds': 22.748, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 6}
+idle stateless-demo {'seconds': 27.012, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 6}
+idle stateless-demo {'seconds': 31.774, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 5}
+idle stateless-demo {'seconds': 36.187, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 4}
+idle stateless-demo {'seconds': 41.702, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 3}
+idle stateless-demo {'seconds': 48.277, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 3}
+idle stateless-demo {'seconds': 52.562, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 2}
+idle stateless-demo {'seconds': 56.755, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 0}
+{'name': 'stateless-demo', 'result': 'PASS', 'host': 'stateless-demo.mcp-auto.mcp.test', 'scale_to_zero_seconds': 56.75524850003421, 'cold_start_seconds': 27.341248200042173, 'cold_start_value': 'cold-start', 'awake_counts': {'desired': 2, 'ready': 1, 'pods': 2, 'all_pods': 2}, 'counter': None, 'expected_counter': None}
+stateful-demo {'seconds': 0.958, 'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 2}
+stateful-demo {'seconds': 4.897, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 8.246, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 11.6, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 15.609, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 18.682, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 21.806, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 24.957, 'desired': 6, 'ready': 2, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 27.941, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 31.165, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 34.281, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 37.326, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 40.335, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 43.277, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 46.303, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 49.454, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 52.817, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 56.463, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 60.442, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 64.609, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+stateful-demo {'seconds': 68.279, 'desired': 6, 'ready': 6, 'pods': 6, 'all_pods': 6}
+idle stateful-demo {'seconds': 1.016, 'desired': 5, 'ready': 5, 'pods': 5, 'all_pods': 6}
+idle stateful-demo {'seconds': 5.137, 'desired': 4, 'ready': 4, 'pods': 4, 'all_pods': 6}
+idle stateful-demo {'seconds': 9.268, 'desired': 3, 'ready': 3, 'pods': 3, 'all_pods': 6}
+idle stateful-demo {'seconds': 13.177, 'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 6}
+idle stateful-demo {'seconds': 17.093, 'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 6}
+idle stateful-demo {'seconds': 21.047, 'desired': 1, 'ready': 1, 'pods': 1, 'all_pods': 6}
+idle stateful-demo {'seconds': 25.038, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 6}
+idle stateful-demo {'seconds': 29.214, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 6}
+idle stateful-demo {'seconds': 33.13, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 5}
+idle stateful-demo {'seconds': 37.587, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 4}
+idle stateful-demo {'seconds': 41.992, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 3}
+idle stateful-demo {'seconds': 45.898, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 2}
+idle stateful-demo {'seconds': 49.943, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 2}
+idle stateful-demo {'seconds': 53.936, 'desired': 0, 'ready': 0, 'pods': 0, 'all_pods': 0}
+{'name': 'stateful-demo', 'result': 'PASS', 'host': 'stateful-demo.mcp-auto.mcp.test', 'scale_to_zero_seconds': 53.935834100004286, 'cold_start_seconds': 15.419036300037988, 'cold_start_value': 161, 'awake_counts': {'desired': 2, 'ready': 2, 'pods': 2, 'all_pods': 2}, 'counter': 'autoscale_c78c2e126df84f178be16deaeed06000', 'expected_counter': 161}

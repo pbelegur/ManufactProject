@@ -1,0 +1,1307 @@
+{
+  "items": [
+    {
+      "namespace": "mcp-auto",
+      "name": "contract-probe",
+      "backend": "knative",
+      "mode": "stateless",
+      "version": "sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "desired_replicas": 0,
+      "healthy_replicas": 0,
+      "health": "Idle/Scaled-to-zero",
+      "endpoint": "http://contract-probe.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T20:05:37Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T20:05:44Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T20:05:44Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "contract-probe",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "contract-probe-00003"
+        }
+      ],
+      "latest_ready": "contract-probe-00003",
+      "configured_image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "release": "demo-20261026T194844428045Z-independent",
+      "identity": "mcp-auto/contract-probe",
+      "category": "probe",
+      "source_project": "tests/fixtures/compatible_project",
+      "source_identity": {
+        "kind": "fixture",
+        "path": "tests/fixtures/compatible_project"
+      },
+      "safe_test": {
+        "tool": "multiply",
+        "arguments": {
+          "value": 6,
+          "factor": 7
+        }
+      },
+      "exists": true,
+      "runtime_health": "Idle/Scaled-to-zero",
+      "latest_job": null,
+      "redis": null,
+      "pods": [],
+      "image_digests": [],
+      "revision": "contract-probe-00003",
+      "history": [
+        {
+          "name": "contract-probe-00003-deployment-7f585d8f7f",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T20:05:15Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z-independent"
+        },
+        {
+          "name": "contract-probe-00003",
+          "kind": "Revision",
+          "created_at": "2026-10-26T20:05:14Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z-independent"
+        },
+        {
+          "name": "contract-probe-00002-deployment-765b7bbf6c",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:53:23Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": "1",
+          "release": "phase3-independent-v1"
+        },
+        {
+          "name": "contract-probe-00002",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:53:18Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": null,
+          "release": "phase3-independent-v1"
+        },
+        {
+          "name": "contract-probe-00001-deployment-64fc85c787",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:46:06Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": "1",
+          "release": "phase3-independent-v1"
+        },
+        {
+          "name": "contract-probe-00001",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:46:00Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": null,
+          "release": "phase3-independent-v1"
+        }
+      ],
+      "last_deployed_at": "2026-10-26T20:05:44Z",
+      "deployment_time_source": "Kubernetes rollout/route condition time"
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "contract-probe",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Healthy",
+      "endpoint": "http://contract-probe.mcp-demo.svc.cluster.local:8000/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T18:16:36Z",
+          "lastUpdateTime": "2026-10-26T18:17:00Z",
+          "message": "ReplicaSet \"contract-probe-5685dccb9c\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T18:49:47Z",
+          "lastUpdateTime": "2026-10-26T18:49:47Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        }
+      ],
+      "project_id": "contract-probe",
+      "identity": "mcp-demo/contract-probe",
+      "category": "probe",
+      "source_project": "tests/fixtures/compatible_project",
+      "source_identity": {
+        "kind": "fixture",
+        "path": "tests/fixtures/compatible_project"
+      },
+      "safe_test": {
+        "tool": "multiply",
+        "arguments": {
+          "value": 6,
+          "factor": 7
+        }
+      },
+      "exists": true,
+      "runtime_health": "Healthy",
+      "latest_job": null,
+      "redis": null,
+      "pods": [
+        {
+          "name": "contract-probe-5685dccb9c-bjpbc",
+          "uid": "8e905c90-f431-47f4-86e0-5f664d541ca9",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+          ]
+        },
+        {
+          "name": "contract-probe-5685dccb9c-cptt6",
+          "uid": "4b29e67d-7381-47cb-921a-1267d223be96",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+          ]
+        }
+      ],
+      "image_digests": [
+        "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+      ],
+      "revision": "1",
+      "history": [
+        {
+          "name": "contract-probe-5685dccb9c",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:16:36Z",
+          "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": "1",
+          "release": null
+        }
+      ],
+      "last_deployed_at": "2026-10-26T18:17:00Z",
+      "deployment_time_source": "Kubernetes rollout/route condition time"
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "manufact-invalid-build",
+      "backend": "always-on",
+      "identity": "mcp-demo/manufact-invalid-build",
+      "mode": "stateless",
+      "project_id": "byo-51b1fb84d1544940af48",
+      "source_project": ".local/ui/imports/51b1fb84d1544940af4831cd566f4e61/project",
+      "source_identity": {
+        "kind": "zip",
+        "files": 2,
+        "expanded_bytes": 41,
+        "archive_sha256": "65c06e5a4497eb9da2b62215d410e8128d5b869df25698c9b0303d7ac894b719"
+      },
+      "category": "developer",
+      "version": null,
+      "image": null,
+      "revision": null,
+      "image_digests": [],
+      "desired_replicas": null,
+      "healthy_replicas": null,
+      "health": "Failed",
+      "runtime_health": "Not observed",
+      "endpoint": null,
+      "conditions": [],
+      "latest_job": {
+        "id": "569481156e8a425cb309d8bfa8888685",
+        "status": "failed",
+        "project_id": "byo-51b1fb84d1544940af48",
+        "name": "manufact-invalid-build",
+        "namespace": "mcp-demo",
+        "backend": "always-on",
+        "mode": "stateless",
+        "version": "phase5-v1",
+        "source": "build",
+        "created_at": "2026-10-26T22:05:49.321352+00:00",
+        "started_at": "2026-10-26T22:05:49.332033+00:00",
+        "finished_at": "2026-10-26T22:05:55.639766+00:00",
+        "exit_code": 1,
+        "error": "deployctl.py exited 1. See the real CLI log, including recovery diagnostics.",
+        "command": [
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+          "deploy",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\51b1fb84d1544940af4831cd566f4e61\\project",
+          "--config",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\51b1fb84d1544940af4831cd566f4e61\\project\\.deploy-always-on.json",
+          "--namespace",
+          "mcp-demo",
+          "--kubeconfig",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+          "--version",
+          "phase5-v1",
+          "--timeout",
+          "180",
+          "--rollback-timeout",
+          "180",
+          "--push-registry",
+          "localhost:4566/000000000000/us-east-1",
+          "--ensure-floci-repository"
+        ],
+        "pid": 17816
+      },
+      "last_deployed_at": null,
+      "deployment_time_source": "No successful deployment recorded",
+      "exists": false,
+      "redis": null,
+      "safe_test": null,
+      "history": [],
+      "events": [],
+      "pods": []
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "manufact-text-tools",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7",
+      "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Healthy",
+      "endpoint": "http://manufact-text-tools.mcp-demo.svc.cluster.local:8000/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T22:12:19Z",
+          "lastUpdateTime": "2026-10-26T22:12:19Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T22:11:12Z",
+          "lastUpdateTime": "2026-10-26T22:12:19Z",
+          "message": "ReplicaSet \"manufact-text-tools-7b9fc478b9\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        }
+      ],
+      "project_id": "byo-9a1c65f1bfd64bc48459",
+      "identity": "mcp-demo/manufact-text-tools",
+      "category": "developer",
+      "source_project": ".local/ui/imports/9a1c65f1bfd64bc4845917450119cc24/project",
+      "source_identity": {
+        "kind": "zip",
+        "files": 5,
+        "expanded_bytes": 2609,
+        "archive_sha256": "dc773ecf74bb605349f6211608d8c1617b0740aa6494078a69729b12a4b3f01c"
+      },
+      "safe_test": {
+        "tool": "analyze_text",
+        "arguments": {
+          "text": "Manufact builds MCP tools"
+        }
+      },
+      "exists": true,
+      "runtime_health": "Healthy",
+      "latest_job": {
+        "id": "4ce1cba0091c42a8bc9d7092c1db99d6",
+        "status": "succeeded",
+        "project_id": "byo-9a1c65f1bfd64bc48459",
+        "name": "manufact-text-tools",
+        "namespace": "mcp-demo",
+        "backend": "always-on",
+        "mode": "stateless",
+        "version": "phase5-v1",
+        "source": "build",
+        "created_at": "2026-10-26T22:06:03.657138+00:00",
+        "started_at": "2026-10-26T22:06:03.662457+00:00",
+        "finished_at": "2026-10-26T22:12:30.515437+00:00",
+        "exit_code": 0,
+        "error": null,
+        "command": [
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+          "deploy",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\9a1c65f1bfd64bc4845917450119cc24\\project",
+          "--config",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\imports\\9a1c65f1bfd64bc4845917450119cc24\\project\\.deploy-always-on.json",
+          "--namespace",
+          "mcp-demo",
+          "--kubeconfig",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+          "--version",
+          "phase5-v1",
+          "--timeout",
+          "180",
+          "--rollback-timeout",
+          "180",
+          "--push-registry",
+          "localhost:4566/000000000000/us-east-1",
+          "--ensure-floci-repository"
+        ],
+        "pid": 18104,
+        "deployment_result": {
+          "status": "healthy",
+          "name": "manufact-text-tools",
+          "namespace": "mcp-demo",
+          "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7",
+          "ready_replicas": 2,
+          "mcp_url": "http://manufact-text-tools.mcp-demo.svc.cluster.local:8000/mcp"
+        }
+      },
+      "redis": null,
+      "pods": [
+        {
+          "name": "manufact-text-tools-7b9fc478b9-dgzpb",
+          "uid": "74ec1263-cedc-4a3f-9498-ada31a7131fb",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/manufact-text-tools@sha256:ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7"
+          ]
+        },
+        {
+          "name": "manufact-text-tools-7b9fc478b9-kzjlg",
+          "uid": "c1a1ebd9-df06-4bdc-980f-859873b0713d",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/manufact-text-tools@sha256:ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7"
+          ]
+        }
+      ],
+      "image_digests": [
+        "localhost:4566/000000000000/us-east-1/manufact-text-tools@sha256:ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7"
+      ],
+      "revision": "1",
+      "history": [
+        {
+          "name": "manufact-text-tools-7b9fc478b9",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T22:11:12Z",
+          "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:phase5-v1-ce7382a9b2b5f49dfd838049d6f98949b2c2ec18c3aa21ff5d92c07dd85cf1b7",
+          "revision": "1",
+          "release": null
+        }
+      ],
+      "last_deployed_at": "2026-10-26T22:12:30.515437+00:00",
+      "deployment_time_source": "UI job finished after CLI verified health"
+    },
+    {
+      "namespace": "mcp-auto",
+      "name": "phase3-final-probe",
+      "backend": "knative",
+      "mode": "stateless",
+      "version": "sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "image": "localhost:4566/000000000000/us-east-1/phase3-final-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "desired_replicas": 0,
+      "healthy_replicas": 0,
+      "health": "Idle/Scaled-to-zero",
+      "endpoint": "http://phase3-final-probe.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T19:11:59Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T19:12:00Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T19:12:00Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "contract-probe",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "phase3-final-probe-00001"
+        }
+      ],
+      "latest_ready": "phase3-final-probe-00001",
+      "configured_image": "localhost:4566/000000000000/us-east-1/phase3-final-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "release": "phase3-independent-v1",
+      "identity": "mcp-auto/phase3-final-probe",
+      "category": "probe",
+      "source_project": "tests/fixtures/compatible_project",
+      "source_identity": {
+        "kind": "fixture",
+        "path": "tests/fixtures/compatible_project"
+      },
+      "safe_test": {
+        "tool": "multiply",
+        "arguments": {
+          "value": 6,
+          "factor": 7
+        }
+      },
+      "exists": true,
+      "runtime_health": "Idle/Scaled-to-zero",
+      "latest_job": null,
+      "redis": null,
+      "pods": [],
+      "image_digests": [],
+      "revision": "phase3-final-probe-00001",
+      "history": [
+        {
+          "name": "phase3-final-probe-00001-deployment-5d84576867",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:11:36Z",
+          "image": "localhost:4566/000000000000/us-east-1/phase3-final-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": "1",
+          "release": "phase3-independent-v1"
+        },
+        {
+          "name": "phase3-final-probe-00001",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:11:36Z",
+          "image": "localhost:4566/000000000000/us-east-1/phase3-final-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": null,
+          "release": "phase3-independent-v1"
+        }
+      ],
+      "last_deployed_at": "2026-10-26T19:12:00Z",
+      "deployment_time_source": "Kubernetes rollout/route condition time"
+    },
+    {
+      "namespace": "mcp-auto",
+      "name": "phase3-verified-probe",
+      "backend": "knative",
+      "mode": "stateless",
+      "version": "sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "image": "localhost:4566/000000000000/us-east-1/phase3-verified-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "desired_replicas": 0,
+      "healthy_replicas": 0,
+      "health": "Idle/Scaled-to-zero",
+      "endpoint": "http://phase3-verified-probe.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T19:16:10Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T19:16:14Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T19:16:14Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "contract-probe",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "phase3-verified-probe-00001"
+        }
+      ],
+      "latest_ready": "phase3-verified-probe-00001",
+      "configured_image": "localhost:4566/000000000000/us-east-1/phase3-verified-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+      "release": "phase3-independent-v1",
+      "identity": "mcp-auto/phase3-verified-probe",
+      "category": "probe",
+      "source_project": "tests/fixtures/compatible_project",
+      "source_identity": {
+        "kind": "fixture",
+        "path": "tests/fixtures/compatible_project"
+      },
+      "safe_test": {
+        "tool": "multiply",
+        "arguments": {
+          "value": 6,
+          "factor": 7
+        }
+      },
+      "exists": true,
+      "runtime_health": "Idle/Scaled-to-zero",
+      "latest_job": null,
+      "redis": null,
+      "pods": [],
+      "image_digests": [],
+      "revision": "phase3-verified-probe-00001",
+      "history": [
+        {
+          "name": "phase3-verified-probe-00001-deployment-7cfcb56f4b",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:15:29Z",
+          "image": "localhost:4566/000000000000/us-east-1/phase3-verified-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": "1",
+          "release": "phase3-independent-v1"
+        },
+        {
+          "name": "phase3-verified-probe-00001",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:15:27Z",
+          "image": "localhost:4566/000000000000/us-east-1/phase3-verified-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d",
+          "revision": null,
+          "release": "phase3-independent-v1"
+        }
+      ],
+      "last_deployed_at": "2026-10-26T19:16:14Z",
+      "deployment_time_source": "Kubernetes rollout/route condition time"
+    },
+    {
+      "namespace": "mcp-auto",
+      "name": "stateful-demo",
+      "backend": "knative",
+      "mode": "stateful",
+      "version": "sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "desired_replicas": 0,
+      "healthy_replicas": 0,
+      "health": "Idle/Scaled-to-zero",
+      "endpoint": "http://stateful-demo.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T20:04:35Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T20:04:37Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T20:04:37Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "stateful",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "stateful-demo-00004"
+        }
+      ],
+      "latest_ready": "stateful-demo-00004",
+      "configured_image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "release": "demo-20261026T194844428045Z-continuity",
+      "identity": "mcp-auto/stateful-demo",
+      "category": "developer",
+      "source_project": "servers/stateful",
+      "source_identity": {
+        "kind": "template",
+        "path": "servers/stateful"
+      },
+      "safe_test": {
+        "tool": "get_counter",
+        "arguments": {
+          "name": "ui_persist_a59837a6a3"
+        }
+      },
+      "exists": true,
+      "runtime_health": "Idle/Scaled-to-zero",
+      "latest_job": null,
+      "redis": {
+        "host": "stateful-demo-redis",
+        "port": 6379,
+        "database": "0",
+        "credentials": "Not present in URL",
+        "service_present": true,
+        "configuration": "Shared Redis outside MCP pods; no in-process application state"
+      },
+      "pods": [],
+      "image_digests": [],
+      "revision": "stateful-demo-00004",
+      "history": [
+        {
+          "name": "stateful-demo-00004-deployment-6b4c675487",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T20:04:11Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z-continuity"
+        },
+        {
+          "name": "stateful-demo-00004",
+          "kind": "Revision",
+          "created_at": "2026-10-26T20:04:11Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z-continuity"
+        },
+        {
+          "name": "stateful-demo-00003-deployment-b8b496bfb",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:57:43Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z-scale"
+        },
+        {
+          "name": "stateful-demo-00003",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:57:43Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z-scale"
+        },
+        {
+          "name": "stateful-demo-00002-deployment-54c5f48977",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:50:39Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": "1",
+          "release": "phase3-local-v1"
+        },
+        {
+          "name": "stateful-demo-00002",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:50:39Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": null,
+          "release": "phase3-local-v1"
+        },
+        {
+          "name": "stateful-demo-00001-deployment-7d9657c497",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:35:57Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": "1",
+          "release": "phase3-v1"
+        },
+        {
+          "name": "stateful-demo-00001",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:35:57Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": null,
+          "release": "phase3-v1"
+        }
+      ],
+      "last_deployed_at": "2026-10-26T20:04:37Z",
+      "deployment_time_source": "Kubernetes rollout/route condition time"
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "stateful-demo",
+      "backend": "always-on",
+      "mode": "stateful",
+      "version": "ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "image": "localhost:4566/000000000000/us-east-1/stateful-demo:ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Healthy",
+      "endpoint": "http://stateful-demo.mcp-demo.svc.cluster.local:8000/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T20:17:11Z",
+          "lastUpdateTime": "2026-10-26T20:17:11Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T18:15:08Z",
+          "lastUpdateTime": "2026-10-26T21:07:21Z",
+          "message": "ReplicaSet \"stateful-demo-947d69fdc\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        }
+      ],
+      "project_id": "stateful",
+      "identity": "mcp-demo/stateful-demo",
+      "category": "developer",
+      "source_project": "servers/stateful",
+      "source_identity": {
+        "kind": "template",
+        "path": "servers/stateful"
+      },
+      "safe_test": {
+        "tool": "get_counter",
+        "arguments": {
+          "name": "ui_persist_a59837a6a3"
+        }
+      },
+      "exists": true,
+      "runtime_health": "Healthy",
+      "latest_job": {
+        "id": "f79112a052434e3780985d9f7f944bf1",
+        "status": "succeeded",
+        "project_id": "stateful",
+        "name": "stateful-demo",
+        "namespace": "mcp-demo",
+        "backend": "always-on",
+        "mode": "stateful",
+        "version": "ui-a59837a6a3-stateful-always-on",
+        "source": "build",
+        "created_at": "2026-10-26T21:06:32.831521+00:00",
+        "started_at": "2026-10-26T21:06:32.835525+00:00",
+        "finished_at": "2026-10-26T21:07:23.192514+00:00",
+        "exit_code": 0,
+        "error": null,
+        "command": [
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+          "deploy",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateful",
+          "--config",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateful\\mcp.json",
+          "--namespace",
+          "mcp-demo",
+          "--kubeconfig",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+          "--version",
+          "ui-a59837a6a3-stateful-always-on",
+          "--timeout",
+          "180",
+          "--rollback-timeout",
+          "180",
+          "--push-registry",
+          "localhost:4566/000000000000/us-east-1"
+        ],
+        "pid": 8632
+      },
+      "redis": {
+        "host": "stateful-demo-redis",
+        "port": 6379,
+        "database": "0",
+        "credentials": "Not present in URL",
+        "service_present": true,
+        "configuration": "Shared Redis outside MCP pods; no in-process application state"
+      },
+      "pods": [
+        {
+          "name": "stateful-demo-947d69fdc-lpd6b",
+          "uid": "8638c46a-838a-44ed-adce-91b642dbb7ea",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510"
+          ]
+        },
+        {
+          "name": "stateful-demo-947d69fdc-m9hpx",
+          "uid": "db0f8ced-381c-42eb-823f-3c82db982a20",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510"
+          ]
+        }
+      ],
+      "image_digests": [
+        "localhost:4566/000000000000/us-east-1/stateful-demo@sha256:d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510"
+      ],
+      "revision": "2",
+      "history": [
+        {
+          "name": "stateful-demo-947d69fdc",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T21:06:46Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo:ui-a59837a6a3-stateful-always-on-d9ca459212419eb47b78950d58acd9a5fc7cd3f6d09a6c1ca73823d6ec14e510",
+          "revision": "2",
+          "release": null
+        },
+        {
+          "name": "stateful-demo-7688cd9947",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:15:08Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702",
+          "revision": "1",
+          "release": null
+        }
+      ],
+      "last_deployed_at": "2026-10-26T21:07:23.192514+00:00",
+      "deployment_time_source": "UI job finished after CLI verified health"
+    },
+    {
+      "namespace": "mcp-auto",
+      "name": "stateless-demo",
+      "backend": "knative",
+      "mode": "stateless",
+      "version": "sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "desired_replicas": 0,
+      "healthy_replicas": 0,
+      "health": "Idle/Scaled-to-zero",
+      "endpoint": "http://stateless-demo.mcp-auto.mcp.test/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T21:28:46Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T21:28:48Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T21:28:48Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "project_id": "stateless",
+      "traffic": [
+        {
+          "latestRevision": false,
+          "percent": 100,
+          "revisionName": "stateless-demo-00015"
+        }
+      ],
+      "latest_ready": "stateless-demo-00015",
+      "configured_image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "release": "performance-20261026T212809Z",
+      "identity": "mcp-auto/stateless-demo",
+      "category": "developer",
+      "source_project": "servers/stateless",
+      "source_identity": {
+        "kind": "template",
+        "path": "servers/stateless"
+      },
+      "safe_test": {
+        "tool": "echo",
+        "arguments": {
+          "message": "Manufact MCP check"
+        }
+      },
+      "exists": true,
+      "runtime_health": "Idle/Scaled-to-zero",
+      "latest_job": {
+        "id": "045d778716644f98bf3e2db9947efbe5",
+        "status": "succeeded",
+        "project_id": "stateless",
+        "name": "stateless-demo",
+        "namespace": "mcp-auto",
+        "backend": "knative",
+        "mode": "stateless",
+        "version": "ui-a59837a6a3-stateless-knative",
+        "source": "reuse",
+        "created_at": "2026-10-26T21:07:45.161354+00:00",
+        "started_at": "2026-10-26T21:07:45.168040+00:00",
+        "finished_at": "2026-10-26T21:08:16.870263+00:00",
+        "exit_code": 0,
+        "error": null,
+        "command": [
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+          "deploy",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+          "--config",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\\mcp.knative.local.json",
+          "--namespace",
+          "mcp-auto",
+          "--kubeconfig",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+          "--version",
+          "ui-a59837a6a3-stateless-knative",
+          "--timeout",
+          "180",
+          "--rollback-timeout",
+          "180",
+          "--image",
+          "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+        ],
+        "pid": 25344
+      },
+      "redis": null,
+      "pods": [],
+      "image_digests": [],
+      "revision": "stateless-demo-00015",
+      "history": [
+        {
+          "name": "stateless-demo-00015-deployment-66768c9857",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T21:28:18Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "performance-20261026T212809Z"
+        },
+        {
+          "name": "stateless-demo-00015",
+          "kind": "Revision",
+          "created_at": "2026-10-26T21:28:16Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "performance-20261026T212809Z"
+        },
+        {
+          "name": "stateless-demo-00014-deployment-76944d6664",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T21:07:53Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "ui-a59837a6a3-stateless-knative"
+        },
+        {
+          "name": "stateless-demo-00014",
+          "kind": "Revision",
+          "created_at": "2026-10-26T21:07:52Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "ui-a59837a6a3-stateless-knative"
+        },
+        {
+          "name": "stateless-demo-00013-deployment-d7f68d6dd",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T20:08:28Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z"
+        },
+        {
+          "name": "stateless-demo-00013",
+          "kind": "Revision",
+          "created_at": "2026-10-26T20:08:27Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z"
+        },
+        {
+          "name": "stateless-demo-00011-deployment-f5784f989",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T20:06:09Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z"
+        },
+        {
+          "name": "stateless-demo-00011",
+          "kind": "Revision",
+          "created_at": "2026-10-26T20:06:08Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z"
+        },
+        {
+          "name": "stateless-demo-00010-deployment-6c45cc6cb8",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T20:03:45Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z-continuity"
+        },
+        {
+          "name": "stateless-demo-00010",
+          "kind": "Revision",
+          "created_at": "2026-10-26T20:03:45Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z-continuity"
+        },
+        {
+          "name": "stateless-demo-00009-deployment-7f47545844",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:57:18Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "demo-20261026T194844428045Z-scale"
+        },
+        {
+          "name": "stateless-demo-00009",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:57:18Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "demo-20261026T194844428045Z-scale"
+        },
+        {
+          "name": "stateless-demo-00008-deployment-74dc87f954",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:18:44Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "phase3-v2-verified"
+        },
+        {
+          "name": "stateless-demo-00008",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:18:44Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "phase3-v2-verified"
+        },
+        {
+          "name": "stateless-demo-00006-deployment-bf8946b9",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:16:38Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "phase3-v2-verified"
+        },
+        {
+          "name": "stateless-demo-00006",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:16:37Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "phase3-v2-verified"
+        },
+        {
+          "name": "stateless-demo-00005-deployment-797b5487ff",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:00:45Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "phase3-v2"
+        },
+        {
+          "name": "stateless-demo-00005",
+          "kind": "Revision",
+          "created_at": "2026-10-26T19:00:45Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "phase3-v2"
+        },
+        {
+          "name": "stateless-demo-00003-deployment-96987657f",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:57:58Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "phase3-v2"
+        },
+        {
+          "name": "stateless-demo-00003",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:57:57Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "phase3-v2"
+        },
+        {
+          "name": "stateless-demo-00002-deployment-947746dcf",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:50:10Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "phase3-local-v1"
+        },
+        {
+          "name": "stateless-demo-00002",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:50:10Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "phase3-local-v1"
+        },
+        {
+          "name": "stateless-demo-00001-deployment-69c8fdb75c",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:35:22Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "1",
+          "release": "phase3-v1"
+        },
+        {
+          "name": "stateless-demo-00001",
+          "kind": "Revision",
+          "created_at": "2026-10-26T18:35:21Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": null,
+          "release": "phase3-v1"
+        }
+      ],
+      "last_deployed_at": "2026-10-26T21:28:48Z",
+      "deployment_time_source": "Kubernetes rollout/route condition time"
+    },
+    {
+      "namespace": "mcp-demo",
+      "name": "stateless-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "image": "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+      "desired_replicas": 2,
+      "healthy_replicas": 2,
+      "health": "Healthy",
+      "endpoint": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp",
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T18:13:42Z",
+          "lastUpdateTime": "2026-10-26T18:13:42Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T19:48:24Z",
+          "lastUpdateTime": "2026-10-26T21:09:08Z",
+          "message": "ReplicaSet \"stateless-demo-75f974cf9b\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        }
+      ],
+      "project_id": "stateless",
+      "identity": "mcp-demo/stateless-demo",
+      "category": "developer",
+      "source_project": "servers/stateless",
+      "source_identity": {
+        "kind": "template",
+        "path": "servers/stateless"
+      },
+      "safe_test": {
+        "tool": "echo",
+        "arguments": {
+          "message": "Manufact MCP check"
+        }
+      },
+      "exists": true,
+      "runtime_health": "Healthy",
+      "latest_job": {
+        "id": "bce2159c4b5e4534b7109817eb287171",
+        "status": "succeeded",
+        "project_id": "stateless",
+        "name": "stateless-demo",
+        "namespace": "mcp-demo",
+        "backend": "always-on",
+        "mode": "stateless",
+        "version": "ui-v1",
+        "source": "reuse",
+        "created_at": "2026-10-26T22:24:54.191805+00:00",
+        "started_at": "2026-10-26T22:24:54.197917+00:00",
+        "finished_at": "2026-10-26T22:25:01.665845+00:00",
+        "exit_code": 0,
+        "error": null,
+        "command": [
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+          "deploy",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+          "--config",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\\mcp.json",
+          "--namespace",
+          "mcp-demo",
+          "--kubeconfig",
+          "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+          "--version",
+          "ui-v1",
+          "--timeout",
+          "180",
+          "--rollback-timeout",
+          "180",
+          "--image",
+          "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+        ],
+        "pid": 2524,
+        "deployment_result": {
+          "status": "healthy",
+          "name": "stateless-demo",
+          "namespace": "mcp-demo",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "ready_replicas": 2,
+          "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"
+        }
+      },
+      "redis": null,
+      "pods": [
+        {
+          "name": "stateless-demo-75f974cf9b-4jqv9",
+          "uid": "eeba60de-86da-48ee-ac1c-e56a964cfccb",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+          ]
+        },
+        {
+          "name": "stateless-demo-75f974cf9b-622cc",
+          "uid": "d0ca8af0-f431-4752-8df6-c477f9a0b731",
+          "phase": "Running",
+          "deleting": null,
+          "ready": true,
+          "images": [
+            "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+          ]
+        }
+      ],
+      "image_digests": [
+        "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+      ],
+      "revision": "16",
+      "history": [
+        {
+          "name": "stateless-demo-8667d56cd5",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T21:08:26Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo:ui-missing-a59837a6a3",
+          "revision": "15",
+          "release": null
+        },
+        {
+          "name": "stateless-demo-75f974cf9b",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T21:05:48Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "16",
+          "release": null
+        },
+        {
+          "name": "stateless-demo-8697956f78",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T19:38:29Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e",
+          "revision": "13",
+          "release": null
+        },
+        {
+          "name": "stateless-demo-558758ffcb",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:45:08Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016",
+          "revision": "8",
+          "release": null
+        },
+        {
+          "name": "stateless-demo-644966c67b",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:18:19Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-d54c362b510f40a8869f74f4f8250cad",
+          "revision": "3",
+          "release": null
+        },
+        {
+          "name": "stateless-demo-6b654d576b",
+          "kind": "ReplicaSet",
+          "created_at": "2026-10-26T18:16:19Z",
+          "image": "localhost:4566/000000000000/us-east-1/stateless-demo:phase2-v2-109b4a37e6d6196e1124c12d29827b0c42eb1dbad18aab653d9fb30a407093ff",
+          "revision": "12",
+          "release": null
+        }
+      ],
+      "last_deployed_at": "2026-10-26T22:25:01.665845+00:00",
+      "deployment_time_source": "UI job finished after CLI verified health"
+    }
+  ],
+  "errors": [],
+  "observed_at": "2026-10-26T23:05:00.678295+00:00"
+}

@@ -1,0 +1,25 @@
+{
+  "replica_sequence": [
+    {
+      "requested": 3,
+      "ready": 3,
+      "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+    },
+    {
+      "requested": 2,
+      "ready": 2,
+      "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+    },
+    {
+      "requested": 2,
+      "ready": 2,
+      "image": "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+    }
+  ],
+  "idempotent_generation": 8,
+  "unchanged_pod_uids": [
+    "4b29e67d-7381-47cb-921a-1267d223be96",
+    "8e905c90-f431-47f4-86e0-5f664d541ca9"
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "job_id": "d51ffad817954270a4415b898536826e",
+  "browser_version": "156.0.4314.42",
+  "observations": [
+    {
+      "stage": "FAILED",
+      "log_chars": 3114,
+      "queue": "Worker limit 3 \u00b7 Not waiting",
+      "history_rows": 4
+    }
+  ],
+  "errors": []
+}

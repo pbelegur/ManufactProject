@@ -1,0 +1,108 @@
+{
+  "source": "evidence/demo/20261026T194844428045Z-full/reliability.json",
+  "method": {
+    "p50": "sample median",
+    "p95_p99": "nearest rank: sorted[ceil(q*n)-1]",
+    "unit": "seconds",
+    "warm_baseline": "phase=baseline, success=true; fresh MCP connections after initial warmup",
+    "deployments_included_in_comparison": true,
+    "stateless_deliberate_delay_seconds": 0.6,
+    "no_new_benchmark": true
+  },
+  "warm_baseline": {
+    "stateless-demo": {
+      "n": 30,
+      "p50": 0.8382012999500148,
+      "p95": 0.9303684999467805,
+      "p99": 0.9327343000331894,
+      "minimum": 0.7517368000699207,
+      "maximum": 0.9327343000331894
+    },
+    "stateful-demo": {
+      "n": 30,
+      "p50": 0.2509600999765098,
+      "p95": 0.32326660002581775,
+      "p99": 0.3351826999569312,
+      "minimum": 0.16384819999802858,
+      "maximum": 0.3351826999569312
+    }
+  },
+  "successful_requests_across_continuity": {
+    "stateless-demo": {
+      "n": 601,
+      "p50": 0.8998596000019461,
+      "p95": 2.3131311000324786,
+      "p99": 3.0489037999650463,
+      "minimum": 0.7072724999161437,
+      "maximum": 3.8100003000581637
+    },
+    "stateful-demo": {
+      "n": 602,
+      "p50": 0.29571869992651045,
+      "p95": 1.7172318000812083,
+      "p99": 2.497520999982953,
+      "minimum": 0.13085359998513013,
+      "maximum": 3.0035734000848606
+    }
+  },
+  "cold": {
+    "stateless-demo": {
+      "samples": 1,
+      "latency_seconds": 27.341248200042173,
+      "counter": null,
+      "expected_counter": null,
+      "value": "cold-start",
+      "scale_to_zero_seconds": 56.75524850003421
+    },
+    "stateful-demo": {
+      "samples": 1,
+      "latency_seconds": 15.419036300037988,
+      "counter": "autoscale_c78c2e126df84f178be16deaeed06000",
+      "expected_counter": 161,
+      "value": 161,
+      "scale_to_zero_seconds": 53.935834100004286
+    }
+  },
+  "failures": [
+    {
+      "service": "stateless-demo",
+      "phase": "existing-service-v2-rollout",
+      "sent_seconds": 94.42877589992713,
+      "latency_seconds": 2.36176370002795,
+      "success": false,
+      "error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)"
+    }
+  ],
+  "gateway_5xx": [
+    {
+      "start": "2026-10-26T20:06:33.783Z",
+      "method": "POST",
+      "path": "/mcp",
+      "code": "502",
+      "flags": "-",
+      "bytes_in": "311",
+      "bytes_out": "73",
+      "duration_ms": "1197",
+      "upstream_ms": "1195",
+      "id": "d962f5d2-3e02-409c-9a1f-b4ebd1de7531",
+      "host": "stateless-demo.mcp-auto.mcp.test",
+      "upstream": "10.42.0.21:8012",
+      "line": 2968
+    }
+  ],
+  "gateway_http_post_counts_during_continuity_window": {
+    "stateless-demo": {
+      "200": 1800,
+      "502": 1
+    },
+    "stateful-demo": {
+      "200": 1803
+    }
+  },
+  "notes": [
+    "Baseline n=30/service; nearest-rank p99 is the maximum, not a stable population tail estimate.",
+    "Do not subtract the intentional stateless delay to claim a measured no-delay latency.",
+    "Cold results are separate one-sample activation measurements, not cold percentiles.",
+    "Gateway HTTP operations outnumber tool calls because each fresh SDK connection initializes the protocol."
+  ]
+}

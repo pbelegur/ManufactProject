@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Correct current Knative revision timestamp",
+    "Third server visible",
+    "Third details healthy 2/2",
+    "No browser JavaScript errors"
+  ],
+  "browser_errors": []
+}

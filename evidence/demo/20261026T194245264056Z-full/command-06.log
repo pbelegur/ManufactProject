@@ -1,0 +1,201 @@
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/stateless-demo --ignore-not-found -o json
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+namespace/mcp-demo unchanged
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+deployment.apps/stateless-demo configured (server dry run)
+service/stateless-demo unchanged (server dry run)
+poddisruptionbudget.policy/stateless-demo configured (server dry run)
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+deployment.apps/stateless-demo configured
+service/stateless-demo unchanged
+poddisruptionbudget.policy/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateless-demo --timeout=180s
+Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+error: deployment "stateless-demo" exceeded its progress deadline
+ERROR: rollout failed; collecting diagnostics and restoring previous application resources
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pods -l app=stateless-demo -o wide
+NAME                              READY   STATUS             RESTARTS   AGE     IP            NODE                               NOMINATED NODE   READINESS GATES
+stateless-demo-558758ffcb-x9rpj   0/1     ImagePullBackOff   0          3m1s    10.42.0.163   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+stateless-demo-8697956f78-4fndj   1/1     Running            0          9m37s   10.42.0.156   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+stateless-demo-8697956f78-6sb8n   1/1     Running            0          9m52s   10.42.0.155   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo describe deployment stateless-demo
+Name:                   stateless-demo
+Namespace:              mcp-demo
+CreationTimestamp:      Mon, 26 Oct 2026 11:11:46 -0700
+Labels:                 app=stateless-demo
+Annotations:            deployment.kubernetes.io/revision: 8
+Selector:               app=stateless-demo
+Replicas:               2 desired | 1 updated | 3 total | 2 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        3
+RollingUpdateStrategy:  0 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=stateless-demo
+  Containers:
+   mcp:
+    Image:      localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016
+    Port:       8000/TCP (http)
+    Host Port:  0/TCP (http)
+    Limits:
+      cpu:     500m
+      memory:  512Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:http/health delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/health delay=0s timeout=1s period=3s #success=1 #failure=2
+    Startup:    http-get http://:http/health delay=0s timeout=1s period=2s #success=1 #failure=30
+    Environment:
+      HOST:               0.0.0.0
+      MCP_ALLOWED_HOSTS:  stateless-demo,stateless-demo:*,stateless-demo.mcp-demo,stateless-demo.mcp-demo:*,stateless-demo.mcp-demo.svc,stateless-demo.mcp-demo.svc:*,stateless-demo.mcp-demo.svc.cluster.local,stateless-demo.mcp-demo.svc.cluster.local:*
+      PORT:               8000
+    Mounts:               <none>
+  Volumes:                <none>
+  Node-Selectors:         <none>
+  Tolerations:            <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    False   ProgressDeadlineExceeded
+OldReplicaSets:  stateless-demo-7f5cdfb4c8 (0/0 replicas created), stateless-demo-6b654d576b (0/0 replicas created), stateless-demo-644966c67b (0/0 replicas created), stateless-demo-8697956f78 (2/2 replicas created)
+NewReplicaSet:   stateless-demo-558758ffcb (1/1 replicas created)
+Events:
+  Type    Reason             Age                 From                   Message
+  ----    ------             ----                ----                   -------
+  Normal  ScalingReplicaSet  9m53s               deployment-controller  Scaled up replica set stateless-demo-8697956f78 from 0 to 1
+  Normal  ScalingReplicaSet  9m38s               deployment-controller  Scaled down replica set stateless-demo-6b654d576b from 2 to 1
+  Normal  ScalingReplicaSet  9m38s               deployment-controller  Scaled up replica set stateless-demo-8697956f78 from 1 to 2
+  Normal  ScalingReplicaSet  9m23s               deployment-controller  Scaled down replica set stateless-demo-6b654d576b from 1 to 0
+  Normal  ScalingReplicaSet  3m2s (x2 over 63m)  deployment-controller  Scaled up replica set stateless-demo-558758ffcb from 0 to 1
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get events --sort-by=.lastTimestamp
+LAST SEEN   TYPE      REASON              OBJECT                                     MESSAGE
+4m6s        Normal    Scheduled           pod/stateful-demo-7688cd9947-lbmxm         Successfully assigned mcp-demo/stateful-demo-7688cd9947-lbmxm to i-f8241bc031e1365ba.ec2.internal
+10m         Normal    Scheduled           pod/mcp-verify-ddfe55d2-after-w7r2s        Successfully assigned mcp-demo/mcp-verify-ddfe55d2-after-w7r2s to i-f8241bc031e1365ba.ec2.internal
+59m         Warning   FailedScheduling    pod/contract-probe-5685dccb9c-smw6s        0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.
+9m38s       Normal    Scheduled           pod/stateless-demo-8697956f78-4fndj        Successfully assigned mcp-demo/stateless-demo-8697956f78-4fndj to i-f8241bc031e1365ba.ec2.internal
+7m34s       Normal    Scheduled           pod/mcp-verify-f87af5bb-after-px7z7        Successfully assigned mcp-demo/mcp-verify-f87af5bb-after-px7z7 to i-f8241bc031e1365ba.ec2.internal
+8m31s       Normal    Scheduled           pod/mcp-verify-f87af5bb-before-7r2v5       Successfully assigned mcp-demo/mcp-verify-f87af5bb-before-7r2v5 to i-f8241bc031e1365ba.ec2.internal
+3m2s        Normal    Scheduled           pod/stateless-demo-558758ffcb-x9rpj        Successfully assigned mcp-demo/stateless-demo-558758ffcb-x9rpj to i-f8241bc031e1365ba.ec2.internal
+10m         Normal    Scheduled           pod/stateful-demo-7688cd9947-tlr8r         Successfully assigned mcp-demo/stateful-demo-7688cd9947-tlr8r to i-f8241bc031e1365ba.ec2.internal
+60m         Warning   FailedScheduling    pod/contract-probe-5685dccb9c-smw6s        0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.
+9m53s       Normal    Scheduled           pod/stateless-demo-8697956f78-6sb8n        Successfully assigned mcp-demo/stateless-demo-8697956f78-6sb8n to i-f8241bc031e1365ba.ec2.internal
+59m         Normal    Scheduled           pod/contract-probe-5685dccb9c-smw6s        Successfully assigned mcp-demo/contract-probe-5685dccb9c-smw6s to i-f8241bc031e1365ba.ec2.internal
+3m38s       Normal    Scheduled           pod/mcp-verify-94219a78-after-57sv4        Successfully assigned mcp-demo/mcp-verify-94219a78-after-57sv4 to i-f8241bc031e1365ba.ec2.internal
+4m33s       Normal    Scheduled           pod/mcp-verify-94219a78-before-v6csz       Successfully assigned mcp-demo/mcp-verify-94219a78-before-v6csz to i-f8241bc031e1365ba.ec2.internal
+11m         Normal    Scheduled           pod/mcp-verify-ddfe55d2-before-xcrmx       Successfully assigned mcp-demo/mcp-verify-ddfe55d2-before-xcrmx to i-f8241bc031e1365ba.ec2.internal
+8m2s        Normal    Scheduled           pod/stateful-demo-7688cd9947-6fr4x         Successfully assigned mcp-demo/stateful-demo-7688cd9947-6fr4x to i-f8241bc031e1365ba.ec2.internal
+61m         Warning   Unhealthy           pod/contract-probe-5685dccb9c-w6qgd        Startup probe failed: Get "http://10.42.0.66:8000/health": dial tcp 10.42.0.66:8000: connect: connection refused
+60m         Normal    SuccessfulDelete    replicaset/contract-probe-5685dccb9c       Deleted pod: contract-probe-5685dccb9c-w6qgd
+60m         Normal    Killing             pod/contract-probe-5685dccb9c-w6qgd        Stopping container mcp
+60m         Warning   Unhealthy           pod/contract-probe-5685dccb9c-w6qgd        Readiness probe failed: Get "http://10.42.0.66:8000/health": dial tcp 10.42.0.66:8000: connect: connection refused
+60m         Normal    ScalingReplicaSet   deployment/contract-probe                  Scaled up replica set contract-probe-5685dccb9c from 2 to 3
+60m         Normal    SuccessfulCreate    replicaset/contract-probe-5685dccb9c       Created pod: contract-probe-5685dccb9c-smw6s
+59m         Normal    Pulled              pod/contract-probe-5685dccb9c-smw6s        Container image "localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d" already present on machine
+59m         Normal    Created             pod/contract-probe-5685dccb9c-smw6s        Created container: mcp
+58m         Normal    Started             pod/contract-probe-5685dccb9c-smw6s        Started container mcp
+58m         Warning   Unhealthy           pod/contract-probe-5685dccb9c-smw6s        Startup probe failed: Get "http://10.42.0.75:8000/health": dial tcp 10.42.0.75:8000: connect: connection refused
+53m         Normal    Killing             pod/contract-probe-5685dccb9c-smw6s        Stopping container mcp
+53m         Normal    SuccessfulDelete    replicaset/contract-probe-5685dccb9c       Deleted pod: contract-probe-5685dccb9c-smw6s
+53m         Normal    ScalingReplicaSet   deployment/contract-probe                  Scaled down replica set contract-probe-5685dccb9c from 3 to 2
+53m         Warning   Unhealthy           pod/contract-probe-5685dccb9c-smw6s        Readiness probe failed: Get "http://10.42.0.75:8000/health": dial tcp 10.42.0.75:8000: connect: connection refused
+52m         Warning   Unhealthy           pod/stateful-demo-7688cd9947-hxq8z         Readiness probe failed: Get "http://10.42.0.10:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+52m         Warning   Unhealthy           pod/stateful-demo-7688cd9947-c9frf         Readiness probe failed: Get "http://10.42.0.54:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+52m         Warning   Unhealthy           pod/stateful-demo-7688cd9947-c9frf         Liveness probe failed: Get "http://10.42.0.54:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+52m         Warning   Unhealthy           pod/stateless-demo-6b654d576b-h9wg9        Liveness probe failed: Get "http://10.42.0.14:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+52m         Warning   Unhealthy           pod/stateless-demo-6b654d576b-h9wg9        Readiness probe failed: Get "http://10.42.0.14:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+52m         Warning   Unhealthy           pod/contract-probe-5685dccb9c-cptt6        Readiness probe failed: Get "http://10.42.0.12:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+50m         Warning   Unhealthy           pod/stateful-demo-redis-64cbc84954-nvccf   Readiness probe failed: command timed out: "redis-cli ping" timed out after 1s
+42m         Warning   Unhealthy           pod/stateless-demo-6b654d576b-lbmcg        Readiness probe failed: Get "http://10.42.0.11:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+42m         Warning   Unhealthy           pod/stateless-demo-6b654d576b-lbmcg        Liveness probe failed: Get "http://10.42.0.11:8000/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+11m         Normal    SuccessfulCreate    job/mcp-verify-ddfe55d2-before             Created pod: mcp-verify-ddfe55d2-before-xcrmx
+11m         Normal    Pulled              pod/mcp-verify-ddfe55d2-before-xcrmx       Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+11m         Normal    Created             pod/mcp-verify-ddfe55d2-before-xcrmx       Created container: client
+11m         Normal    Started             pod/mcp-verify-ddfe55d2-before-xcrmx       Started container client
+11m         Normal    Completed           job/mcp-verify-ddfe55d2-before             Job completed
+11m         Normal    SuccessfulCreate    replicaset/stateful-demo-7688cd9947        Created pod: stateful-demo-7688cd9947-tlr8r
+11m         Normal    Pulled              pod/stateful-demo-7688cd9947-tlr8r         Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+11m         Normal    Created             pod/stateful-demo-7688cd9947-tlr8r         Created container: mcp
+11m         Normal    Killing             pod/stateful-demo-7688cd9947-c9frf         Stopping container mcp
+11m         Normal    Started             pod/stateful-demo-7688cd9947-tlr8r         Started container mcp
+10m         Warning   Unhealthy           pod/stateful-demo-7688cd9947-c9frf         Readiness probe failed: Get "http://10.42.0.54:8000/health": dial tcp 10.42.0.54:8000: connect: connection refused
+10m         Warning   Unhealthy           pod/stateful-demo-7688cd9947-tlr8r         Startup probe failed: Get "http://10.42.0.153:8000/health": dial tcp 10.42.0.153:8000: connect: connection refused
+10m         Normal    SuccessfulCreate    job/mcp-verify-ddfe55d2-after              Created pod: mcp-verify-ddfe55d2-after-w7r2s
+10m         Normal    Started             pod/mcp-verify-ddfe55d2-after-w7r2s        Started container client
+10m         Normal    Pulled              pod/mcp-verify-ddfe55d2-after-w7r2s        Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+10m         Normal    Created             pod/mcp-verify-ddfe55d2-after-w7r2s        Created container: client
+10m         Normal    Completed           job/mcp-verify-ddfe55d2-after              Job completed
+9m54s       Normal    ScalingReplicaSet   deployment/stateless-demo                  Scaled up replica set stateless-demo-8697956f78 from 0 to 1
+9m54s       Normal    SuccessfulCreate    replicaset/stateless-demo-8697956f78       Created pod: stateless-demo-8697956f78-6sb8n
+9m53s       Normal    Created             pod/stateless-demo-8697956f78-6sb8n        Created container: mcp
+9m53s       Normal    Pulled              pod/stateless-demo-8697956f78-6sb8n        Container image "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e" already present on machine
+9m53s       Normal    Started             pod/stateless-demo-8697956f78-6sb8n        Started container mcp
+9m44s       Warning   Unhealthy           pod/stateless-demo-8697956f78-6sb8n        Startup probe failed: Get "http://10.42.0.155:8000/health": dial tcp 10.42.0.155:8000: connect: connection refused
+9m39s       Normal    SuccessfulCreate    replicaset/stateless-demo-8697956f78       Created pod: stateless-demo-8697956f78-4fndj
+9m39s       Normal    ScalingReplicaSet   deployment/stateless-demo                  Scaled down replica set stateless-demo-6b654d576b from 2 to 1
+9m39s       Normal    SuccessfulDelete    replicaset/stateless-demo-6b654d576b       Deleted pod: stateless-demo-6b654d576b-lbmcg
+9m39s       Normal    Killing             pod/stateless-demo-6b654d576b-lbmcg        Stopping container mcp
+9m39s       Normal    ScalingReplicaSet   deployment/stateless-demo                  Scaled up replica set stateless-demo-8697956f78 from 1 to 2
+9m39s       Normal    Pulled              pod/stateless-demo-8697956f78-4fndj        Container image "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e" already present on machine
+9m39s       Normal    Created             pod/stateless-demo-8697956f78-4fndj        Created container: mcp
+9m38s       Normal    Started             pod/stateless-demo-8697956f78-4fndj        Started container mcp
+9m35s       Warning   Unhealthy           pod/stateless-demo-6b654d576b-lbmcg        Readiness probe failed: Get "http://10.42.0.11:8000/health": dial tcp 10.42.0.11:8000: connect: connection refused
+9m29s       Warning   Unhealthy           pod/stateless-demo-8697956f78-4fndj        Startup probe failed: Get "http://10.42.0.156:8000/health": dial tcp 10.42.0.156:8000: connect: connection refused
+9m24s       Normal    Killing             pod/stateless-demo-6b654d576b-h9wg9        Stopping container mcp
+9m24s       Normal    SuccessfulDelete    replicaset/stateless-demo-6b654d576b       Deleted pod: stateless-demo-6b654d576b-h9wg9
+9m24s       Normal    ScalingReplicaSet   deployment/stateless-demo                  Scaled down replica set stateless-demo-6b654d576b from 1 to 0
+9m22s       Warning   Unhealthy           pod/stateless-demo-6b654d576b-h9wg9        Readiness probe failed: Get "http://10.42.0.14:8000/health": dial tcp 10.42.0.14:8000: connect: connection refused
+8m32s       Normal    SuccessfulCreate    job/mcp-verify-f87af5bb-before             Created pod: mcp-verify-f87af5bb-before-7r2v5
+8m31s       Normal    Pulled              pod/mcp-verify-f87af5bb-before-7r2v5       Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+8m31s       Normal    Started             pod/mcp-verify-f87af5bb-before-7r2v5       Started container client
+8m31s       Normal    Created             pod/mcp-verify-f87af5bb-before-7r2v5       Created container: client
+8m5s        Normal    Completed           job/mcp-verify-f87af5bb-before             Job completed
+8m3s        Normal    Killing             pod/stateful-demo-7688cd9947-hxq8z         Stopping container mcp
+8m3s        Normal    SuccessfulCreate    replicaset/stateful-demo-7688cd9947        Created pod: stateful-demo-7688cd9947-6fr4x
+8m2s        Normal    Started             pod/stateful-demo-7688cd9947-6fr4x         Started container mcp
+8m2s        Normal    Pulled              pod/stateful-demo-7688cd9947-6fr4x         Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+8m2s        Normal    Created             pod/stateful-demo-7688cd9947-6fr4x         Created container: mcp
+7m59s       Warning   Unhealthy           pod/stateful-demo-7688cd9947-hxq8z         Readiness probe failed: Get "http://10.42.0.10:8000/health": dial tcp 10.42.0.10:8000: connect: connection refused
+7m53s       Warning   Unhealthy           pod/stateful-demo-7688cd9947-6fr4x         Startup probe failed: Get "http://10.42.0.158:8000/health": dial tcp 10.42.0.158:8000: connect: connection refused
+7m35s       Normal    SuccessfulCreate    job/mcp-verify-f87af5bb-after              Created pod: mcp-verify-f87af5bb-after-px7z7
+7m34s       Normal    Created             pod/mcp-verify-f87af5bb-after-px7z7        Created container: client
+7m34s       Normal    Pulled              pod/mcp-verify-f87af5bb-after-px7z7        Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+7m33s       Normal    Started             pod/mcp-verify-f87af5bb-after-px7z7        Started container client
+7m10s       Normal    Completed           job/mcp-verify-f87af5bb-after              Job completed
+4m34s       Normal    SuccessfulCreate    job/mcp-verify-94219a78-before             Created pod: mcp-verify-94219a78-before-v6csz
+4m33s       Normal    Pulled              pod/mcp-verify-94219a78-before-v6csz       Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+4m33s       Normal    Created             pod/mcp-verify-94219a78-before-v6csz       Created container: client
+4m33s       Normal    Started             pod/mcp-verify-94219a78-before-v6csz       Started container client
+4m8s        Normal    Completed           job/mcp-verify-94219a78-before             Job completed
+4m7s        Normal    SuccessfulCreate    replicaset/stateful-demo-7688cd9947        Created pod: stateful-demo-7688cd9947-lbmxm
+4m7s        Normal    Killing             pod/stateful-demo-7688cd9947-6fr4x         Stopping container mcp
+4m6s        Normal    Pulled              pod/stateful-demo-7688cd9947-lbmxm         Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+4m6s        Warning   Unhealthy           pod/stateful-demo-7688cd9947-6fr4x         Readiness probe failed: Get "http://10.42.0.158:8000/health": dial tcp 10.42.0.158:8000: connect: connection refused
+4m6s        Normal    Started             pod/stateful-demo-7688cd9947-lbmxm         Started container mcp
+4m6s        Normal    Created             pod/stateful-demo-7688cd9947-lbmxm         Created container: mcp
+3m57s       Warning   Unhealthy           pod/stateful-demo-7688cd9947-lbmxm         Startup probe failed: Get "http://10.42.0.161:8000/health": dial tcp 10.42.0.161:8000: connect: connection refused
+3m39s       Normal    SuccessfulCreate    job/mcp-verify-94219a78-after              Created pod: mcp-verify-94219a78-after-57sv4
+3m38s       Normal    Pulled              pod/mcp-verify-94219a78-after-57sv4        Container image "localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702" already present on machine
+3m37s       Normal    Started             pod/mcp-verify-94219a78-after-57sv4        Started container client
+3m37s       Normal    Created             pod/mcp-verify-94219a78-after-57sv4        Created container: client
+3m11s       Normal    Completed           job/mcp-verify-94219a78-after              Job completed
+3m3s        Normal    ScalingReplicaSet   deployment/stateless-demo                  Scaled up replica set stateless-demo-558758ffcb from 0 to 1
+3m3s        Normal    SuccessfulCreate    replicaset/stateless-demo-558758ffcb       Created pod: stateless-demo-558758ffcb-x9rpj
+19s         Normal    BackOff             pod/stateless-demo-558758ffcb-x9rpj        Back-off pulling image "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016"
+19s         Warning   Failed              pod/stateless-demo-558758ffcb-x9rpj        Error: ImagePullBackOff
+5s          Normal    Pulling             pod/stateless-demo-558758ffcb-x9rpj        Pulling image "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016"
+5s          Warning   Failed              pod/stateless-demo-558758ffcb-x9rpj        Failed to pull image "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016": rpc error: code = NotFound desc = failed to pull and unpack image "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016": failed to resolve reference "localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016": localhost:4566/000000000000/us-east-1/stateless-demo:deliberately-missing-eedd4426aa244795a6e0436118329016: not found
+5s          Warning   Failed              pod/stateless-demo-558758ffcb-x9rpj        Error: ErrImagePull
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+deployment.apps/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+service/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+poddisruptionbudget.policy/stateless-demo configured
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateless-demo --timeout=180s
+deployment "stateless-demo" successfully rolled out
+$ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+ROLLBACK OK: previous healthy deployment restored
+ERROR: Command '['kubectl', '--kubeconfig', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig', '--request-timeout=30s', '-n', 'mcp-demo', 'rollout', 'status', 'deployment/stateless-demo', '--timeout=180s']' returned non-zero exit status 1.

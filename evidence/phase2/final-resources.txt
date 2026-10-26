@@ -1,0 +1,30 @@
+﻿NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                                                                                                                                    SELECTOR
+deployment.apps/contract-probe        2/2     2            2           7m28s   mcp          localhost:4566/000000000000/us-east-1/contract-probe:phase2-generic-v1-4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d   app=contract-probe
+deployment.apps/stateful-demo         2/2     2            2           8m56s   mcp          localhost:4566/000000000000/us-east-1/stateful-demo:phase2-v1-7e41ef3f453924481997f8a5533d3570f4d8f135a1fe3257ec64adf412588702            app=stateful-demo
+deployment.apps/stateful-demo-redis   1/1     1            1           9m59s   redis        redis:7-alpine                                                                                                                            app=stateful-demo-redis
+deployment.apps/stateless-demo        2/2     2            2           12m     mcp          localhost:4566/000000000000/us-east-1/stateless-demo:phase2-v2-109b4a37e6d6196e1124c12d29827b0c42eb1dbad18aab653d9fb30a407093ff           app=stateless-demo
+
+NAME                                       READY   STATUS      RESTARTS   AGE     IP           NODE                               NOMINATED NODE   READINESS GATES
+pod/contract-probe-5685dccb9c-bjpbc        1/1     Running     0          7m28s   10.42.0.13   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/contract-probe-5685dccb9c-cptt6        1/1     Running     0          7m28s   10.42.0.12   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/mcp-verify-9ab57059-after-bh47p        0/1     Completed   0          67s     10.42.0.20   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/mcp-verify-9ab57059-before-xc579       0/1     Completed   0          2m24s   10.42.0.17   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateful-demo-7688cd9947-dkhx7         1/1     Running     0          106s    10.42.0.19   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateful-demo-7688cd9947-hxq8z         1/1     Running     0          8m56s   10.42.0.10   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateful-demo-redis-64cbc84954-nvccf   1/1     Running     0          9m59s   10.42.0.8    i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateless-demo-6b654d576b-h9wg9        1/1     Running     0          7m26s   10.42.0.14   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+pod/stateless-demo-6b654d576b-lbmcg        1/1     Running     0          7m44s   10.42.0.11   i-f8241bc031e1365ba.ec2.internal   <none>           <none>
+
+NAME                          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE     SELECTOR
+service/contract-probe        ClusterIP   10.100.253.222   <none>        8000/TCP   7m27s   app=contract-probe
+service/stateful-demo         ClusterIP   10.100.81.126    <none>        8000/TCP   8m56s   app=stateful-demo
+service/stateful-demo-redis   ClusterIP   10.100.204.159   <none>        6379/TCP   9m58s   app=stateful-demo-redis
+service/stateless-demo        ClusterIP   10.100.59.127    <none>        8000/TCP   12m     app=stateless-demo
+
+NAME                                             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE     VOLUMEMODE
+persistentvolumeclaim/stateful-demo-redis-data   Bound    pvc-af02a187-802f-4949-93c7-1defc575229e   1Gi        RWO            local-path     <unset>                 9m59s   Filesystem
+
+NAME                                        MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+poddisruptionbudget.policy/contract-probe   1               N/A               1                     7m27s
+poddisruptionbudget.policy/stateful-demo    1               N/A               1                     8m55s
+poddisruptionbudget.policy/stateless-demo   1               N/A               1                     12m

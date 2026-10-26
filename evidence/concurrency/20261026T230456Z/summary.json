@@ -1,0 +1,847 @@
+{
+  "started_at": "2026-10-26T23:04:56.719301+00:00",
+  "result": "FAIL",
+  "build_window_start": "2026-10-26T23:05:47.368363+00:00",
+  "observed_build_limits": [
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    },
+    {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "CpuPeriod": 100000,
+      "CpuQuota": 100000,
+      "Privileged": false,
+      "Binds": null
+    }
+  ],
+  "build_window_end": "2026-10-26T23:11:44.162533+00:00",
+  "peak_running_jobs": 3,
+  "jobs": [
+    {
+      "id": "ca1be4510f5746558a167bc614b401c1",
+      "role": "independent-stateful-demo",
+      "accepted_at": "2026-10-26T23:05:47.458318+00:00",
+      "acceptance_ms": 89.47829995304346,
+      "status": "succeeded",
+      "project_id": "stateful",
+      "name": "stateful-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateful",
+      "version": "parallel-230547-1",
+      "source": "build",
+      "created_at": "2026-10-26T23:05:47.390617+00:00",
+      "started_at": "2026-10-26T23:05:47.401598+00:00",
+      "finished_at": "2026-10-26T23:09:36.371748+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\ca1be4510f5746558a167bc614b401c1\\source",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\ca1be4510f5746558a167bc614b401c1\\.job-deploy.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "parallel-230547-1",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "stage": "SUCCEEDED",
+      "stage_at": "2026-10-26T23:09:36.357014+00:00",
+      "stage_message": "CLI completed successfully",
+      "stage_history": [
+        {
+          "stage": "QUEUED",
+          "at": "2026-10-26T23:05:47.390617+00:00",
+          "message": "Job accepted"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:05:47.410336+00:00",
+          "message": "Preparing a private source/configuration snapshot"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:05:50.457077+00:00",
+          "message": "Building the project Dockerfile"
+        },
+        {
+          "stage": "PUSHING",
+          "at": "2026-10-26T23:08:34.738268+00:00",
+          "message": "Publishing the immutable application image to the registry"
+        },
+        {
+          "stage": "DEPLOYING",
+          "at": "2026-10-26T23:08:42.195657+00:00",
+          "message": "Applying application resources; previous serving pods remain until readiness"
+        },
+        {
+          "stage": "VERIFYING",
+          "at": "2026-10-26T23:08:49.213689+00:00",
+          "message": "Waiting for deployment readiness and exact replica counts"
+        },
+        {
+          "stage": "SUCCEEDED",
+          "at": "2026-10-26T23:09:36.357014+00:00",
+          "message": "CLI completed successfully"
+        }
+      ],
+      "build_limits": {
+        "cpu": 1,
+        "memory_bytes": 1073741824,
+        "build_timeout_seconds": 300
+      },
+      "log_policy": {
+        "segment_bytes": 1048576,
+        "segments": 3,
+        "browser_tail_bytes": 256000
+      },
+      "resource_keys": [
+        "mcp-demo/stateful-demo",
+        "mcp-demo/stateful-demo-redis"
+      ],
+      "source_snapshot": {
+        "files": 6,
+        "bytes": 4308,
+        "at": "2026-10-26T23:05:47.528717+00:00"
+      },
+      "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\ca1be4510f5746558a167bc614b401c1\\source",
+      "pid": 17260,
+      "deployment_result": {
+        "status": "healthy",
+        "name": "stateful-demo",
+        "namespace": "mcp-demo",
+        "image": "localhost:4566/000000000000/us-east-1/stateful-demo:parallel-230547-1-7beff66ff5a72529b9dc0f1aaf655bd662ee230657175ea7349a0e9721e51cd6",
+        "ready_replicas": 2,
+        "mcp_url": "http://stateful-demo.mcp-demo.svc.cluster.local:8000/mcp"
+      },
+      "log_rotations": 0,
+      "phase": "SUCCEEDED",
+      "queue_position": null,
+      "waiting_reason": null,
+      "max_concurrent_jobs": 3
+    },
+    {
+      "id": "382fb0ecf860473094c9031b2807fb55",
+      "role": "independent-stateless-demo",
+      "accepted_at": "2026-10-26T23:05:47.478763+00:00",
+      "acceptance_ms": 110.05620006471872,
+      "status": "succeeded",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "parallel-230547-0",
+      "source": "build",
+      "created_at": "2026-10-26T23:05:47.413288+00:00",
+      "started_at": "2026-10-26T23:05:47.434546+00:00",
+      "finished_at": "2026-10-26T23:09:33.033007+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\382fb0ecf860473094c9031b2807fb55\\source",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\382fb0ecf860473094c9031b2807fb55\\.job-deploy.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "parallel-230547-0",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "stage": "SUCCEEDED",
+      "stage_at": "2026-10-26T23:09:33.015029+00:00",
+      "stage_message": "CLI completed successfully",
+      "stage_history": [
+        {
+          "stage": "QUEUED",
+          "at": "2026-10-26T23:05:47.413288+00:00",
+          "message": "Job accepted"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:05:47.440589+00:00",
+          "message": "Preparing a private source/configuration snapshot"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:05:50.539579+00:00",
+          "message": "Building the project Dockerfile"
+        },
+        {
+          "stage": "PUSHING",
+          "at": "2026-10-26T23:08:29.938915+00:00",
+          "message": "Publishing the immutable application image to the registry"
+        },
+        {
+          "stage": "DEPLOYING",
+          "at": "2026-10-26T23:08:42.145833+00:00",
+          "message": "Applying application resources; previous serving pods remain until readiness"
+        },
+        {
+          "stage": "VERIFYING",
+          "at": "2026-10-26T23:08:46.877908+00:00",
+          "message": "Waiting for deployment readiness and exact replica counts"
+        },
+        {
+          "stage": "SUCCEEDED",
+          "at": "2026-10-26T23:09:33.015029+00:00",
+          "message": "CLI completed successfully"
+        }
+      ],
+      "build_limits": {
+        "cpu": 1,
+        "memory_bytes": 1073741824,
+        "build_timeout_seconds": 300
+      },
+      "log_policy": {
+        "segment_bytes": 1048576,
+        "segments": 3,
+        "browser_tail_bytes": 256000
+      },
+      "resource_keys": [
+        "mcp-demo/stateless-demo"
+      ],
+      "source_snapshot": {
+        "files": 6,
+        "bytes": 3260,
+        "at": "2026-10-26T23:05:47.533772+00:00"
+      },
+      "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\382fb0ecf860473094c9031b2807fb55\\source",
+      "pid": 5112,
+      "deployment_result": {
+        "status": "healthy",
+        "name": "stateless-demo",
+        "namespace": "mcp-demo",
+        "image": "localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541",
+        "ready_replicas": 2,
+        "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"
+      },
+      "log_rotations": 0,
+      "phase": "SUCCEEDED",
+      "queue_position": null,
+      "waiting_reason": null,
+      "max_concurrent_jobs": 3
+    },
+    {
+      "id": "9049a6ced4514a30a58b0f2908c98a9a",
+      "role": "independent-manufact-text-tools",
+      "accepted_at": "2026-10-26T23:05:47.492438+00:00",
+      "acceptance_ms": 121.88729993067682,
+      "status": "succeeded",
+      "project_id": "byo-9a1c65f1bfd64bc48459",
+      "name": "manufact-text-tools",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "parallel-230547-2",
+      "source": "build",
+      "created_at": "2026-10-26T23:05:47.448070+00:00",
+      "started_at": "2026-10-26T23:05:47.475581+00:00",
+      "finished_at": "2026-10-26T23:07:52.292000+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\9049a6ced4514a30a58b0f2908c98a9a\\source",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\9049a6ced4514a30a58b0f2908c98a9a\\.job-deploy.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "parallel-230547-2",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1",
+        "--ensure-floci-repository"
+      ],
+      "stage": "SUCCEEDED",
+      "stage_at": "2026-10-26T23:07:52.275694+00:00",
+      "stage_message": "CLI completed successfully",
+      "stage_history": [
+        {
+          "stage": "QUEUED",
+          "at": "2026-10-26T23:05:47.448070+00:00",
+          "message": "Job accepted"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:05:47.492517+00:00",
+          "message": "Preparing a private source/configuration snapshot"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:05:50.533305+00:00",
+          "message": "Building the project Dockerfile"
+        },
+        {
+          "stage": "PUSHING",
+          "at": "2026-10-26T23:06:08.153078+00:00",
+          "message": "Publishing the immutable application image to the registry"
+        },
+        {
+          "stage": "DEPLOYING",
+          "at": "2026-10-26T23:06:15.515635+00:00",
+          "message": "Applying application resources; previous serving pods remain until readiness"
+        },
+        {
+          "stage": "VERIFYING",
+          "at": "2026-10-26T23:06:20.908552+00:00",
+          "message": "Waiting for deployment readiness and exact replica counts"
+        },
+        {
+          "stage": "SUCCEEDED",
+          "at": "2026-10-26T23:07:52.275694+00:00",
+          "message": "CLI completed successfully"
+        }
+      ],
+      "build_limits": {
+        "cpu": 1,
+        "memory_bytes": 1073741824,
+        "build_timeout_seconds": 300
+      },
+      "log_policy": {
+        "segment_bytes": 1048576,
+        "segments": 3,
+        "browser_tail_bytes": 256000
+      },
+      "resource_keys": [
+        "mcp-demo/manufact-text-tools"
+      ],
+      "source_snapshot": {
+        "files": 6,
+        "bytes": 3160,
+        "at": "2026-10-26T23:05:47.579405+00:00"
+      },
+      "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\9049a6ced4514a30a58b0f2908c98a9a\\source",
+      "pid": 27304,
+      "deployment_result": {
+        "status": "healthy",
+        "name": "manufact-text-tools",
+        "namespace": "mcp-demo",
+        "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:parallel-230547-2-426e573727c92420737d6ff04b535aa562d76ccfc603f450af7e54bdddb779a1",
+        "ready_replicas": 2,
+        "mcp_url": "http://manufact-text-tools.mcp-demo.svc.cluster.local:8000/mcp"
+      },
+      "log_rotations": 0,
+      "phase": "SUCCEEDED",
+      "queue_position": null,
+      "waiting_reason": null,
+      "max_concurrent_jobs": 3
+    },
+    {
+      "id": "f8288776ad844c43bde8d411d0a7e60a",
+      "role": "conflict-first",
+      "accepted_at": "2026-10-26T23:05:47.544576+00:00",
+      "acceptance_ms": 51.973599940538406,
+      "status": "succeeded",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "parallel-230547-same1",
+      "source": "build",
+      "created_at": "2026-10-26T23:05:47.513345+00:00",
+      "started_at": "2026-10-26T23:09:33.043187+00:00",
+      "finished_at": "2026-10-26T23:10:22.373466+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f8288776ad844c43bde8d411d0a7e60a\\source",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f8288776ad844c43bde8d411d0a7e60a\\.job-deploy.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "parallel-230547-same1",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "stage": "SUCCEEDED",
+      "stage_at": "2026-10-26T23:10:22.358069+00:00",
+      "stage_message": "CLI completed successfully",
+      "stage_history": [
+        {
+          "stage": "QUEUED",
+          "at": "2026-10-26T23:05:47.513345+00:00",
+          "message": "Job accepted"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:09:33.047139+00:00",
+          "message": "Preparing a private source/configuration snapshot"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:09:36.141998+00:00",
+          "message": "Building the project Dockerfile"
+        },
+        {
+          "stage": "PUSHING",
+          "at": "2026-10-26T23:09:44.993534+00:00",
+          "message": "Publishing the immutable application image to the registry"
+        },
+        {
+          "stage": "DEPLOYING",
+          "at": "2026-10-26T23:09:47.926431+00:00",
+          "message": "Applying application resources; previous serving pods remain until readiness"
+        },
+        {
+          "stage": "VERIFYING",
+          "at": "2026-10-26T23:09:52.053866+00:00",
+          "message": "Waiting for deployment readiness and exact replica counts"
+        },
+        {
+          "stage": "SUCCEEDED",
+          "at": "2026-10-26T23:10:22.358069+00:00",
+          "message": "CLI completed successfully"
+        }
+      ],
+      "build_limits": {
+        "cpu": 1,
+        "memory_bytes": 1073741824,
+        "build_timeout_seconds": 300
+      },
+      "log_policy": {
+        "segment_bytes": 1048576,
+        "segments": 3,
+        "browser_tail_bytes": 256000
+      },
+      "resource_keys": [
+        "mcp-demo/stateless-demo"
+      ],
+      "source_snapshot": {
+        "files": 6,
+        "bytes": 3260,
+        "at": "2026-10-26T23:09:33.115591+00:00"
+      },
+      "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f8288776ad844c43bde8d411d0a7e60a\\source",
+      "pid": 8528,
+      "deployment_result": {
+        "status": "healthy",
+        "name": "stateless-demo",
+        "namespace": "mcp-demo",
+        "image": "localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same1-83f07ba601e0eb9343d53eae357b180d9ae453f4c72f657886a1bb80f7d538c6",
+        "ready_replicas": 2,
+        "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"
+      },
+      "log_rotations": 0,
+      "phase": "SUCCEEDED",
+      "queue_position": null,
+      "waiting_reason": null,
+      "max_concurrent_jobs": 3
+    },
+    {
+      "id": "ca5af584c21340abb4755ce34fe2e743",
+      "role": "conflict-second",
+      "accepted_at": "2026-10-26T23:05:47.579025+00:00",
+      "acceptance_ms": 34.328100038692355,
+      "status": "succeeded",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "parallel-230547-same2",
+      "source": "build",
+      "created_at": "2026-10-26T23:05:47.561163+00:00",
+      "started_at": "2026-10-26T23:10:22.378842+00:00",
+      "finished_at": "2026-10-26T23:11:41.923990+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\ca5af584c21340abb4755ce34fe2e743\\source",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\ca5af584c21340abb4755ce34fe2e743\\.job-deploy.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "parallel-230547-same2",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "stage": "SUCCEEDED",
+      "stage_at": "2026-10-26T23:11:41.848794+00:00",
+      "stage_message": "CLI completed successfully",
+      "stage_history": [
+        {
+          "stage": "QUEUED",
+          "at": "2026-10-26T23:05:47.561163+00:00",
+          "message": "Job accepted"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:10:22.383398+00:00",
+          "message": "Preparing a private source/configuration snapshot"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:10:24.574516+00:00",
+          "message": "Building the project Dockerfile"
+        },
+        {
+          "stage": "PUSHING",
+          "at": "2026-10-26T23:10:31.554366+00:00",
+          "message": "Publishing the immutable application image to the registry"
+        },
+        {
+          "stage": "DEPLOYING",
+          "at": "2026-10-26T23:10:37.664661+00:00",
+          "message": "Applying application resources; previous serving pods remain until readiness"
+        },
+        {
+          "stage": "VERIFYING",
+          "at": "2026-10-26T23:10:48.056913+00:00",
+          "message": "Waiting for deployment readiness and exact replica counts"
+        },
+        {
+          "stage": "SUCCEEDED",
+          "at": "2026-10-26T23:11:41.848794+00:00",
+          "message": "CLI completed successfully"
+        }
+      ],
+      "build_limits": {
+        "cpu": 1,
+        "memory_bytes": 1073741824,
+        "build_timeout_seconds": 300
+      },
+      "log_policy": {
+        "segment_bytes": 1048576,
+        "segments": 3,
+        "browser_tail_bytes": 256000
+      },
+      "resource_keys": [
+        "mcp-demo/stateless-demo"
+      ],
+      "source_snapshot": {
+        "files": 6,
+        "bytes": 3260,
+        "at": "2026-10-26T23:10:22.464391+00:00"
+      },
+      "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\ca5af584c21340abb4755ce34fe2e743\\source",
+      "pid": 8440,
+      "deployment_result": {
+        "status": "healthy",
+        "name": "stateless-demo",
+        "namespace": "mcp-demo",
+        "image": "localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264",
+        "ready_replicas": 2,
+        "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"
+      },
+      "log_rotations": 0,
+      "phase": "SUCCEEDED",
+      "queue_position": null,
+      "waiting_reason": null,
+      "max_concurrent_jobs": 3
+    },
+    {
+      "id": "d51ffad817954270a4415b898536826e",
+      "role": "expected-failure",
+      "accepted_at": "2026-10-26T23:05:47.614946+00:00",
+      "acceptance_ms": 35.8045999892056,
+      "status": "failed",
+      "project_id": "byo-51b1fb84d1544940af48",
+      "name": "manufact-invalid-build",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "parallel-230547-broken",
+      "source": "build",
+      "created_at": "2026-10-26T23:05:47.593047+00:00",
+      "started_at": "2026-10-26T23:07:52.300459+00:00",
+      "finished_at": "2026-10-26T23:07:56.111728+00:00",
+      "exit_code": 1,
+      "error": "deployctl.py exited 1. See the timestamped job log and recovery diagnostics.",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\d51ffad817954270a4415b898536826e\\source",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\d51ffad817954270a4415b898536826e\\.job-deploy.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "parallel-230547-broken",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1",
+        "--ensure-floci-repository"
+      ],
+      "stage": "FAILED",
+      "stage_at": "2026-10-26T23:07:56.096332+00:00",
+      "stage_message": "deployctl.py exited 1. See the timestamped job log and recovery diagnostics.",
+      "stage_history": [
+        {
+          "stage": "QUEUED",
+          "at": "2026-10-26T23:05:47.593047+00:00",
+          "message": "Job accepted"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:07:52.304772+00:00",
+          "message": "Preparing a private source/configuration snapshot"
+        },
+        {
+          "stage": "BUILDING",
+          "at": "2026-10-26T23:07:55.386677+00:00",
+          "message": "Building the project Dockerfile"
+        },
+        {
+          "stage": "FAILED",
+          "at": "2026-10-26T23:07:56.096332+00:00",
+          "message": "deployctl.py exited 1. See the timestamped job log and recovery diagnostics."
+        }
+      ],
+      "build_limits": {
+        "cpu": 1,
+        "memory_bytes": 1073741824,
+        "build_timeout_seconds": 300
+      },
+      "log_policy": {
+        "segment_bytes": 1048576,
+        "segments": 3,
+        "browser_tail_bytes": 256000
+      },
+      "resource_keys": [
+        "mcp-demo/manufact-invalid-build"
+      ],
+      "source_snapshot": {
+        "files": 3,
+        "bytes": 595,
+        "at": "2026-10-26T23:07:52.329086+00:00"
+      },
+      "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\d51ffad817954270a4415b898536826e\\source",
+      "pid": 23028,
+      "log_rotations": 0,
+      "phase": "FAILED",
+      "queue_position": null,
+      "waiting_reason": null,
+      "max_concurrent_jobs": 3
+    }
+  ],
+  "traffic": {
+    "requests": 1198,
+    "successes": 1195,
+    "failures": 3,
+    "p95_ms": 1447.7022509963717,
+    "max_ms": 6609.684135997668
+  },
+  "traffic_by_server": {
+    "stateless-demo": {
+      "requests": 613,
+      "successes": 611,
+      "failures": 2,
+      "p95_ms": 1351.5332090028096,
+      "max_ms": 6609.684135997668
+    },
+    "stateful-demo": {
+      "requests": 585,
+      "successes": 584,
+      "failures": 1,
+      "p95_ms": 1593.5971940052696,
+      "max_ms": 5852.123797987588
+    }
+  },
+  "during_builds_and_rollouts": {
+    "requests": 980,
+    "successes": 977,
+    "failures": 3,
+    "p95_ms": 1559.3968729954213,
+    "max_ms": 6609.684135997668
+  },
+  "traffic_error": "MCP failures retained without retries",
+  "finished_at": "2026-10-26T23:12:44.760517+00:00"
+}

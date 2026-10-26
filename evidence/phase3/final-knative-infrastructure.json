@@ -1,0 +1,1188 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"activator\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"},\"name\":\"activator\",\"namespace\":\"knative-serving\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"activator\",\"role\":\"activator\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"activator\",\"app.kubernetes.io/component\":\"activator\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\",\"role\":\"activator\"}},\"spec\":{\"affinity\":{\"podAntiAffinity\":{\"preferredDuringSchedulingIgnoredDuringExecution\":[{\"podAffinityTerm\":{\"labelSelector\":{\"matchLabels\":{\"app\":\"activator\"}},\"topologyKey\":\"kubernetes.io/hostname\"},\"weight\":100}]}},\"containers\":[{\"env\":[{\"name\":\"GOGC\",\"value\":\"500\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_IP\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.podIP\"}}},{\"name\":\"SYSTEM_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"CONFIG_LOGGING_NAME\",\"value\":\"config-logging\"},{\"name\":\"CONFIG_OBSERVABILITY_NAME\",\"value\":\"config-observability\"}],\"image\":\"gcr.io/knative-releases/knative.dev/serving/cmd/activator@sha256:e5ab46f3b73fa2e3898fe47f6a3a0c2bd765596f4fb36ceb4c28c35d0a74b2e5\",\"livenessProbe\":{\"failureThreshold\":12,\"httpGet\":{\"port\":8012},\"initialDelaySeconds\":15,\"periodSeconds\":10},\"name\":\"activator\",\"ports\":[{\"containerPort\":9090,\"name\":\"metrics\"},{\"containerPort\":8008,\"name\":\"profiling\"},{\"containerPort\":8012,\"name\":\"http1\"},{\"containerPort\":8013,\"name\":\"h2c\"}],\"readinessProbe\":{\"failureThreshold\":5,\"httpGet\":{\"port\":8012},\"periodSeconds\":5},\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"600Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}],\"serviceAccountName\":\"activator\",\"terminationGracePeriodSeconds\":600}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:05Z",
+        "generation": 9,
+        "labels": {
+          "app.kubernetes.io/component": "activator",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0"
+        },
+        "name": "activator",
+        "namespace": "knative-serving",
+        "resourceVersion": "13856",
+        "uid": "ab81b45e-882c-46b1-82f3-7fa954020168"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "activator",
+            "role": "activator"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "activator",
+              "app.kubernetes.io/component": "activator",
+              "app.kubernetes.io/name": "knative-serving",
+              "app.kubernetes.io/version": "1.23.0",
+              "role": "activator"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "podAntiAffinity": {
+                "preferredDuringSchedulingIgnoredDuringExecution": [
+                  {
+                    "podAffinityTerm": {
+                      "labelSelector": {
+                        "matchLabels": {
+                          "app": "activator"
+                        }
+                      },
+                      "topologyKey": "kubernetes.io/hostname"
+                    },
+                    "weight": 100
+                  }
+                ]
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "GOGC",
+                    "value": "500"
+                  },
+                  {
+                    "name": "POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.name"
+                      }
+                    }
+                  },
+                  {
+                    "name": "POD_IP",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "status.podIP"
+                      }
+                    }
+                  },
+                  {
+                    "name": "SYSTEM_NAMESPACE",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "CONFIG_LOGGING_NAME",
+                    "value": "config-logging"
+                  },
+                  {
+                    "name": "CONFIG_OBSERVABILITY_NAME",
+                    "value": "config-observability"
+                  }
+                ],
+                "image": "gcr.io/knative-releases/knative.dev/serving/cmd/activator@sha256:e5ab46f3b73fa2e3898fe47f6a3a0c2bd765596f4fb36ceb4c28c35d0a74b2e5",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 12,
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8012,
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 15,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "activator",
+                "ports": [
+                  {
+                    "containerPort": 9090,
+                    "name": "metrics",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8008,
+                    "name": "profiling",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8012,
+                    "name": "http1",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8013,
+                    "name": "h2c",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 5,
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8012,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 5,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "600Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "runAsNonRoot": true,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "activator",
+            "serviceAccountName": "activator",
+            "terminationGracePeriodSeconds": 600
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:05Z",
+            "lastUpdateTime": "2026-10-26T18:32:35Z",
+            "message": "ReplicaSet \"activator-64ddd77c4b\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T19:08:10Z",
+            "lastUpdateTime": "2026-10-26T19:08:10Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 9,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"autoscaler\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"},\"name\":\"autoscaler\",\"namespace\":\"knative-serving\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"autoscaler\"}},\"strategy\":{\"rollingUpdate\":{\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"labels\":{\"app\":\"autoscaler\",\"app.kubernetes.io/component\":\"autoscaler\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"}},\"spec\":{\"affinity\":{\"podAntiAffinity\":{\"preferredDuringSchedulingIgnoredDuringExecution\":[{\"podAffinityTerm\":{\"labelSelector\":{\"matchLabels\":{\"app\":\"autoscaler\"}},\"topologyKey\":\"kubernetes.io/hostname\"},\"weight\":100}]}},\"containers\":[{\"env\":[{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_IP\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.podIP\"}}},{\"name\":\"SYSTEM_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"CONFIG_LOGGING_NAME\",\"value\":\"config-logging\"},{\"name\":\"CONFIG_OBSERVABILITY_NAME\",\"value\":\"config-observability\"}],\"image\":\"gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler@sha256:879da127b23db65d862cafa6b23fb987381d0e44150f0027d44e1f5aee83bde2\",\"livenessProbe\":{\"failureThreshold\":6,\"httpGet\":{\"port\":8080}},\"name\":\"autoscaler\",\"ports\":[{\"containerPort\":9090,\"name\":\"metrics\"},{\"containerPort\":8008,\"name\":\"profiling\"},{\"containerPort\":8080,\"name\":\"websocket\"}],\"readinessProbe\":{\"httpGet\":{\"port\":8080}},\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1000Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}],\"serviceAccountName\":\"controller\"}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:05Z",
+        "generation": 1,
+        "labels": {
+          "app.kubernetes.io/component": "autoscaler",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0"
+        },
+        "name": "autoscaler",
+        "namespace": "knative-serving",
+        "resourceVersion": "1870",
+        "uid": "eb714d02-2b40-4651-ae1e-9f48c0193185"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "autoscaler"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "autoscaler",
+              "app.kubernetes.io/component": "autoscaler",
+              "app.kubernetes.io/name": "knative-serving",
+              "app.kubernetes.io/version": "1.23.0"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "podAntiAffinity": {
+                "preferredDuringSchedulingIgnoredDuringExecution": [
+                  {
+                    "podAffinityTerm": {
+                      "labelSelector": {
+                        "matchLabels": {
+                          "app": "autoscaler"
+                        }
+                      },
+                      "topologyKey": "kubernetes.io/hostname"
+                    },
+                    "weight": 100
+                  }
+                ]
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.name"
+                      }
+                    }
+                  },
+                  {
+                    "name": "POD_IP",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "status.podIP"
+                      }
+                    }
+                  },
+                  {
+                    "name": "SYSTEM_NAMESPACE",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "CONFIG_LOGGING_NAME",
+                    "value": "config-logging"
+                  },
+                  {
+                    "name": "CONFIG_OBSERVABILITY_NAME",
+                    "value": "config-observability"
+                  }
+                ],
+                "image": "gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler@sha256:879da127b23db65d862cafa6b23fb987381d0e44150f0027d44e1f5aee83bde2",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 6,
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8080,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "autoscaler",
+                "ports": [
+                  {
+                    "containerPort": 9090,
+                    "name": "metrics",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8008,
+                    "name": "profiling",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8080,
+                    "name": "websocket",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8080,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "1000Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "runAsNonRoot": true,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "controller",
+            "serviceAccountName": "controller",
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:29Z",
+            "lastUpdateTime": "2026-10-26T18:32:29Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:32:05Z",
+            "lastUpdateTime": "2026-10-26T18:32:29Z",
+            "message": "ReplicaSet \"autoscaler-79cdbb4779\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"controller\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"},\"name\":\"controller\",\"namespace\":\"knative-serving\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"controller\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"controller\",\"app.kubernetes.io/component\":\"controller\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"}},\"spec\":{\"affinity\":{\"podAntiAffinity\":{\"preferredDuringSchedulingIgnoredDuringExecution\":[{\"podAffinityTerm\":{\"labelSelector\":{\"matchLabels\":{\"app\":\"controller\"}},\"topologyKey\":\"kubernetes.io/hostname\"},\"weight\":100}]}},\"containers\":[{\"env\":[{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"SYSTEM_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"CONFIG_LOGGING_NAME\",\"value\":\"config-logging\"},{\"name\":\"CONFIG_OBSERVABILITY_NAME\",\"value\":\"config-observability\"}],\"image\":\"gcr.io/knative-releases/knative.dev/serving/cmd/controller@sha256:ca5062ece0329d002a81940cf4268d7898866434d70049bb93f27d3a786d3292\",\"livenessProbe\":{\"failureThreshold\":6,\"httpGet\":{\"path\":\"/health\",\"port\":\"probes\",\"scheme\":\"HTTP\"},\"periodSeconds\":5},\"name\":\"controller\",\"ports\":[{\"containerPort\":9090,\"name\":\"metrics\"},{\"containerPort\":8008,\"name\":\"profiling\"},{\"containerPort\":8080,\"name\":\"probes\"}],\"readinessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/readiness\",\"port\":\"probes\",\"scheme\":\"HTTP\"},\"periodSeconds\":5},\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1000Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}],\"serviceAccountName\":\"controller\"}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:06Z",
+        "generation": 1,
+        "labels": {
+          "app.kubernetes.io/component": "controller",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0"
+        },
+        "name": "controller",
+        "namespace": "knative-serving",
+        "resourceVersion": "1922",
+        "uid": "c66406f5-93a4-475d-844a-1d3abaf0c523"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "controller"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "controller",
+              "app.kubernetes.io/component": "controller",
+              "app.kubernetes.io/name": "knative-serving",
+              "app.kubernetes.io/version": "1.23.0"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "podAntiAffinity": {
+                "preferredDuringSchedulingIgnoredDuringExecution": [
+                  {
+                    "podAffinityTerm": {
+                      "labelSelector": {
+                        "matchLabels": {
+                          "app": "controller"
+                        }
+                      },
+                      "topologyKey": "kubernetes.io/hostname"
+                    },
+                    "weight": 100
+                  }
+                ]
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.name"
+                      }
+                    }
+                  },
+                  {
+                    "name": "SYSTEM_NAMESPACE",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "CONFIG_LOGGING_NAME",
+                    "value": "config-logging"
+                  },
+                  {
+                    "name": "CONFIG_OBSERVABILITY_NAME",
+                    "value": "config-observability"
+                  }
+                ],
+                "image": "gcr.io/knative-releases/knative.dev/serving/cmd/controller@sha256:ca5062ece0329d002a81940cf4268d7898866434d70049bb93f27d3a786d3292",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 6,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "probes",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 5,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "controller",
+                "ports": [
+                  {
+                    "containerPort": 9090,
+                    "name": "metrics",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8008,
+                    "name": "profiling",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8080,
+                    "name": "probes",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readiness",
+                    "port": "probes",
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 5,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "1000Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "runAsNonRoot": true,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "controller",
+            "serviceAccountName": "controller",
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:32Z",
+            "lastUpdateTime": "2026-10-26T18:32:32Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:32:06Z",
+            "lastUpdateTime": "2026-10-26T18:32:32Z",
+            "message": "ReplicaSet \"controller-c75b975d\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"net-kourier\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\",\"networking.knative.dev/ingress-provider\":\"kourier\"},\"name\":\"net-kourier-controller\",\"namespace\":\"knative-serving\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"net-kourier-controller\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":\"100%\",\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"annotations\":{\"prometheus.io/path\":\"/metrics\",\"prometheus.io/port\":\"9090\",\"prometheus.io/scrape\":\"true\"},\"labels\":{\"app\":\"net-kourier-controller\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"CERTS_SECRET_NAMESPACE\",\"value\":\"\"},{\"name\":\"CERTS_SECRET_NAME\",\"value\":\"\"},{\"name\":\"SYSTEM_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"METRICS_DOMAIN\",\"value\":\"knative.dev/samples\"},{\"name\":\"KOURIER_GATEWAY_NAMESPACE\",\"value\":\"kourier-system\"},{\"name\":\"ENABLE_SECRET_INFORMER_FILTERING_BY_CERT_UID\",\"value\":\"false\"},{\"name\":\"KUBE_API_BURST\",\"value\":\"200\"},{\"name\":\"KUBE_API_QPS\",\"value\":\"200\"}],\"image\":\"gcr.io/knative-releases/knative.dev/net-kourier/cmd/kourier@sha256:eedfe3938f1efa93230863099f96400a0567909d383a585021f8727fa3a6cf0b\",\"livenessProbe\":{\"failureThreshold\":6,\"grpc\":{\"port\":18000},\"periodSeconds\":10},\"name\":\"controller\",\"ports\":[{\"containerPort\":18000,\"name\":\"http2-xds\",\"protocol\":\"TCP\"},{\"containerPort\":9090,\"name\":\"metrics\",\"protocol\":\"TCP\"}],\"readinessProbe\":{\"failureThreshold\":3,\"grpc\":{\"port\":18000},\"periodSeconds\":10},\"resources\":{\"limits\":{\"cpu\":\"1\",\"memory\":\"500Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}],\"restartPolicy\":\"Always\",\"serviceAccountName\":\"net-kourier\"}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:37Z",
+        "generation": 1,
+        "labels": {
+          "app.kubernetes.io/component": "net-kourier",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0",
+          "networking.knative.dev/ingress-provider": "kourier"
+        },
+        "name": "net-kourier-controller",
+        "namespace": "knative-serving",
+        "resourceVersion": "2044",
+        "uid": "91c3ba9f-fb40-4c0d-8e34-abdbf4322337"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "net-kourier-controller"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "100%",
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "prometheus.io/path": "/metrics",
+              "prometheus.io/port": "9090",
+              "prometheus.io/scrape": "true"
+            },
+            "labels": {
+              "app": "net-kourier-controller"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "CERTS_SECRET_NAMESPACE"
+                  },
+                  {
+                    "name": "CERTS_SECRET_NAME"
+                  },
+                  {
+                    "name": "SYSTEM_NAMESPACE",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "METRICS_DOMAIN",
+                    "value": "knative.dev/samples"
+                  },
+                  {
+                    "name": "KOURIER_GATEWAY_NAMESPACE",
+                    "value": "kourier-system"
+                  },
+                  {
+                    "name": "ENABLE_SECRET_INFORMER_FILTERING_BY_CERT_UID",
+                    "value": "false"
+                  },
+                  {
+                    "name": "KUBE_API_BURST",
+                    "value": "200"
+                  },
+                  {
+                    "name": "KUBE_API_QPS",
+                    "value": "200"
+                  }
+                ],
+                "image": "gcr.io/knative-releases/knative.dev/net-kourier/cmd/kourier@sha256:eedfe3938f1efa93230863099f96400a0567909d383a585021f8727fa3a6cf0b",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 6,
+                  "grpc": {
+                    "port": 18000,
+                    "service": ""
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "controller",
+                "ports": [
+                  {
+                    "containerPort": 18000,
+                    "name": "http2-xds",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 9090,
+                    "name": "metrics",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "grpc": {
+                    "port": 18000,
+                    "service": ""
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "500Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "runAsNonRoot": true,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "net-kourier",
+            "serviceAccountName": "net-kourier",
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:56Z",
+            "lastUpdateTime": "2026-10-26T18:32:56Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:32:37Z",
+            "lastUpdateTime": "2026-10-26T18:32:56Z",
+            "message": "ReplicaSet \"net-kourier-controller-79c85cc656\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"webhook\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"},\"name\":\"webhook\",\"namespace\":\"knative-serving\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"webhook\",\"role\":\"webhook\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"webhook\",\"app.kubernetes.io/component\":\"webhook\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\",\"role\":\"webhook\"}},\"spec\":{\"affinity\":{\"podAntiAffinity\":{\"preferredDuringSchedulingIgnoredDuringExecution\":[{\"podAffinityTerm\":{\"labelSelector\":{\"matchLabels\":{\"app\":\"webhook\"}},\"topologyKey\":\"kubernetes.io/hostname\"},\"weight\":100}]}},\"containers\":[{\"env\":[{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"SYSTEM_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"CONFIG_LOGGING_NAME\",\"value\":\"config-logging\"},{\"name\":\"CONFIG_OBSERVABILITY_NAME\",\"value\":\"config-observability\"},{\"name\":\"WEBHOOK_NAME\",\"value\":\"webhook\"},{\"name\":\"WEBHOOK_PORT\",\"value\":\"8443\"}],\"image\":\"gcr.io/knative-releases/knative.dev/serving/cmd/webhook@sha256:3846e9a416665c5b9ec2e4de246cfcb5c4ab0d01ba19348aa008caf30144b650\",\"livenessProbe\":{\"failureThreshold\":6,\"httpGet\":{\"port\":8443,\"scheme\":\"HTTPS\"},\"initialDelaySeconds\":20,\"periodSeconds\":10},\"name\":\"webhook\",\"ports\":[{\"containerPort\":9090,\"name\":\"metrics\"},{\"containerPort\":8008,\"name\":\"profiling\"},{\"containerPort\":8443,\"name\":\"https-webhook\"}],\"readinessProbe\":{\"httpGet\":{\"port\":8443,\"scheme\":\"HTTPS\"},\"periodSeconds\":1},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"500Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}],\"serviceAccountName\":\"controller\",\"terminationGracePeriodSeconds\":300}}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:06Z",
+        "generation": 3,
+        "labels": {
+          "app.kubernetes.io/component": "webhook",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0"
+        },
+        "name": "webhook",
+        "namespace": "knative-serving",
+        "resourceVersion": "13191",
+        "uid": "fec6df91-8c58-43d1-8010-c05be34bcf0f"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "webhook",
+            "role": "webhook"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "webhook",
+              "app.kubernetes.io/component": "webhook",
+              "app.kubernetes.io/name": "knative-serving",
+              "app.kubernetes.io/version": "1.23.0",
+              "role": "webhook"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "podAntiAffinity": {
+                "preferredDuringSchedulingIgnoredDuringExecution": [
+                  {
+                    "podAffinityTerm": {
+                      "labelSelector": {
+                        "matchLabels": {
+                          "app": "webhook"
+                        }
+                      },
+                      "topologyKey": "kubernetes.io/hostname"
+                    },
+                    "weight": 100
+                  }
+                ]
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.name"
+                      }
+                    }
+                  },
+                  {
+                    "name": "SYSTEM_NAMESPACE",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "CONFIG_LOGGING_NAME",
+                    "value": "config-logging"
+                  },
+                  {
+                    "name": "CONFIG_OBSERVABILITY_NAME",
+                    "value": "config-observability"
+                  },
+                  {
+                    "name": "WEBHOOK_NAME",
+                    "value": "webhook"
+                  },
+                  {
+                    "name": "WEBHOOK_PORT",
+                    "value": "8443"
+                  }
+                ],
+                "image": "gcr.io/knative-releases/knative.dev/serving/cmd/webhook@sha256:3846e9a416665c5b9ec2e4de246cfcb5c4ab0d01ba19348aa008caf30144b650",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 6,
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8443,
+                    "scheme": "HTTPS"
+                  },
+                  "initialDelaySeconds": 20,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "webhook",
+                "ports": [
+                  {
+                    "containerPort": 9090,
+                    "name": "metrics",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8008,
+                    "name": "profiling",
+                    "protocol": "TCP"
+                  },
+                  {
+                    "containerPort": 8443,
+                    "name": "https-webhook",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8443,
+                    "scheme": "HTTPS"
+                  },
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "500Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "runAsNonRoot": true,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "controller",
+            "serviceAccountName": "controller",
+            "terminationGracePeriodSeconds": 300
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:07Z",
+            "lastUpdateTime": "2026-10-26T18:32:32Z",
+            "message": "ReplicaSet \"webhook-698f6f85c8\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T19:00:36Z",
+            "lastUpdateTime": "2026-10-26T19:00:36Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 3,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "autoscaling/v2",
+      "kind": "HorizontalPodAutoscaler",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling/v2\",\"kind\":\"HorizontalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"activator\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"},\"name\":\"activator\",\"namespace\":\"knative-serving\"},\"spec\":{\"maxReplicas\":20,\"metrics\":[{\"resource\":{\"name\":\"cpu\",\"target\":{\"averageUtilization\":100,\"type\":\"Utilization\"}},\"type\":\"Resource\"}],\"minReplicas\":1,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"activator\"}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:05Z",
+        "labels": {
+          "app.kubernetes.io/component": "activator",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0"
+        },
+        "name": "activator",
+        "namespace": "knative-serving",
+        "resourceVersion": "18347",
+        "uid": "d58f9dc4-8060-4465-96ca-1d8976159ef9"
+      },
+      "spec": {
+        "maxReplicas": 1,
+        "metrics": [
+          {
+            "resource": {
+              "name": "cpu",
+              "target": {
+                "averageUtilization": 100,
+                "type": "Utilization"
+              }
+            },
+            "type": "Resource"
+          }
+        ],
+        "minReplicas": 1,
+        "scaleTargetRef": {
+          "apiVersion": "apps/v1",
+          "kind": "Deployment",
+          "name": "activator"
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:20Z",
+            "message": "recent recommendations were higher than current one, applying the highest recent recommendation",
+            "reason": "ScaleDownStabilized",
+            "status": "True",
+            "type": "AbleToScale"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:56:44Z",
+            "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+            "reason": "ValidMetricFound",
+            "status": "True",
+            "type": "ScalingActive"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T19:08:25Z",
+            "message": "the desired replica count is more than the maximum replica count",
+            "reason": "TooManyReplicas",
+            "status": "True",
+            "type": "ScalingLimited"
+          }
+        ],
+        "currentMetrics": [
+          {
+            "resource": {
+              "current": {
+                "averageUtilization": 4,
+                "averageValue": "2m"
+              },
+              "name": "cpu"
+            },
+            "type": "Resource"
+          }
+        ],
+        "currentReplicas": 1,
+        "desiredReplicas": 1,
+        "lastScaleTime": "2026-10-26T19:08:10Z"
+      }
+    },
+    {
+      "apiVersion": "autoscaling/v2",
+      "kind": "HorizontalPodAutoscaler",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling/v2\",\"kind\":\"HorizontalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"webhook\",\"app.kubernetes.io/name\":\"knative-serving\",\"app.kubernetes.io/version\":\"1.23.0\"},\"name\":\"webhook\",\"namespace\":\"knative-serving\"},\"spec\":{\"maxReplicas\":5,\"metrics\":[{\"resource\":{\"name\":\"cpu\",\"target\":{\"averageUtilization\":100,\"type\":\"Utilization\"}},\"type\":\"Resource\"}],\"minReplicas\":1,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"webhook\"}}}\n"
+        },
+        "creationTimestamp": "2026-10-26T18:32:06Z",
+        "labels": {
+          "app.kubernetes.io/component": "webhook",
+          "app.kubernetes.io/name": "knative-serving",
+          "app.kubernetes.io/version": "1.23.0"
+        },
+        "name": "webhook",
+        "namespace": "knative-serving",
+        "resourceVersion": "18370",
+        "uid": "27ddeaf3-8ba0-40e1-b457-b2b65a55876b"
+      },
+      "spec": {
+        "maxReplicas": 1,
+        "metrics": [
+          {
+            "resource": {
+              "name": "cpu",
+              "target": {
+                "averageUtilization": 100,
+                "type": "Utilization"
+              }
+            },
+            "type": "Resource"
+          }
+        ],
+        "minReplicas": 1,
+        "scaleTargetRef": {
+          "apiVersion": "apps/v1",
+          "kind": "Deployment",
+          "name": "webhook"
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-26T18:32:21Z",
+            "message": "recommended size matches current size",
+            "reason": "ReadyForNewScale",
+            "status": "True",
+            "type": "AbleToScale"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:56:59Z",
+            "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+            "reason": "ValidMetricFound",
+            "status": "True",
+            "type": "ScalingActive"
+          },
+          {
+            "lastTransitionTime": "2026-10-26T18:32:51Z",
+            "message": "the desired count is within the acceptable range",
+            "reason": "DesiredWithinRange",
+            "status": "False",
+            "type": "ScalingLimited"
+          }
+        ],
+        "currentMetrics": [
+          {
+            "resource": {
+              "current": {
+                "averageUtilization": 14,
+                "averageValue": "7m"
+              },
+              "name": "cpu"
+            },
+            "type": "Resource"
+          }
+        ],
+        "currentReplicas": 1,
+        "desiredReplicas": 1,
+        "lastScaleTime": "2026-10-26T19:05:54Z"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

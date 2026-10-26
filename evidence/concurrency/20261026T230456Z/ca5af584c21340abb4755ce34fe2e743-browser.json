@@ -1,0 +1,13 @@
+{
+  "job_id": "ca5af584c21340abb4755ce34fe2e743",
+  "browser_version": "156.0.4314.42",
+  "observations": [
+    {
+      "stage": "VERIFYING",
+      "log_chars": 16246,
+      "queue": "Worker limit 3 \u00b7 Executing independently",
+      "history_rows": 6
+    }
+  ],
+  "errors": []
+}

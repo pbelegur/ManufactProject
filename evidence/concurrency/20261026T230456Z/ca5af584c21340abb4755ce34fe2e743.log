@@ -1,0 +1,212 @@
+[Retained job-local log tail; up to 256 KB shown; older output may be rotated]
+2026-10-26T23:10:22.387696+00:00 Worker claimed job ca5af584c21340abb4755ce34fe2e743; held resources: mcp-demo/stateless-demo
+2026-10-26T23:10:23.134116+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+2026-10-26T23:10:23.649887+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/stateless-demo --ignore-not-found -o json
+2026-10-26T23:10:24.170910+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/stateless-demo --ignore-not-found -o json
+2026-10-26T23:10:24.573404+00:00 @@MCP_DEPLOY_STAGE {"stage": "BUILDING", "message": "Building the project Dockerfile", "at": "2026-10-26T23:10:24.572615+00:00", "job_id": "ca5af584c21340abb4755ce34fe2e743"}
+2026-10-26T23:10:24.587222+00:00 $ docker build --iidfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\ca5af584c21340abb4755ce34fe2e743\tmp\mcp-build-mkkmccf2\image-id --label deployment.mcp.io/job-id=ca5af584c21340abb4755ce34fe2e743 --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\ca5af584c21340abb4755ce34fe2e743\source\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\ca5af584c21340abb4755ce34fe2e743\source
+2026-10-26T23:10:24.660700+00:00 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+2026-10-26T23:10:24.662242+00:00             BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+2026-10-26T23:10:24.663225+00:00             environment-variable.
+2026-10-26T23:10:24.664535+00:00 
+2026-10-26T23:10:24.962478+00:00 Sending build context to Docker daemon  9.216kB
+2026-10-26T23:10:24.995123+00:00 Step 1/13 : FROM python:3.12-slim
+2026-10-26T23:10:25.035418+00:00  ---> a0f57064cbdc
+2026-10-26T23:10:25.039951+00:00 Step 2/13 : WORKDIR /app
+2026-10-26T23:10:25.060419+00:00  ---> Using cache
+2026-10-26T23:10:25.062015+00:00  ---> be8c4780ddcb
+2026-10-26T23:10:25.063603+00:00 Step 3/13 : ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HOST=0.0.0.0 PORT=8000
+2026-10-26T23:10:25.084854+00:00  ---> Using cache
+2026-10-26T23:10:25.087672+00:00  ---> 3f9cd5c58450
+2026-10-26T23:10:25.089817+00:00 Step 4/13 : COPY requirements.txt ./
+2026-10-26T23:10:25.163058+00:00  ---> Using cache
+2026-10-26T23:10:25.164709+00:00  ---> 204166ae2170
+2026-10-26T23:10:25.166336+00:00 Step 5/13 : RUN pip install --no-cache-dir -r requirements.txt
+2026-10-26T23:10:25.193122+00:00  ---> Using cache
+2026-10-26T23:10:25.194548+00:00  ---> 7fa54fa2da3e
+2026-10-26T23:10:25.195919+00:00 Step 6/13 : COPY server.py ./
+2026-10-26T23:10:25.218214+00:00  ---> Using cache
+2026-10-26T23:10:25.220595+00:00  ---> b70816d90ec9
+2026-10-26T23:10:25.222449+00:00 Step 7/13 : RUN useradd --uid 10001 --create-home mcpuser
+2026-10-26T23:10:25.242785+00:00  ---> Using cache
+2026-10-26T23:10:25.244184+00:00  ---> 0936a6ebd53f
+2026-10-26T23:10:25.245470+00:00 Step 8/13 : USER mcpuser
+2026-10-26T23:10:25.274752+00:00  ---> Using cache
+2026-10-26T23:10:25.276275+00:00  ---> 3d8f278226d8
+2026-10-26T23:10:25.277620+00:00 Step 9/13 : EXPOSE 8000
+2026-10-26T23:10:25.309285+00:00  ---> Using cache
+2026-10-26T23:10:25.310672+00:00  ---> aa07256b0877
+2026-10-26T23:10:25.311851+00:00 Step 10/13 : STOPSIGNAL SIGTERM
+2026-10-26T23:10:25.333059+00:00  ---> Using cache
+2026-10-26T23:10:25.334495+00:00  ---> 1e838b996f86
+2026-10-26T23:10:25.337912+00:00 Step 11/13 : HEALTHCHECK --interval=3s --timeout=2s --start-period=10s --retries=20 CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.getenv('PORT', '8000') + '/health', timeout=1).close()"
+2026-10-26T23:10:25.357424+00:00  ---> Using cache
+2026-10-26T23:10:25.359075+00:00  ---> bc28d0f92242
+2026-10-26T23:10:25.361121+00:00 Step 12/13 : CMD ["python", "server.py"]
+2026-10-26T23:10:25.381911+00:00  ---> Using cache
+2026-10-26T23:10:25.383415+00:00  ---> b9326eff4ad6
+2026-10-26T23:10:25.384800+00:00 Step 13/13 : LABEL deployment.mcp.io/job-id=ca5af584c21340abb4755ce34fe2e743
+2026-10-26T23:10:25.560237+00:00  ---> Running in 066dd994d949
+2026-10-26T23:10:30.160084+00:00  ---> Removed intermediate container 066dd994d949
+2026-10-26T23:10:30.161734+00:00  ---> 4e74f58c8fe1
+2026-10-26T23:10:30.186255+00:00 Successfully built 4e74f58c8fe1
+2026-10-26T23:10:30.278866+00:00 $ docker tag sha256:4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264 localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264
+2026-10-26T23:10:31.551225+00:00 @@MCP_DEPLOY_STAGE {"stage": "PUSHING", "message": "Publishing the immutable application image to the registry", "at": "2026-10-26T23:10:31.550299+00:00", "job_id": "ca5af584c21340abb4755ce34fe2e743"}
+2026-10-26T23:10:31.559164+00:00 $ docker push localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264
+2026-10-26T23:10:32.257462+00:00 The push refers to repository [localhost:4566/000000000000/us-east-1/stateless-demo]
+2026-10-26T23:10:32.672200+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:32.674304+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:32.675847+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:32.677628+00:00 f2be67225471: Waiting
+2026-10-26T23:10:32.784964+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:32.787210+00:00 f2be67225471: Waiting
+2026-10-26T23:10:32.788775+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:32.790403+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:32.909913+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:32.911756+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:32.913196+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:32.914554+00:00 f2be67225471: Waiting
+2026-10-26T23:10:32.978654+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:32.980442+00:00 f2be67225471: Waiting
+2026-10-26T23:10:32.981845+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:32.983307+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.127199+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:33.129292+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.130679+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.132664+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.201173+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:33.216799+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.257253+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.261788+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.635089+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:33.637182+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.638760+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.640321+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.680553+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.682348+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.683747+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.685002+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:33.686293+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.687899+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.689559+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:33.691130+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.692527+00:00 5c397e4307db: Waiting
+2026-10-26T23:10:33.694110+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.695726+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.698897+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.819965+00:00 5c397e4307db: Layer already exists
+2026-10-26T23:10:33.822742+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.827756+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.829490+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.830928+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:33.890715+00:00 f2be67225471: Waiting
+2026-10-26T23:10:33.892286+00:00 be6443c06d3c: Waiting
+2026-10-26T23:10:33.893498+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:33.894799+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:33.993655+00:00 be6443c06d3c: Layer already exists
+2026-10-26T23:10:33.999822+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:34.001328+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.006676+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.008065+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.230494+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.232472+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.233922+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:34.235311+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.247184+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.248659+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.250040+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.251463+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:34.323966+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.325476+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:34.326824+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.328395+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.407575+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.409275+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.410937+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.412358+00:00 b524bb3aba73: Waiting
+2026-10-26T23:10:34.529021+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.530882+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.532786+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:34.534569+00:00 b524bb3aba73: Layer already exists
+2026-10-26T23:10:34.536508+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.633719+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.638465+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.640890+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:34.642397+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:34.681025+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:34.684813+00:00 f2be67225471: Waiting
+2026-10-26T23:10:34.686905+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:34.688510+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:35.020680+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:35.022599+00:00 f2be67225471: Layer already exists
+2026-10-26T23:10:35.033767+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.035487+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.037234+00:00 1fd81a683429: Waiting
+2026-10-26T23:10:35.038729+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:35.040035+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.041249+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.042660+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.043988+00:00 1fd81a683429: Layer already exists
+2026-10-26T23:10:35.045286+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:35.054793+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.056408+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.057957+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.107585+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.109237+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.110458+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:35.112081+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.171007+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.172521+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:10:35.174186+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.175501+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.284522+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.286207+00:00 9ad67250b0cd: Layer already exists
+2026-10-26T23:10:35.287670+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.289164+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.378513+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.380338+00:00 2c5736a46028: Waiting
+2026-10-26T23:10:35.381947+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.511429+00:00 2c5736a46028: Layer already exists
+2026-10-26T23:10:35.513381+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.518947+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.566187+00:00 9edc65781ecb: Waiting
+2026-10-26T23:10:35.567842+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.760038+00:00 9edc65781ecb: Layer already exists
+2026-10-26T23:10:35.765092+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.901101+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.907810+00:00 286e62bb6410: Waiting
+2026-10-26T23:10:35.973880+00:00 286e62bb6410: Layer already exists
+2026-10-26T23:10:37.582440+00:00 parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264: digest: sha256:4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264 size: 2270
+2026-10-26T23:10:37.663101+00:00 @@MCP_DEPLOY_STAGE {"stage": "DEPLOYING", "message": "Applying application resources; previous serving pods remain until readiness", "at": "2026-10-26T23:10:37.662074+00:00", "job_id": "ca5af584c21340abb4755ce34fe2e743"}
+2026-10-26T23:10:37.669824+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-26T23:10:41.014361+00:00 namespace/mcp-demo unchanged
+2026-10-26T23:10:41.371146+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+2026-10-26T23:10:44.014973+00:00 deployment.apps/stateless-demo configured (server dry run)
+2026-10-26T23:10:44.861227+00:00 service/stateless-demo unchanged (server dry run)
+2026-10-26T23:10:44.980848+00:00 poddisruptionbudget.policy/stateless-demo configured (server dry run)
+2026-10-26T23:10:45.037425+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-26T23:10:47.088874+00:00 deployment.apps/stateless-demo configured
+2026-10-26T23:10:47.763802+00:00 service/stateless-demo unchanged
+2026-10-26T23:10:48.009977+00:00 poddisruptionbudget.policy/stateless-demo configured
+2026-10-26T23:10:48.055358+00:00 @@MCP_DEPLOY_STAGE {"stage": "VERIFYING", "message": "Waiting for deployment readiness and exact replica counts", "at": "2026-10-26T23:10:48.054341+00:00", "job_id": "ca5af584c21340abb4755ce34fe2e743"}
+2026-10-26T23:10:48.062075+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateless-demo --timeout=180s
+2026-10-26T23:10:48.692688+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:11:08.165432+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:11:10.072394+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:11:10.548440+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:11:10.746433+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:11:32.635948+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:11:35.209463+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:11:35.583983+00:00 deployment "stateless-demo" successfully rolled out
+2026-10-26T23:11:35.622079+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+2026-10-26T23:11:37.275835+00:00 {"status": "healthy", "name": "stateless-demo", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-same2-4e74f58c8fe19915a4bd5e0caa8667af9ec13906f56f8be9a3a93d721ec8d264", "ready_replicas": 2, "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"}
+2026-10-26T23:11:37.277906+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=stateless-demo
+2026-10-26T23:11:41.675218+00:00 NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+2026-10-26T23:11:41.677842+00:00 deployment.apps/stateless-demo   2/2     2            2           4h59m
+2026-10-26T23:11:41.679361+00:00 
+2026-10-26T23:11:41.681100+00:00 NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+2026-10-26T23:11:41.684456+00:00 service/stateless-demo   ClusterIP   10.100.59.127   <none>        8000/TCP   4h59m
+2026-10-26T23:11:41.686071+00:00 
+2026-10-26T23:11:41.689546+00:00 NAME                                        MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+2026-10-26T23:11:41.692968+00:00 poddisruptionbudget.policy/stateless-demo   1               N/A               1                     4h59m
+2026-10-26T23:11:41.855863+00:00 SUCCEEDED: CLI completed successfully

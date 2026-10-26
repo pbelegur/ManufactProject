@@ -1,0 +1,110 @@
+{
+  "id": "9049a6ced4514a30a58b0f2908c98a9a",
+  "status": "succeeded",
+  "project_id": "byo-9a1c65f1bfd64bc48459",
+  "name": "manufact-text-tools",
+  "namespace": "mcp-demo",
+  "backend": "always-on",
+  "mode": "stateless",
+  "version": "parallel-230547-2",
+  "source": "build",
+  "created_at": "2026-10-26T23:05:47.448070+00:00",
+  "started_at": "2026-10-26T23:05:47.475581+00:00",
+  "finished_at": "2026-10-26T23:07:52.292000+00:00",
+  "exit_code": 0,
+  "error": null,
+  "command": [
+    "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+    "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+    "deploy",
+    "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\9049a6ced4514a30a58b0f2908c98a9a\\source",
+    "--config",
+    "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\9049a6ced4514a30a58b0f2908c98a9a\\.job-deploy.json",
+    "--namespace",
+    "mcp-demo",
+    "--kubeconfig",
+    "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+    "--version",
+    "parallel-230547-2",
+    "--timeout",
+    "180",
+    "--rollback-timeout",
+    "180",
+    "--push-registry",
+    "localhost:4566/000000000000/us-east-1",
+    "--ensure-floci-repository"
+  ],
+  "stage": "SUCCEEDED",
+  "stage_at": "2026-10-26T23:07:52.275694+00:00",
+  "stage_message": "CLI completed successfully",
+  "stage_history": [
+    {
+      "stage": "QUEUED",
+      "at": "2026-10-26T23:05:47.448070+00:00",
+      "message": "Job accepted"
+    },
+    {
+      "stage": "BUILDING",
+      "at": "2026-10-26T23:05:47.492517+00:00",
+      "message": "Preparing a private source/configuration snapshot"
+    },
+    {
+      "stage": "BUILDING",
+      "at": "2026-10-26T23:05:50.533305+00:00",
+      "message": "Building the project Dockerfile"
+    },
+    {
+      "stage": "PUSHING",
+      "at": "2026-10-26T23:06:08.153078+00:00",
+      "message": "Publishing the immutable application image to the registry"
+    },
+    {
+      "stage": "DEPLOYING",
+      "at": "2026-10-26T23:06:15.515635+00:00",
+      "message": "Applying application resources; previous serving pods remain until readiness"
+    },
+    {
+      "stage": "VERIFYING",
+      "at": "2026-10-26T23:06:20.908552+00:00",
+      "message": "Waiting for deployment readiness and exact replica counts"
+    },
+    {
+      "stage": "SUCCEEDED",
+      "at": "2026-10-26T23:07:52.275694+00:00",
+      "message": "CLI completed successfully"
+    }
+  ],
+  "build_limits": {
+    "cpu": 1,
+    "memory_bytes": 1073741824,
+    "build_timeout_seconds": 300
+  },
+  "log_policy": {
+    "segment_bytes": 1048576,
+    "segments": 3,
+    "browser_tail_bytes": 256000
+  },
+  "resource_keys": [
+    "mcp-demo/manufact-text-tools"
+  ],
+  "source_snapshot": {
+    "files": 6,
+    "bytes": 3160,
+    "at": "2026-10-26T23:05:47.579405+00:00"
+  },
+  "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\9049a6ced4514a30a58b0f2908c98a9a\\source",
+  "pid": 27304,
+  "deployment_result": {
+    "status": "healthy",
+    "name": "manufact-text-tools",
+    "namespace": "mcp-demo",
+    "image": "localhost:4566/000000000000/us-east-1/manufact-text-tools:parallel-230547-2-426e573727c92420737d6ff04b535aa562d76ccfc603f450af7e54bdddb779a1",
+    "ready_replicas": 2,
+    "mcp_url": "http://manufact-text-tools.mcp-demo.svc.cluster.local:8000/mcp"
+  },
+  "log_rotations": 0,
+  "phase": "SUCCEEDED",
+  "queue_position": null,
+  "waiting_reason": null,
+  "max_concurrent_jobs": 3
+}

@@ -1,0 +1,111 @@
+$ C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv\Scripts\python.exe C:\Users\Devi\Downloads\mcp-deployment-platform-starter\deployctl.py deploy C:\Users\Devi\Downloads\mcp-deployment-platform-starter\tests\fixtures\compatible_project --config C:\Users\Devi\Downloads\mcp-deployment-platform-starter\tests\fixtures\compatible_project\mcp.knative.local.json --namespace mcp-auto --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --version demo-20261026T194844428045Z-independent --timeout 180 --image localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d
+{'phase': 'independent-service-deploy', 'command': ['C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py', 'deploy', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\fixtures\\compatible_project', '--config', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\fixtures\\compatible_project\\mcp.knative.local.json', '--namespace', 'mcp-auto', '--kubeconfig', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig', '--version', 'demo-20261026T194844428045Z-independent', '--timeout', '180', '--image', 'localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d'], 'exit_code': 0, 'seconds': 34.56016789993737, 'log': '.local\\knative-demo-20261026T194844428045Z-independent.log'}
+$ C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv\Scripts\python.exe C:\Users\Devi\Downloads\mcp-deployment-platform-starter\deployctl.py deploy C:\Users\Devi\Downloads\mcp-deployment-platform-starter\servers\stateless --config mcp.knative.local.json --namespace mcp-auto --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --version demo-20261026T194844428045Z --timeout 180 --image localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e
+{'phase': 'existing-service-v2-rollout', 'command': ['C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py', 'deploy', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless', '--config', 'mcp.knative.local.json', '--namespace', 'mcp-auto', '--kubeconfig', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig', '--version', 'demo-20261026T194844428045Z', '--timeout', '180', '--image', 'localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e'], 'exit_code': 0, 'seconds': 52.48867049999535, 'log': '.local\\knative-demo-20261026T194844428045Z.log'}
+$ C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv\Scripts\python.exe C:\Users\Devi\Downloads\mcp-deployment-platform-starter\deployctl.py deploy C:\Users\Devi\Downloads\mcp-deployment-platform-starter\servers\stateless --config mcp.knative.local.json --namespace mcp-auto --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --version phase3-intentional-failure --timeout 35 --image localhost:4566/000000000000/us-east-1/stateless-demo@sha256:0000000000000000000000000000000000000000000000000000000000000000
+{'phase': 'failed-rollout-recovery', 'command': ['C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py', 'deploy', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless', '--config', 'mcp.knative.local.json', '--namespace', 'mcp-auto', '--kubeconfig', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig', '--version', 'phase3-intentional-failure', '--timeout', '35', '--image', 'localhost:4566/000000000000/us-east-1/stateless-demo@sha256:0000000000000000000000000000000000000000000000000000000000000000'], 'exit_code': 1, 'seconds': 59.17113760008942, 'log': '.local\\knative-phase3-intentional-failure.log'}
+{
+  "result": "PASS",
+  "error": null,
+  "elapsed_seconds": 241.31571969995275,
+  "counter": "reliability_e722a62533a24b238ca8b03f1ab15c9e",
+  "summaries": {
+    "stateless-demo": {
+      "requests": 602,
+      "successes": 601,
+      "failures": 1,
+      "scheduled_rps": 2.494657209851538,
+      "latency_p50_seconds": 0.9000955499941483,
+      "latency_p95_seconds": 2.347343000001274,
+      "latency_max_seconds": 3.8100003000581637
+    },
+    "stateful-demo": {
+      "requests": 602,
+      "successes": 602,
+      "failures": 0,
+      "scheduled_rps": 2.494657209851538,
+      "latency_p50_seconds": 0.29571869992651045,
+      "latency_p95_seconds": 1.7172318000812083,
+      "latency_max_seconds": 3.0035734000848606
+    }
+  },
+  "operations": [
+    {
+      "phase": "independent-service-deploy",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\fixtures\\compatible_project",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\fixtures\\compatible_project\\mcp.knative.local.json",
+        "--namespace",
+        "mcp-auto",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "demo-20261026T194844428045Z-independent",
+        "--timeout",
+        "180",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/contract-probe@sha256:4a173a148606a17a3e4f298736c3d6d0d27a1de15f7bb9791bd17d4ec338507d"
+      ],
+      "exit_code": 0,
+      "seconds": 34.56016789993737,
+      "log": ".local\\knative-demo-20261026T194844428045Z-independent.log"
+    },
+    {
+      "phase": "existing-service-v2-rollout",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "mcp.knative.local.json",
+        "--namespace",
+        "mcp-auto",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "demo-20261026T194844428045Z",
+        "--timeout",
+        "180",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+      ],
+      "exit_code": 0,
+      "seconds": 52.48867049999535,
+      "log": ".local\\knative-demo-20261026T194844428045Z.log"
+    },
+    {
+      "phase": "stateful-pod-deletion",
+      "deleted_pod": "stateful-demo-00004-deployment-6b4c675487-pb55g",
+      "counter_value_after": 17
+    },
+    {
+      "phase": "failed-rollout-recovery",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "mcp.knative.local.json",
+        "--namespace",
+        "mcp-auto",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "phase3-intentional-failure",
+        "--timeout",
+        "35",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "exit_code": 1,
+      "seconds": 59.17113760008942,
+      "log": ".local\\knative-phase3-intentional-failure.log"
+    }
+  ]
+}

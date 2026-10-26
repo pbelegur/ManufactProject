@@ -1,0 +1,343 @@
+[Retained job-local log tail; up to 256 KB shown; older output may be rotated]
+2026-10-26T23:05:47.445096+00:00 Worker claimed job 382fb0ecf860473094c9031b2807fb55; held resources: mcp-demo/stateless-demo
+2026-10-26T23:05:48.453189+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+2026-10-26T23:05:49.200138+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/stateless-demo --ignore-not-found -o json
+2026-10-26T23:05:49.861376+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/stateless-demo --ignore-not-found -o json
+2026-10-26T23:05:50.536598+00:00 @@MCP_DEPLOY_STAGE {"stage": "BUILDING", "message": "Building the project Dockerfile", "at": "2026-10-26T23:05:50.535290+00:00", "job_id": "382fb0ecf860473094c9031b2807fb55"}
+2026-10-26T23:05:50.562279+00:00 $ docker build --iidfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\382fb0ecf860473094c9031b2807fb55\tmp\mcp-build-9pp7hw4g\image-id --label deployment.mcp.io/job-id=382fb0ecf860473094c9031b2807fb55 --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\382fb0ecf860473094c9031b2807fb55\source\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\382fb0ecf860473094c9031b2807fb55\source
+2026-10-26T23:05:50.673340+00:00 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+2026-10-26T23:05:50.675127+00:00             BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+2026-10-26T23:05:50.676545+00:00             environment-variable.
+2026-10-26T23:05:50.678052+00:00 
+2026-10-26T23:05:51.209885+00:00 Sending build context to Docker daemon  9.216kB
+2026-10-26T23:05:51.287970+00:00 Step 1/13 : FROM python:3.12-slim
+2026-10-26T23:05:51.473742+00:00  ---> a0f57064cbdc
+2026-10-26T23:05:51.478062+00:00 Step 2/13 : WORKDIR /app
+2026-10-26T23:05:51.592614+00:00  ---> Using cache
+2026-10-26T23:05:51.594250+00:00  ---> be8c4780ddcb
+2026-10-26T23:05:51.596795+00:00 Step 3/13 : ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HOST=0.0.0.0 PORT=8000
+2026-10-26T23:05:51.639584+00:00  ---> Using cache
+2026-10-26T23:05:51.641157+00:00  ---> 3f9cd5c58450
+2026-10-26T23:05:51.642599+00:00 Step 4/13 : COPY requirements.txt ./
+2026-10-26T23:06:05.464635+00:00  ---> 204166ae2170
+2026-10-26T23:06:05.466854+00:00 Step 5/13 : RUN pip install --no-cache-dir -r requirements.txt
+2026-10-26T23:06:06.158055+00:00  ---> Running in 18c80722e4ab
+2026-10-26T23:06:21.853783+00:00 Collecting mcp==2.3.0 (from -r requirements.txt (line 1))
+2026-10-26T23:06:22.038301+00:00   Downloading mcp-2.3.0-py3-none-any.whl.metadata (6.6 kB)
+2026-10-26T23:06:22.299272+00:00 Collecting anyio>=4.9 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:22.363308+00:00   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+2026-10-26T23:06:22.524754+00:00 Collecting httpx2>=2.10.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:22.578711+00:00   Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+2026-10-26T23:06:22.901100+00:00 Collecting jsonschema>=4.20.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:22.958278+00:00   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-10-26T23:06:23.102921+00:00 Collecting mcp-types==2.3.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:23.143475+00:00   Downloading mcp_types-2.3.0-py3-none-any.whl.metadata (1.9 kB)
+2026-10-26T23:06:23.274842+00:00 Collecting opentelemetry-api>=1.28.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:23.306806+00:00   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+2026-10-26T23:06:24.469732+00:00 Collecting pydantic>=2.12.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:24.504795+00:00   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+2026-10-26T23:06:24.685763+00:00 Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:24.725098+00:00   Downloading pyjwt-2.15.1-py3-none-any.whl.metadata (3.5 kB)
+2026-10-26T23:06:24.799645+00:00 Collecting python-multipart>=0.0.9 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:24.833052+00:00   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+2026-10-26T23:06:25.003994+00:00 Collecting sse-starlette>=3.0.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:25.053584+00:00   Downloading sse_starlette-3.6.0-py3-none-any.whl.metadata (15 kB)
+2026-10-26T23:06:25.469243+00:00 Collecting starlette>=0.27 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:25.512708+00:00   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+2026-10-26T23:06:25.610556+00:00 Collecting typing-extensions>=4.13.0 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:25.630303+00:00   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-26T23:06:25.687989+00:00 Collecting typing-inspection>=0.4.1 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:25.732769+00:00   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+2026-10-26T23:06:25.909398+00:00 Collecting uvicorn>=0.31.1 (from mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:25.942248+00:00   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+2026-10-26T23:06:26.026569+00:00 Collecting idna>=2.8 (from anyio>=4.9->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.046313+00:00   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-10-26T23:06:26.182313+00:00 Collecting httpcore2==2.16.0 (from httpx2>=2.10.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.218322+00:00   Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+2026-10-26T23:06:26.302437+00:00 Collecting truststore>=0.10 (from httpx2>=2.10.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.335211+00:00   Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+2026-10-26T23:06:26.407927+00:00 Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2>=2.10.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.443171+00:00   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-10-26T23:06:26.535711+00:00 Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.569004+00:00   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-26T23:06:26.642571+00:00 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.681583+00:00   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-10-26T23:06:26.793636+00:00 Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:26.819501+00:00   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-10-26T23:06:32.308252+00:00 Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:32.437141+00:00   Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+2026-10-26T23:06:32.613159+00:00 Collecting annotated-types>=0.6.0 (from pydantic>=2.12.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:32.739930+00:00   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+2026-10-26T23:06:45.769238+00:00 Collecting pydantic-core==2.50.1 (from pydantic>=2.12.0->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:45.799503+00:00   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+2026-10-26T23:06:47.663327+00:00 Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:47.745946+00:00   Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+2026-10-26T23:06:48.343188+00:00 Collecting click>=7.0 (from uvicorn>=0.31.1->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:48.443200+00:00   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+2026-10-26T23:06:50.318361+00:00 Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:50.388886+00:00   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+2026-10-26T23:06:51.108222+00:00 Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp==2.3.0->-r requirements.txt (line 1))
+2026-10-26T23:06:51.179079+00:00   Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+2026-10-26T23:06:51.559801+00:00 Downloading mcp-2.3.0-py3-none-any.whl (368 kB)
+2026-10-26T23:06:51.913526+00:00 Downloading mcp_types-2.3.0-py3-none-any.whl (69 kB)
+2026-10-26T23:06:51.994027+00:00 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+2026-10-26T23:06:52.069721+00:00 Downloading httpx2-2.16.0-py3-none-any.whl (97 kB)
+2026-10-26T23:06:52.176491+00:00 Downloading httpcore2-2.16.0-py3-none-any.whl (85 kB)
+2026-10-26T23:06:52.311686+00:00 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-10-26T23:06:52.479873+00:00 Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+2026-10-26T23:06:52.638704+00:00 Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+2026-10-26T23:06:53.326764+00:00 Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+2026-10-26T23:06:55.061431+00:00    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 1.5 MB/s eta 0:00:00
+2026-10-26T23:06:55.104700+00:00 Downloading pyjwt-2.15.1-py3-none-any.whl (33 kB)
+2026-10-26T23:06:55.160629+00:00 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+2026-10-26T23:06:55.218418+00:00 Downloading sse_starlette-3.6.0-py3-none-any.whl (17 kB)
+2026-10-26T23:06:55.256567+00:00 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+2026-10-26T23:06:55.348240+00:00 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-26T23:06:55.438128+00:00 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+2026-10-26T23:06:55.471273+00:00 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+2026-10-26T23:06:55.587720+00:00 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+2026-10-26T23:06:55.652629+00:00 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-26T23:06:55.788665+00:00 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+2026-10-26T23:06:55.921540+00:00 Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+2026-10-26T23:07:03.446794+00:00    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 629.2 kB/s eta 0:00:00
+2026-10-26T23:07:03.524978+00:00 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2026-10-26T23:07:03.740186+00:00 Downloading idna-3.20-py3-none-any.whl (69 kB)
+2026-10-26T23:07:03.858206+00:00 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-26T23:07:03.928154+00:00 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-10-26T23:07:03.990090+00:00 Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+2026-10-26T23:07:04.308407+00:00 Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+2026-10-26T23:07:04.400207+00:00 Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+2026-10-26T23:07:04.557399+00:00 Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+2026-10-26T23:07:06.740463+00:00 Installing collected packages: typing-extensions, truststore, rpds-py, python-multipart, pyjwt, pycparser, idna, h11, click, attrs, annotated-types, uvicorn, typing-inspection, referencing, pydantic-core, opentelemetry-api, httpcore2, cffi, anyio, starlette, pydantic, jsonschema-specifications, httpx2, cryptography, sse-starlette, mcp-types, jsonschema, mcp
+2026-10-26T23:07:30.901235+00:00 Successfully installed annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 cffi-2.1.1 click-8.5.0 cryptography-50.0.2 h11-0.16.0 httpcore2-2.16.0 httpx2-2.16.0 idna-3.20 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 mcp-2.3.0 mcp-types-2.3.0 opentelemetry-api-1.45.1 pycparser-3.12 pydantic-2.14.1 pydantic-core-2.50.1 pyjwt-2.15.1 python-multipart-0.0.32 referencing-0.37.0 rpds-py-2026.9.1 sse-starlette-3.6.0 starlette-1.10.0 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0
+2026-10-26T23:07:30.904559+00:00 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-10-26T23:07:31.386610+00:00 
+2026-10-26T23:07:31.388363+00:00 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
+2026-10-26T23:07:31.389888+00:00 [notice] To update, run: pip install --upgrade pip
+2026-10-26T23:07:45.250078+00:00  ---> Removed intermediate container 18c80722e4ab
+2026-10-26T23:07:45.251834+00:00  ---> 7fa54fa2da3e
+2026-10-26T23:07:45.253347+00:00 Step 6/13 : COPY server.py ./
+2026-10-26T23:07:50.822547+00:00  ---> b70816d90ec9
+2026-10-26T23:07:50.917257+00:00 Step 7/13 : RUN useradd --uid 10001 --create-home mcpuser
+2026-10-26T23:07:51.679364+00:00  ---> Running in 8326bde58879
+2026-10-26T23:07:59.611543+00:00  ---> Removed intermediate container 8326bde58879
+2026-10-26T23:07:59.618976+00:00  ---> 0936a6ebd53f
+2026-10-26T23:07:59.622996+00:00 Step 8/13 : USER mcpuser
+2026-10-26T23:07:59.992758+00:00  ---> Running in 60b3c0db7d90
+2026-10-26T23:08:05.070854+00:00  ---> Removed intermediate container 60b3c0db7d90
+2026-10-26T23:08:05.072669+00:00  ---> 3d8f278226d8
+2026-10-26T23:08:05.074121+00:00 Step 9/13 : EXPOSE 8000
+2026-10-26T23:08:05.433948+00:00  ---> Running in f3855c0cfc79
+2026-10-26T23:08:11.326342+00:00  ---> Removed intermediate container f3855c0cfc79
+2026-10-26T23:08:11.328071+00:00  ---> aa07256b0877
+2026-10-26T23:08:11.330973+00:00 Step 10/13 : STOPSIGNAL SIGTERM
+2026-10-26T23:08:11.701890+00:00  ---> Running in e575db7d9602
+2026-10-26T23:08:15.423207+00:00  ---> Removed intermediate container e575db7d9602
+2026-10-26T23:08:15.425315+00:00  ---> 1e838b996f86
+2026-10-26T23:08:15.427559+00:00 Step 11/13 : HEALTHCHECK --interval=3s --timeout=2s --start-period=10s --retries=20 CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.getenv('PORT', '8000') + '/health', timeout=1).close()"
+2026-10-26T23:08:15.708978+00:00  ---> Running in d845bfc28d25
+2026-10-26T23:08:19.960353+00:00  ---> Removed intermediate container d845bfc28d25
+2026-10-26T23:08:19.962030+00:00  ---> bc28d0f92242
+2026-10-26T23:08:19.963571+00:00 Step 12/13 : CMD ["python", "server.py"]
+2026-10-26T23:08:20.321085+00:00  ---> Running in 91b318775ab0
+2026-10-26T23:08:23.837201+00:00  ---> Removed intermediate container 91b318775ab0
+2026-10-26T23:08:23.838987+00:00  ---> b9326eff4ad6
+2026-10-26T23:08:23.840967+00:00 Step 13/13 : LABEL deployment.mcp.io/job-id=382fb0ecf860473094c9031b2807fb55
+2026-10-26T23:08:24.088751+00:00  ---> Running in 5690cd15e83d
+2026-10-26T23:08:29.243278+00:00  ---> Removed intermediate container 5690cd15e83d
+2026-10-26T23:08:29.244943+00:00  ---> 4cae23cab8fc
+2026-10-26T23:08:29.412992+00:00 Successfully built 4cae23cab8fc
+2026-10-26T23:08:29.478422+00:00 $ docker tag sha256:4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541 localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541
+2026-10-26T23:08:29.937148+00:00 @@MCP_DEPLOY_STAGE {"stage": "PUSHING", "message": "Publishing the immutable application image to the registry", "at": "2026-10-26T23:08:29.935986+00:00", "job_id": "382fb0ecf860473094c9031b2807fb55"}
+2026-10-26T23:08:29.943866+00:00 $ docker push localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541
+2026-10-26T23:08:30.508579+00:00 The push refers to repository [localhost:4566/000000000000/us-east-1/stateless-demo]
+2026-10-26T23:08:30.761411+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:30.763286+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:30.764484+00:00 f2be67225471: Waiting
+2026-10-26T23:08:30.765640+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:30.884721+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:30.886554+00:00 f2be67225471: Waiting
+2026-10-26T23:08:30.888077+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:30.889500+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:30.942075+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:30.944592+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:30.946919+00:00 f2be67225471: Waiting
+2026-10-26T23:08:30.953100+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.040077+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.053383+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.055383+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.056988+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.140650+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.142368+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.143958+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.145282+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.261736+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.263268+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.272773+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.277959+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.390651+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.398151+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.406434+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.409558+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.473151+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.474921+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.476426+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.477732+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.572305+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.574146+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.575705+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.577239+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.655111+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.656903+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.658486+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.660010+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.759153+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.760944+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.762346+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.763789+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.838861+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.841028+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.842361+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.844426+00:00 b524bb3aba73: Waiting
+2026-10-26T23:08:31.948668+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:31.950450+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:31.952509+00:00 f2be67225471: Waiting
+2026-10-26T23:08:31.954332+00:00 b524bb3aba73: Layer already exists
+2026-10-26T23:08:31.955652+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.053809+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.060118+00:00 5c397e4307db: Waiting
+2026-10-26T23:08:32.061729+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:32.063336+00:00 f2be67225471: Waiting
+2026-10-26T23:08:32.139203+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.143229+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.145373+00:00 5c397e4307db: Layer already exists
+2026-10-26T23:08:32.155534+00:00 be6443c06d3c: Waiting
+2026-10-26T23:08:32.157197+00:00 f2be67225471: Layer already exists
+2026-10-26T23:08:32.158944+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.248338+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.262275+00:00 be6443c06d3c: Layer already exists
+2026-10-26T23:08:32.264798+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.266263+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.268441+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.367126+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.368667+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.370062+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.371357+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.492115+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.514761+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.528347+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.530078+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.603376+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.605526+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.607461+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.610305+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.669121+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.671278+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.672725+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.674218+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.772428+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.774194+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.775617+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.777115+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.846511+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.849275+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.851084+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:32.852883+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.942842+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:32.944489+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:32.945941+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:32.947222+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.038304+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.039908+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.041147+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:33.042534+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.149638+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.151017+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.152588+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.155431+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:33.254193+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.255723+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:33.257025+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.258254+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.363806+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.365404+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:33.367050+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.368584+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.501062+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.502793+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.504093+00:00 9ad67250b0cd: Waiting
+2026-10-26T23:08:33.509729+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.770847+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.772597+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.773935+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.850444+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.851910+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.853197+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.869171+00:00 1fd81a683429: Waiting
+2026-10-26T23:08:33.870730+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.871897+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.976190+00:00 1fd81a683429: Mounted from 000000000000/us-east-1/manufact-text-tools
+2026-10-26T23:08:33.977662+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:33.978801+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:33.979919+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.063495+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:34.065693+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.067643+00:00 2c5736a46028: Waiting
+2026-10-26T23:08:34.230518+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:34.232884+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.296143+00:00 9edc65781ecb: Waiting
+2026-10-26T23:08:34.311453+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.437543+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.557182+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.644597+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.739668+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.856232+00:00 9ad67250b0cd: Pushed
+2026-10-26T23:08:34.878886+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:34.938035+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.047251+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.146093+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.239765+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.337211+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.450561+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.543320+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.637766+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.744671+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.839925+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:35.941287+00:00 9edc65781ecb: Pushed
+2026-10-26T23:08:35.986565+00:00 286e62bb6410: Waiting
+2026-10-26T23:08:36.339763+00:00 286e62bb6410: Pushed
+2026-10-26T23:08:40.141529+00:00 2c5736a46028: Pushed
+2026-10-26T23:08:42.108062+00:00 parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541: digest: sha256:4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541 size: 2270
+2026-10-26T23:08:42.144307+00:00 @@MCP_DEPLOY_STAGE {"stage": "DEPLOYING", "message": "Applying application resources; previous serving pods remain until readiness", "at": "2026-10-26T23:08:42.143207+00:00", "job_id": "382fb0ecf860473094c9031b2807fb55"}
+2026-10-26T23:08:42.152275+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-26T23:08:43.662338+00:00 namespace/mcp-demo unchanged
+2026-10-26T23:08:43.703835+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+2026-10-26T23:08:44.936768+00:00 deployment.apps/stateless-demo configured (server dry run)
+2026-10-26T23:08:45.300201+00:00 service/stateless-demo unchanged (server dry run)
+2026-10-26T23:08:45.382735+00:00 poddisruptionbudget.policy/stateless-demo configured (server dry run)
+2026-10-26T23:08:45.422740+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-26T23:08:46.414351+00:00 deployment.apps/stateless-demo configured
+2026-10-26T23:08:46.736894+00:00 service/stateless-demo unchanged
+2026-10-26T23:08:46.837091+00:00 poddisruptionbudget.policy/stateless-demo configured
+2026-10-26T23:08:46.876495+00:00 @@MCP_DEPLOY_STAGE {"stage": "VERIFYING", "message": "Waiting for deployment readiness and exact replica counts", "at": "2026-10-26T23:08:46.875446+00:00", "job_id": "382fb0ecf860473094c9031b2807fb55"}
+2026-10-26T23:08:46.882494+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/stateless-demo --timeout=180s
+2026-10-26T23:08:47.472893+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:09:06.739381+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:09:09.068302+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:09:09.318490+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 out of 2 new replicas have been updated...
+2026-10-26T23:09:09.346175+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:09:29.666370+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:09:30.196607+00:00 Waiting for deployment "stateless-demo" rollout to finish: 1 old replicas are pending termination...
+2026-10-26T23:09:30.891736+00:00 deployment "stateless-demo" successfully rolled out
+2026-10-26T23:09:31.025143+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/stateless-demo --ignore-not-found -o json
+2026-10-26T23:09:31.986106+00:00 {"status": "healthy", "name": "stateless-demo", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/stateless-demo:parallel-230547-0-4cae23cab8fcfa854844622714c0b5c6e1d672d7e4bac381268242ea4ea18541", "ready_replicas": 2, "mcp_url": "http://stateless-demo.mcp-demo.svc.cluster.local:8000/mcp"}
+2026-10-26T23:09:31.988396+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=stateless-demo
+2026-10-26T23:09:32.925959+00:00 NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+2026-10-26T23:09:32.927960+00:00 deployment.apps/stateless-demo   2/2     2            2           4h57m
+2026-10-26T23:09:32.929258+00:00 
+2026-10-26T23:09:32.932696+00:00 NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+2026-10-26T23:09:32.935088+00:00 service/stateless-demo   ClusterIP   10.100.59.127   <none>        8000/TCP   4h57m
+2026-10-26T23:09:32.936830+00:00 
+2026-10-26T23:09:32.938578+00:00 NAME                                        MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+2026-10-26T23:09:32.940526+00:00 poddisruptionbudget.policy/stateless-demo   1               N/A               1                     4h57m
+2026-10-26T23:09:33.023666+00:00 SUCCEEDED: CLI completed successfully

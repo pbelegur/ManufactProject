@@ -1,0 +1,482 @@
+{
+  "started_at": "2026-10-26T21:04:49.990113+00:00",
+  "result": "PASS",
+  "jobs": [
+    {
+      "id": "571df16d246c4e67aeb2c28b0b304374",
+      "status": "succeeded",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "ui-a59837a6a3-stateless-always-on",
+      "source": "build",
+      "created_at": "2026-10-26T21:05:30.711960+00:00",
+      "started_at": "2026-10-26T21:05:30.724993+00:00",
+      "finished_at": "2026-10-26T21:06:29.629280+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\\mcp.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "ui-a59837a6a3-stateless-always-on",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "pid": 29456
+    },
+    {
+      "id": "f79112a052434e3780985d9f7f944bf1",
+      "status": "succeeded",
+      "project_id": "stateful",
+      "name": "stateful-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateful",
+      "version": "ui-a59837a6a3-stateful-always-on",
+      "source": "build",
+      "created_at": "2026-10-26T21:06:32.831521+00:00",
+      "started_at": "2026-10-26T21:06:32.835525+00:00",
+      "finished_at": "2026-10-26T21:07:23.192514+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateful",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateful\\mcp.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "ui-a59837a6a3-stateful-always-on",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--push-registry",
+        "localhost:4566/000000000000/us-east-1"
+      ],
+      "pid": 8632
+    },
+    {
+      "id": "3763393ce3274bdfb0ba00ea105b0e40",
+      "status": "succeeded",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "ui-redeploy-dd959690",
+      "source": "reuse",
+      "created_at": "2026-10-26T21:07:29.390333+00:00",
+      "started_at": "2026-10-26T21:07:29.395678+00:00",
+      "finished_at": "2026-10-26T21:07:43.661105+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\\mcp.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "ui-redeploy-dd959690",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo:ui-a59837a6a3-stateless-always-on-cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+      ],
+      "pid": 9080
+    },
+    {
+      "id": "045d778716644f98bf3e2db9947efbe5",
+      "status": "succeeded",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-auto",
+      "backend": "knative",
+      "mode": "stateless",
+      "version": "ui-a59837a6a3-stateless-knative",
+      "source": "reuse",
+      "created_at": "2026-10-26T21:07:45.161354+00:00",
+      "started_at": "2026-10-26T21:07:45.168040+00:00",
+      "finished_at": "2026-10-26T21:08:16.870263+00:00",
+      "exit_code": 0,
+      "error": null,
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\\mcp.knative.local.json",
+        "--namespace",
+        "mcp-auto",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "ui-a59837a6a3-stateless-knative",
+        "--timeout",
+        "180",
+        "--rollback-timeout",
+        "180",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo@sha256:cf69305bf48d2e09b3ebc040587e922eef0de4cc7befbea441068dc85925bf6e"
+      ],
+      "pid": 25344
+    },
+    {
+      "id": "bf83eeb111744f279a6929154bb454ce",
+      "status": "failed",
+      "project_id": "stateless",
+      "name": "stateless-demo",
+      "namespace": "mcp-demo",
+      "backend": "always-on",
+      "mode": "stateless",
+      "version": "ui-a59837a6a3-stateless-always-on",
+      "source": "reuse",
+      "created_at": "2026-10-26T21:08:20.848886+00:00",
+      "started_at": "2026-10-26T21:08:20.862031+00:00",
+      "finished_at": "2026-10-26T21:09:10.870349+00:00",
+      "exit_code": 1,
+      "error": "deployctl.py exited 1. See the real CLI log, including recovery diagnostics.",
+      "command": [
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+        "deploy",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless",
+        "--config",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\servers\\stateless\\mcp.json",
+        "--namespace",
+        "mcp-demo",
+        "--kubeconfig",
+        "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+        "--version",
+        "ui-a59837a6a3-stateless-always-on",
+        "--timeout",
+        "35",
+        "--rollback-timeout",
+        "180",
+        "--image",
+        "localhost:4566/000000000000/us-east-1/stateless-demo:ui-missing-a59837a6a3"
+      ],
+      "pid": 11192
+    }
+  ],
+  "availability_samples": [
+    {
+      "observed_at": "2026-10-26T21:05:34.470807+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:05:43.813158+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:05:51.046190+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:05:58.166683+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:04.923591+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 3
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:13.834272+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:20.889677+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:31.286136+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:38.833478+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:46.584962+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:06:54.258099+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:02.758880+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 3,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:09.878270+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:17.561284+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:26.287778+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:36.170285+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:43.774827+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:07:51.709921+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:00.128018+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:07.448993+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:15.269066+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:23.226519+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:32.389580+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:39.300757+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:45.958916+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:52.716347+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:08:59.275015+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:09:07.005033+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    },
+    {
+      "observed_at": "2026-10-26T21:09:14.106518+00:00",
+      "ready": {
+        "contract-probe": 2,
+        "stateful-demo": 2,
+        "stateless-demo": 2
+      }
+    }
+  ],
+  "validation": [
+    {
+      "check": "CSRF required",
+      "status": 403,
+      "result": "PASS"
+    },
+    {
+      "check": "path traversal rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "arbitrary executable path rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "shell input rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "foreign image repository rejected",
+      "status": 422,
+      "result": "PASS"
+    },
+    {
+      "check": "cross-origin POST rejected",
+      "status": 403,
+      "result": "PASS"
+    }
+  ],
+  "browser_errors": [],
+  "mcp_before": {
+    "result": "PASS",
+    "job": "ui-verify-a59837a6a3-before",
+    "log": "{\"result\": \"PASS\", \"routing\": \"Kubernetes ClusterIP Services\", \"stateless\": [\"echo\", \"add_numbers\"], \"stateful\": [\"increment_counter\", \"get_counter\"], \"persisted_counter\": null, \"generic_project\": true}\n{\"seeded_counter\": \"ui_persist_a59837a6a3\", \"value\": 13}\n",
+    "counter": "ui_persist_a59837a6a3"
+  },
+  "browser": {
+    "channel": "msedge",
+    "version": "156.0.4314.42"
+  },
+  "form_submission_seconds": [
+    0.2977161000017077,
+    0.2655160999856889,
+    0.21492019994184375,
+    0.24520700005814433
+  ],
+  "mcp_after": {
+    "result": "PASS",
+    "job": "ui-verify-a59837a6a3-after",
+    "log": "{\"result\": \"PASS\", \"routing\": \"Kubernetes ClusterIP Services\", \"stateless\": [\"echo\", \"add_numbers\"], \"stateful\": [\"increment_counter\", \"get_counter\"], \"persisted_counter\": \"ui_persist_a59837a6a3\", \"generic_project\": true}\n",
+    "counter": "ui_persist_a59837a6a3"
+  },
+  "independent_and_redis_pod_uids_preserved": true,
+  "finished_at": "2026-10-26T21:09:57.315586+00:00"
+}

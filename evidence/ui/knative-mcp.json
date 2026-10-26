@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "routing": "Kourier with actual Knative Host header",
+  "host": "stateless-demo.mcp-auto.mcp.test",
+  "echo": "deployed-through-ui",
+  "add_numbers": 42,
+  "echo_seconds": 19.90788459999021,
+  "add_seconds": 1.525382100022398,
+  "counts_after": {
+    "desired": 2,
+    "ready": 2,
+    "pods": 2,
+    "all_pods": 2
+  }
+}

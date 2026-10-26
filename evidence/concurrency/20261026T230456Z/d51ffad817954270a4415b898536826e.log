@@ -1,0 +1,15 @@
+[Retained job-local log tail; up to 256 KB shown; older output may be rotated]
+2026-10-26T23:07:52.309112+00:00 Worker claimed job d51ffad817954270a4415b898536826e; held resources: mcp-demo/manufact-invalid-build
+2026-10-26T23:07:52.931326+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/manufact-invalid-build --ignore-not-found -o json
+2026-10-26T23:07:53.754782+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/manufact-invalid-build --ignore-not-found -o json
+2026-10-26T23:07:54.620069+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/manufact-invalid-build --ignore-not-found -o json
+2026-10-26T23:07:55.384944+00:00 @@MCP_DEPLOY_STAGE {"stage": "BUILDING", "message": "Building the project Dockerfile", "at": "2026-10-26T23:07:55.383976+00:00", "job_id": "d51ffad817954270a4415b898536826e"}
+2026-10-26T23:07:55.405811+00:00 $ docker build --iidfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\d51ffad817954270a4415b898536826e\tmp\mcp-build-okif7xb1\image-id --label deployment.mcp.io/job-id=d51ffad817954270a4415b898536826e --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\d51ffad817954270a4415b898536826e\source\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\d51ffad817954270a4415b898536826e\source
+2026-10-26T23:07:55.513649+00:00 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+2026-10-26T23:07:55.515373+00:00             BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+2026-10-26T23:07:55.516867+00:00             environment-variable.
+2026-10-26T23:07:55.518335+00:00 
+2026-10-26T23:07:55.960256+00:00 Sending build context to Docker daemon  4.608kB
+2026-10-26T23:07:56.038345+00:00 Error response from daemon: dockerfile parse error on line 1: unknown instruction: NOT_A_DOCKERFILE
+2026-10-26T23:07:56.057166+00:00 ERROR: Command '['docker', 'build', '--iidfile', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\d51ffad817954270a4415b898536826e\\tmp\\mcp-build-okif7xb1\\image-id', '--label', 'deployment.mcp.io/job-id=d51ffad817954270a4415b898536826e', '--memory', '1g', '--memory-swap', '1g', '--cpu-period', '100000', '--cpu-quota', '100000', '--force-rm', '--network', 'default', '-f', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\d51ffad817954270a4415b898536826e\\source\\Dockerfile', 'C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\d51ffad817954270a4415b898536826e\\source']' returned non-zero exit status 1.
+2026-10-26T23:07:56.101221+00:00 FAILED: deployctl.py exited 1. See the timestamped job log and recovery diagnostics.

@@ -1,0 +1,31 @@
+{
+  "job_id": "382fb0ecf860473094c9031b2807fb55",
+  "browser_version": "156.0.4314.42",
+  "observations": [
+    {
+      "stage": "BUILDING",
+      "log_chars": 11162,
+      "queue": "Worker limit 3 \u00b7 Executing independently",
+      "history_rows": 3
+    },
+    {
+      "stage": "BUILDING",
+      "log_chars": 11354,
+      "queue": "Worker limit 3 \u00b7 Executing independently",
+      "history_rows": 3
+    },
+    {
+      "stage": "BUILDING",
+      "log_chars": 12055,
+      "queue": "Worker limit 3 \u00b7 Executing independently",
+      "history_rows": 3
+    },
+    {
+      "stage": "BUILDING",
+      "log_chars": 12448,
+      "queue": "Worker limit 3 \u00b7 Executing independently",
+      "history_rows": 3
+    }
+  ],
+  "errors": []
+}
