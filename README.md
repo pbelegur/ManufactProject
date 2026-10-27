@@ -20,6 +20,41 @@ the always-on Deployment backend.
 
 ## Local web UI
 
+Current repair evidence: [UI_REPAIR_REPORT.md](UI_REPAIR_REPORT.md).
+
+The interface is named **Manufact MCP**. Open **http://127.0.0.1:8080**.
+Existing server labels are **Echo & Math** (`stateless-demo`), **Shared Counter**
+(`stateful-demo`) and **Text Analyzer** (`manufact-text-tools`). Always-on and
+Knative runtimes are labeled separately. These labels preserve their real
+Kubernetes names, endpoints and Redis data.
+
+To deploy your own code, use **Add a server**:
+
+1. Upload a complete ZIP, copy a working example, or import an approved GitHub URL.
+2. Set a readable **Display name**, unique **Server ID**, state model and release.
+   Build settings show the actual detected Dockerfile, including custom filenames
+   such as `Dockerfile.dockerfile`. Configure a reviewed read-only tool if you
+   want to use the **Test MCP tool** button.
+3. Click **Save and continue to deployment**. Review the selected server ID and
+   source on the next page, then click **Deploy**. The default action builds your
+   code. Reusing an unchanged image may make no changes to existing pods.
+4. Open the server page to inspect replicas, logs and the actual MCP response.
+   Use **Change display name** to rename its UI label without changing runtime
+   identity. Job history shows the server, mode, action, release and attempt
+   number; a job is one deployment attempt, not another server.
+
+Uploaded projects that were not registered appear under **Resume an unfinished
+import**. Both `/imports/ID` and `/imports/ID/configure` open configuration.
+Errors retain the current configuration form so you can correct it. Intentional
+failure fixtures and their jobs are explicitly separated from developer servers.
+
+The approved MCP quickstart GitHub repository contains tutorials, not a ready
+HTTP/Docker deployment. Importing that source works, but it needs a compatible
+Dockerfile/application before it can deploy. The UI explains missing files;
+trust approval does not imply application compatibility. Use the downloadable
+Text Analyzer ZIP or a working example for an immediately compatible project.
+
+
 The optional FastAPI UI uses simple HTML/CSS at **http://127.0.0.1:8080**.
 It reads real Kubernetes status and runs the existing `deployctl.py` in
 background jobs. The UI does not install or recreate infrastructure.
@@ -58,7 +93,7 @@ operator settings are `MCP_UI_KUBECONFIG`, `MCP_UI_DEPLOY_PYTHON` and
 runtimes using explicit metadata. It shows source provenance, namespace/name,
 image/revision, ready/desired counts, health, last verified deployment and latest
 UI job. Details include retained rollout history, related events and MCP pod logs.
-Partial readiness is never labeled Healthy. Use **Call reviewed read-only tool**
+Partial readiness is never labeled Healthy. Use **Test MCP tool**
 for one actual MCP check with its response, timing and error; it never increments
 a counter or retries an uncertain operation. These checks are not general request analytics.
 

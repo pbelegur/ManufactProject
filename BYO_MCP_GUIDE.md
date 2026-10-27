@@ -32,13 +32,12 @@ It has its own `server.py`, Dockerfile and pinned MCP dependency. It is not the
 old compatibility test fixture. Its `analyze_text` tool reads text and returns
 word/character/line counts and a slug.
 
-1. Open **Import source** and download **the independent Python text-tools
-   sample**. This is a complete project ZIP with no mcp.json, deliberately
+1. Open **Add a server** and download **working Text Analyzer project (.zip)**. This is a complete project ZIP with no mcp.json, deliberately
    exercising guided configuration.
-2. Select **Upload complete MCP project ZIP**, choose that ZIP, review the code
+2. Select **Upload a project ZIP**, choose that ZIP, review the code
    and acknowledge that you trust it and that it contains no credentials.
    Click **Import and review configuration**. Importing does not execute code.
-3. Choose a **new unique name**, for example `my-text-tools`. The evaluation
+3. Choose a readable **Display name**, such as My Text Tools, and a **new unique server ID**, for example `my-text-tools`. The evaluation
    deployment uses `manufact-text-tools`, so use another name for a new import.
    Names are lowercase DNS labels, at most 52 characters, and reserved across
    both UI-managed namespaces and registered projects.
@@ -57,14 +56,13 @@ word/character/line counts and a slug.
    | Tool arguments | `{"text":"Manufact builds MCP tools"}` |
 
 5. Confirm that the selected tool is read-only and that you trust this source.
-   Click **Register server**. This persists the source and deployment identity;
+   Click **Save and continue to deployment**. This persists the source and deployment identity;
    it does not start a deployment.
-6. On the deployment form, the imported project is selected. Choose **Build
-   Dockerfile and publish to Floci ECR**, review the configuration, then click
+6. On the deployment form, the imported project is selected. Choose **Build this project's code and deploy a new image**, review the configuration, then click
    **Deploy**. The page returns a job ID immediately and polls real CLI output.
 7. Follow **Inspect Kubernetes deployment** after the job succeeds. Confirm
    `Healthy`, `2 / 2`, the image/digest, source provenance and actual endpoint.
-8. Click **Call reviewed read-only tool**. Expected response:
+8. Click **Test MCP tool**. Expected response:
 
    ```json
    {"words":4,"characters":25,"lines":1,"slug":"manufact-builds-mcp-tools"}
@@ -76,10 +74,26 @@ word/character/line counts and a slug.
    **Kubernetes rollout history** and the linked **deployment/build job log**.
    The dashboard links the source, runtime identity and latest job.
 
-For an existing registered server, use **Deploy project** with its project ID
+For an existing registered server, use **Deploy / update** with its project ID
 or **Redeploy published image** on its details page. Reuse does not rebuild.
 An identical always-on image may be an idempotent no-op. Knative reuse requires
 the published digest, matching the existing local registry behavior.
+
+Display names can be changed on the details page without renaming Kubernetes
+resources or altering endpoints. Job history uses names and attempt numbers;
+the full job UUID remains available for diagnostics. Unfinished uploads are
+resumable from the import page, dashboard or deployment page. A failed form
+keeps its source and editable values. Existing services keep running while
+a new project is imported, built and verified.
+
+The evaluated uploaded project is **My Text Analyzer**, server ID
+`text-analyzer-upload`. The original independent sample is **Text Analyzer**,
+ID `manufact-text-tools`; both are running. Use a fresh server ID for another
+import. The GitHub quickstart URL is a trusted tutorial source, not a compatible
+Docker/HTTP project out of the box. The UI warns when no Dockerfile is present.
+
+See [UI_REPAIR_REPORT.md](UI_REPAIR_REPORT.md) for the restart/import bug fix,
+executed browser checks, original-service preservation and remaining limits.
 
 ## Your project and mcp.json
 

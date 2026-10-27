@@ -1,0 +1,22 @@
+{
+  "started_at": "2026-10-27T16:09:01.511315+00:00",
+  "result": "FAIL",
+  "checks": [],
+  "mcp": [
+    {
+      "success": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\scripts\\ui_mcp_check.py\", line 78, in <module>\n    result = main(args)\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\scripts\\ui_mcp_check.py\", line 56, in main\n    raise TimeoutError(\"Service port-forward did not start within 20 seconds\")\nTimeoutError: Service port-forward did not start within 20 seconds\n",
+      "latency_ms": 21031.3623000402,
+      "latency_scope": "Failed attempt including forwarding/setup",
+      "attempts": 1,
+      "observed_at": "2026-10-27T16:10:01.534091+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    }
+  ],
+  "browser_errors": [],
+  "availability": [],
+  "previous_evidence": "evidence/ui-repair/20261027T160013Z",
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_repair.py\", line 69, in main\n    await mcp(name)\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_repair.py\", line 62, in mcp\n    assert response.ok and check.get(\"success\"), check\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'success': False, 'error': 'Traceback (most recent call last):\\n  File \"C:\\\\Users\\\\Devi\\\\Downloads\\\\mcp-deployment-platform-starter\\\\scripts\\\\ui_mcp_check.py\", line 78, in <module>\\n    result = main(args)\\n  File \"C:\\\\Users\\\\Devi\\\\Downloads\\\\mcp-deployment-platform-starter\\\\scripts\\\\ui_mcp_check.py\", line 56, in main\\n    raise TimeoutError(\"Service port-forward did not start within 20 seconds\")\\nTimeoutError: Service port-forward did not start within 20 seconds\\n', 'latency_ms': 21031.3623000402, 'latency_scope': 'Failed attempt including forwarding/setup', 'attempts': 1, 'observed_at': '2026-10-27T16:10:01.534091+00:00', 'tool': 'echo', 'identity': 'mcp-demo/stateless-demo'}\n",
+  "finished_at": "2026-10-27T16:10:33.245732+00:00"
+}

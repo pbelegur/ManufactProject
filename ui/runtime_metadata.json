@@ -1,4 +1,6 @@
 {
+  "mcp-demo/manufact-invalid-build": {"category": "probe", "display_name": "Intentional build failure · test fixture", "project_id": "byo-51b1fb84d1544940af48"},
+  "mcp-demo/manufact-text-tools": {"display_name": "Text Analyzer"},
   "mcp-auto/phase3-final-probe": {"category": "probe", "project_id": "contract-probe", "source": {"kind": "fixture", "path": "tests/fixtures/compatible_project"}},
   "mcp-auto/phase3-verified-probe": {"category": "probe", "project_id": "contract-probe", "source": {"kind": "fixture", "path": "tests/fixtures/compatible_project"}}
 }

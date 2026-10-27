@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/imports",
+      "status": 200
+    },
+    {
+      "route": "/deploy",
+      "status": 200
+    },
+    {
+      "route": "/deployments/mcp-demo/text-analyzer-upload",
+      "status": 200
+    },
+    {
+      "route": "/imports/a1c49b683dbc459cafa7a84e447f3813/configure?utm_source=chatgpt.com",
+      "status": 200
+    }
+  ],
+  "registered_projects": 3
+}

@@ -1,0 +1,151 @@
+[Retained job-local log tail; up to 256 KB shown; older output may be rotated]
+2026-10-27T16:19:33.144695+00:00 Worker claimed job f1dd7b09f871452ab65aaa83b1a987ee; held resources: mcp-demo/text-analyzer-upload
+2026-10-27T16:19:34.522567+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/text-analyzer-upload --ignore-not-found -o json
+2026-10-27T16:19:36.155873+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get service/text-analyzer-upload --ignore-not-found -o json
+2026-10-27T16:19:36.753811+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get pdb/text-analyzer-upload --ignore-not-found -o json
+2026-10-27T16:19:37.683782+00:00 @@MCP_DEPLOY_STAGE {"stage": "BUILDING", "message": "Building the project Dockerfile", "at": "2026-10-27T16:19:37.680608+00:00", "job_id": "f1dd7b09f871452ab65aaa83b1a987ee"}
+2026-10-27T16:19:37.747646+00:00 $ docker build --iidfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\f1dd7b09f871452ab65aaa83b1a987ee\tmp\mcp-build-wsb0i97u\image-id --label deployment.mcp.io/job-id=f1dd7b09f871452ab65aaa83b1a987ee --memory 1g --memory-swap 1g --cpu-period 100000 --cpu-quota 100000 --force-rm --network default -f C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\f1dd7b09f871452ab65aaa83b1a987ee\source\Dockerfile C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\ui\work\f1dd7b09f871452ab65aaa83b1a987ee\source
+2026-10-27T16:19:38.041770+00:00 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+2026-10-27T16:19:38.044082+00:00             BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+2026-10-27T16:19:38.045678+00:00             environment-variable.
+2026-10-27T16:19:38.052658+00:00 
+2026-10-27T16:19:38.689273+00:00 Sending build context to Docker daemon  9.216kB
+2026-10-27T16:19:38.825566+00:00 Step 1/13 : FROM python:3.12-slim
+2026-10-27T16:19:39.050834+00:00  ---> a0f57064cbdc
+2026-10-27T16:19:39.053846+00:00 Step 2/13 : WORKDIR /app
+2026-10-27T16:19:39.250459+00:00  ---> Using cache
+2026-10-27T16:19:39.253658+00:00  ---> be8c4780ddcb
+2026-10-27T16:19:39.256791+00:00 Step 3/13 : ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HOST=0.0.0.0 PORT=8000
+2026-10-27T16:19:39.359363+00:00  ---> Using cache
+2026-10-27T16:19:39.362885+00:00  ---> 3f9cd5c58450
+2026-10-27T16:19:39.364813+00:00 Step 4/13 : COPY requirements.txt .
+2026-10-27T16:19:39.593118+00:00  ---> Using cache
+2026-10-27T16:19:39.594581+00:00  ---> 26c824555238
+2026-10-27T16:19:39.598962+00:00 Step 5/13 : RUN pip install --no-cache-dir -r requirements.txt
+2026-10-27T16:19:39.657628+00:00  ---> Using cache
+2026-10-27T16:19:39.661848+00:00  ---> e3a5f94db527
+2026-10-27T16:19:39.663442+00:00 Step 6/13 : COPY server.py .
+2026-10-27T16:19:39.748697+00:00  ---> Using cache
+2026-10-27T16:19:39.750396+00:00  ---> a400efe72fd8
+2026-10-27T16:19:39.751748+00:00 Step 7/13 : RUN useradd --uid 10001 --create-home mcpuser
+2026-10-27T16:19:39.793452+00:00  ---> Using cache
+2026-10-27T16:19:39.794892+00:00  ---> c6bf853b0634
+2026-10-27T16:19:39.797673+00:00 Step 8/13 : USER mcpuser
+2026-10-27T16:19:39.857776+00:00  ---> Using cache
+2026-10-27T16:19:39.859955+00:00  ---> 5ad34228d148
+2026-10-27T16:19:39.865877+00:00 Step 9/13 : EXPOSE 8000
+2026-10-27T16:19:39.921554+00:00  ---> Using cache
+2026-10-27T16:19:39.923471+00:00  ---> 478e291ef418
+2026-10-27T16:19:39.924887+00:00 Step 10/13 : STOPSIGNAL SIGTERM
+2026-10-27T16:19:40.016359+00:00  ---> Using cache
+2026-10-27T16:19:40.017714+00:00  ---> b2441310b1bd
+2026-10-27T16:19:40.024631+00:00 Step 11/13 : HEALTHCHECK --interval=3s --timeout=2s --start-period=10s CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=1).close()"
+2026-10-27T16:19:40.097409+00:00  ---> Using cache
+2026-10-27T16:19:40.099113+00:00  ---> 877da9ca936c
+2026-10-27T16:19:40.100661+00:00 Step 12/13 : CMD ["python", "server.py"]
+2026-10-27T16:19:40.160591+00:00  ---> Using cache
+2026-10-27T16:19:40.161979+00:00  ---> ce7382a9b2b5
+2026-10-27T16:19:40.164199+00:00 Step 13/13 : LABEL deployment.mcp.io/job-id=f1dd7b09f871452ab65aaa83b1a987ee
+2026-10-27T16:19:40.565140+00:00  ---> Running in bf98aadad970
+2026-10-27T16:20:03.970191+00:00  ---> Removed intermediate container bf98aadad970
+2026-10-27T16:20:03.971980+00:00  ---> ed1ad3fc0066
+2026-10-27T16:20:03.984406+00:00 Successfully built ed1ad3fc0066
+2026-10-27T16:20:04.035937+00:00 $ docker tag sha256:ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033 localhost:4566/000000000000/us-east-1/text-analyzer-upload:browser-v1-ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033
+2026-10-27T16:20:04.487625+00:00 @@MCP_DEPLOY_STAGE {"stage": "PUSHING", "message": "Publishing the immutable application image to the registry", "at": "2026-10-27T16:20:04.486659+00:00", "job_id": "f1dd7b09f871452ab65aaa83b1a987ee"}
+2026-10-27T16:20:09.302622+00:00 Created application ECR repository: text-analyzer-upload
+2026-10-27T16:20:09.304477+00:00 $ docker push localhost:4566/000000000000/us-east-1/text-analyzer-upload:browser-v1-ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033
+2026-10-27T16:20:09.588977+00:00 The push refers to repository [localhost:4566/000000000000/us-east-1/text-analyzer-upload]
+2026-10-27T16:20:09.700114+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:09.701487+00:00 f2be67225471: Waiting
+2026-10-27T16:20:09.702782+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:09.704843+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:09.799262+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:09.802061+00:00 f2be67225471: Waiting
+2026-10-27T16:20:09.803364+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:09.805216+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:09.899728+00:00 f2be67225471: Waiting
+2026-10-27T16:20:09.902828+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:09.904217+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:09.905508+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.000350+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.002105+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.003442+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.004987+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.099042+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.100536+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.101789+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.103198+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.201315+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.202649+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.203781+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.204926+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.297071+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.298705+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.300079+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.301560+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.401333+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.402882+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.404342+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.405758+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.499060+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.501533+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.503571+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.505831+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.597929+00:00 f2be67225471: Waiting
+2026-10-27T16:20:10.599775+00:00 be6443c06d3c: Waiting
+2026-10-27T16:20:10.601069+00:00 5c397e4307db: Waiting
+2026-10-27T16:20:10.602522+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.696580+00:00 d397f426f245: Waiting
+2026-10-27T16:20:10.698285+00:00 f2be67225471: Mounted from 000000000000/us-east-1/stateless-demo
+2026-10-27T16:20:10.699661+00:00 be6443c06d3c: Mounted from 000000000000/us-east-1/stateless-demo
+2026-10-27T16:20:10.700917+00:00 5c397e4307db: Mounted from 000000000000/us-east-1/stateless-demo
+2026-10-27T16:20:10.702030+00:00 b524bb3aba73: Waiting
+2026-10-27T16:20:10.703466+00:00 1fd81a683429: Waiting
+2026-10-27T16:20:10.704798+00:00 8206314291ef: Waiting
+2026-10-27T16:20:10.796719+00:00 8206314291ef: Waiting
+2026-10-27T16:20:10.798665+00:00 d397f426f245: Waiting
+2026-10-27T16:20:10.800120+00:00 3a8504d96342: Waiting
+2026-10-27T16:20:10.801654+00:00 b524bb3aba73: Mounted from 000000000000/us-east-1/stateless-demo
+2026-10-27T16:20:10.802977+00:00 1fd81a683429: Waiting
+2026-10-27T16:20:10.897329+00:00 1fd81a683429: Waiting
+2026-10-27T16:20:10.898752+00:00 8206314291ef: Waiting
+2026-10-27T16:20:10.900337+00:00 d397f426f245: Waiting
+2026-10-27T16:20:10.901657+00:00 3a8504d96342: Waiting
+2026-10-27T16:20:10.902985+00:00 37654e256109: Waiting
+2026-10-27T16:20:10.997183+00:00 8206314291ef: Mounted from 000000000000/us-east-1/manufact-text-tools
+2026-10-27T16:20:10.998739+00:00 d397f426f245: Mounted from 000000000000/us-east-1/manufact-text-tools
+2026-10-27T16:20:10.999981+00:00 3a8504d96342: Waiting
+2026-10-27T16:20:11.001299+00:00 37654e256109: Waiting
+2026-10-27T16:20:11.002756+00:00 1fd81a683429: Mounted from 000000000000/us-east-1/stateless-demo
+2026-10-27T16:20:11.097311+00:00 3a8504d96342: Mounted from 000000000000/us-east-1/manufact-text-tools
+2026-10-27T16:20:11.098779+00:00 37654e256109: Mounted from 000000000000/us-east-1/manufact-text-tools
+2026-10-27T16:20:11.339190+00:00 browser-v1-ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033: digest: sha256:ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033 size: 2270
+2026-10-27T16:20:11.374523+00:00 @@MCP_DEPLOY_STAGE {"stage": "DEPLOYING", "message": "Applying application resources; previous serving pods remain until readiness", "at": "2026-10-27T16:20:11.373532+00:00", "job_id": "f1dd7b09f871452ab65aaa83b1a987ee"}
+2026-10-27T16:20:11.380441+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-27T16:20:12.249285+00:00 namespace/mcp-demo unchanged
+2026-10-27T16:20:12.287409+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply --dry-run=server -f -
+2026-10-27T16:20:12.925993+00:00 deployment.apps/text-analyzer-upload created (server dry run)
+2026-10-27T16:20:13.067769+00:00 service/text-analyzer-upload created (server dry run)
+2026-10-27T16:20:13.150963+00:00 poddisruptionbudget.policy/text-analyzer-upload created (server dry run)
+2026-10-27T16:20:13.202870+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo apply -f -
+2026-10-27T16:20:14.021755+00:00 deployment.apps/text-analyzer-upload created
+2026-10-27T16:20:14.246653+00:00 service/text-analyzer-upload created
+2026-10-27T16:20:14.411575+00:00 poddisruptionbudget.policy/text-analyzer-upload created
+2026-10-27T16:20:14.457129+00:00 @@MCP_DEPLOY_STAGE {"stage": "VERIFYING", "message": "Waiting for deployment readiness and exact replica counts", "at": "2026-10-27T16:20:14.455974+00:00", "job_id": "f1dd7b09f871452ab65aaa83b1a987ee"}
+2026-10-27T16:20:14.463884+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo rollout status deployment/text-analyzer-upload --timeout=180s
+2026-10-27T16:20:15.045067+00:00 Waiting for deployment "text-analyzer-upload" rollout to finish: 0 of 2 updated replicas are available...
+2026-10-27T16:20:40.736052+00:00 Waiting for deployment "text-analyzer-upload" rollout to finish: 0 of 2 updated replicas are available...
+2026-10-27T16:20:40.860423+00:00 Waiting for deployment "text-analyzer-upload" rollout to finish: 0 of 2 updated replicas are available...
+2026-10-27T16:20:43.044897+00:00 deployment "text-analyzer-upload" successfully rolled out
+2026-10-27T16:20:43.075720+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment/text-analyzer-upload --ignore-not-found -o json
+2026-10-27T16:20:43.776956+00:00 {"status": "healthy", "name": "text-analyzer-upload", "namespace": "mcp-demo", "image": "localhost:4566/000000000000/us-east-1/text-analyzer-upload:browser-v1-ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033", "ready_replicas": 2, "mcp_url": "http://text-analyzer-upload.mcp-demo.svc.cluster.local:8000/mcp"}
+2026-10-27T16:20:43.782778+00:00 $ kubectl --kubeconfig C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.local\floci.kubeconfig --request-timeout=30s -n mcp-demo get deployment,service,pdb -l app=text-analyzer-upload
+2026-10-27T16:20:44.743810+00:00 NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+2026-10-27T16:20:44.745644+00:00 deployment.apps/text-analyzer-upload   2/2     2            2           31s
+2026-10-27T16:20:44.746823+00:00 
+2026-10-27T16:20:44.748613+00:00 NAME                           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+2026-10-27T16:20:44.750089+00:00 service/text-analyzer-upload   ClusterIP   10.100.150.222   <none>        8000/TCP   30s
+2026-10-27T16:20:44.751563+00:00 
+2026-10-27T16:20:44.753427+00:00 NAME                                              MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+2026-10-27T16:20:44.756501+00:00 poddisruptionbudget.policy/text-analyzer-upload   1               N/A               1                     30s
+2026-10-27T16:20:45.058040+00:00 SUCCEEDED: CLI completed successfully

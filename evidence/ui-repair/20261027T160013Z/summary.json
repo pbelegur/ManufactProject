@@ -1,0 +1,121 @@
+{
+  "started_at": "2026-10-27T16:00:13.397584+00:00",
+  "result": "FAIL",
+  "checks": [
+    "Original three services: real read-only MCP tools succeed",
+    "Pending import resumes through /configure GET",
+    "stateless template imports with correct defaults",
+    "stateful template imports with correct defaults",
+    "Bad ZIP shows error on recoverable import form"
+  ],
+  "mcp": [
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 554.0823000483215,
+      "initialization_ms": 1154.864199925214,
+      "latency_ms": 1709.0144999092445,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-27T16:00:49.630941+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 1071.925700060092,
+      "initialization_ms": 2216.130799963139,
+      "latency_ms": 3288.1254999665543,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-27T16:01:11.354178+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "text-tools",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"words\": 4,\n  \"characters\": 25,\n  \"lines\": 1,\n  \"slug\": \"manufact-builds-mcp-tools\"\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 1501.9966999534518,
+      "initialization_ms": 3380.9397000586614,
+      "latency_ms": 4882.989200064912,
+      "latency_scope": "Client initialization plus tool call; excludes port-forward setup",
+      "attempts": 1,
+      "observed_at": "2026-10-27T16:01:34.807896+00:00",
+      "tool": "analyze_text",
+      "identity": "mcp-demo/manufact-text-tools"
+    }
+  ],
+  "browser_errors": [],
+  "availability": [],
+  "github": {
+    "result": "PASS",
+    "archive_sha256": "2cf79b7f6f847ac1450edd00daa0f169f2a27af9cfe6305d4081f2a0fdde94bb",
+    "commit": "38e14ca4ce362d27dfaaa498f3b4592bea4c6710",
+    "expanded_bytes": 812571,
+    "files": 66,
+    "kind": "github",
+    "url": "https://github.com/modelcontextprotocol/quickstart-resources"
+  },
+  "import_url": "http://127.0.0.1:8080/imports/a258995dcb0947f6ada294cc0fcbe847",
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_repair.py\", line 132, in main\n    await page.wait_for_url(\"**/deploy?project=*\", timeout=40000)\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\async_api\\_generated.py\", line 21329, in wait_for_url\n    await self._impl_obj.wait_for_url(\n    ...<3 lines>...\n    )\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 592, in wait_for_url\n    return await self._main_frame.wait_for_url(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 289, in wait_for_url\n    async with self.expect_navigation(\n               ~~~~~~~~~~~~~~~~~~~~~~^\n        url=url, waitUntil=waitUntil, timeout=timeout\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ):\n    ^\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_event_context_manager.py\", line 33, in __aexit__\n    await self._future\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv-ui\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 265, in continuation\n    event = await waiter.result()\n            ^^^^^^^^^^^^^^^^^^^^^\nplaywright._impl._errors.TimeoutError: Timeout 40000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/deploy?project=*\" until 'load'\n============================================================\n",
+  "finished_at": "2026-10-27T16:03:08.126539+00:00"
+}

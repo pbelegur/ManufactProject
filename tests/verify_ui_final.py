@@ -112,7 +112,7 @@ async def main():
                     await page.fill("#safe_arguments", '{"text":"Manufact builds MCP tools"}')
                     await page.locator('input[name="confirm_read_only"]').check()
                 await page.locator('input[name="trusted_code"]').check()
-                await page.get_by_role("button", name="Register server").click()
+                await page.get_by_role("button", name="Save and continue to deployment").click()
                 await page.wait_for_url("**/deploy?project=*", timeout=30000)
                 return await page.locator("#project_id").input_value()
 
@@ -175,7 +175,7 @@ async def main():
             assert await page.locator("#replicas").inner_text() == "2 / 2"
             assert "/mcp" in await page.locator("#endpoint").inner_text()
             assert "imports/" in await page.locator("#source-project").inner_text()
-            await page.get_by_role("button", name="Call reviewed read-only tool").click()
+            await page.get_by_role("button", name="Test MCP tool").click()
             await page.wait_for_function("document.getElementById('mcp-result').textContent.includes('success')", timeout=150000)
             check = json.loads(await page.locator("#mcp-result").inner_text())
             assert check["success"], check
@@ -259,7 +259,7 @@ async def resume(folder):
             assert await page.locator("#replicas").inner_text() == "2 / 2"
             assert "/mcp" in await page.locator("#endpoint").inner_text()
             assert "imports/" in await page.locator("#source-project").inner_text()
-            await page.get_by_role("button", name="Call reviewed read-only tool").click()
+            await page.get_by_role("button", name="Test MCP tool").click()
             await page.wait_for_function("document.getElementById('mcp-result').textContent.includes('success')", timeout=150000)
             check = json.loads(await page.locator("#mcp-result").inner_text())
             assert check["success"], check

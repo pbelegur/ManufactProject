@@ -1,0 +1,316 @@
+{
+  "result": "PASS",
+  "started_at": "2026-10-27T16:27:47.759284+00:00",
+  "job_id": "f1dd7b09f871452ab65aaa83b1a987ee",
+  "mcp": [
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "text-tools",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"words\": 2,\n  \"characters\": 13,\n  \"lines\": 1,\n  \"slug\": \"manufact-demo\"\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 124.6769999852404,
+      "initialization_ms": 5983.1440000562,
+      "sdk_import_ms": 5185.76910009142,
+      "latency_ms": 6107.860299991444,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 751.3320000143722,
+      "observed_at": "2026-10-27T16:24:28.101877+00:00",
+      "tool": "analyze_text",
+      "identity": "mcp-demo/text-analyzer-upload"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 532.4582000030205,
+      "initialization_ms": 3881.20770000387,
+      "sdk_import_ms": 3379.1659000562504,
+      "latency_ms": 4413.740399992093,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 546.9428000506014,
+      "observed_at": "2026-10-27T16:24:42.118690+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 390.1251000352204,
+      "initialization_ms": 5229.236099985428,
+      "sdk_import_ms": 4713.04359997157,
+      "latency_ms": 5619.408300030045,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 1151.7662999685854,
+      "observed_at": "2026-10-27T16:24:56.116939+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "text-tools",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"words\": 4,\n  \"characters\": 25,\n  \"lines\": 1,\n  \"slug\": \"manufact-builds-mcp-tools\"\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 127.19380005728453,
+      "initialization_ms": 3932.80829989817,
+      "sdk_import_ms": 3362.642899970524,
+      "latency_ms": 4060.4385999031365,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 791.8703999603167,
+      "observed_at": "2026-10-27T16:25:06.779592+00:00",
+      "tool": "analyze_text",
+      "identity": "mcp-demo/manufact-text-tools"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 2470.6547999521717,
+      "initialization_ms": 40165.13950005174,
+      "sdk_import_ms": 3724.901400040835,
+      "latency_ms": 42635.86679997388,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 887.5474000815302,
+      "observed_at": "2026-10-27T16:25:58.662757+00:00",
+      "tool": "echo",
+      "identity": "mcp-auto/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "0",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 0
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 1104.2214999906719,
+      "initialization_ms": 27378.447400056757,
+      "sdk_import_ms": 5479.160699993372,
+      "latency_ms": 28482.73680009879,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 1297.6974999764934,
+      "observed_at": "2026-10-27T16:26:36.825869+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-auto/stateful-demo"
+    }
+  ],
+  "browser_errors": [],
+  "reused_mcp_checks": "finish-collector-failure.json; actual successful calls retained, not sent again",
+  "job": {
+    "id": "f1dd7b09f871452ab65aaa83b1a987ee",
+    "status": "succeeded",
+    "project_id": "byo-a258995dcb0947f6ada2",
+    "name": "text-analyzer-upload",
+    "namespace": "mcp-demo",
+    "backend": "always-on",
+    "mode": "stateless",
+    "version": "browser-v1",
+    "source": "build",
+    "created_at": "2026-10-27T16:19:33.124539+00:00",
+    "started_at": "2026-10-27T16:19:33.133824+00:00",
+    "finished_at": "2026-10-27T16:20:45.068061+00:00",
+    "exit_code": 0,
+    "error": null,
+    "command": [
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+      "deploy",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f1dd7b09f871452ab65aaa83b1a987ee\\source",
+      "--config",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f1dd7b09f871452ab65aaa83b1a987ee\\.job-deploy.json",
+      "--namespace",
+      "mcp-demo",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--version",
+      "browser-v1",
+      "--timeout",
+      "180",
+      "--rollback-timeout",
+      "180",
+      "--push-registry",
+      "localhost:4566/000000000000/us-east-1",
+      "--ensure-floci-repository"
+    ],
+    "stage": "SUCCEEDED",
+    "stage_at": "2026-10-27T16:20:45.053859+00:00",
+    "stage_message": "CLI completed successfully",
+    "stage_history": [
+      {
+        "stage": "QUEUED",
+        "at": "2026-10-27T16:19:33.124539+00:00",
+        "message": "Job accepted"
+      },
+      {
+        "stage": "BUILDING",
+        "at": "2026-10-27T16:19:33.138287+00:00",
+        "message": "Preparing a private source/configuration snapshot"
+      },
+      {
+        "stage": "BUILDING",
+        "at": "2026-10-27T16:19:37.687027+00:00",
+        "message": "Building the project Dockerfile"
+      },
+      {
+        "stage": "PUSHING",
+        "at": "2026-10-27T16:20:04.489048+00:00",
+        "message": "Publishing the immutable application image to the registry"
+      },
+      {
+        "stage": "DEPLOYING",
+        "at": "2026-10-27T16:20:11.375700+00:00",
+        "message": "Applying application resources; previous serving pods remain until readiness"
+      },
+      {
+        "stage": "VERIFYING",
+        "at": "2026-10-27T16:20:14.458563+00:00",
+        "message": "Waiting for deployment readiness and exact replica counts"
+      },
+      {
+        "stage": "SUCCEEDED",
+        "at": "2026-10-27T16:20:45.053859+00:00",
+        "message": "CLI completed successfully"
+      }
+    ],
+    "build_limits": {
+      "cpu": 1,
+      "memory_bytes": 1073741824,
+      "build_timeout_seconds": 300
+    },
+    "log_policy": {
+      "segment_bytes": 1048576,
+      "segments": 3,
+      "browser_tail_bytes": 256000
+    },
+    "resource_keys": [
+      "mcp-demo/text-analyzer-upload"
+    ],
+    "source_snapshot": {
+      "files": 6,
+      "bytes": 3161,
+      "at": "2026-10-27T16:19:33.223757+00:00"
+    },
+    "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f1dd7b09f871452ab65aaa83b1a987ee\\source",
+    "pid": 23304,
+    "deployment_result": {
+      "status": "healthy",
+      "name": "text-analyzer-upload",
+      "namespace": "mcp-demo",
+      "image": "localhost:4566/000000000000/us-east-1/text-analyzer-upload:browser-v1-ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033",
+      "ready_replicas": 2,
+      "mcp_url": "http://text-analyzer-upload.mcp-demo.svc.cluster.local:8000/mcp"
+    },
+    "log_rotations": 0,
+    "display_name": "My Text Analyzer",
+    "backend_label": "Always on",
+    "category": "developer",
+    "action": "Build and deploy",
+    "attempt": 1,
+    "phase": "SUCCEEDED",
+    "queue_position": null,
+    "waiting_reason": null,
+    "max_concurrent_jobs": 2
+  },
+  "originals_preserved": true,
+  "finished_at": "2026-10-27T16:28:08.945413+00:00"
+}

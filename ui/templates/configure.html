@@ -1,16 +1,38 @@
 {% extends 'base.html' %}
-{% block title %}Configure imported MCP · MCP platform{% endblock %}
+{% block title %}Configure server · Manufact MCP{% endblock %}
 {% block content %}
-<p class="eyebrow">SOURCE IMPORTED / CONFIGURATION REQUIRED</p><h1>Configure your MCP server</h1>
-{% if not stage.has_config %}<div class="notice">This project has no mcp.json. Choose its state model explicitly; no stateless assumption has been made.</div>{% else %}<p>Defaults were read from mcp.json. Review before registering a new identity.</p>{% endif %}
-<div class="columns"><section class="card"><form action="/imports/{{ stage.id }}/configure" method="post" id="configure-form"><input type="hidden" name="csrf" value="{{ csrf }}">
-<label for="server_name">Unique MCP server name</label><input id="server_name" name="server_name" required maxlength="52" pattern="[a-z][a-z0-9-]{0,51}" value="{{ defaults.name }}"><p class="help">Reserved across both namespaces. Lowercase letters, digits and hyphens.</p>
-<label for="dockerfile">Dockerfile path</label><input id="dockerfile" name="dockerfile" required value="{{ defaults.dockerfile }}"><label for="build_context">Build context</label><input id="build_context" name="build_context" required value="{{ defaults.build_context }}"><p class="help">Both must resolve inside the staged project.</p>
-<label for="port">Container port</label><input id="port" name="port" type="number" value="8000" required><label for="mcp_path">MCP endpoint</label><input id="mcp_path" name="mcp_path" value="/mcp" required><p class="help">Existing engine supports 8000 and /mcp; other values produce a validation error.</p>
-<label for="mode">Application state model</label><select id="mode" name="mode" required><option value="">Choose explicitly…</option><option value="stateless" {% if defaults.mode=='stateless' %}selected{% endif %}>Stateless</option><option value="stateful" {% if defaults.mode=='stateful' %}selected{% endif %}>Stateful with shared Redis</option></select>
-<label for="redis_url">Shared Redis URL (optional, stateful only)</label><input id="redis_url" name="redis_url" placeholder="redis://existing-service:6379/0"><p class="help">Blank creates server-scoped persistent Redis through deployctl. Inline credentials are unsupported. Your code must use REDIS_URL.</p>
-<label for="backend">Deployment mode</label><select id="backend" name="backend"><option value="always-on">Always-on · two replicas</option><option value="knative">Knative · scale to zero</option></select><label for="version">Version / release</label><input id="version" name="version" value="v1" pattern="[A-Za-z0-9_][A-Za-z0-9_.\-]{0,62}" maxlength="63" required>
-<label for="safe_tool">Read-only Test MCP tool (optional)</label><input id="safe_tool" name="safe_tool" maxlength="100" placeholder="analyze_text"><label for="safe_arguments">Tool arguments (JSON object)</label><textarea id="safe_arguments" name="safe_arguments" rows="4">{}</textarea><label class="check"><input type="checkbox" name="confirm_read_only" value="true"> I reviewed this tool and confirm it is read-only. Never use increment_counter.</label>
-<label class="check"><input type="checkbox" name="trusted_code" value="true" required> I trust this source and Dockerfile for a local build.</label><button type="submit">Register server</button><p class="help">Next: review the form and press Deploy. Registration does not build or change Kubernetes.</p></form></section>
-<aside class="card"><h2>Pinned source</h2><pre id="source-provenance">{{ stage.source|tojson(indent=2) }}</pre><p>{{ stage.source.files }} files; {{ stage.source.expanded_bytes }} expanded bytes.</p></aside></div>
+<a class="back" href="/imports">← Add a server</a>
+<ol class="workflow"><li>1. Upload or choose source</li><li aria-current="step">2. Name and configure</li><li>3. Build and deploy</li></ol>
+<h1>Name and configure your server</h1><p id="import-label">Source: <strong>{{ stage.label }}</strong> · {{ stage.source.files }} files imported.</p>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+{% if not stage.has_config %}<p class="notice">No <code>mcp.json</code> was supplied. Complete the fields below; choose the application's state model explicitly.</p>{% else %}<p>Defaults came from mcp.json. Review them before continuing.</p>{% endif %}
+{% if not stage.dockerfiles %}<div class="notice error">No Dockerfile was found. A trusted GitHub URL is not a guarantee of compatibility. Add a Dockerfile to your complete MCP project and upload it, or enter an existing custom build filename below. A standalone Dockerfile cannot supply missing application code.</div>{% endif %}
+<div class="columns"><section class="card"><form action="/imports/{{ stage.id }}/configure" method="post" id="configure-form">
+<input type="hidden" name="csrf" value="{{ csrf }}">
+<label for="display_name">Display name</label><input id="display_name" name="display_name" maxlength="80" value="{{ defaults.display_name }}" placeholder="For example: Customer Support Tools"><p class="help">The readable name on your dashboard. You can change it later.</p>
+<label for="server_name">Unique server ID</label><input id="server_name" name="server_name" required maxlength="52" pattern="[a-z][a-z0-9\-]{0,51}" value="{{ defaults.server_name }}" placeholder="customer-support-tools"><p class="help">Used by Kubernetes and the MCP endpoint. Lowercase letters, digits and hyphens; must start with a letter. Existing server IDs stay unchanged.</p>
+<label for="mode">Where does application state live?</label><select id="mode" name="mode" required><option value="">Choose a state model?</option><option value="stateless" {% if defaults.mode=='stateless' %}selected{% endif %}>Stateless · independent tool calls</option><option value="stateful" {% if defaults.mode=='stateful' %}selected{% endif %}>Stateful · shared Redis</option></select>
+<div id="redis-fields" {% if defaults.mode!='stateful' %}hidden{% endif %}><label for="redis_url">Existing Redis URL (optional)</label><input id="redis_url" name="redis_url" value="{{ defaults.redis_url }}" placeholder="redis://existing-service:6379/0"><p class="help">Leave blank for this server's persistent Redis. Your application must read REDIS_URL. Inline credentials are unsupported.</p></div>
+<label for="backend">How should it run?</label><select id="backend" name="backend"><option value="always-on" {% if defaults.backend=='always-on' %}selected{% endif %}>Always on · two replicas</option><option value="knative" {% if defaults.backend=='knative' %}selected{% endif %}>Autoscaling · Knative, including zero replicas</option></select>
+<label for="version">Release name</label><input id="version" name="version" value="{{ defaults.version }}" pattern="[A-Za-z0-9_][A-Za-z0-9_.\-]{0,62}" maxlength="63" required><p class="help">For example v1 or demo-v2. Each build also gets a unique image identity.</p>
+<details {% if error %}open{% endif %}><summary>Build settings and application contract</summary>
+<label for="dockerfile">Dockerfile path inside the project</label><input id="dockerfile" name="dockerfile" required value="{{ defaults.dockerfile }}" list="dockerfile-options"><datalist id="dockerfile-options">{% for path in stage.dockerfiles %}<option value="{{ path }}">{% endfor %}</datalist>
+<p class="help">Detected: {{ stage.dockerfiles|join(', ') or 'none' }}. A file named Dockerfile.dockerfile can be selected by its actual path.</p>
+<label for="build_context">Build context folder</label><input id="build_context" name="build_context" required value="{{ defaults.build_context }}"><p class="help">Use . when the Dockerfile and application files are at the project root.</p>
+<label for="port">Container port</label><input id="port" name="port" type="number" value="{{ defaults.port }}" required>
+<label for="mcp_path">MCP path</label><input id="mcp_path" name="mcp_path" value="{{ defaults.mcp_path }}" required><p class="help">This platform currently requires port 8000, /mcp and /health. Files and build context must stay inside the uploaded project.</p></details>
+<details open><summary>Set up the Test MCP button</summary>
+<p class="help">Choose a tool that only reads data. If you skip this, deployment still works but the Test MCP button will be unavailable.</p>
+<label for="safe_tool">Read-only tool name</label><input id="safe_tool" name="safe_tool" maxlength="100" value="{{ defaults.safe_tool }}" placeholder="analyze_text">
+<label for="safe_arguments">Tool arguments (JSON object)</label><textarea id="safe_arguments" name="safe_arguments" rows="3">{{ defaults.safe_arguments }}</textarea>
+<p class="help">Text Analyzer example: analyze_text with {"text":"Hello Manufact"}. Shared Counter example: get_counter with {"name":"demo-counter"}.</p>
+<label class="check"><input type="checkbox" name="confirm_read_only" value="true" {% if defaults.confirm_read_only in [true,'true','on'] %}checked{% endif %}> I confirm this tool is read-only. Never use increment_counter as a test.</label></details>
+<label class="check"><input type="checkbox" name="trusted_code" value="true" required> I trust this source and Dockerfile for a local build.</label>
+<div class="form-actions"><button type="submit">Save and continue to deployment</button><p class="help">Next you will review the exact server and press Deploy. Saving alone does not run a build.</p></div>
+</form></section><aside class="card"><h2>Imported project</h2><p>{{ stage.label }}</p><details><summary>Files in this project</summary><pre id="source-files">{{ stage.files|join('\n') }}</pre></details><details><summary>Source verification</summary><pre id="source-provenance">{{ stage.source|tojson(indent=2) }}</pre></details><p class="help">Import reference: {{ stage.id }}</p></aside></div>
 {% endblock %}
+{% block scripts %}<script>
+const mode=document.getElementById('mode');mode.addEventListener('change',()=>{document.getElementById('redis-fields').hidden=mode.value!=='stateful';});
+const display=document.getElementById('display_name'),server=document.getElementById('server_name');let edited=!!server.value;
+server.addEventListener('input',()=>edited=!!server.value);display.addEventListener('input',()=>{if(!edited){server.value=display.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,52);}});
+</script>{% endblock %}

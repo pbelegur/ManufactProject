@@ -1,0 +1,4 @@
+<article class="job-row" data-job="{{ job.id }}">
+<div><a class="name" href="/jobs/{{ job.id }}">{{ job.display_name }} · attempt #{{ job.attempt }}</a><small>{{ job.action }} · {{ job.backend_label }} · requested release {{ job.version }}</small><small><code>{{ job.namespace }}/{{ job.name }}</code> · job {{ job.id[:8] }} · <time datetime="{{ job.created_at }}">{{ job.created_at }}</time></small></div>
+<span class="pill {{ 'good' if job.stage=='SUCCEEDED' else 'bad' if job.stage=='FAILED' else 'pending' }}">{{ job.stage }}</span>
+</article>

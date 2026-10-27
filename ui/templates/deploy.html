@@ -1,36 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}New deployment · MCP platform{% endblock %}
+{% block title %}Deploy a server · Manufact MCP{% endblock %}
 {% block content %}
-<a class="back" href="/">← Deployments</a><p class="eyebrow">DEPLOY</p><h1>Deploy an MCP project</h1><p>Choose an allowlisted project and an existing configuration. A background job runs the shared deployment pipeline.</p>
+<a class="back" href="/">← My servers</a><h1>Build and deploy a server</h1><p>Select a registered server below. To deploy a new ZIP or repository, <a href="/imports">add its source first</a>.</p>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+{% include 'pending_imports.html' %}
 <div class="columns"><section class="card"><form action="/deploy" method="post" id="deploy-form">
 <input type="hidden" name="csrf" value="{{ csrf }}">
-<label for="project_id">MCP project</label><select id="project_id" name="project_id">{% for project in projects %}<option value="{{ project.id }}">{{ project.title }} · {{ project.path }}</option>{% endfor %}</select>
-<label for="backend">Deployment mode</label><select id="backend" name="backend"><option value="always-on">Always-on · two replicas</option><option value="knative">Knative · scale to zero</option></select>
-<p class="help">Always-on uses mcp-demo. Knative uses mcp-auto and the existing local autoscaling profile. Redis stays outside MCP pods.</p>
-<label for="source">Image source</label><select id="source" name="source"><option value="reuse">Reuse an existing published image</option><option value="build">Build Dockerfile and publish to Floci ECR</option></select>
-<label for="version">Release version</label><input id="version" name="version" value="ui-v1" pattern="[A-Za-z0-9_][A-Za-z0-9_.\-]{0,62}" maxlength="63" required>
-<p class="help">Used for builds and Knative revisions. Reusing an always-on image keeps that image's version; redeployment may be idempotent.</p>
-<details><summary>Advanced options</summary><label for="image">Published image override (reuse only)</label><input id="image" name="image" placeholder="Leave blank to discover a deployed image" maxlength="400"><p class="help">Only this project's configured Floci ECR repository is allowed. Knative reuse requires a published sha256 digest; builds resolve it through the CLI.</p><label for="timeout_seconds">Rollout wait (seconds)</label><input type="number" id="timeout_seconds" name="timeout_seconds" value="180" min="30" max="300"></details>
-<button type="submit">Deploy</button><p class="help">A bounded worker pool runs independent jobs; conflicting updates stay queued. Submission opens a live job page immediately. Success requires the CLI's verified deployment result and a zero exit code.</p>
-</form></section>
-<aside class="card"><h2>Project configuration</h2><p class="muted" id="config-path"></p><pre id="config-preview"></pre><p class="help">Read from the project's existing file. Environment values are not shown.</p></aside></div>
+<label for="project_id">Server / source project</label><select id="project_id" name="project_id">{% for category,label in [('developer','Your servers and examples'),('probe','Test fixtures — not application servers'),('unregistered','Other sources')] %}<optgroup label="{{ label }}">{% for project in projects if project.category==category %}<option value="{{ project.id }}">{{ project.title }} — {{ project.profiles.values()|map(attribute='name')|first }}</option>{% endfor %}</optgroup>{% endfor %}</select>
+<label for="backend">Deployment mode</label><select id="backend" name="backend"><option value="always-on">Always on — two replicas</option><option value="knative">Autoscaling — Knative, including zero replicas</option></select>
+<label for="source">Deployment action</label><select id="source" name="source"><option value="build">Build this project's code and deploy a new image</option><option value="reuse">Reuse a published image — no new code build</option></select>
+<p id="reuse-notice" class="notice" hidden>Reusing an unchanged always-on image may make no changes to running pods. Choose Build to deploy code changes.</p>
+<label for="version">Release name</label><input id="version" name="version" value="ui-v1" pattern="[A-Za-z0-9_][A-Za-z0-9_.\-]{0,62}" maxlength="63" required>
+<details><summary>Advanced options</summary><label for="image">Published image override (reuse only)</label><input id="image" name="image" placeholder="Leave blank to discover this server's existing image" maxlength="400"><p class="help">Only this server's Floci ECR repository is accepted. Knative reuse requires a published sha256 digest.</p><label for="timeout_seconds">Rollout wait (seconds)</label><input type="number" id="timeout_seconds" name="timeout_seconds" value="180" min="30" max="300"></details>
+<div class="form-actions"><button type="submit" id="deploy-submit">Deploy</button><p class="help">The selected server is shown on the right. This opens a live build/rollout job; it does not block MCP traffic.</p></div>
+</form></section><aside class="card" aria-live="polite"><h2 id="selected-server">Selected server</h2><dl><dt>Unique server ID</dt><dd id="selected-id"></dd><dt>Deployment mode</dt><dd id="selected-backend"></dd><dt>Source project</dt><dd id="selected-project"></dd><dt>Release name</dt><dd id="selected-version"></dd></dl><details><summary>Deployment configuration</summary><p class="muted" id="config-path"></p><pre id="config-preview"></pre></details><p class="help">Runtime environment values are hidden. The original deployctl.py pipeline builds, publishes, rolls out and verifies this exact server.</p></aside></div>
 {% endblock %}
 {% block scripts %}<script>
-const projects = {{ projects|tojson }};
-const selected = new URLSearchParams(location.search).get('project');
-if (projects.some(p=>p.id===selected)) {document.getElementById('project_id').value=selected;document.getElementById('source').value='build';}
-function preview() {
-  const project = projects.find(p => p.id === document.getElementById('project_id').value);
-  if (!project) return;
-  const backend=document.getElementById('backend');
-  Array.from(backend.options).forEach(option=>option.disabled=!project.profiles[option.value]);
-  if (!project.profiles[backend.value]) backend.value=Object.keys(project.profiles)[0];
-  const config = project.profiles[document.getElementById('backend').value];
-  document.getElementById('config-path').textContent = project.path + '/' + config.filename;
-  document.getElementById('config-preview').textContent = JSON.stringify(config, null, 2);
-}
-document.getElementById('project_id').addEventListener('change', () => {preview();const p=projects.find(p=>p.id===document.getElementById('project_id').value);document.getElementById('version').value=p.default_version;});
-document.getElementById('backend').addEventListener('change', preview);
-preview();
-const initialProject=projects.find(p=>p.id===document.getElementById('project_id').value);if(initialProject)document.getElementById('version').value=initialProject.default_version;
+const projects={{ projects|tojson }},values={{ values|tojson }};
+const projectInput=document.getElementById('project_id'),backend=document.getElementById('backend'),source=document.getElementById('source'),version=document.getElementById('version');
+const selected=values.project_id||new URLSearchParams(location.search).get('project');if(projects.some(p=>p.id===selected))projectInput.value=selected;
+if(values.backend)backend.value=values.backend;if(values.source)source.value=values.source;
+function preview(){const project=projects.find(p=>p.id===projectInput.value);if(!project)return;
+Array.from(backend.options).forEach(option=>option.disabled=!project.profiles[option.value]);if(!project.profiles[backend.value])backend.value=Object.keys(project.profiles)[0];
+const config=project.profiles[backend.value];document.getElementById('config-path').textContent=project.path+'/'+config.filename;
+document.getElementById('config-preview').textContent=JSON.stringify(config,null,2);document.getElementById('selected-server').textContent=project.title;
+document.getElementById('selected-id').textContent=config.name;document.getElementById('selected-backend').textContent=backend.selectedOptions[0].textContent;
+document.getElementById('selected-project').textContent=project.path;document.getElementById('selected-version').textContent=version.value;
+document.getElementById('reuse-notice').hidden=source.value!=='reuse';}
+projectInput.addEventListener('change',()=>{const project=projects.find(p=>p.id===projectInput.value);version.value=project.default_version;document.getElementById('image').value='';preview();});
+backend.addEventListener('change',preview);source.addEventListener('change',preview);version.addEventListener('input',preview);
+const initial=projects.find(p=>p.id===projectInput.value);if(initial)version.value=values.version||initial.default_version;
+for(const id of ['image','timeout_seconds'])if(values[id])document.getElementById(id).value=values[id];preview();
 </script>{% endblock %}

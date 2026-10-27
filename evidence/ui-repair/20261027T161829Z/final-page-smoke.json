@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "browser_errors": [],
+  "patterns": [
+    {
+      "id": "server_name",
+      "valid": true
+    },
+    {
+      "id": "version",
+      "valid": true
+    }
+  ]
+}

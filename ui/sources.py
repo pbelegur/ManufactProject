@@ -124,10 +124,10 @@ class Sources:
         self.folder = root / ".local/ui/imports"
         self.folder.mkdir(parents=True, exist_ok=True)
         self.registry_path = root / ".local/ui/sources.json"
-        self.registered = json.loads(self.registry_path.read_text()) if self.registry_path.exists() else {}
-        self.trusted = json.loads((root / "ui/trusted_repositories.json").read_text())["repositories"]
+        self.registered = json.loads(self.registry_path.read_text(encoding="utf-8")) if self.registry_path.exists() else {}
+        self.trusted = json.loads((root / "ui/trusted_repositories.json").read_text(encoding="utf-8"))["repositories"]
 
-    def stage(self, kind, *, data=None, url=None, template=None):
+    def stage(self, kind, *, data=None, url=None, template=None, filename=None):
         if len(list(self.folder.iterdir())) >= 20:
             raise ValueError("Local staging is full (20 imports). An operator must archive/remove old staging directories.")
         identifier = uuid4().hex
@@ -135,6 +135,8 @@ class Sources:
         stage.mkdir()
         try:
             source = {"kind": kind}
+            if kind == "zip" and filename:
+                source["filename"] = filename.replace("\\", "/").rsplit("/", 1)[-1][:150]
             if kind == "github":
                 if url not in self.trusted or not re.fullmatch(r"https://github.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", url):
                     raise ValueError("Repository URL is not explicitly trusted in ui/trusted_repositories.json")
@@ -192,8 +194,29 @@ class Sources:
             raise ValueError("Import not found")
         return json.loads(path.read_text(encoding="utf-8"))
 
+    def inspect(self, identifier):
+        stage = self.get(identifier)
+        folder = self.folder / identifier / "project"
+        files = sorted(p.relative_to(folder).as_posix() for p in folder.rglob("*") if p.is_file())
+        dockerfiles = [name for name in files if Path(name).name.lower() in {"dockerfile", "containerfile"}
+                       or Path(name).name.lower().endswith(".dockerfile") or Path(name).name.lower().startswith("dockerfile.")]
+        # Explicit project configuration can use any contained build filename.
+        configured = stage["initial"].get("build", {}).get("dockerfile")
+        if configured in files and configured not in dockerfiles:
+            dockerfiles.insert(0, configured)
+        stage.update(files=files[:60], dockerfiles=dockerfiles,
+                     label=stage["source"].get("filename") or stage["source"].get("url") or
+                           (stage["source"].get("template", "Uploaded") + " project"))
+        return stage
+
+    def pending(self):
+        stages = [self.inspect(path.parent.name) for path in self.folder.glob("*/stage.json")
+                  if path.parent.name not in self.registered]
+        return sorted(stages, key=lambda stage: stage["created_at"], reverse=True)
+
     def register(self, identifier, project):
         if identifier in self.registered:
             raise ValueError("This source has already been registered")
-        self.registered[identifier] = project
-        atomic_json(self.registry_path, self.registered)
+        updated = {**self.registered, identifier: project}
+        atomic_json(self.registry_path, updated)
+        self.registered = updated

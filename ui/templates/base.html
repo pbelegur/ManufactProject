@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}MCP platform{% endblock %}</title>
+  <title>{% block title %}Manufact MCP{% endblock %}</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<header><div class="bar"><a class="brand" href="/">MCP <span>platform</span></a><nav><a href="/">My MCP servers</a><a href="/imports">Import source</a><a href="/deploy">Deploy project</a></nav><span class="local">LOCAL DEMO</span></div></header>
+<header><div class="bar"><a class="brand" href="/">Manufact <span>MCP</span></a><nav><a href="/">My servers</a><a href="/imports">Add a server</a><a href="/deploy">Deploy / update</a></nav><span class="local">LOCAL DEMO</span></div></header>
 <main>{% block content %}{% endblock %}</main>
-<footer>Localhost only · Existing Floci EKS/k3s · Deployments run through deployctl.py</footer>
+<footer>Localhost demo · Floci EKS/k3s · Shared deployctl.py pipeline</footer>
+<script>
+document.querySelectorAll('time[datetime]').forEach(element=>{const date=new Date(element.dateTime);if(!Number.isNaN(date.valueOf())){element.title=element.dateTime;element.textContent=date.toLocaleString();}});
+document.querySelectorAll('form').forEach(form=>{let submitted=false;form.addEventListener('submit',event=>{if(submitted){event.preventDefault();return;}submitted=true;form.querySelectorAll('button').forEach(button=>{if(button.type==='submit'){button.dataset.idleLabel=button.textContent;button.disabled=true;button.textContent='Submitting…';}});});window.addEventListener('pageshow',event=>{if(event.persisted){submitted=false;form.querySelectorAll('[data-idle-label]').forEach(button=>{button.textContent=button.dataset.idleLabel;button.disabled=false;delete button.dataset.idleLabel;});}});});
+</script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

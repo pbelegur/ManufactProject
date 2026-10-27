@@ -31,6 +31,8 @@ import deployctl
 from ui.sources import Sources, MAX_ZIP, atomic_json
 from ui.monitoring import health as runtime_health, redact, redis_view, job_matches_runtime
 from ui.jobs import DeploymentQueue, BoundedLog, LogRedactor, run_pipeline, snapshot_project, worker_limit, STAGES
+from ui.presentation import BACKEND_LABELS, clean_display_name, validation_message
+from ui.checks import run_check
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMESPACES = {"always-on": "mcp-demo", "knative": "mcp-auto"}
@@ -54,6 +56,7 @@ class DeploymentRequest(BaseModel):
 class RegistrationRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     server_name: str = Field(pattern=r"^[a-z][a-z0-9-]{0,51}$")
+    display_name: str = Field(default="", max_length=80)
     dockerfile: str = Field(default="Dockerfile", max_length=200)
     build_context: str = Field(default=".", max_length=200)
     port: int = 8000
@@ -88,8 +91,11 @@ class Platform:
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.projects = json.loads((ROOT / "ui/projects.json").read_text(encoding="utf-8"))
         self.sources = Sources(ROOT)
-        self.projects.update({p["id"]: p for p in self.sources.registered.values()})
-        self.runtime_metadata = json.loads((ROOT / "ui/runtime_metadata.json").read_text())
+        # Runtime-only Path objects must never enter the persisted source registry.
+        self.projects.update(copy.deepcopy({p["id"]: p for p in self.sources.registered.values()}))
+        self.runtime_metadata = json.loads((ROOT / "ui/runtime_metadata.json").read_text(encoding="utf-8"))
+        self.names_path = ROOT / ".local/ui/display_names.json"
+        self.display_names = json.loads(self.names_path.read_text(encoding="utf-8")) if self.names_path.exists() else {}
         self.registration_lock = asyncio.Lock()
         self.import_lock = asyncio.Lock()
         self.test_lock = asyncio.Lock()
@@ -143,9 +149,33 @@ class Platform:
                 _, cfg, path = self.config(project_id, backend)
                 profiles[backend] = {"filename": path.name, **{k: cfg[k] for k in
                     ("name", "mode", "port", "replicas", "resources", "autoscaling")}}
-            result.append({"id": project_id, "title": project["title"], "path": project["path"], "profiles": profiles,
-                           "default_version": project.get("default_version", "ui-v1"), "category": project.get("category", "unregistered")})
+            first_backend = next(iter(profiles))
+            identity = NAMESPACES[first_backend] + "/" + profiles[first_backend]["name"]
+            result.append({"id": project_id, "title": self.display_name(NAMESPACES[first_backend], profiles[first_backend]["name"], project), "path": project["path"], "profiles": profiles,
+                           "default_version": project.get("default_version", "ui-v1"),
+                           "category": self.runtime_metadata.get(identity, {}).get("category") or project.get("category", "unregistered")})
         return result
+
+    def server_job_snapshot(self):
+        with self.job_guard:
+            return copy.deepcopy(list(self.jobs.values()))
+
+    def display_name(self, namespace, name, project=None):
+        identity = namespace + "/" + name
+        return self.display_names.get(identity) or self.runtime_metadata.get(identity, {}).get("display_name") or (project or {}).get("title") or name
+
+    def present_job(self, job):
+        project = self.projects.get(job["project_id"], {})
+        job = copy.deepcopy(job)
+        identity = job["namespace"] + "/" + job["name"]
+        job.update(display_name=self.display_name(job["namespace"], job["name"], project),
+                   backend_label=BACKEND_LABELS[job["backend"]],
+                   category=self.runtime_metadata.get(identity, {}).get("category") or project.get("category", "unregistered"),
+                   action="Build and deploy" if job["source"] == "build" else "Reuse published image",
+                   stage=self.progress(job))
+        job["attempt"] = sum(1 for other in self.server_job_snapshot() if other["namespace"] == job["namespace"]
+            and other["name"] == job["name"] and (other["created_at"], other["id"]) <= (job["created_at"], job["id"]))
+        return job
 
     def kubectl(self, namespace, arguments):
         if namespace not in NAMESPACES.values():
@@ -218,9 +248,12 @@ class Platform:
                 items.append({"namespace": project["namespace"], "name": project["server_name"], "backend": project["backend"],
                     "identity": project["namespace"] + "/" + project["server_name"], "mode": project["mode"],
                     "project_id": pid, "source_project": project["path"], "source_identity": project["source"],
-                    "category": "developer", "version": None, "image": None, "revision": None, "image_digests": [],
+                    "category": self.runtime_metadata.get(project["namespace"] + "/" + project["server_name"], {}).get("category") or project.get("category", "developer"),
+                    "display_name": self.display_name(project["namespace"], project["server_name"], project),
+                    "backend_label": BACKEND_LABELS[project["backend"]],
+                    "version": None, "image": None, "revision": None, "image_digests": [],
                     "desired_replicas": None, "healthy_replicas": None, "health": state, "runtime_health": "Not observed",
-                    "endpoint": None, "conditions": [], "latest_job": latest, "last_deployed_at": None,
+                    "endpoint": None, "conditions": [], "latest_job": self.present_job(latest) if latest else None, "last_deployed_at": None,
                     "deployment_time_source": "No successful deployment recorded", "exists": False, "redis": None,
                     "safe_test": project.get("safe_test"), "history": [], "events": [], "pods": []})
         return {"items": sorted(items, key=lambda r: (r["name"], r["namespace"])), "errors": errors, "observed_at": now()}
@@ -235,8 +268,7 @@ class Platform:
                 "endpoint": endpoint, "conditions": conditions, "project_id": project_id}
 
     def server_jobs(self, namespace, name):
-        with self.job_guard:
-            jobs = copy.deepcopy(list(self.jobs.values()))
+        jobs = self.server_job_snapshot()
         return sorted((j for j in jobs if j["namespace"] == namespace and j["name"] == name),
                       key=lambda j: j["created_at"], reverse=True)
 
@@ -248,17 +280,19 @@ class Platform:
         pid = resource["metadata"].get("labels", {}).get("platform.manufact.dev/project-id") or row["project_id"] or explicit.get("project_id")
         project = self.projects.get(pid, {})
         row.update(identity=namespace + "/" + name, project_id=pid,
+                   display_name=self.display_name(namespace, name, project), backend_label=BACKEND_LABELS[backend],
                    category=resource["metadata"].get("labels", {}).get("platform.manufact.dev/category") or explicit.get("category") or project.get("category", "unregistered"),
                    source_project=project.get("path"), source_identity=explicit.get("source") or project.get("source"),
                    safe_test=project.get("safe_test"), exists=True)
         jobs = self.server_jobs(namespace, name)
         state = runtime_health(backend, row["desired_replicas"], row["healthy_replicas"], resource, pods)
         row.update(runtime_health=state, health="Deploying" if jobs and jobs[0]["status"] in {"queued", "running"} else state,
-                   latest_job=jobs[0] if jobs else None)
+                   latest_job=self.present_job(jobs[0]) if jobs else None)
         routed_names = {t.get("revisionName") for t in row.get("traffic", []) if t.get("percent")}
         actual_revision = next((r for r in resources if r["kind"] == "Revision" and r["metadata"]["name"] in routed_names), None)
         container = (actual_revision["spec"]["containers"][0] if actual_revision else resource["spec"]["template"]["spec"]["containers"][0])
         row["redis"] = redis_view(container, services)
+        row["version_label"] = row.get("release") or re.sub(r"-[0-9a-f]{64}$", "", row["version"])
         row["pods"] = [{"name": p["metadata"]["name"], "uid": p["metadata"]["uid"],
                         "phase": p.get("status", {}).get("phase"), "deleting": p["metadata"].get("deletionTimestamp"),
                         "ready": any(c["type"] == "Ready" and c["status"] == "True" for c in p.get("status", {}).get("conditions", [])),
@@ -379,7 +413,7 @@ class Platform:
             filename = ".deploy-" + payload.backend + ".json"
             atomic_json(folder / filename, cfg)
             deployctl.manifest(folder, filename)
-            project = {"id": pid, "title": name, "server_name": name, "backend": payload.backend, "mode": payload.mode,
+            project = {"id": pid, "title": clean_display_name(payload.display_name) if payload.display_name else name, "server_name": name, "backend": payload.backend, "mode": payload.mode,
                        "namespace": NAMESPACES[payload.backend], "category": "developer", "source": stage["source"],
                        "path": folder.relative_to(ROOT).as_posix(), "configs": {payload.backend: filename},
                        "safe_test": policy, "default_version": payload.version, "registered_at": now()}
@@ -529,7 +563,7 @@ class Platform:
         if not re.fullmatch(r"[0-9a-f]{32}", job_id) or job_id not in self.jobs:
             raise HTTPException(404, "Job not found")
         with self.job_guard:
-            return copy.deepcopy(self.jobs[job_id])
+            return self.present_job(self.jobs[job_id])
 
     def job_log(self, job_id):
         self.get_job(job_id)
@@ -584,7 +618,34 @@ def create_app():
         return response
 
     def context(request, **values):
-        return {"request": request, "csrf": request.app.state.platform.csrf, **values}
+        return {"request": request, "csrf": request.app.state.platform.csrf, "backend_labels": BACKEND_LABELS, **values}
+
+    async def configure_page(request, identifier, values=None, error=None, status_code=200):
+        platform = request.app.state.platform
+        if identifier in platform.sources.registered:
+            return RedirectResponse("/deploy?project=" + platform.sources.registered[identifier]["id"], status_code=303)
+        try:
+            stage = await asyncio.to_thread(platform.sources.inspect, identifier)
+        except ValueError as exc:
+            raise HTTPException(404, str(exc)) from exc
+        initial = stage["initial"]
+        build = initial.get("build", {})
+        dockerfile = build.get("dockerfile") or (stage["dockerfiles"][0] if stage["dockerfiles"] else "Dockerfile")
+        scaling = initial.get("autoscaling", {})
+        backend = "knative" if isinstance(scaling, dict) and scaling.get("enabled") else "always-on"
+        defaults = {"server_name": initial.get("name", ""), "display_name": initial.get("name", ""),
+                    "mode": initial.get("mode", ""), "dockerfile": dockerfile,
+                    "build_context": build.get("context", Path(dockerfile).parent.as_posix()), "port": 8000,
+                    "mcp_path": "/mcp", "backend": backend, "version": "v1", "redis_url": "",
+                    "safe_tool": "", "safe_arguments": "{}", "confirm_read_only": False}
+        if stage["source"]["kind"] == "template":
+            defaults.update(display_name="Echo & Math" if stage["source"]["template"] == "stateless" else "Shared Counter",
+                            safe_tool="echo" if stage["source"]["template"] == "stateless" else "get_counter",
+                            safe_arguments='{"message":"Hello MCP"}' if stage["source"]["template"] == "stateless" else '{"name":"demo-counter"}')
+        if values:
+            defaults.update({key: values[key] for key in defaults if key in values})
+        return TEMPLATES.TemplateResponse(request=request, name="configure.html", status_code=status_code,
+            context=context(request, stage=stage, defaults=defaults, error=redact(error) if error else None))
 
     def csrf(request, token):
         if not token or not secrets.compare_digest(token, request.app.state.platform.csrf):
@@ -594,18 +655,25 @@ def create_app():
     async def dashboard(request: Request):
         platform = request.app.state.platform
         inventory = await platform.inventory(force=request.query_params.get("refresh") == "1")
-        jobs = sorted(platform.jobs.values(), key=lambda j: j["created_at"], reverse=True)[:8]
-        return TEMPLATES.TemplateResponse(request=request, name="dashboard.html", context=context(request, inventory=inventory, jobs=jobs))
+        jobs = [platform.present_job(j) for j in sorted(platform.server_job_snapshot(), key=lambda j: j["created_at"], reverse=True)]
+        pending = await asyncio.to_thread(platform.sources.pending)
+        return TEMPLATES.TemplateResponse(request=request, name="dashboard.html", context=context(request, inventory=inventory,
+            jobs=[j for j in jobs if j["category"] != "probe"][:12], probe_jobs=[j for j in jobs if j["category"] == "probe"][:12], pending=pending))
 
     @app.get("/deploy", response_class=HTMLResponse)
     async def new_deployment(request: Request):
-        projects = request.app.state.platform.catalogue()
-        return TEMPLATES.TemplateResponse(request=request, name="deploy.html", context=context(request, projects=projects))
+        platform = request.app.state.platform
+        selected = request.query_params.get("project")
+        if selected and selected not in platform.projects:
+            raise HTTPException(404, "That project is not registered. Finish its import configuration first.")
+        return TEMPLATES.TemplateResponse(request=request, name="deploy.html", context=context(request,
+            projects=platform.catalogue(), pending=await asyncio.to_thread(platform.sources.pending), values={}, error=None))
 
     @app.get("/imports", response_class=HTMLResponse)
     async def imports_page(request: Request):
         return TEMPLATES.TemplateResponse(request=request, name="import.html", context=context(request,
-            trusted=request.app.state.platform.sources.trusted))
+            trusted=request.app.state.platform.sources.trusted,
+            pending=await asyncio.to_thread(request.app.state.platform.sources.pending), error=None))
 
     @app.get("/sample-project.zip")
     async def sample_project():
@@ -632,22 +700,18 @@ def create_app():
                 upload = form.get("archive")
                 data = await upload.read(MAX_ZIP + 1) if kind == "zip" and hasattr(upload, "read") else None
                 stage = await asyncio.to_thread(platform.sources.stage, kind, data=data,
-                                                url=form.get("repository"), template=form.get("template"))
+                                                url=form.get("repository"), template=form.get("template"),
+                                                filename=getattr(upload, "filename", None))
         except (ValueError, OSError, KeyError, zipfile.BadZipFile) as exc:
-            raise HTTPException(422, "Import failed: " + str(exc)) from exc
+            return TEMPLATES.TemplateResponse(request=request, name="import.html", status_code=422,
+                context=context(request, trusted=platform.sources.trusted, pending=await asyncio.to_thread(platform.sources.pending),
+                                error="Import failed: " + redact(str(exc))))
         return RedirectResponse("/imports/" + stage["id"], status_code=303)
 
+    @app.get("/imports/{identifier}/configure", response_class=HTMLResponse)
     @app.get("/imports/{identifier}", response_class=HTMLResponse)
     async def configure_source(request: Request, identifier: str):
-        try:
-            stage = request.app.state.platform.sources.get(identifier)
-        except ValueError as exc:
-            raise HTTPException(404, str(exc)) from exc
-        initial = stage["initial"]
-        return TEMPLATES.TemplateResponse(request=request, name="configure.html", context=context(request, stage=stage,
-            defaults={"name": initial.get("name", ""), "mode": initial.get("mode", ""),
-                      "dockerfile": initial.get("build", {}).get("dockerfile", "Dockerfile"),
-                      "build_context": initial.get("build", {}).get("context", ".")}))
+        return await configure_page(request, identifier)
 
     @app.post("/imports/{identifier}/configure")
     async def register_source(request: Request, identifier: str):
@@ -656,8 +720,10 @@ def create_app():
         try:
             payload = RegistrationRequest.model_validate(form)
             project = await request.app.state.platform.register(identifier, payload)
-        except (ValidationError, ValueError, OSError, KeyError) as exc:
-            raise HTTPException(422, "Configuration failed: " + str(exc)) from exc
+        except (ValidationError, ValueError, OSError, KeyError, HTTPException) as exc:
+            status = exc.status_code if isinstance(exc, HTTPException) else 422
+            message = str(exc.detail) if isinstance(exc, HTTPException) else validation_message(exc)
+            return await configure_page(request, identifier, values=form, error="Configuration failed: " + message, status_code=status)
         return RedirectResponse("/deploy?project=" + project["id"], status_code=303)
 
     @app.post("/deploy")
@@ -666,9 +732,13 @@ def create_app():
         csrf(request, form.pop("csrf", ""))
         try:
             payload = DeploymentRequest.model_validate(form)
-        except ValidationError as exc:
-            raise HTTPException(422, str(exc)) from exc
-        job = await request.app.state.platform.enqueue(payload)
+            job = await request.app.state.platform.enqueue(payload)
+        except (ValidationError, HTTPException) as exc:
+            platform = request.app.state.platform
+            return TEMPLATES.TemplateResponse(request=request, name="deploy.html",
+                status_code=exc.status_code if isinstance(exc, HTTPException) else 422,
+                context=context(request, projects=platform.catalogue(), pending=await asyncio.to_thread(platform.sources.pending), values=form,
+                                error=redact(str(exc.detail) if isinstance(exc, HTTPException) else validation_message(exc))))
         return RedirectResponse("/jobs/" + job["id"], status_code=303)
 
     @app.get("/deployments/{namespace}/{name}", response_class=HTMLResponse)
@@ -677,7 +747,7 @@ def create_app():
         if request.query_params.get("refresh") == "1":
             await platform.inventory(force=True)
         row, observed = await platform.deployment(namespace, name)
-        jobs = sorted((j for j in platform.jobs.values() if j["name"] == name and j["namespace"] == namespace), key=lambda j: j["created_at"], reverse=True)
+        jobs = [platform.present_job(j) for j in platform.server_jobs(namespace, name)]
         try:
             recent_events = await asyncio.to_thread(platform.events, row)
             events_error = None
@@ -685,6 +755,22 @@ def create_app():
             recent_events, events_error = [], str(exc)
         return TEMPLATES.TemplateResponse(request=request, name="details.html", context=context(request, deployment=row,
             observed_at=observed, jobs=jobs, events=recent_events, events_error=events_error))
+
+    @app.post("/deployments/{namespace}/{name}/display-name")
+    async def rename_display(request: Request, namespace: str, name: str):
+        form = await request.form(max_files=0, max_fields=2, max_part_size=1024)
+        csrf(request, form.get("csrf", ""))
+        platform = request.app.state.platform
+        await platform.deployment(namespace, name)
+        try:
+            display_name = clean_display_name(str(form.get("display_name", "")))
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+        updated = {**platform.display_names, namespace + "/" + name: display_name}
+        atomic_json(platform.names_path, updated)
+        platform.display_names = updated
+        platform.cached_at = 0
+        return RedirectResponse(f"/deployments/{namespace}/{name}?refresh=1", status_code=303)
 
     @app.post("/deployments/{namespace}/{name}/redeploy")
     async def redeploy(request: Request, namespace: str, name: str):
@@ -754,15 +840,17 @@ def create_app():
                        "--namespace", namespace, "--name", name, "--backend", row["backend"],
                        "--tool", policy["tool"], "--arguments", json.dumps(policy["arguments"])]
             try:
-                result = await asyncio.to_thread(subprocess.run, command, cwd=ROOT, capture_output=True, text=True,
-                                                 encoding="utf-8", timeout=140, shell=False)
+                result = await asyncio.to_thread(run_check, command, cwd=ROOT)
                 lines = result.stdout.strip().splitlines()
-                check = json.loads(lines[-1]) if lines else {"success": False, "error": "MCP client process returned no result"}
+                check = json.loads(lines[-1]) if lines else {"success": False,
+                    "error": f"MCP client exited {result.returncode} without a result: " + (result.stderr.strip()[-3000:] or "no diagnostics returned")}
                 check.update(observed_at=now(), tool=policy["tool"], identity=row["identity"])
                 if check.get("error"):
                     check["error"] = redact(check["error"])
+                if check.get("error_message"):
+                    check["error_message"] = redact(check["error_message"])
                 return check
-            except (OSError, ValueError, subprocess.SubprocessError) as exc:
+            except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as exc:
                 return {"success": False, "identity": row["identity"], "tool": policy["tool"],
                         "observed_at": now(), "error": redact(str(exc)), "attempts": 1}
 

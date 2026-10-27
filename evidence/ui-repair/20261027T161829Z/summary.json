@@ -1,0 +1,512 @@
+{
+  "started_at": "2026-10-27T16:18:29.647198+00:00",
+  "result": "FAIL",
+  "checks": [
+    "Original three services: real read-only MCP tools succeed",
+    "Pending import resumes through /configure GET",
+    "Conflict preserves configuration; correction selects exact imported project/release",
+    "Real build/publish/rollout, real MCP tool, application logs and rename succeed"
+  ],
+  "mcp": [
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 561.8635999271646,
+      "initialization_ms": 6457.8553000465035,
+      "sdk_import_ms": 4933.390200021677,
+      "latency_ms": 7019.785600015894,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 649.003200000152,
+      "observed_at": "2026-10-27T16:18:58.294180+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 925.8326999843121,
+      "initialization_ms": 5223.263300023973,
+      "sdk_import_ms": 3466.5702000493184,
+      "latency_ms": 6149.163100053556,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 748.2885000063106,
+      "observed_at": "2026-10-27T16:19:12.494286+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "text-tools",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"words\": 4,\n  \"characters\": 25,\n  \"lines\": 1,\n  \"slug\": \"manufact-builds-mcp-tools\"\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 314.694199943915,
+      "initialization_ms": 4106.295000063255,
+      "sdk_import_ms": 3083.312900038436,
+      "latency_ms": 4421.0314999800175,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 538.3142000064254,
+      "observed_at": "2026-10-27T16:19:22.959499+00:00",
+      "tool": "analyze_text",
+      "identity": "mcp-demo/manufact-text-tools"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 455.392700037919,
+      "initialization_ms": 5544.1516999853775,
+      "sdk_import_ms": 5011.080200085416,
+      "latency_ms": 5999.605500022881,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 882.8030000440776,
+      "observed_at": "2026-10-27T16:19:48.720404+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 496.7766999034211,
+      "initialization_ms": 5787.3724000528455,
+      "sdk_import_ms": 4901.855200063437,
+      "latency_ms": 6284.220400033519,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 1079.5048999134451,
+      "observed_at": "2026-10-27T16:20:05.202020+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 601.3076999224722,
+      "initialization_ms": 4601.253999979235,
+      "sdk_import_ms": 3865.575399948284,
+      "latency_ms": 5202.624399913475,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 865.5386000173166,
+      "observed_at": "2026-10-27T16:20:40.624119+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 444.0764000173658,
+      "initialization_ms": 4714.961799909361,
+      "sdk_import_ms": 4154.291999991983,
+      "latency_ms": 5159.368199994788,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 971.7878999654204,
+      "observed_at": "2026-10-27T16:20:52.151357+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 738.2937000365928,
+      "initialization_ms": 4006.6480999812484,
+      "sdk_import_ms": 3307.432100060396,
+      "latency_ms": 4745.010300073773,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 1178.5484999418259,
+      "observed_at": "2026-10-27T16:21:25.622874+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 445.67909999750555,
+      "initialization_ms": 4040.6568000325933,
+      "sdk_import_ms": 3533.3899999968708,
+      "latency_ms": 4486.381600028835,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 754.5743000227958,
+      "observed_at": "2026-10-27T16:21:36.484303+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": false,
+      "error_message": "TimeoutError: Service port-forward did not start within 45 seconds. No MCP request was sent. Forwarding from 127.0.0.1:63183 -> 8080",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\scripts\\ui_mcp_check.py\", line 96, in <module>\n    result = main(args)\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\scripts\\ui_mcp_check.py\", line 66, in main\n    raise TimeoutError(f\"Service port-forward did not start within {forward_timeout} seconds. \"\n                       \"No MCP request was sent. \" + (detail or \"kubectl returned no startup output; check cluster connectivity and host load.\"))\nTimeoutError: Service port-forward did not start within 45 seconds. No MCP request was sent. Forwarding from 127.0.0.1:63183 -> 8080\n",
+      "latency_ms": 45696.8923000386,
+      "latency_scope": "Failed attempt including forwarding/setup",
+      "attempts": 1,
+      "observed_at": "2026-10-27T16:22:27.042250+00:00",
+      "tool": "echo",
+      "identity": "mcp-auto/stateless-demo"
+    }
+  ],
+  "browser_errors": [],
+  "availability": [
+    {
+      "identity": "mcp-demo/stateless-demo",
+      "success": true,
+      "observed_at": "2026-10-27T16:19:48.720404+00:00"
+    },
+    {
+      "identity": "mcp-demo/stateful-demo",
+      "success": true,
+      "observed_at": "2026-10-27T16:20:05.202020+00:00"
+    },
+    {
+      "identity": "mcp-demo/stateless-demo",
+      "success": true,
+      "observed_at": "2026-10-27T16:20:40.624119+00:00"
+    },
+    {
+      "identity": "mcp-demo/stateful-demo",
+      "success": true,
+      "observed_at": "2026-10-27T16:20:52.151357+00:00"
+    }
+  ],
+  "previous_evidence": "evidence/ui-repair/20261027T160013Z",
+  "github": {
+    "result": "PASS",
+    "archive_sha256": "2cf79b7f6f847ac1450edd00daa0f169f2a27af9cfe6305d4081f2a0fdde94bb",
+    "commit": "38e14ca4ce362d27dfaaa498f3b4592bea4c6710",
+    "expanded_bytes": 812571,
+    "files": 66,
+    "kind": "github",
+    "url": "https://github.com/modelcontextprotocol/quickstart-resources"
+  },
+  "import_url": "http://127.0.0.1:8080/imports/a258995dcb0947f6ada294cc0fcbe847/configure",
+  "project_id": "byo-a258995dcb0947f6ada2",
+  "job_id": "f1dd7b09f871452ab65aaa83b1a987ee",
+  "job": {
+    "id": "f1dd7b09f871452ab65aaa83b1a987ee",
+    "status": "succeeded",
+    "project_id": "byo-a258995dcb0947f6ada2",
+    "name": "text-analyzer-upload",
+    "namespace": "mcp-demo",
+    "backend": "always-on",
+    "mode": "stateless",
+    "version": "browser-v1",
+    "source": "build",
+    "created_at": "2026-10-27T16:19:33.124539+00:00",
+    "started_at": "2026-10-27T16:19:33.133824+00:00",
+    "finished_at": "2026-10-27T16:20:45.068061+00:00",
+    "exit_code": 0,
+    "error": null,
+    "command": [
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\deployctl.py",
+      "deploy",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f1dd7b09f871452ab65aaa83b1a987ee\\source",
+      "--config",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f1dd7b09f871452ab65aaa83b1a987ee\\.job-deploy.json",
+      "--namespace",
+      "mcp-demo",
+      "--kubeconfig",
+      "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\floci.kubeconfig",
+      "--version",
+      "browser-v1",
+      "--timeout",
+      "180",
+      "--rollback-timeout",
+      "180",
+      "--push-registry",
+      "localhost:4566/000000000000/us-east-1",
+      "--ensure-floci-repository"
+    ],
+    "stage": "SUCCEEDED",
+    "stage_at": "2026-10-27T16:20:45.053859+00:00",
+    "stage_message": "CLI completed successfully",
+    "stage_history": [
+      {
+        "stage": "QUEUED",
+        "at": "2026-10-27T16:19:33.124539+00:00",
+        "message": "Job accepted"
+      },
+      {
+        "stage": "BUILDING",
+        "at": "2026-10-27T16:19:33.138287+00:00",
+        "message": "Preparing a private source/configuration snapshot"
+      },
+      {
+        "stage": "BUILDING",
+        "at": "2026-10-27T16:19:37.687027+00:00",
+        "message": "Building the project Dockerfile"
+      },
+      {
+        "stage": "PUSHING",
+        "at": "2026-10-27T16:20:04.489048+00:00",
+        "message": "Publishing the immutable application image to the registry"
+      },
+      {
+        "stage": "DEPLOYING",
+        "at": "2026-10-27T16:20:11.375700+00:00",
+        "message": "Applying application resources; previous serving pods remain until readiness"
+      },
+      {
+        "stage": "VERIFYING",
+        "at": "2026-10-27T16:20:14.458563+00:00",
+        "message": "Waiting for deployment readiness and exact replica counts"
+      },
+      {
+        "stage": "SUCCEEDED",
+        "at": "2026-10-27T16:20:45.053859+00:00",
+        "message": "CLI completed successfully"
+      }
+    ],
+    "build_limits": {
+      "cpu": 1,
+      "memory_bytes": 1073741824,
+      "build_timeout_seconds": 300
+    },
+    "log_policy": {
+      "segment_bytes": 1048576,
+      "segments": 3,
+      "browser_tail_bytes": 256000
+    },
+    "resource_keys": [
+      "mcp-demo/text-analyzer-upload"
+    ],
+    "source_snapshot": {
+      "files": 6,
+      "bytes": 3161,
+      "at": "2026-10-27T16:19:33.223757+00:00"
+    },
+    "context_path": "C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\.local\\ui\\work\\f1dd7b09f871452ab65aaa83b1a987ee\\source",
+    "pid": 23304,
+    "deployment_result": {
+      "status": "healthy",
+      "name": "text-analyzer-upload",
+      "namespace": "mcp-demo",
+      "image": "localhost:4566/000000000000/us-east-1/text-analyzer-upload:browser-v1-ed1ad3fc00668c66cf8b993f8fe7d952cab06d87f7ec2d332efe0a01f2198033",
+      "ready_replicas": 2,
+      "mcp_url": "http://text-analyzer-upload.mcp-demo.svc.cluster.local:8000/mcp"
+    },
+    "log_rotations": 0,
+    "display_name": "Imported Text Analyzer",
+    "backend_label": "Always on",
+    "category": "developer",
+    "action": "Build and deploy",
+    "attempt": 1,
+    "phase": "SUCCEEDED",
+    "queue_position": null,
+    "waiting_reason": null,
+    "max_concurrent_jobs": 2
+  },
+  "uploaded_mcp": {
+    "success": true,
+    "response": {
+      "meta": {
+        "io.modelcontextprotocol/serverInfo": {
+          "name": "text-tools",
+          "version": ""
+        }
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"words\": 2,\n  \"characters\": 13,\n  \"lines\": 1,\n  \"slug\": \"manufact-demo\"\n}",
+          "annotations": null,
+          "meta": null
+        }
+      ],
+      "structured_content": null,
+      "is_error": false,
+      "result_type": "complete"
+    },
+    "tool_latency_ms": 147.71030005067587,
+    "initialization_ms": 5532.784199924208,
+    "sdk_import_ms": 4788.590799900703,
+    "latency_ms": 5680.554799968377,
+    "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+    "attempts": 1,
+    "forward_setup_ms": 983.1874999217689,
+    "observed_at": "2026-10-27T16:21:07.250246+00:00",
+    "tool": "analyze_text",
+    "identity": "mcp-demo/text-analyzer-upload"
+  },
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_repair.py\", line 200, in main\n    await mcp(name, \"mcp-auto\")\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_repair.py\", line 62, in mcp\n    assert response.ok and check.get(\"success\"), check\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'success': False, 'error_message': 'TimeoutError: Service port-forward did not start within 45 seconds. No MCP request was sent. Forwarding from 127.0.0.1:63183 -> 8080', 'error': 'Traceback (most recent call last):\\n  File \"C:\\\\Users\\\\Devi\\\\Downloads\\\\mcp-deployment-platform-starter\\\\scripts\\\\ui_mcp_check.py\", line 96, in <module>\\n    result = main(args)\\n  File \"C:\\\\Users\\\\Devi\\\\Downloads\\\\mcp-deployment-platform-starter\\\\scripts\\\\ui_mcp_check.py\", line 66, in main\\n    raise TimeoutError(f\"Service port-forward did not start within {forward_timeout} seconds. \"\\n                       \"No MCP request was sent. \" + (detail or \"kubectl returned no startup output; check cluster connectivity and host load.\"))\\nTimeoutError: Service port-forward did not start within 45 seconds. No MCP request was sent. Forwarding from 127.0.0.1:63183 -> 8080\\n', 'latency_ms': 45696.8923000386, 'latency_scope': 'Failed attempt including forwarding/setup', 'attempts': 1, 'observed_at': '2026-10-27T16:22:27.042250+00:00', 'tool': 'echo', 'identity': 'mcp-auto/stateless-demo'}\n",
+  "finished_at": "2026-10-27T16:22:27.914561+00:00"
+}

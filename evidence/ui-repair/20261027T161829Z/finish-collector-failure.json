@@ -1,0 +1,200 @@
+{
+  "result": "FAIL",
+  "started_at": "2026-10-27T16:24:09.496794+00:00",
+  "job_id": "f1dd7b09f871452ab65aaa83b1a987ee",
+  "mcp": [
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "text-tools",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"words\": 2,\n  \"characters\": 13,\n  \"lines\": 1,\n  \"slug\": \"manufact-demo\"\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 124.6769999852404,
+      "initialization_ms": 5983.1440000562,
+      "sdk_import_ms": 5185.76910009142,
+      "latency_ms": 6107.860299991444,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 751.3320000143722,
+      "observed_at": "2026-10-27T16:24:28.101877+00:00",
+      "tool": "analyze_text",
+      "identity": "mcp-demo/text-analyzer-upload"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateless-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 532.4582000030205,
+      "initialization_ms": 3881.20770000387,
+      "sdk_import_ms": 3379.1659000562504,
+      "latency_ms": 4413.740399992093,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 546.9428000506014,
+      "observed_at": "2026-10-27T16:24:42.118690+00:00",
+      "tool": "echo",
+      "identity": "mcp-demo/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "stateful-demo",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "13",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 13
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 390.1251000352204,
+      "initialization_ms": 5229.236099985428,
+      "sdk_import_ms": 4713.04359997157,
+      "latency_ms": 5619.408300030045,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 1151.7662999685854,
+      "observed_at": "2026-10-27T16:24:56.116939+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-demo/stateful-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "text-tools",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"words\": 4,\n  \"characters\": 25,\n  \"lines\": 1,\n  \"slug\": \"manufact-builds-mcp-tools\"\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 127.19380005728453,
+      "initialization_ms": 3932.80829989817,
+      "sdk_import_ms": 3362.642899970524,
+      "latency_ms": 4060.4385999031365,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 791.8703999603167,
+      "observed_at": "2026-10-27T16:25:06.779592+00:00",
+      "tool": "analyze_text",
+      "identity": "mcp-demo/manufact-text-tools"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "Manufact MCP check",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": "Manufact MCP check"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 2470.6547999521717,
+      "initialization_ms": 40165.13950005174,
+      "sdk_import_ms": 3724.901400040835,
+      "latency_ms": 42635.86679997388,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 887.5474000815302,
+      "observed_at": "2026-10-27T16:25:58.662757+00:00",
+      "tool": "echo",
+      "identity": "mcp-auto/stateless-demo"
+    },
+    {
+      "success": true,
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "0",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "result": 0
+        },
+        "is_error": false,
+        "result_type": "complete"
+      },
+      "tool_latency_ms": 1104.2214999906719,
+      "initialization_ms": 27378.447400056757,
+      "sdk_import_ms": 5479.160699993372,
+      "latency_ms": 28482.73680009879,
+      "latency_scope": "SDK loading, client initialization and one tool call; excludes port-forward setup",
+      "attempts": 1,
+      "forward_setup_ms": 1297.6974999764934,
+      "observed_at": "2026-10-27T16:26:36.825869+00:00",
+      "tool": "get_counter",
+      "identity": "mcp-auto/stateful-demo"
+    }
+  ],
+  "browser_errors": [],
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Devi\\Downloads\\mcp-deployment-platform-starter\\tests\\verify_ui_repair.py\", line 262, in finish\n    developer_text = await developer.inner_text()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: 'async_generator' object is not iterable\n",
+  "finished_at": "2026-10-27T16:26:43.632545+00:00"
+}

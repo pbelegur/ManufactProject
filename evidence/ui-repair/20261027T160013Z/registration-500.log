@@ -1,0 +1,92 @@
+INFO:     Started server process [3528]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\applications.py", line 1194, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\telemetry\_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\base.py", line 203, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\ui\app.py", line 612, in local_only
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\trustedhost.py", line 57, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\.venv-ui\Lib\site-packages\fastapi\routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\ui\app.py", line 720, in register_source
+    project = await request.app.state.platform.register(identifier, payload)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\ui\app.py", line 418, in register
+    self.sources.register(identifier, project)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\ui\sources.py", line 221, in register
+    atomic_json(self.registry_path, updated)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Devi\Downloads\mcp-deployment-platform-starter\ui\sources.py", line 26, in atomic_json
+    temporary.write_text(json.dumps(data, indent=2), encoding="utf-8")
+                         ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type WindowsPath is not JSON serializable
